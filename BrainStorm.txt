@@ -1,0 +1,20 @@
+- Synchrofacts
+- odML Generation R2G
+- odMLtables
+- Neo Development
+- Workflow odML-Neo-Nix-elephant-snakemake-gin-version-control (collab)
+- spikesorting interface for neo
+- spikewaves
+- data publication
+- demo workflows (hbp, scientific data publication)
+- hamburg analysis
+    - stimulation artifact removal (baseline subtraction, pca approach)
+    - (meta) data management
+    - spikesorting
+
+
+Master thesis
+- phase locking
+- synchrofact detection
+- artifact research (gaps, synchrofacts)
+
