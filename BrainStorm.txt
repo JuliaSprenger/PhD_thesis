@@ -12,7 +12,7 @@ Tentative Structure
 -- Metadata access / usage
 -- odMLtables and odMLtables as example tools
 
-- Data management and representation [Neo
+- Data management and representation [Neo, 
 -- Requirements for data representations
 -- 
 
