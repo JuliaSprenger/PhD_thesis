@@ -5,6 +5,9 @@
 \usepackage{longtable}
 \usepackage{hyperref}
 \usepackage{caption}
+% this is only for development purposes
+\usepackage[colorinlistoftodos,color=green!20,textsize=small,prependcaption={},textwidth=4cm]{todonotes}
+\presetkeys{todonotes}{inline,backgroundcolor=yellow}{}
 
 % set margins for double-sided printing
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm, bindingoffset=1.5cm, head=15pt]{geometry} 
@@ -34,7 +37,6 @@
 
 \newcommand{\thesisdate}{January 01, 2020}
 \newcommand{\thesisauthor}{Julia Sprenger}
-%\newcommand{\studentID}{999999999} %input student ID
 \newcommand{\thesistype}{PhD Thesis}
 \newcommand{\supervisor}{Prof. Dr. Sonja Grün}
 \newcommand{\cosupervisor}{???}
@@ -87,10 +89,31 @@
 %MAIN PART
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%% Meeting minutes 3.7.19
+% Neo
+% - new features since publication
+% - how to use
+% 
+% Workflow (data aquisition)
+% structure
+% - was klappt nicht bei lyuba
+% - general concept
+%     - versioning
+%     - reproducibility
+%     - single file for user / no additional code needed
+%     - file size (git vs git-annex / gin)
+%     - central
+%     
+% Apps & categories
+% - general apps
+% - experiment specific apps
+% 
+% Example V4A
+
+
 % SEC1
 \input{./Sections/Section_1}
-
-% SEC2
 \input{./Sections/Section_2}
 \input{./Sections/Section_3}
 \input{./Sections/Section_4}
