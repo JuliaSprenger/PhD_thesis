@@ -25,6 +25,24 @@ The code has been modularized for more flexibility and maintainability and a lar
 \todo{based on numpy and quantities, explain object structure in detail, as visualized in figure above; objects are generic! -> Annotations + Array Annotations, Container vs Data objects, advantage of array type data objects, code example of loading data and accessing content + custom annotations, rawio features + lazy loading), saving content to open formats (Nix!)} 
 
 
+\begin{figure}
+    \centering
+    \def\svgwidth{\textwidth}
+    \resizebox{\textwidth}{!}{\input{./Figures/simple_generated_diagram.pgf}}
+%     \includegraphics[width=\textwidth]{./Figures/simple_generated_diagram.png}
+    \label{fig:neo_uml}
+    \caption{Neo 0.7 object structure. Figure modified from \url{https://github.com/neuralensemble/python-neo}.}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \def\svgwidth{\textwidth}
+    \input{./Figures/neo_architecture7.tex}
+    \label{fig:neo_architecture}
+    \caption{Neo 0.7 architecture. Neo represents electrophysiology signals in data objects such as \code{AnalogSignal}s, \code{IrregularlySampledSignal}s and \code{SpikeTrain}s optionally including information about waveform data for each spike. Additional supplementary information describing the timing during the recording can be provided using \code{Event}s or \code{Epoch}s to mark time points or durations during the recording, respectively. All above described data objects are put into relation by container objects, such as \code{Segment}s (grouping all data objects simultaneous in time), \code{Unit}s (grouping \code{SpikeTrain}s across time) and \code{ChannelIndex}es (grouping \code{AnalogSignal}s \code{IrregularlySampledSignal}s and \code{Unit}s). The top level container is a \code{Block} linking to \code{Segment}s and \code{ChannelIndex}es. Figure modified from \url{https://github.com/neuralensemble/python-neo}.}
+\end{figure}
+
 
 % ...
 % \subsection{Exemplary Figure}

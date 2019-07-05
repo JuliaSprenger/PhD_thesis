@@ -1,0 +1,2 @@
+https://rightfield.org.uk/
+create templates within excel, conversion to csv & rdf possible

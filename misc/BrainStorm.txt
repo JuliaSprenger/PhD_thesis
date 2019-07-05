@@ -1,0 +1,41 @@
+Data Handling and Analysis in Electrophysiology - Combining open source tools for reproducible research
+
+Tentative Structure
+- (odML), Neo, Elephant, Snakemake (prov?), (Interoperability: Formats, NIX?, Interfaces: SpikeSorting, Standardization and Convertability, odMLtables as interface for manual enrichment), (HBP)
+
+- Introduction
+-- Sketch workflow from aquisition to analysis
+
+- Metadata management (as basis of scientific workflow) [Scidata + odMLtables]
+-- Metadata source (types) and accumulation
+-- Metadata integration steps
+-- Metadata access / usage
+-- odMLtables and odMLtables as example tools
+
+- Data management and representation [Neo, 
+-- Requirements for data representations
+-- 
+
+
+
+Collection of potential items
+- Synchrofacts
+- odML Generation R2G
+- odMLtables
+- Neo Development
+- Workflow odML-Neo-Nix-elephant-snakemake-gin-version-control (collab)
+- spikesorting interface for neo
+- spikewaves
+- data publication
+- demo workflows (hbp, scientific data publication)
+- hamburg analysis
+    - stimulation artifact removal (baseline subtraction, pca approach)
+    - (meta) data management
+    - spikesorting
+
+
+Master thesis
+- phase locking
+- synchrofact detection
+- artifact research (gaps, synchrofacts)
+

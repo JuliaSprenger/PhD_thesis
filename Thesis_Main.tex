@@ -4,7 +4,30 @@
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage{hyperref}
+% \usepackage{caption}
+\usepackage{xstring}
+\usepackage{etoolbox}
 \usepackage{caption}
+%%% making 'figure label' bold and upper case
+% \DeclareCaptionLabelFormat{bsc}{\textbf{\textsc{#1}\ #2}}
+% \captionsetup[figure]{labelformat=bsc}
+\captionsetup{labelfont=bf,tableposition=top}
+%%% making figure label as well as first sentence bold
+% \makeatletter
+% \newcommand\formatlabel[1]{%
+%     \noexpandarg
+%     \IfSubStr{#1}{.}{%
+%       \StrBefore{#1}{.}[\firstcaption]%
+%       \StrBehind{#1}{.}[\secondcaption]%
+%       \textbf{\firstcaption.} \secondcaption}{%
+%       #1}%
+%       }
+% \patchcmd{\@caption}{#3}{\formatlabel{#3}}
+% \makeatother
+
+% for including vector graphics from .tex
+\usepackage[pdf]{pstricks}
+
 % this is only for development purposes
 \usepackage[colorinlistoftodos,color=green!20,textsize=small,prependcaption={},textwidth=4cm]{todonotes}
 \presetkeys{todonotes}{inline,backgroundcolor=yellow}{}
@@ -41,9 +64,16 @@
 \newcommand{\supervisor}{Prof. Dr. Sonja Grün}
 \newcommand{\cosupervisor}{???}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%custom commands
+\newcommand{\code}[1]{\texttt{{#1}}}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %DOCUMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{document}
 
@@ -145,7 +175,7 @@
 \renewcommand*{\thesection}{}\textbf{}
 
 \bibliographystyle{apacite}
-\bibliography{Bibliography.bib}
+\bibliography{thesis.bib}
 
 
 \end{document}
