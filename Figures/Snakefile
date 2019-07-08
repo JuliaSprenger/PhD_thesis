@@ -1,0 +1,38 @@
+rule all:
+    input: 'neo_architecture03.svg',
+	       'neo_architecture07.svg',
+	       'neo_architecture_future.svg'
+
+rule get_neo_03_architecture:
+    output: 'neo_architecture03.svg'
+    shell: 'wget -o {output}  https://neo.readthedocs.io/en/0.3.3/_downloads/simple_generated_diagram.svg'
+    
+rule get_neo_07_architecture:
+    input: 'plot_neo_architecture07.py'
+    output: 'neo_architecture07.svg'
+    conda: 'envs/neo07.yml'
+    shell: 'python {input}'
+    
+rule get_neo_future_architecture:
+    input: 'plot_neo_architecture_future.py'
+    output: 'neo_architecture_future.svg'
+    conda: 'envs/neo07.yml'
+    shell: '''python {input}
+    '''
+
+
+    
+#rule create_neo_architecture_yml:
+#    input: 'envs/plotting.yml'
+#    output: 'envs/neo{version}.yml'
+#    shell: '''cp {input} {output}
+#              echo "neo=={{version}}" > {{output}}
+#           '''
+#    
+#rule get_neo_architecture:
+#    input: 'generate_diagram.py',
+#            neo{version}.yml
+#    output: 'neo_architecture{version}.svg'
+#    conda: neo{version}.yml
+#    shell: 'python {input}'
+

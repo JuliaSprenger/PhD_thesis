@@ -84,6 +84,12 @@ encoding=UTF-8
 highlight=LaTeX
 mode=LaTeX
 
+[item:thesis.bib]
+archive=true
+encoding=
+highlight=
+mode=
+
 [item:thesis.kilepr]
 archive=true
 encoding=
