@@ -52,6 +52,8 @@
 \usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
 \pagenumbering{gobble}
 
+\usepackage{svg}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %THESIS Parameters 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,6 +66,19 @@
 \newcommand{\supervisor}{Prof. Dr. Sonja Grün}
 \newcommand{\cosupervisor}{???}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For embedding svg images
+% \newcommand{\executeiffilenewer}[3]{
+%     \ifnum\pdfstrcmp{\pdffilemoddate{#1}}
+%     {\pdffilemoddate{#2}}>0
+%     {\immediate\write18{#3}}\fi
+%     }
+% \newcommand{\includesvg}[1]{
+%     \executeiffilenewer{#1.svg}{#1.pdf}
+%     {inkscape -z  -D  --file=#1.svg --export-pdf=#1.pdf  --export-latex}
+%     \input{#1.pdf_tex}
+% }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %custom commands
@@ -80,14 +95,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TITLE PAGE (Pre-defined, just change parameters above)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{Template/Title.tex}
+\input{template/title.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %SOOA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\input{Template/SOOA.tex}
-\input{Sections/ListofPapers.tex}
-\input{Sections/Summary.tex}
+\input{sections/ListofPapers.tex}
+\input{sections/Summary.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %ABSTRACT
@@ -143,13 +158,13 @@
 
 
 % SEC1
-\input{./Sections/Section_1}
-\input{./Sections/Section_2}
-\input{./Sections/Section_3}
-\input{./Sections/Section_4}
-\input{./Sections/Section_5}
+\input{./sections/Section_1}
+\input{./sections/Section_2}
+\input{./sections/Section_3}
+\input{./sections/Section_4}
+\input{./sections/Section_5}
 % SEC X
-% \input{./Sections/Section_X}
+% \input{./sections/Section_X}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -161,7 +176,7 @@
 \renewcommand*{\thesection}{\Alph{section}}\textbf{}
 
 % APPENDIX A
-\input{Appendices/Appendix_1.tex}
+\input{appendices/appendix_1.tex}
 
 
 
