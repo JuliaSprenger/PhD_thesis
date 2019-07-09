@@ -8,6 +8,7 @@
 \usepackage{xstring}
 \usepackage{etoolbox}
 \usepackage{caption}
+\usepackage{fancyref}
 %%% making 'figure label' bold and upper case
 % \DeclareCaptionLabelFormat{bsc}{\textbf{\textsc{#1}\ #2}}
 % \captionsetup[figure]{labelformat=bsc}
@@ -47,9 +48,23 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
+
+\usepackage[
+backend=biber,
+style=alphabetic,
+natbib=true,
+citestyle=authoryear
+]{biblatex}
+ 
+\addbibresource{thesis.bib}
+% \bibliographystyle{alpha}
+% \bibliography{thesis} % or
+% \addbibresource{<database>.<extension>}aaaaaaapacite
 % set APA citation style
-\usepackage{apacite}
-\usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
+% \usepackage{apacite}
+% \usepackage{natbib}
+% \usepackage[backend=bibtex,style=verbose-trad2]{biblatex}
+% \usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
 \pagenumbering{gobble}
 
 \usepackage{svg}
@@ -66,19 +81,6 @@
 \newcommand{\supervisor}{Prof. Dr. Sonja Grün}
 \newcommand{\cosupervisor}{???}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% For embedding svg images
-% \newcommand{\executeiffilenewer}[3]{
-%     \ifnum\pdfstrcmp{\pdffilemoddate{#1}}
-%     {\pdffilemoddate{#2}}>0
-%     {\immediate\write18{#3}}\fi
-%     }
-% \newcommand{\includesvg}[1]{
-%     \executeiffilenewer{#1.svg}{#1.pdf}
-%     {inkscape -z  -D  --file=#1.svg --export-pdf=#1.pdf  --export-latex}
-%     \input{#1.pdf_tex}
-% }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %custom commands
@@ -156,15 +158,11 @@
 % 
 % Example V4A
 
-
-% SEC1
 \input{./sections/Section_1}
 \input{./sections/Section_2}
 \input{./sections/Section_3}
 \input{./sections/Section_4}
 \input{./sections/Section_5}
-% SEC X
-% \input{./sections/Section_X}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,8 +187,11 @@
 \clearpage
 \renewcommand*{\thesection}{}\textbf{}
 
-\bibliographystyle{apacite}
-\bibliography{thesis.bib}
+\printbibliography
+% \bibliography{lesson7a1} 
+% \bibliographystyle{ieeetr}
+% \bibliographystyle{apacite}
+% \bibliography{thesis}
 
 
 \end{document}

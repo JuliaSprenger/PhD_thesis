@@ -7,7 +7,10 @@ FIGURES = config['figures']
 CODE = config['code']
 LATEX = config['latex']
 
-#include: './figures/Snakefile'
+def get_all_latex_files():
+    return glob.glob(LATEX + '/**/*.tex', recursive=True)
+
+print(get_all_latex_files())
 
 subworkflow figureworkflow:
     workdir:
@@ -16,11 +19,17 @@ subworkflow figureworkflow:
         "figures/Snakefile"
     
 
+# pdflatex --shell-escape is required for usage of svg package
+
 rule compile_manuscript:
-    input: LATEX + 'main.tex',
+    input: get_all_latex_files(),
+           join(LATEX, 'thesis.bib'),
            join(LATEX, 'figures', 'figures_complete.done') 
     output: LATEX + 'main.pdf'
-    shell: 'xelatex {input}'
+    params: latex=LATEX
+    shell: '''
+            cd {params.latex}
+            pdflatex --shell-escape main.tex'''
     
 rule get_figures:
     input: figureworkflow(join(FIGURES.replace('figures/',''), 'figures_complete.done'))

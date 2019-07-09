@@ -6,17 +6,17 @@
 
 
 \subsection{Neo}
-Neo\footnote{Neo, \url{http://neuralensemble.org/neo}, RRID:SCR\_000634} \cite{neo09} is an open-source Python package for representing electrophysiology data in working memory. It offers interfaces for reading various electrophysiological proprietary and open file formats and represents the data in a generic way. Thus it forms the bases for a number of open software tools: The electrophysiology analysis toolkit\footnote{Elephant, \url{http://neuralensemble.org/elephant}, RRID:SCR\_003833} for analysis of spiking activity and local field potentials, OpenElectrophy\footnote{OpenElectrophy, \url{http://neuralensemble.org/OpenElectrophy}, RRID:SCR\_000819}, SpykeViewer\footnote{SpikeViewer, \url{https://spyke-viewer.readthedocs.io}} and Ephyviewer\footnote{Ephyviewer, \url{https://ephyviewer.readthedocs.io}} for visualization, Tridesclous\footnote{Tridesclous, \url{https://tridesclous.readthedocs.io}} for online and offline spike sorting, NeoAnalysis\footnote{NeoAnalysis, \url{https://github.com/neoanalysis/NeoAnalysis}} \cite{neoanalysis} for rudimentary visualization and analysis, NetworkUnit \footnote{NetworkUnit, \url{https://github.com/INM-6/NetworkUnit}, RRID:SCR\_016543} for validation testing of spiking networks.
+Neo\footnote{Neo, \url{http://neuralensemble.org/neo}, RRID:SCR\_000634} \citep{garcia_neo:_2014-1} is an open-source Python package for representing electrophysiology data in working memory. It offers interfaces for reading various electrophysiological proprietary and open file formats and represents the data in a generic way. Thus it forms the bases for a number of open software tools: The electrophysiology analysis toolkit\footnote{Elephant, \url{http://neuralensemble.org/elephant}, RRID:SCR\_003833} for analysis of spiking activity and local field potentials, OpenElectrophy\footnote{OpenElectrophy, \url{http://neuralensemble.org/OpenElectrophy}, RRID:SCR\_000819}, SpykeViewer\footnote{SpikeViewer, \url{https://spyke-viewer.readthedocs.io}} and Ephyviewer\footnote{Ephyviewer, \url{https://ephyviewer.readthedocs.io}} for visualization, Tridesclous\footnote{Tridesclous, \url{https://tridesclous.readthedocs.io}} for online and offline spike sorting, NeoAnalysis\footnote{NeoAnalysis, \url{https://github.com/neoanalysis/NeoAnalysis}} \citep{zhang_neoanalysis:_2017} for rudimentary visualization and analysis, NetworkUnit \footnote{NetworkUnit, \url{https://github.com/INM-6/NetworkUnit}, RRID:SCR\_016543} for validation testing of spiking networks.
 
-The two main aspects of neo are 1) the interfacing to many different file formats, by providing reading capability for numerous proprietary formats and writing capability to selected open formats and 2) the standardized representation of electrophysiology data as a basis for further visualization and analysis steps. Using these aspects Neo can is typically used either as conversion tool from specialized to more generic formats or as runtime data representation for further processing.
+The two main aspects of Neo are 1) the interfacing to many different file formats, by providing reading capability for numerous proprietary formats and writing capability to selected open formats and 2) the standardized representation of electrophysiology data as a basis for further visualization and analysis steps. Using these aspects Neo can is typically used either as conversion tool from specialized to more generic formats or as runtime data representation for further processing.
 
 \subsubsection{Features updates and current development}
-The Neo version 0.3 was released in 2014 \cite{garcia_neo_2014}. Since then the software has been extended to be compatible with more data formats, the object model has been revised for better usability and the implementation has been improved for performance. In the following we describe the enhancements introduced between version 0.3 and version 0.7.
+The Neo version 0.3 was released in 2014 \citep{garcia_neo:_2014-1}. Since then the software has been extended to be compatible with more data formats, the object model has been revised for better usability and the implementation has been improved for performance. In the following we describe the enhancements introduced between version 0.3 \ref{fig:neo_architecture03} and version 0.7 \ref{fig:neo_architecture07}.
 
 \paragraph{Interfaces to file formats}
 Neo 0.7 is supporting additional file formats for reading, such as Axograph, OpenEphys, Stimfit, Kwik, Nix, Igor, Nest, Neuralynx, NSDF and BCI2000. The capabilities for reading the Axon, Blackrock, Brainvision, Brainware, Elphy, Intan Matlab structures, Neuroshare, Plexon, Spike2, Tdt, NeuroExplorer, Neuralynx, Igor, Elan, Micromed, RawMCS, WinWCP formats have been improved. Reading and writing capabilities have been improved for Nix and Pickle formats. PyNNText and PyNNNumpy formats are no longer supported. A new code design for readers has been implemented and the majority of readers has adjusted accordingly to enable improved loading performance and loading of subsets of data (RawIO implementation). 
 \paragraph{Object structure and usability}
-The code has been modularized for more flexibility and maintainability and a large number of unittests have been added. The object structure has been restructured for user friendliness and performance aspects by supporting sets of similar data entities in single objects instead of using individual data objects for each data entity (removal of dedicated array versions of data classes). A new relational container object \code{Channel\_Index} was introduced to simplify the representation of logical relations between data objects replacing \code{RecordingChannel} and \code{RecordingChannelGroup} objects. Consistent deep copy functionality has been added for all data objects and additional internal consistency checks have been added. A new type of custom annotation mechanism has been added, which is designed to capture custom annotations in the same dimension as the data (array annotations). For the installation additional option were introduced, depending on the required file formats which need to be supported. The code style has been adjusted to follow the PEP8 guideline\footnote{Python Enhancement Proposal 8, \url{https://www.python.org/dev/peps/pep-0008}}. Support for Python 2.6 was dropped and consistent support for Python 3 was introduced.
+The code has been modularized for more flexibility and maintainability and a large number of unittests have been added. The object structure has been restructured for user friendliness and performance aspects by supporting sets of similar data entities in single objects instead of using individual data objects for each data entity (removal of dedicated array versions of data classes). A new relational container object \code{Channel\_Index} was introduced to simplify the representation of logical relations between data objects replacing \code{RecordingChannel} and \code{RecordingChannelGroup} objects. Consistent deep copy functionality has been added for all data objects and additional internal consistency checks have been added. A new type of custom annotation mechanism has been added, which is designed to capture custom annotations in the same dimension as the data (array annotations). For the installation additional option were introduced, depending on the required file formats which need to be supported. The code style has been adjusted to follow the PEP8 guideline\footnote{Python Enhancement Proposal 8, \url{https://www.python.org/dev/peps/pep-0008}}\citep{noauthor_pep_nodate}. Support for Python 2.6 was dropped and consistent support for Python 3 was introduced.
 
 
 \paragraph{Future plans}
@@ -30,32 +30,51 @@ Another topic of discussion is the linking between Neo objects. Up to the curren
 \todo{TODO: Add figure comparing version 0.3 and 0.7}
 
 \subsubsection{Neo Object Structure}
-Neo has 
+Neo objects can be separated into two types: data objects, describing basic recording data in combination with minimal metadata and container objects, providing the structural framework for the relation between the data objects.
+
+\paragraph{Data Objects}
+Data objects are based on Numpy arrays \citep{van_der_walt_numpy_2011} for efficient computation on large datasets. In addition, Neo objects are aware of physical quantities by using the \code{Quantities} package\citep{dale_quantities_nodate}. Neo provides data objects to capture continuously sampled data as well as irregularly sampled data in \code{AnalogSignal} and \code{IrregularlySampledSignal} objects, respectively.
+
 \todo{based on numpy and quantities, explain object structure in detail, as visualized in figure above; objects are generic! -> Annotations + Array Annotations, Container vs Data objects, advantage of array type data objects, code example of loading data and accessing content + custom annotations, rawio features + lazy loading), saving content to open formats (Nix!)} 
 
 
 
 \begin{figure}
     \centering
-    \def\svgwidth{\textwidth}
     \includesvg{./figures/neo07_schema.svg}
-%     \include{./figures/neo07_schema.tex}
-%     \includesvg{./figures/neo07_schema}
-%     \resizebox{\textwidth}{!}{\input{./figures/neo07_schema.svg}}
-%     \includegraphics[width=\textwidth]{./figures/simple_generated_diagram.png}
     \label{fig:neo_uml}
     \caption{Neo 0.7 object structure. Figure modified from \url{https://github.com/neuralensemble/python-neo}.}
+\end{figure}
+
+\begin{figure}
+    \centering
+    Neo 0.3 architecture
+    \includesvg[width=\textwidth]{./figures/neo_architecture03.svg}
+    \caption{Neo 0.3 architecture. Neo represents electrophysiology signals in data objects such as \code{AnalogSignal}s, \code{AnalogSignalArray}s, \code{IrregularlySampledSignal}s, \code{SpikeTrain}s and \code{Spike}s, whereas the latter two optionally include information about waveform data for each spike. Additional supplementary information describing the timing during the recording can be provided using \code{Event}s and \code{EventArray}s or \code{Epoch}s and \code{EpochArray}s to mark time points or durations during the recording, respectively. All above described data objects are put into relation by container objects, such as \code{Segment}s (grouping all data objects simultaneous in time), \code{Unit}s (grouping \code{SpikeTrain}s and \code{Spike}s across time), and \code{RecordingChannel}s and \code{RecordingChannelGroup}s (grouping \code{AnalogSignal}s \code{IrregularlySampledSignal}s and \code{Unit}s, \code{AnalogSignalArray}s and \code{RecordingChannel}s, respectively). The top level container is a \code{Block} linking to \code{Segment}s and \code{RecordingChannelGroup}s. Figure from \url{https://neo.readthedocs.io/en/0.3.3}.}
+    \label{fig:neo_architecture03}
 \end{figure}
 
 
 \begin{figure}
     \centering
     \def\svgwidth{\textwidth}
-%     \input{./figures/neo_architecture03.svg}
-%     \input{./figures/neo_architecture07.pgf}
-    \label{fig:neo_architecture}
+    Neo 0.7 architecture
+    \includesvg[width=\textwidth]{./figures/neo_architecture07.svg}
     \caption{Neo 0.7 architecture. Neo represents electrophysiology signals in data objects such as \code{AnalogSignal}s, \code{IrregularlySampledSignal}s and \code{SpikeTrain}s optionally including information about waveform data for each spike. Additional supplementary information describing the timing during the recording can be provided using \code{Event}s or \code{Epoch}s to mark time points or durations during the recording, respectively. All above described data objects are put into relation by container objects, such as \code{Segment}s (grouping all data objects simultaneous in time), \code{Unit}s (grouping \code{SpikeTrain}s across time) and \code{ChannelIndex}es (grouping \code{AnalogSignal}s \code{IrregularlySampledSignal}s and \code{Unit}s). The top level container is a \code{Block} linking to \code{Segment}s and \code{ChannelIndex}es. Figure modified from \url{https://github.com/neuralensemble/python-neo}.}
+    \label{fig:neo_architecture07}
 \end{figure}
+
+
+\begin{figure}
+    \centering
+    \def\svgwidth{\textwidth}
+    Neo 0.7 architecture
+    \includesvg[width=\textwidth]{./figures/neo_architecture_future.svg}
+    \caption{Proposed Neo architecture. The proposed Neo architecture preserves all objects from Neo version 0.7 except for \code{ChannelIndex}es and \code{Unit}s. These are replaced by \code{Group} and \code{View} objects, which a more generic, but still customizable way of organizing data objects. \code{View} objects can mask data objects by linking to a subset of the contained data (e.g. a single trace of an \code{AnalogSignal}. This linking is unidirectional, preventing complex dependencies involving data objects. \code{Group}s are capable of linking to any kind of data objects or \code{View} of data objects. The required specificity is provided by the different \code{mode}s of a \code{Group} object. These limit to the connected objects to a specific type and number, wherefore a \code{Group} can e.g. be used instead of a \code{Unit} object. \code{Group}s can also link to other \code{Group} objects to provide higher level organization of the data.}
+    \label{fig:neo_architecture_future}
+\end{figure}
+
+
 
 
 % ...
