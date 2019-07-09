@@ -203,7 +203,7 @@ def generate_diagram(filename, rect_pos, rect_width, figsize):
     fig.savefig(filename, bbox_inches='tight',  dpi=dpi)
 
 
-def generate_diagram_simple(output_folder):
+def generate_diagram_simple(output_filename):
     figsize = (18, 15)
     rw = rect_width = 3.
     bf = blank_fact = 1.5
@@ -233,12 +233,7 @@ def generate_diagram_simple(output_folder):
         ]
     }
     matplotlib.rcParams.update(pgf_with_custom_preamble)
-    generate_diagram(output_folder + 'neo_architecture07.pgf',
-                     rect_pos, rect_width, figsize)
-    generate_diagram(output_folder + 'neo_architecture07.svg',
-                     rect_pos, rect_width, figsize)
-    generate_diagram(output_folder + 'neo_architecture07.png',
-                     rect_pos, rect_width, figsize)
+    generate_diagram(output_filename, rect_pos, rect_width, figsize)
 
 if __name__ == '__main__':
     generate_diagram_simple(sys.argv[1])

@@ -266,4 +266,14 @@ TSWLatexianTemp*
 
 # kile
 *.kate-swp
+*.kile
+
+# snakemake
+*.snakefile
+*.snakemake
+
+# project specific
+figures/figures_complete/
+latex/figures
+config.yml
 

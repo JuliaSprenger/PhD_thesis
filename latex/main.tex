@@ -1,0 +1,181 @@
+\documentclass[a4paper, twoside, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{hyperref}
+% \usepackage{caption}
+\usepackage{xstring}
+\usepackage{etoolbox}
+\usepackage{caption}
+%%% making 'figure label' bold and upper case
+% \DeclareCaptionLabelFormat{bsc}{\textbf{\textsc{#1}\ #2}}
+% \captionsetup[figure]{labelformat=bsc}
+\captionsetup{labelfont=bf,tableposition=top}
+%%% making figure label as well as first sentence bold
+% \makeatletter
+% \newcommand\formatlabel[1]{%
+%     \noexpandarg
+%     \IfSubStr{#1}{.}{%
+%       \StrBefore{#1}{.}[\firstcaption]%
+%       \StrBehind{#1}{.}[\secondcaption]%
+%       \textbf{\firstcaption.} \secondcaption}{%
+%       #1}%
+%       }
+% \patchcmd{\@caption}{#3}{\formatlabel{#3}}
+% \makeatother
+
+% for including vector graphics from .tex
+\usepackage[pdf]{pstricks}
+
+% this is only for development purposes
+\usepackage[colorinlistoftodos,color=green!20,textsize=small,prependcaption={},textwidth=4cm]{todonotes}
+\presetkeys{todonotes}{inline,backgroundcolor=yellow}{}
+
+% set margins for double-sided printing
+\usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm, bindingoffset=1.5cm, head=15pt]{geometry} 
+\usepackage{setspace}
+\onehalfspacing
+% set headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LE,RO]{\textsl{\leftmark}}
+\fancyhead[RE,LO]{\thesisauthor}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% set APA citation style
+\usepackage{apacite}
+\usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
+\pagenumbering{gobble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%THESIS Parameters 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Tools and workflows for complex collaborative neuroscientific projects - from Experiment to Analysis}
+
+\newcommand{\thesisdate}{January 01, 2020}
+\newcommand{\thesisauthor}{Julia Sprenger}
+\newcommand{\thesistype}{PhD Thesis}
+\newcommand{\supervisor}{Prof. Dr. Sonja Grün}
+\newcommand{\cosupervisor}{???}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%custom commands
+\newcommand{\code}[1]{\texttt{{#1}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TITLE PAGE (Pre-defined, just change parameters above)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Template/Title.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%SOOA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{Template/SOOA.tex}
+\input{Sections/ListofPapers.tex}
+\input{Sections/Summary.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ABSTRACT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \clearpage
+% \thispagestyle{empty}
+% \section*{Abstract}
+% 
+% [Abstract goes here (max. 1 page)]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TOC,TOF,TOT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\pagenumbering{Roman}
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+
+\pagenumbering{arabic}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%MAIN PART
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Meeting minutes 3.7.19
+% Neo
+% - new features since publication
+% - how to use
+% 
+% Workflow (data aquisition)
+% structure
+% - was klappt nicht bei lyuba
+% - general concept
+%     - versioning
+%     - reproducibility
+%     - single file for user / no additional code needed
+%     - file size (git vs git-annex / gin)
+%     - central
+%     
+% Apps & categories
+% - general apps
+% - experiment specific apps
+% 
+% Example V4A
+
+
+% SEC1
+\input{./Sections/Section_1}
+\input{./Sections/Section_2}
+\input{./Sections/Section_3}
+\input{./Sections/Section_4}
+\input{./Sections/Section_5}
+% SEC X
+% \input{./Sections/Section_X}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%APPENDICES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\appendix
+\renewcommand*{\thesection}{\Alph{section}}\textbf{}
+
+% APPENDIX A
+\input{Appendices/Appendix_1.tex}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%BIBLIOGRAPHY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\renewcommand*{\thesection}{}\textbf{}
+
+\bibliographystyle{apacite}
+\bibliography{thesis.bib}
+
+
+\end{document}
