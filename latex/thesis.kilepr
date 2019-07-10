@@ -1,6 +1,6 @@
 [General]
 bib_extensions=.bib
-bibliographyBackendAutoDetected=
+bibliographyBackendAutoDetected=Biber
 bibliographyBackendUserOverride=
 def_graphic_ext=eps
 img_extIsRegExp=false
@@ -16,7 +16,7 @@ src_extensions=.tex .ltx .latex .dtx .ins
 
 [Tools]
 MakeIndex=
-QuickBuild=
+QuickBuild=PDFLaTeX+ViewPDF
 
 [item:appendices/Appendix_1.tex]
 archive=true
