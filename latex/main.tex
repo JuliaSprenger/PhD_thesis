@@ -3,12 +3,11 @@
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{longtable}
-\usepackage{hyperref}
 % \usepackage{caption}
 \usepackage{xstring}
 \usepackage{etoolbox}
+\usepackage{relsize}
 \usepackage{caption}
-\usepackage{fancyref}
 %%% making 'figure label' bold and upper case
 % \DeclareCaptionLabelFormat{bsc}{\textbf{\textsc{#1}\ #2}}
 % \captionsetup[figure]{labelformat=bsc}
@@ -27,7 +26,7 @@
 % \makeatother
 
 % for including vector graphics from .tex
-\usepackage[pdf]{pstricks}
+% \usepackage[pdf]{pstricks}
 
 % this is only for development purposes
 \usepackage[colorinlistoftodos,color=green!20,textsize=small,prependcaption={},textwidth=4cm]{todonotes}
@@ -40,34 +39,29 @@
 % set headers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{\thesection~- ~#1}}
+% \renewcommand{\chaptermark}[1]{\markboth{\chaptername~\thechapter~-~ #1}{}}
 \fancyhead{}
 \fancyfoot{}
-\fancyhead[LE,RO]{\textsl{\leftmark}}
-\fancyhead[RE,LO]{\thesisauthor}
+% \fancyhead[LE]{\footnotesize\scshape\leftmark}
+\fancyhead[RO]{\footnotesize\scshape\rightmark}
+\fancyhead[LE]{\footnotesize\scshape\leftmark}
+% \fancyhead[RE,LO]{\thesisauthor}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
 
-\usepackage[
-backend=biber,
-style=alphabetic,
-natbib=true,
-citestyle=authoryear
-]{biblatex}
- 
+\usepackage[backend=biber,style=alphabetic,natbib=true,citestyle=authoryear]{biblatex}
 \addbibresource{thesis.bib}
-% \bibliographystyle{alpha}
-% \bibliography{thesis} % or
-% \addbibresource{<database>.<extension>}aaaaaaapacite
-% set APA citation style
-% \usepackage{apacite}
-% \usepackage{natbib}
-% \usepackage[backend=bibtex,style=verbose-trad2]{biblatex}
-% \usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
 \pagenumbering{gobble}
 
 \usepackage{svg}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,filecolor=magenta,urlcolor=cyan}
+\urlstyle{same}
+\usepackage[capitalise]{cleveref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %THESIS Parameters 
@@ -85,6 +79,7 @@ citestyle=authoryear
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %custom commands
 \newcommand{\code}[1]{\texttt{{#1}}}
+\newcommand{\software}[1]{\texttt{{#1}}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -163,6 +158,7 @@ citestyle=authoryear
 \input{./sections/Section_3}
 \input{./sections/Section_4}
 \input{./sections/Section_5}
+\input{./sections/Section_6}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

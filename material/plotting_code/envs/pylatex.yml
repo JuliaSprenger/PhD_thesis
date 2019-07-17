@@ -1,0 +1,7 @@
+name: neopylatex
+dependencies:
+ - python>=3.5
+ - pip
+ - pip:
+    - neo==0.7.1
+    - git+https://github.com/msf235/PyLaTeX.git@TikZNode_at_fix
