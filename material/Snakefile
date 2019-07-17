@@ -1,0 +1,56 @@
+from os.path import join
+import glob
+
+CODE = 'plotting_code/'
+SOURCES = 'sources/'
+FIGURES = 'figures_complete/'
+
+def get_source_files():
+    return glob.glob(join(SOURCES,'*'))
+    
+def get_source_filenames():
+    return [p.strip(SOURCES) for p in get_source_files()]
+    
+
+rule all_figures:
+    params: FIGURES
+    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios.svg', 'neo_ios_and_tools.pdf'] + get_source_filenames())
+    output: join(FIGURES, 'figures_complete.done')
+    shell: 'touch {output}'
+
+rule get_neo_03_architecture:
+    output: FIGURES + 'neo_architecture03.svg'
+    shell: 'wget --output-document {output}  https://neo.readthedocs.io/en/0.3.3/_downloads/simple_generated_diagram.svg'
+    
+rule get_neo_07_architecture:
+    input: CODE + 'plot_neo_architecture07.py'
+    output: FIGURES + 'neo_architecture07.svg'
+    conda: CODE + 'envs/neo07.yml'
+    shell: 'python {input} {output}'
+    
+rule get_neo_future_architecture:
+    input: CODE + 'plot_neo_architecture_future.py'
+    output: FIGURES + 'neo_architecture_future.svg'
+    conda: CODE + 'envs/neo07.yml'
+    shell: 'python {input} {output}'
+    
+rule copy_sources:
+    input: get_source_files()
+    params: output_folder = FIGURES
+    output: expand(FIGURES + '{f}', f=get_source_filenames())
+    shell: 'cp {input} {params.output_folder}'
+    
+rule export_neo_io_list:
+    input: CODE + 'extract_neo_ios.py'
+    output: temp('neo_ios.txt')
+    conda: CODE + 'envs/neo07.yml'
+    shell: 'python {input} {output}'
+    
+rule plot_neo_ios:
+    input: script = CODE + 'neo_ios_and_tools.tex',
+    params: scriptname = 'neo_ios_and_tools.tex'
+    output: FIGURES + 'neo_ios_and_tools.pdf'
+    shell: '''
+           cd {CODE}
+           pdflatex {params.scriptname} --shell-escape
+           '''
