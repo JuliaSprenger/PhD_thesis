@@ -6,15 +6,18 @@ SOURCES = 'sources/'
 FIGURES = 'figures_complete/'
 
 def get_source_files():
-    return glob.glob(join(SOURCES,'*'))
+    return glob.glob(join(SOURCES,'**/*.*'), recursive=True)
     
 def get_source_filenames():
-    return [p.strip(SOURCES) for p in get_source_files()]
+    return [p[len(SOURCES):] for p in get_source_files()]
+    
+print(get_source_filenames())
+print(get_source_files())
     
 
 rule all_figures:
     params: FIGURES
-    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios.svg', 'neo_ios_and_tools.pdf'] + get_source_filenames())
+    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf'] + get_source_filenames())
     output: join(FIGURES, 'figures_complete.done')
     shell: 'touch {output}'
 
@@ -33,12 +36,13 @@ rule get_neo_future_architecture:
     output: FIGURES + 'neo_architecture_future.svg'
     conda: CODE + 'envs/neo07.yml'
     shell: 'python {input} {output}'
-    
+
 rule copy_sources:
     input: get_source_files()
-    params: output_folder = FIGURES
+    params: output_folder = FIGURES,
+            input_folder = join(SOURCES,'*')
     output: expand(FIGURES + '{f}', f=get_source_filenames())
-    shell: 'cp {input} {params.output_folder}'
+    shell: 'cp -r {params.input_folder} {params.output_folder}'
     
 rule export_neo_io_list:
     input: CODE + 'extract_neo_ios.py'
@@ -47,10 +51,10 @@ rule export_neo_io_list:
     shell: 'python {input} {output}'
     
 rule plot_neo_ios:
-    input: script = CODE + 'neo_ios_and_tools.tex',
+    input: script = FIGURES + 'neo_ios_and_tools.tex',
     params: scriptname = 'neo_ios_and_tools.tex'
     output: FIGURES + 'neo_ios_and_tools.pdf'
     shell: '''
-           cd {CODE}
+           cd {FIGURES}
            pdflatex {params.scriptname} --shell-escape
            '''
