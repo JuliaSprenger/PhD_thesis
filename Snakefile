@@ -12,7 +12,6 @@ subworkdir = 'material'
 def get_all_latex_files():
     return glob.glob(LATEX + '/**/*.tex', recursive=True)
 
-print(get_all_latex_files())
 
 subworkflow figureworkflow:
     workdir:
@@ -22,6 +21,7 @@ subworkflow figureworkflow:
     
 
 # pdflatex --shell-escape is required for usage of svg package
+
 
 rule compile_manuscript:
     input: get_all_latex_files(),
@@ -42,4 +42,5 @@ rule get_figures:
     shell: '''echo {params.input}
             echo {params.output}
             cp -a {params.input} {params.output}'''
+
   

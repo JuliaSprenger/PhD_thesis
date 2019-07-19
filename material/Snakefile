@@ -10,10 +10,7 @@ def get_source_files():
     
 def get_source_filenames():
     return [p[len(SOURCES):] for p in get_source_files()]
-    
-print(get_source_filenames())
-print(get_source_files())
-    
+        
 
 rule all_figures:
     params: FIGURES
