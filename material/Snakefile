@@ -4,6 +4,7 @@ import glob
 CODE = 'plotting_code/'
 SOURCES = 'sources/'
 FIGURES = 'figures_complete/'
+DATA = 'datasets/'
 
 def get_source_files():
     return glob.glob(join(SOURCES,'**/*.*'), recursive=True)
@@ -55,3 +56,11 @@ rule plot_neo_ios:
            cd {FIGURES}
            pdflatex {params.scriptname} --shell-escape
            '''
+           
+           
+rule download_scidata:
+    output: expand(DATA + '{filename}', filename=['l101210-001.nev', 'l101210-001.ns2', 'l101210-001.odml'])
+    shell:
+        '''
+        
+        '''

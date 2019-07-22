@@ -1,9 +1,12 @@
 import neo
 import quantities as pq
 import matplotlib.pyplot as plt
-# initializing the io as a context manager
 
 def get_single_channel_data():
+    '''
+    Loading AnalogSignal and SpikeTrains from a single electrode.
+    '''
+    # initializing the io as a context manager
     with neo.BlackrockIO('demo_dataset_folder') as io:
         # loading the neo data structure in lazy mode
         block = io.read_block(lazy=True)

@@ -12,21 +12,8 @@
 % \DeclareCaptionLabelFormat{bsc}{\textbf{\textsc{#1}\ #2}}
 % \captionsetup[figure]{labelformat=bsc}
 \captionsetup{labelfont=bf,tableposition=top}
-%%% making figure label as well as first sentence bold
-% \makeatletter
-% \newcommand\formatlabel[1]{%
-%     \noexpandarg
-%     \IfSubStr{#1}{.}{%
-%       \StrBefore{#1}{.}[\firstcaption]%
-%       \StrBehind{#1}{.}[\secondcaption]%
-%       \textbf{\firstcaption.} \secondcaption}{%
-%       #1}%
-%       }
-% \patchcmd{\@caption}{#3}{\formatlabel{#3}}
-% \makeatother
+\DeclareCaptionType{codeenv}[Code Listing][List of Code Listings] 
 
-% for including vector graphics from .tex
-% \usepackage[pdf]{pstricks}
 
 % this is only for development purposes
 \usepackage[colorinlistoftodos,color=green!20,textsize=small,prependcaption={},textwidth=4cm]{todonotes}
@@ -56,6 +43,8 @@
 
 \usepackage{listings}
 \lstset{language = Python}
+% \newenvironment{codeenv}{\captionsetup{type=listing}}{}
+
 
 \usepackage[backend=biber,style=alphabetic,natbib=true,citestyle=authoryear]{biblatex}
 \addbibresource{thesis.bib}
@@ -130,6 +119,8 @@
 \listoffigures
 \clearpage
 \listoftables
+\clearpage
+\listofcodeenvs
 \clearpage
 
 \pagenumbering{arabic}
