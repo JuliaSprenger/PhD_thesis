@@ -43,4 +43,13 @@ rule get_figures:
             echo {params.output}
             cp -a {params.input} {params.output}'''
 
-  
+rule clean:
+    params:
+        tmp_figures = FIGURES,
+        tmp_latex = expand(join(LATEX, '{f}'), f=['main.aux', 'main.bcf', 'main.locodeenv', 'main.lof', 'main.log', 'main.lot', 'main.out', 'main.pdf', 'main.run.xml', 'main.sta', 'main.toc', 'figures', '_minted-main', 'svg-inkscape'])
+    shell: 
+        '''
+        rm -rf {params.tmp_figures}
+        rm -rf {params.tmp_latex}
+        '''
+    

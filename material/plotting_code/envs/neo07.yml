@@ -1,8 +1,9 @@
 name: neo07
 dependencies:
- - python>=3.5
+ - python>=3.7
  - pip
  - matplotlib
  - pip:
+    - quantities>=0.12.2
     - neo==0.7.1
     

@@ -15,7 +15,7 @@ def get_source_filenames():
 
 rule all_figures:
     params: FIGURES
-    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf'] + get_source_filenames())
+    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf', 'i140703-001.svg'] + get_source_filenames())
     output: join(FIGURES, 'figures_complete.done')
     shell: 'touch {output}'
 
@@ -55,12 +55,35 @@ rule plot_neo_ios:
     shell: '''
            cd {FIGURES}
            pdflatex {params.scriptname} --shell-escape
-           '''
-           
+           '''  
            
 rule download_scidata:
-    output: expand(DATA + '{filename}', filename=['l101210-001.nev', 'l101210-001.ns2', 'l101210-001.odml'])
+    output:
+        nev = join(DATA,'i140703-001.nev'),
+        ns2 = join(DATA,'i140703-001.ns2'),
+        odml = join(DATA,'i140703-001.odml'),
+    params:
+        server = 'https://web.gin.g-node.org/INT/multielectrode_grasp/raw/24cd5caee3ae79066ca37844cab931d04dcad977/datasets/'
     shell:
         '''
-        
+        wget -O {output.nev} {params.server}i140703-001-03.nev
+        wget -O {output.ns2} {params.server}i140703-001.ns2
+        wget -O {output.odml} {params.server}i140703-001.odml
         '''
+
+rule visualize_scidata:
+    input:
+        expand(join(DATA,'i140703-001.{ext}'), ext=['ns2','nev']),
+        script = join(FIGURES, 'code_visualize_data.py')
+    params: working_dir = FIGURES,
+            script = 'code_visualize_data.py'
+    output:
+        join(FIGURES,'i140703-001.svg')
+    conda:
+        CODE + 'envs/neo08.yml' # TODO Neo version should be unified across scripts
+    shell:
+        '''
+        cd {params.working_dir}
+        python {params.script} ../datasets/i140703-001 1
+        '''
+
