@@ -1,17 +1,18 @@
 import sys, neo, odml
 
 def pretty_print_dict(dictionary):
-    """Print individual entries of a dictonary in individual lines"""
+    """Print individual entries of a dictionary in truncated, individual lines"""
     for k, v in dictionary.items():
-        print('\t', k, ': ', v)
+        res = '  {}: {}'.format(k, str(v))
+        print(res[:75] + '...' if len(res) > 75 else res)
 
-def print_annotations(object, mode='annotations'):
+def print_annotations(obj, mode='annotations'):
     """Print annotations / array_annotations of a Neo object"""
-    print(type(object).__name__)
+    print(type(obj).__name__)
     if mode == 'annotations':
-        pretty_print_dict(object.annotations)
+        pretty_print_dict(obj.annotations)
     elif mode == 'array_annotations':
-        pretty_print_dict(object.array_annotations)
+        pretty_print_dict(obj.array_annotations)
     else:
         raise ValueError('Unknown annotation type {}'.format(mode))
 

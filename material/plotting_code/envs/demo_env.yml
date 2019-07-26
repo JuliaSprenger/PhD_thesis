@@ -1,0 +1,11 @@
+name: demo_scripts
+dependencies:
+ - python>=3.7
+ - pip
+ - matplotlib
+ - pip:
+    - quantities>=0.12.2
+    - odml
+    # substitute when neo 0.8 is released
+    #- neo>=0.8
+    - git+https://github.com/neuralensemble/python-neo@master

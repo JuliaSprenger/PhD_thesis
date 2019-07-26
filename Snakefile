@@ -25,6 +25,7 @@ subworkflow figureworkflow:
 
 rule compile_manuscript:
     input: get_all_latex_files(),
+           join(LATEX, 'main.tex'),
            join(LATEX, 'thesis.bib'),
            join(LATEX, 'figures', 'figures_complete.done') 
     output: join(LATEX,'main.pdf')

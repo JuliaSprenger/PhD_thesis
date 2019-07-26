@@ -135,7 +135,22 @@ The visualization of a single \code{AnalogSignal} trace together with spiking ac
 \end{figure}
 
 \paragraph{Annotation of data with metadata from odml}
-Annotations are a key feature of the generic \software{Neo} structure to provide the necessary customizations to be used for a specific dataset. Standard annotations are a feature of all \software{Neo} objects and can be accessed via the \code{annotation} attribute. In addition, \software{Neo} data objects also provide a more specific type of annotation mechanism, namely \code{array\_annotations} which act in the same manner as regular \code{annotations} but have additional restrictions on their shape. This example demonstrate how to access and 
+Annotations are a key feature of the generic \software{Neo} structure to provide the necessary customizations to be used for a specific dataset. Standard annotations are a feature of all \software{Neo} objects and can be accessed via the \code{annotation} attribute. In addition, \software{Neo} data objects also provide a more specific type of annotation mechanism, namely \code{array\_annotations} which act in the same manner as regular \code{annotations} but are directly coupled to the dimension of the underlying data. This permits to store metadata which are linked to individual data entries and handle them in an automatic way when manipulating the data object. This example demonstrates how to access and modify regular and array annotations using a metadata collection in the odML format.
+
+\cref{code:neo_annotation} demonstrates two aspects of \software{Neo} annotations: firstly annotation access via the object attributes \code{annotation} and \code{array\_annotation}. 
+
+\begin{codeenv}
+\label{code:neo_annotation}
+\inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{python}{figures/code_annotate_data.py}
+\caption[Annotation access and editing with \software{odML} and \software{Neo}]{Annotation access and editing with \software{odML} and \software{Neo}. Required packages are imported (line 1) and three functions for printing \code{annotations} and \code{array\_annotations} are defined (line 3-25). \code{pretty\_print\_dict} provides functionality for displaying individual dictionary items in separate lines (line 3-6). \code{print\_annotations} uses the previous function to print based on the \code{mode} keyword the \code{annotations} or \code{array\_annotations} of a given \software{Neo} object. \code{print\_annotation\_example} prints a selection of \code{annotations} and \code{arra\_annotations} from a \software{Neo} block structure. The function \code{generate\_annotations\_from\_odml} extracts metadata information about the mapping of different types of \code{id}s from an \code{odML} file and annotates the corresponding \code{AnalogSignal} (line 27-37). Finally, all functions are demonstrated based on a command line specified data- and metadataset (\code{data\_location} and \code{odml\_filename}, line 40-45). The generated annotations are confirmed via a final call of \code{print\_annotations} (line 46f).}
+\end{codeenv}
+
+\begin{codeenv}
+\label{code:neo_annotation_print}
+\inputminted[linenos,tabsize=2, fontsize=\scriptsize]{bash}{figures/i140703-001_annotations.txt}
+\caption[Output of \cref{code:neo_annotation}]{Output of \cref{code:neo_annotation}. }
+\end{codeenv}
+
 
 \paragraph{Conversion to open format (NIX)}
 
