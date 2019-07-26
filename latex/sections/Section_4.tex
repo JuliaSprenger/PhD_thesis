@@ -63,6 +63,7 @@ The \code{Neo} 0.7 release also features a standarized way of optionally loading
 Commonly, \code{SpikeTrains} from different \code{Segments} are considered coming from the same source (neuron). Therefore \code{SpikeTrains} can be linked across \code{Segments} via \code{Unit} objects.
 % Units and ChannelIndexes
 A \code{Unit} object again can be grouped together with \code{AnalogSignal}s and \code{IrregularlySampledSignal}s in a \code{ChannelIndex} object. In addition to the grouping functionality, a \code{ChannelIndex} object also provides an additional labelling functionality for child \code{AnalogSignals} via the \code{channel\_ids} and \code{channel\_names} attributes. These consist of one dimensional integer and string arrays labelling the individual traces of the attached continuous signals. Via the mandatory attribute \code{index} a selection of the traces within the linked continuous signals can be done. However, this requires a consistent ordering of recording traces within all linked continous signals of a \code{ChannelIndex}.
+All container objects provide utility functions to facilitate access and selection of data objects. This is implemented in the form of a \code{filter} method, which returns a list of \software{Neo} objects based on a combination of object type, attribute and annotation constraints.
 
 
 \begin{figure}
@@ -112,21 +113,30 @@ In the following we demonstrate in three practical examples how \software{Neo} c
 \paragraph{Loading of data}
 Loading data in \software{Neo} is implemented in two stages: First initialization of the reader (IO) and second reading of the \software{Neo} structure. For readers implemented in the standardized manner (\cref{neo_ios}, black frame) you need to provide the filename of the dataset to load. This will generate an \code{io} object providing functionality to load the data into a \software{Neo} structure. Depending on the file format either a \software{Neo} \code{Block} or a \software{Neo} \code{Segment} can be loaded using the \code{read\_block} or \code{read\_segment} method of the \code{io} object.
 
-\begin{codeenv}
+In this example, the published dataset described in \cref{sec:data} is used for demonstrating the loading of electrophysiology data into the \software{Neo} structure [\cref{code:neo_visualization}]. Data were previously downloaded from GIN\footnote{\url{https://gin.g-node.org/INT/multielectrode_grasp}} and continuous as well as sorted spiking data are loaded using the \software{Neo} \code{BlackrockIO} class. This IO provides standardized access to the data, permitting lazy loading of \software{Neo} objects [cf. \cref{code:neo_visualization} line 10f]. Here the the \software{Neo} filter functionality is used to select all \code{Spiketrain}s which have an annotation key \code{'channel\_id'} and the corresponding value of the user requested channel index (\code{selected\_channel}, line 13). In the next step, the corresponding \code{AnalogSignal} trace is extracted by finding the \code{AnalogSignal} with a corresponding in the \code{array\_annotation} with key \code{channel\_ids} and extracting the \code{id} of the corresponding trace (line 15-18). Finally, the analog and spiking data of 10 seconds of recording are loaded into memory via the \code{load} mechanism of the respective data objects and returned by the \code{load\_single\_channel\_data} function (line 19-22).
 
+The visualization of a single \code{AnalogSignal} trace together with spiking activity from multiple \code{SpikeTrain}s is implemented in the \code{plot\_data} function. This requires the corresponding data objects as input as well as a location to store the final scalable vector graphics plot (line 25). Here, \software{matplotlib}\cite{hunter_matplotlib:_2007} is exploited to visualize the electrophysiological data (line 30 \& 34-38). Correct scaling of the signals and automatic generation of axis labels is ensured by the inherent use of the \software{Quantities} package within \software{Neo} (line 28-31, 34-37). The resulting plot is exported to the scalable vector graphics (svg) format for storage in a flexible, memory efficient and scalable manner. Finally, user specific setting are extracted from command line parameters and both functions are executed sequentially to generate a visualization of a single recording trace and corresponding spiking activity.
+
+
+
+
+\begin{codeenv}
 \label{code:neo_visualization}
-\inputminted[linenos,tabsize=2,breaklines, fontsize=\footnotesize]{python}{figures/code_visualize_data.py}
-\caption[Data loading and visualization with \software{Neo}]{Loading data into the \code{Neo} framework and visualization using the matplotlib package. Required packages are imported (line 1-3) and}
+\inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{python}{figures/code_visualize_data.py}
+\caption[Data loading and visualization with \software{Neo}]{Loading data into the \code{Neo} framework and visualization using the matplotlib package. Required packages are imported (line 1-4) and two main functions are defined for loading and visualization of the \software{Neo} structure: \code{load\_single\_channel\_data} and \code{plot\_data}. The first one requires the location of the datasets and the selected channel to plot as command line arguments (line 9). Here, the dataset is opened using the \code{BlackrockIO} in \code{lazy} mode and the user-specified channel is selected and loaded into memory together with the spiking activity (lines 7-22). The second function visualized a given \code{AnalogSignal} together with a list of \code{SpikeTrains} using the \software{matplotlib} package (line 25-40). Finally both functions are run subsequently using command line parameters for dataset and channel specifications. For the resulting plot see
+\cref{demo_visualization}}.
 \end{codeenv}
 
 \begin{figure}
     \centering
     \includesvg[width=\textwidth]{./figures/i140703-001.svg}
-    \caption[Data visualization example]{Visualizating of the activity recorded on a single electrode. A single trace of an AnalogSignals contains the voltage samples of a recording electrode (blue). }
-    \label{fig:neo_architecture_future}
+    \caption[Data visualization example]{Visualizating of the activity recorded on a single electrode. A single trace of an AnalogSignals contains the voltage samples of a recording electrode (blue). The corresponding threshold crossing events are split into three different \code{SpikeTrain} objects and time stamps are marked as vertical lines with a \code{Unit} specific offset (orange, green, red).}
+    \label{fig:demo_visualization}
 \end{figure}
 
 \paragraph{Annotation of data with metadata from odml}
+Annotations are a key feature of the generic \software{Neo} structure to provide the necessary customizations to be used for a specific dataset. Standard annotations are a feature of all \software{Neo} objects and can be accessed via the \code{annotation} attribute. In addition, \software{Neo} data objects also provide a more specific type of annotation mechanism, namely \code{array\_annotations} which act in the same manner as regular \code{annotations} but have additional restrictions on their shape. This example demonstrate how to access and 
+
 \paragraph{Conversion to open format (NIX)}
 
 \subsection{Comparison to NWB}

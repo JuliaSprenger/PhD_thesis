@@ -13,6 +13,9 @@ def get_source_filenames():
     return [p[len(SOURCES):] for p in get_source_files()]
         
 
+ruleorder:
+    copy_sources > visualize_scidata
+
 rule all_figures:
     params: FIGURES
     input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf', 'i140703-001.svg'] + get_source_filenames())

@@ -11,6 +11,7 @@
 *.cb
 *.cb2
 .*.lb
+*.locodeenv
 
 ## Intermediate documents:
 *.dvi
@@ -268,12 +269,24 @@ TSWLatexianTemp*
 *.kate-swp
 *.kile
 
+# python
+*__pycache__*
+
 # snakemake
 *.snakefile
 *.snakemake
+
+# pycharm
+.idea
 
 # project specific
 figures/figures_complete/
 latex/figures
 config.yml
-
+material/datasets
+material/figures_complete
+administration
+outdated
+misc
+material/sources/i140703-001.svg
+latex/svg-inkscape
