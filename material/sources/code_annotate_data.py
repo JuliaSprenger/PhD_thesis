@@ -3,8 +3,8 @@ import sys, neo, odml
 def pretty_print_dict(dictionary):
     """Print individual entries of a dictionary in truncated, individual lines"""
     for k, v in dictionary.items():
-        res = '  {}: {}'.format(k, str(v))
-        print(res[:75] + '...' if len(res) > 75 else res)
+        res = '  {}: {}'.format(k, str(v)).replace('\n', ',')
+        print(res[:75] + '...' if len(res) > 74 else res)
 
 def print_annotations(obj, mode='annotations'):
     """Print annotations / array_annotations of a Neo object"""
@@ -21,7 +21,6 @@ def print_annotation_examples(block):
     print('Annotations\n---------------')
     print_annotations(block)
     print_annotations(block.segments[0].spiketrains[0])
-    print_annotations(block.channel_indexes[0])
     print('Array Annotations\n--------------------')
     print_annotations(block.segments[0].analogsignals[-1], mode='array_annotations')
 
@@ -44,5 +43,5 @@ block = io.read_block()
 print_annotation_examples(block)
 # extract metadata from odml, add new annotations and print annotations
 generate_annotations_from_odml(block, odml_filename)
-print('\n\nArray annotations AFTER annotation generation')
-print_annotations(block.segments[0].analogsignals[-1], mode='array_annotations')
+print('\n\nNew array annotation "connector_aligned_ids" AFTER annotation generation')
+print('\tconnector_aligned_ids: {}'.format(block.segments[0].analogsignals[-1].array_annotations['connector_aligned_ids']))
