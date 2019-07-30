@@ -33,6 +33,22 @@ rule compile_manuscript:
     shell: '''
             cd {params.latex}
             pdflatex --shell-escape main.tex'''
+            
+rule compile_manuscript4:
+    input: get_all_latex_files(),
+           join(LATEX, 'main.tex'),
+           join(LATEX, 'thesis.bib'),
+           join(LATEX, 'figures', 'figures_complete.done') 
+    output: join(LATEX,'main.pdf')
+    params: latex=LATEX,
+            latex_params = '-shell-escape -interaction=nonstopmode'
+    shell: '''
+            cd {params.latex}
+            latex {params.latex_params} main.tex
+            bibtex main.tex
+            latex {params.latex_params} main.tex
+            latex {params.latex_params} main.tex'''        
+
     
 rule get_figures:
     input: figureworkflow(join(FIGURES[len(subworkdir)+1:], 'figures_complete.done'))
