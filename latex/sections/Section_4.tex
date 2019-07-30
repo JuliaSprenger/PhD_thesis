@@ -188,9 +188,15 @@ We demonstrate the merging of the data together with the metadata into a single 
 
 
 \subsection{Comparison to NWB}
-\todo{We should do at least a mini-mini-mini comparison, for completness}
+The \software{NWB:N} format focusses on the modularized implementation of a framework for the specification of electrophysiology modalities. %https://pynwb.readthedocs.io/en/stable/overview_software_architecture.html
+It is accompanied by a number of canonical type implementations covering specific cases of behavioural  and time series data, imaging recordings, extra and intracellular electrophysiology recordings as well as optogenetic stimulation and optical physiology.  % https://nwb-schema.readthedocs.io/en/latest/
+This makes the \software{NWB:N} format on the one side more generic than the \software{Neo} structure, since it permits the implementation of custom type specifications, but on the other side also more restrictive, because existing type specifications are very specific and can not be reused in a slightly different context. Also implementation of a custom type specification extensions in \software{NWB:N} requires additional background knowledge of the experimenter about the underlying organization of the \software{NWB} package and the time and effort of implementing such a format. %https://nwb-schema.readthedocs.io/en/latest/format_description.html#extending-the-format
+For \software{Neo} the approach is different: the underlying object structure is as generic to automatically cover most of the electrophysiology data and the experiment specificity is introduced via the annotation and array annotation mechanism. This implies that the user only has to understand the \software{Neo} objects once and can reuse the knowledge also in different experimental contexts.
+\software{Neo} can deal with most of the available electrophysiology file formats and will be extended to cover calcium imaging data in the future. For \software{NWB:N} there are very limited conversion tools available to convert from specific \software{Matlab} structures and custom formats to the \software{NWB:N} format. %https://github.com/NeurodataWithoutBorders/exp2nwb  https://github.com/NeurodataWithoutBorders/mat2nwb https://github.com/NeurodataWithoutBorders/nwbn-conversion-tools
+An interface for the support of additional formats exists, but in extended yet. At this point \software{NWB:N} could benefit from integrating \software{Neo} to gain basic support for many electrophysiology formats.
+\software{NWB:N} has reference implementations in Python as well as Matlab, suiting most of the neuroscientists, whereas \software{Neo} is only implemented in Python, focussing on non-commercial availability of electrophysiology analysis software.
 
 
 \subsection*{Summary}
-\todo{Sum up what we learned about Neo}
+\todo{Sum up what we learned about Neo and motivate next chapter}
 
