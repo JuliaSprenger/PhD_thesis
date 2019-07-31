@@ -53,6 +53,7 @@
 \pagenumbering{gobble}
 
 \usepackage{svg}
+\pdfsuppresswarningpagegroup=1 % suppressing multiple page inclusion warnings
 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,filecolor=magenta,urlcolor=cyan}
@@ -92,7 +93,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TITLE PAGE (Pre-defined, just change parameters above)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \input{template/title.tex}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %SOOA
@@ -186,10 +189,5 @@
 \renewcommand*{\thesection}{}\textbf{}
 
 \printbibliography
-% \bibliography{lesson7a1} 
-% \bibliographystyle{ieeetr}
-% \bibliographystyle{apacite}
-% \bibliography{thesis}
-
 
 \end{document}

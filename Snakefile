@@ -20,34 +20,24 @@ subworkflow figureworkflow:
         join(subworkdir,"Snakefile")
     
 
-# pdflatex --shell-escape is required for usage of svg package
 
-
+            
 rule compile_manuscript:
     input: get_all_latex_files(),
            join(LATEX, 'main.tex'),
            join(LATEX, 'thesis.bib'),
            join(LATEX, 'figures', 'figures_complete.done') 
     output: join(LATEX,'main.pdf')
-    params: latex=LATEX
-    shell: '''
-            cd {params.latex}
-            pdflatex --shell-escape main.tex'''
-            
-rule compile_manuscript4:
-    input: get_all_latex_files(),
-           join(LATEX, 'main.tex'),
-           join(LATEX, 'thesis.bib'),
-           join(LATEX, 'figures', 'figures_complete.done') 
-    output: join(LATEX,'main.pdf')
     params: latex=LATEX,
-            latex_params = '-shell-escape -interaction=nonstopmode'
+            latex_params = '-shell-escape -interaction=nonstopmode',
+            # pdflatex --shell-escape is required for usage of svg package
+            compiler = 'pdflatex'
     shell: '''
             cd {params.latex}
-            latex {params.latex_params} main.tex
-            bibtex main.tex
-            latex {params.latex_params} main.tex
-            latex {params.latex_params} main.tex'''        
+            {params.compiler} {params.latex_params} main.tex
+            biber main
+            {params.compiler} {params.latex_params} main.tex
+            {params.compiler} {params.latex_params} main.tex'''        
 
     
 rule get_figures:
