@@ -1,0 +1,156 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{xcolor}
+\usetikzlibrary{shapes,positioning,matrix}
+
+\definecolor{lightblue}{HTML}{D4EDF7}
+\definecolor{blue}{HTML}{7ab9d1}
+\definecolor{darkblue}{HTML}{83aedd}
+\definecolor{lightorange}{HTML}{FFA364}
+\definecolor{orange}{HTML}{FF6802}
+\definecolor{darkorange}{HTML}{9C3F00}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\renewcommand{\familydefault}{\sfdefault}
+\begin{document}
+\begin{tikzpicture}[grow=down, 
+level 1/.style={sibling distance=15em, level distance=2cm}, 
+level 2/.style={sibling distance=18em, level distance=2cm}, 
+level 3/.style={sibling distance=18em, level distance=4.5cm},
+level 4/.style={sibling distance=15em, level distance=3cm},
+doc/.style={rectangle split, rectangle split, rectangle split parts=2, rounded corners, fill=white, text=black, draw=gray!80, very thick, align=left, text width=15em},
+sec/.style={rectangle split, rectangle split, rectangle split parts=2, rounded corners, fill=darkblue, text=black, draw=gray!80, very thick, align=left, text width=15em},
+prop/.style={rectangle split, rectangle split, rectangle split parts=2, rounded corners, fill=blue, text=black, draw=darkblue, very thick, align=left, text width=15em},
+val/.style={rectangle, fill=lightblue, text=black, align=left,  text width=14.5em,rounded corners=0mm, outer sep=0mm,anchor=center, very thick},
+more/.style={rectangle, rounded corners, dashed, fill=gray!20, draw=lightblue, align=left, thick}
+]
+
+\tikzset{edge from parent/.style={draw, edge from parent path=
+    {(\tikzparentnode) -- (\tikzchildnode.north)}}}
+
+\node[doc] (doc) {\bfseries{Document} \nodepart{second} Author: The odMLtables Team}
+child { node[sec] {\bfseries{Subject} \nodepart{second} Definition: Information on ...} 
+	child { node[prop] {\bfseries{Species} \nodepart{second} Definition: Binomial name of ...
+			    			\begin{tikzpicture}[]
+						    \node[val] {\textbf{Values:} Mus musculus};
+						\end{tikzpicture}
+						Datatype: string
+			   } 
+	}  
+	child { node[prop] {\bfseries{Birthdate} \nodepart{second} Definition: Birthdate of ...
+				    		\begin{tikzpicture}[]
+						    \node[val] {\textbf{Values:} 1999-12-24, 12am};
+						\end{tikzpicture}
+						Datatype: datetime
+			   }
+	}
+	child { node[sec] {\bfseries{Scores\_2000-01-01} \nodepart{second} Definition: Score values for  ...}
+		child { node[prop] {\bfseries{Experimenter}
+				\nodepart{second} Definition: Person who ...
+				\begin{tikzpicture}[]
+				\node[val] (name) {\textbf{Values:} [Alice, Bob]};
+				\end{tikzpicture}
+				Datatype: person
+			}
+		}   
+		child { node[prop] {\bfseries{Weight}
+				\nodepart{second} Definition: Body weight of ...
+				\begin{tikzpicture}[]
+				\node[val] (name) {\textbf{Values:} 5};
+				\end{tikzpicture}
+				Datatype: float \\ Unit: g \\ Uncertainty: 0.5
+			}
+		}
+		child { node[prop] {\bfseries{Date}
+				\nodepart{second} Definition: Day of the ...
+				\begin{tikzpicture}[]
+				\node[val] (name) {\textbf{Values:} 2000-01-01};
+				\end{tikzpicture}
+				Datatype: date
+			}
+		}
+		child { node[prop] {\bfseries{Comment}
+				\nodepart{second} Definition: Comment about ...
+				\begin{tikzpicture}[]
+				\node[val] (name) {\textbf{Values:} };
+				\end{tikzpicture}
+				Datatype: string
+			}
+		}
+	}
+	child { node[prop] {\bfseries{uID} \nodepart{second} Definition: Unique ID of ...
+			\begin{tikzpicture}[]
+			\node[val] {\textbf{Values:} asdf1234ghjk56789};
+			\end{tikzpicture}
+			Datatype: string
+		}
+% 		child { node[val] {\bfseries{4.9} \nodepart{second} Datatype: float \\ Unit: kg \\ Uncertainty: 0.5}}
+	}
+	child { node[prop] {\bfseries{Alias} \nodepart{second} Definition: Custom ID of ...
+			\begin{tikzpicture}[]
+			\node[val] {\textbf{Values:} };
+			\end{tikzpicture}
+			Datatype: string
+		}
+		% 		child { node[val] {\bfseries{4.9} \nodepart{second} Datatype: float \\ Unit: kg \\ Uncertainty: 0.5}}
+	}
+};
+
+
+\node[left=10cm of doc.north west] (a) {\Huge\bfseries{A}};
+\node[below=12cm of a] (b) {\Huge\bfseries{B}};
+
+
+\matrix(dict)[matrix of nodes,below=of b.north west, anchor=north west,
+    nodes={align=left, anchor=west, black}]{
+    Document Information & author & The odMLtables Team& \textcolor{gray}{date} & & \textcolor{gray}{repository} & & \textcolor{gray}{version} \\
+      Path to Section & Property Name & Value & Data Uncertainty & Data Unit & odML Data Type & Property Definition & Section Definition\\
+      /Subject & Species & Mus musculus &  &   & string & Binomial name of ... & Information on the investigated subject\\
+       & Birthdate & 1999-12-24, 12am & & & datetime & Birthdate of the ... & \\
+       & uID & asdf1234ghjk56789 & & & string & Unique ID of ... & \\
+       & Alias & & & & string & Custom ID of the ... & \\
+      /Subject/Scores\_2000-01-01 & Experimenter & Alice & & & person & Person who perf... & Score values for health status estimation\\
+       & & Bob & & & & & \\
+       & Weight & 5 & 0.5 & g & float & Body weight of the ... & \\
+       & Date & 2000-01-01 & & & date & Day of the ... & \\
+       & Comment & & & & string & Comment about ... & \\
+    };
+
+\coordinate (tl) at (dict-2-1.north west);
+\coordinate (br) at (dict-11-2.south -| dict-7-8.east);
+    
+% horizontal line
+\draw[line width=2](tl |- dict-2-1.south west)--(br |- dict-2-1.south west);
+% vertical lines
+\draw[line width=2](tl -| dict-2-2.north west)--(br -| dict-2-2.north west);
+\draw[line width=2](tl -| dict-2-3.north west)--(br -| dict-2-3.north west);
+\draw[line width=2](tl -| dict-2-4.north west)--(br -| dict-2-4.north west);
+\draw[line width=2](tl -| dict-2-5.north west)--(br -| dict-2-5.north west);
+\draw[line width=2](tl -| dict-2-6.north west)--(br -| dict-2-6.north west);
+\draw[line width=2](tl -| dict-2-7.north west)--(br -| dict-2-7.north west);
+\draw[line width=2](tl -| dict-2-8.north west)--(br -| dict-2-8.north west);
+
+
+
+\begin{pgfonlayer}{background}
+    \path[fill=gray!40]	(tl -| dict-1-1.west) rectangle (br -| dict-1-2.west);
+    \path[fill=blue]		(tl -| dict-1-2.west) rectangle (br -| dict-1-3.west);
+    \path[fill=lightblue]	(tl -| dict-1-3.west) rectangle (br -| dict-1-4.west);
+    \path[fill=blue]	(tl -| dict-1-4.west) rectangle (br -| dict-1-5.west);
+    \path[fill=blue]	(tl -| dict-1-5.west) rectangle (br -| dict-1-6.west);
+    \path[fill=blue]	(tl -| dict-1-6.west) rectangle (br -| dict-1-7.west);
+    \path[fill=blue]		(tl -| dict-1-7.west) rectangle (br -| dict-1-8.west);
+    \path[fill=darkblue]		(tl -| dict-1-8.west) rectangle (br);
+\end{pgfonlayer}
+
+
+
+
+\end{tikzpicture}
+
+\end{document}	
+
