@@ -24,12 +24,12 @@ Another project tackling the same problem is the Python package \software{Neo}. 
 
 
 
-\subsection{\software{Neo}}
-\software{Neo}\footnote{\software{Neo}, \url{http://neuralensemble.org/neo}, RRID:SCR\_000634} \citep{garcia_neo:_2014-1} is an open-source Python package for representing electrophysiology data in working memory. It offers interfaces for reading various electrophysiological proprietary and open file formats and represents the data in a generic way (\cref{fig:neo_ios}). Thus it forms the bases for a number of open software tools: The electrophysiology analysis toolkit\footnote{Elephant, \url{http://neuralensemble.org/elephant}, RRID:SCR\_003833} for analysis of spiking activity and local field potentials, OpenElectrophy\footnote{OpenElectrophy, \url{http://neuralensemble.org/OpenElectrophy}, RRID:SCR\_000819}, SpykeViewer\footnote{SpykeViewer, \url{https://spyke-viewer.readthedocs.io}} and Ephyviewer\footnote{Ephyviewer, \url{https://ephyviewer.readthedocs.io}} for visualization, Tridesclous\footnote{Tridesclous, \url{https://tridesclous.readthedocs.io}} for online and offline spike sorting, NeoAnalysis\footnote{NeoAnalysis, \url{https://github.com/neoanalysis/NeoAnalysis}} \citep{zhang_neoanalysis:_2017} for rudimentary visualization and analysis, NetworkUnit \footnote{NetworkUnit, \url{https://github.com/INM-6/NetworkUnit}, RRID:SCR\_016543} for validation testing of spiking networks.
+\subsection{The \software{Neo} Python Package}
+\software{Neo}\footnote{\software{Neo}, \url{http://neuralensemble.org/neo}, RRID:SCR\_000634} \citep{garcia_neo:_2014-1} is an open-source Python package for representing electrophysiology data in working memory. It offers interfaces for reading various electrophysiological proprietary and open file formats and represents the data in a generic way (\cref{fig:neo_ios}). Thus it forms the bases for a number of open software tools: The electrophysiology analysis toolkit\footnote{Elephant, \url{http://neuralensemble.org/elephant}, RRID:SCR\_003833} for analysis of spiking activity and local field potentials, OpenElectrophy\footnote{OpenElectrophy, \url{http://neuralensemble.org/OpenElectrophy}, RRID:SCR\_000819}, SpykeViewer\footnote{SpykeViewer, \url{https://spyke-viewer.readthedocs.io}} and Ephyviewer\footnote{Ephyviewer, \url{https://ephyviewer.readthedocs.io}} for visualization, Tridesclous\footnote{Tridesclous, \url{https://tridesclous.readthedocs.io}} for online and offline spike sorting, NeoAnalysis\footnote{NeoAnalysis, \url{https://github.com/neoanalysis/NeoAnalysis}} \citep{zhang_neoanalysis:_2017} for rudimentary visualization and analysis, NetworkUnit \footnote{NetworkUnit, \url{https://github.com/INM-6/NetworkUnit}, RRID:SCR\_016543} for validation testing of spiking networks. Related packages are \software{NiBabel}\footnote{NiBabel, \url{https://nipy.org/nibabel}, RRID:SCR\_002498}, a comparable package for neuroimaging file formats and \software{MNE}\footnote{MNE, \url{https://martinos.org/mne}, RRID:SCR\_005972} an Python package for MEG and EEG analysis and visualization.
 
 The two main aspects of \software{Neo} are 1) the interfacing to many different file formats, by providing reading capability for numerous proprietary formats and writing capability to selected open formats and 2) the standardized representation of electrophysiology data as a basis for further visualization and analysis steps. Using these aspects \software{Neo} can is typically used either as conversion tool from specialized to more generic formats or as run time data representation for further processing.
 
-\subsubsection{Features updates and current development}
+\subsubsection{Feature updates and current development}
 The \software{Neo} version 0.3 was released in 2014 \citep{garcia_neo:_2014-1}. Since then the software has been extended to be compatible with more data formats, the object model has been revised for better usability and the implementation has been improved for performance. In the following we describe the enhancements introduced between version 0.3 (\cref{fig:neo_architecture03}) and version 0.7 (\cref{fig:neo_architecture07}).
 
 \paragraph{Interfaces to file formats}
@@ -121,7 +121,7 @@ All container objects provide utility functions to facilitate access and selecti
 \end{figure}
 
 
-\subsection{Usage Examples}
+\subsection{\software{Neo} Usage Examples}
 In the following we demonstrate in three practical examples how \software{Neo} can be used to load data from different file formats in a memory efficient manner, access and select data, annotate and filter data according to custom metadata added and save data in an open source format.
 
 \subsubsection{Loading \& Visualization}
@@ -187,7 +187,7 @@ We demonstrate the merging of the data together with the metadata into a single 
 \end{codeenv}
 
 
-\subsection{Comparison to \software{NWB:N}}
+\subsection{Comparison of \software{Neo} to \software{NWB:N}}
 The \software{NWB:N} format focusses on the modularized implementation of a framework for the specification of electrophysiology modalities. %https://pynwb.readthedocs.io/en/stable/overview_software_architecture.html
 It is accompanied by a number of canonical type implementations covering specific cases of behavioural  and time series data, imaging recordings, extra and intracellular electrophysiology recordings as well as optogenetic stimulation and optical physiology.  % https://nwb-schema.readthedocs.io/en/latest/
 This makes the \software{NWB:N} format on the one side more generic than the \software{Neo} structure, since it permits the implementation of custom type specifications, but on the other side also more restrictive, because existing type specifications are very specific and can not be reused in a slightly different context. Also implementation of a custom type specification extensions in \software{NWB:N} requires additional background knowledge of the experimenter about the underlying organization of the \software{NWB} package and the time and effort of implementing such a format. %https://nwb-schema.readthedocs.io/en/latest/format_description.html#extending-the-format
@@ -197,6 +197,7 @@ An interface for the support of additional formats exists, but in extended yet. 
 \software{NWB:N} has reference implementations in Python as well as Matlab, suiting most of the neuroscientists, whereas \software{Neo} is only implemented in Python, focussing on non-commercial availability of electrophysiology analysis software.
 
 
-\subsection*{Summary}
+\subsection{Summary}
+We introduced the \software{Neo} Python package designed for standardized and efficient representation of electrophysiological data. We presented the development of the package since the original publication and depicted the main features and flexibility of the package in three small usage examples. Finally we provide a concise comparison to the recent \software{NWB:N} format and higlight the strengths of the software packages. \todo{extend this}
 \todo{Sum up what we learned about Neo and motivate next chapter}
 

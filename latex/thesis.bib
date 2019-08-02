@@ -1,37 +1,5 @@
 
-@article{brochier_massively_2018,
-	title = {Massively parallel recordings in macaque motor cortex during an instructed delayed reach-to-grasp task},
-	volume = {5},
-	copyright = {2018 Nature Publishing Group},
-	issn = {2052-4463},
-	url = {https://www.nature.com/articles/sdata201855},
-	doi = {10.1038/sdata.2018.55},
-	abstract = {We publish two electrophysiological datasets recorded in motor cortex of two macaque monkeys during an instructed delayed reach-to-grasp task, using chronically implanted 10-by-10 Utah electrode arrays. We provide a) raw neural signals (sampled at 30 kHz), b) time stamps and spike waveforms of offline sorted single and multi units (93/49 and 156/19 SUA/MUA for the two monkeys, respectively), c) trial events and the monkey{\textquoteright}s behavior, and d) extensive metadata hierarchically structured via the odML metadata framework (including quality assessment post-processing steps, such as trial rejections). The dataset of one monkey contains a simultaneously saved record of the local field potential (LFP) sampled at 1 kHz. To load the datasets in Python, we provide code based on the Neo data framework that produces a data structure which is annotated with relevant metadata. We complement this loading routine with an example code demonstrating how to access the data objects (e.g., raw signals) contained in such structures. For Matlab users, we provide the annotated data structures as mat files.},
-	language = {en},
-	urldate = {2018-04-16},
-	journal = {Scientific Data},
-	author = {Brochier, Thomas and Zehl, Lyuba and Hao, Yaoyao and Duret, Margaux and Sprenger, Julia and Denker, Michael and Gr{\"u}n, Sonja and Riehle, Alexa},
-	month = apr,
-	year = {2018},
-	pages = {180055},
-	file = {Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/BVHUAZ4M/Brochier et al. - 2018 - Massively parallel recordings in macaque motor cor.pdf:application/pdf;Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/L2MMRIGN/sdata201855.html:text/html}
-}
-
-@article{garcia_neo:_2014,
-	title = {Neo: an object model for handling electrophysiology data in multiple formats},
-	volume = {8},
-	issn = {1662-5196},
-	shorttitle = {Neo},
-	url = {http://journal.frontiersin.org/article/10.3389/fninf.2014.00010/abstract},
-	doi = {10.3389/fninf.2014.00010},
-	urldate = {2019-07-04},
-	journal = {Front. Neuroinform.},
-	author = {Garcia, Samuel and Guarino, Domenico and Jaillet, Florent and Jennings, Todd and Pr{\"o}pper, Robert and Rautenberg, Philipp L. and Rodgers, Chris C. and Sobolev, Andrey and Wachtler, Thomas and Yger, Pierre and Davison, Andrew P.},
-	year = {2014},
-	file = {Full Text:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/ASZMMLKY/Garcia et al. - 2014 - Neo an object model for handling electrophysiolog.pdf:application/pdf}
-}
-
-@book{zehl_management_2018,
+@book{Zehl_2018,
 	address = {J{\"u}lich},
 	series = {Schriften des {Forschungszentrums} {J{\"u}lich} {Reihe} {Schl{\"u}sseltechnologien} / {Key} {Technologies}},
 	title = {Management of {Electrophysiological} {Data} \& {Metadata} - {Making} complex experiments accessible to yourself and others},
@@ -43,7 +11,7 @@
 	year = {2018}
 }
 
-@article{zhang_neoanalysis:_2017,
+@article{Zhang_2017,
 	title = {{NeoAnalysis}: a {Python}-based toolbox for quick electrophysiological data processing and analysis},
 	volume = {16},
 	issn = {1475-925X},
@@ -61,50 +29,7 @@
 	file = {Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/CSYX3XVF/Zhang et al. - 2017 - NeoAnalysis a Python-based toolbox for quick elec.pdf:application/pdf;Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/X4UT4Q3H/s12938-017-0419-7.html:text/html}
 }
 
-@article{garcia_neo:_2014-1,
-	title = {Neo: an object model for handling electrophysiology data in multiple formats},
-	volume = {8},
-	issn = {1662-5196},
-	shorttitle = {Neo},
-	doi = {10.3389/fninf.2014.00010},
-	abstract = {Neuroscientists use many different software tools to acquire, analyze and visualize electrophysiological signals. However, incompatible data models and file formats make it difficult to exchange data between these tools. This reduces scientific productivity, renders potentially useful analysis methods inaccessible and impedes collaboration between labs. A common representation of the core data would improve interoperability and facilitate data-sharing. To that end, we propose here a language-independent object model, named "Neo," suitable for representing data acquired from electroencephalographic, intracellular, or extracellular recordings, or generated from simulations. As a concrete instantiation of this object model we have developed an open source implementation in the Python programming language. In addition to representing electrophysiology data in memory for the purposes of analysis and visualization, the Python implementation provides a set of input/output (IO) modules for reading/writing the data from/to a variety of commonly used file formats. Support is included for formats produced by most of the major manufacturers of electrophysiology recording equipment and also for more generic formats such as MATLAB. Data representation and data analysis are conceptually separate: it is easier to write robust analysis code if it is focused on analysis and relies on an underlying package to handle data representation. For that reason, and also to be as lightweight as possible, the Neo object model and the associated Python package are deliberately limited to representation of data, with no functions for data analysis or visualization. Software for neurophysiology data analysis and visualization built on top of Neo automatically gains the benefits of interoperability, easier data sharing and automatic format conversion; there is already a burgeoning ecosystem of such tools. We intend that Neo should become the standard basis for Python tools in neurophysiology.},
-	language = {eng},
-	journal = {Front Neuroinform},
-	author = {Garcia, Samuel and Guarino, Domenico and Jaillet, Florent and Jennings, Todd and Pr{\"o}pper, Robert and Rautenberg, Philipp L. and Rodgers, Chris C. and Sobolev, Andrey and Wachtler, Thomas and Yger, Pierre and Davison, Andrew P.},
-	year = {2014},
-	pmid = {24600386},
-	pmcid = {PMC3930095},
-	keywords = {Python, interoperability, electrophysiology, file formats, software},
-	pages = {10},
-	file = {Full Text:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/RLKIJZ67/Garcia et al. - 2014 - Neo an object model for handling electrophysiolog.pdf:application/pdf}
-}
-
-@misc{noauthor_pep_nodate,
-	title = {{PEP} 8 -- {Style} {Guide} for {Python} {Code}},
-	url = {https://www.python.org/dev/peps/pep-0008/},
-	abstract = {The official home of the Python Programming Language},
-	language = {en},
-	urldate = {2019-07-04},
-	journal = {Python.org},
-	file = {Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/P3MPVCYS/pep-0008.html:text/html}
-}
-
-@article{hunter_matplotlib:_2007,
-	title = {Matplotlib: {A} 2D {Graphics} {Environment}},
-	volume = {9},
-	issn = {1521-9615},
-	shorttitle = {Matplotlib},
-	url = {http://ieeexplore.ieee.org/document/4160265/},
-	doi = {10.1109/MCSE.2007.55},
-	number = {3},
-	urldate = {2019-07-09},
-	journal = {Comput. Sci. Eng.},
-	author = {Hunter, John D.},
-	year = {2007},
-	pages = {90--95}
-}
-
-@article{van_der_walt_numpy_2011,
+@article{vanderWalt_2011,
 	title = {The {NumPy} {Array}: {A} {Structure} for {Efficient} {Numerical} {Computation}},
 	volume = {13},
 	issn = {1521-9615},
@@ -121,7 +46,7 @@
 	file = {Full Text:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/SN67SLJS/van der Walt et al. - 2011 - The NumPy Array A Structure for Efficient Numeric.pdf:application/pdf}
 }
 
-@article{perez_ipython:_2007,
+@article{Perez_2007,
 	title = {{IPython}: {A} {System} for {Interactive} {Scientific} {Computing}},
 	volume = {9},
 	issn = {1521-9615},
@@ -136,14 +61,14 @@
 	pages = {21--29}
 }
 
-@book{jones_scipy:_2001,
+@book{Jones_2001,
 	title = {{SciPy}: {Open} source scientific tools for {Python}},
 	url = {http://www.scipy.org/},
 	author = {Jones, Eric and Oliphant, Travis and Peterson, Pearu and {others}},
 	year = {2001}
 }
 
-@misc{dale_quantities_nodate,
+@misc{Dale_,
 	title = {Quantities {Documenting}},
 	url = {https://python-quantities.readthedocs.io/en/latest/devel/documenting.html},
 	urldate = {2019-07-09},
@@ -151,7 +76,7 @@
 	file = {Documenting Quantities {\textemdash} quantities 0.12.1+6.g1ef120b documentation:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/CDEK8USI/documenting.html:text/html}
 }
 
-@article{kelly_comparison_2007,
+@article{Kelly_2007,
 	title = {Comparison of recordings from microelectrode arrays and single electrodes in visual cortex},
 	volume = {27},
 	issn = {0270-6474},
@@ -169,7 +94,7 @@
 	file = {PubMed Central Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/A5Y3NEQH/Kelly et al. - 2007 - Comparison of recordings from microelectrode array.pdf:application/pdf}
 }
 
-@article{shew_simultaneous_2010,
+@article{Shew_2010,
 	title = {Simultaneous multi-electrode array recording and two-photon calcium imaging of neural activity},
 	volume = {192},
 	issn = {0165-0270},
@@ -188,7 +113,7 @@
 	file = {PubMed Central Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/U5MZ34FK/Shew et al. - 2010 - Simultaneous multi-electrode array recording and t.pdf:application/pdf}
 }
 
-@article{giovannucci_caiman_2019,
+@article{Giovannucci_2019,
 	title = {{CaImAn} an open source tool for scalable calcium imaging data analysis},
 	volume = {8},
 	issn = {2050-084X},
@@ -206,7 +131,7 @@
 	file = {Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/2NMA264S/Giovannucci et al. - 2019 - CaImAn an open source tool for scalable calcium im.pdf:application/pdf}
 }
 
-@article{hunter_matplotlib:_2007-1,
+@article{Hunter_2007,
 	title = {Matplotlib: {A} 2D graphics environment},
 	volume = {9},
 	doi = {10.1109/MCSE.2007.55},
@@ -218,7 +143,7 @@
 	pages = {90--95}
 }
 
-@article{ray_nsdf:_2016,
+@article{Ray_2016,
 	title = {{NSDF}: {Neuroscience} {Simulation} {Data} {Format}},
 	volume = {14},
 	issn = {1559-0089},
@@ -238,7 +163,7 @@
 	file = {Springer Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/8F3DJAGM/Ray et al. - 2016 - NSDF Neuroscience Simulation Data Format.pdf:application/pdf}
 }
 
-@article{hazan_klusters_2006,
+@article{Hazan_2006,
 	title = {Klusters, {NeuroScope}, {NDManager}: {A} free software suite for neurophysiological data processing and visualization},
 	volume = {155},
 	issn = {0165-0270},
@@ -257,24 +182,13 @@
 	file = {ScienceDirect Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/XIVLMVJL/Hazan et al. - 2006 - Klusters, NeuroScope, NDManager A free software s.pdf:application/pdf;ScienceDirect Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/4IBZIWS9/S0165027006000410.html:text/html}
 }
 
-@article{stoewer_file_2014,
-	title = {File format and library for neuroscience data and metadata},
-	issn = {1662-5196},
-	url = {http://www.frontiersin.org/neuroinformatics/10.3389/conf.fninf.2014.18.00027/full},
-	doi = {10.3389/conf.fninf.2014.18.00027},
-	number = {27},
-	journal = {Frontiers in Neuroinformatics},
-	author = {Stoewer, Adrian and Kellner, Christian Johannes and Benda, Jan and Wachtler, Thomas and Grewe, Jan},
-	year = {2014}
-}
-
-@misc{the_hdf_group_hierarchical_1997,
+@misc{TheHDFGroup_1997,
 	title = {Hierarchical {Data} {Format}, version 5},
 	author = {{The HDF Group}},
 	year = {1997}
 }
 
-@article{teeters_neurodata_2015,
+@article{Teeters_2015,
 	title = {Neurodata {Without} {Borders}: {Creating} a {Common} {Data} {Format} for {Neurophysiology}},
 	volume = {88},
 	issn = {0896-6273},
@@ -286,4 +200,559 @@
 	author = {Teeters, Jeffery L. and Godfrey, Keith and Young, Rob and Dang, Chinh and Friedsam, Claudia and Wark, Barry and Asari, Hiroki and Peron, Simon and Li, Nuo and Peyrache, Adrien and Denisov, Gennady and Siegle, Joshua H. and Olsen, Shawn R. and Martin, Christopher and Chun, Miyoung and Tripathy, Shreejoy and Blanche, Timothy J. and Harris, Kenneth and Buzs{\'a}ki, Gy{\"o}rgy and Koch, Christof and Meister, Markus and Svoboda, Karel and Sommer, Friedrich T.},
 	year = {2015},
 	pages = {629 -- 634}
+}
+
+@article{Assante_2016,
+	title = {Are {Scientific} {Data} {Repositories} {Coping} with {Research} {Data} {Publishing}?},
+	volume = {15},
+	copyright = {Authors who publish with this journal agree to the following terms:    Authors retain copyright and grant the journal right of first publication with the work simultaneously licensed under a  Creative Commons Attribution License  that allows others to share the work with an acknowledgement of the work's authorship and initial publication in this journal.  Authors are able to enter into separate, additional contractual arrangements for the non-exclusive distribution of the journal's published version of the work (e.g., post it to an institutional repository or publish it in a book), with an acknowledgement of its initial publication in this journal.  Authors are permitted and encouraged to post their work online (e.g., in institutional repositories or on their website) prior to and during the submission process, as it can lead to productive exchanges, as well as earlier and greater citation of published work (See  The Effect of Open Access ).  All third-party images reproduced on this journal are shared under Educational Fair Use. For more information on  Educational Fair Use , please see  this useful checklist prepared by Columbia University Libraries .   All copyright  of third-party content posted here for research purposes belongs to its original owners.  Unless otherwise stated all references to characters and comic art presented on this journal are {\textcopyright}, {\textregistered} or {\texttrademark} of their respective owners. No challenge to any owner{\textquoteright}s rights is intended or should be inferred.},
+	issn = {1683-1470},
+	url = {http://datascience.codata.org/articles/10.5334/dsj-2016-006/},
+	doi = {10.5334/dsj-2016-006},
+	abstract = {Research data publishing is intended as the release of research data to make it possible for practitioners to (re)use them according to {\textquotedblleft}open science{\textquotedblright} dynamics. There are three main actors called to deal with research data publishing practices: researchers, publishers, and data repositories. This study analyses the solutions offered by generalist scientific data repositories, i.e., repositories supporting the deposition of any type of research data. These repositories cannot make any assumption on the application domain. They are actually called to face with the almost open ended typologies of data used in science. The current practices promoted by such repositories are analysed with respect to eight key aspects of data publishing, i.e., dataset formatting, documentation, licensing, publication costs, validation, availability, discovery and access, and citation. From this analysis it emerges that these repositories implement well consolidated practices and pragmatic solutions for literature repositories. These practices and solutions can not totally meet the needs of management and use of datasets resources, especially in a context where rapid technological changes continuously open new exploitation prospects.},
+	language = {eng},
+	number = {0},
+	urldate = {2019-08-02},
+	journal = {Data Science Journal},
+	author = {Assante, Massimiliano and Candela, Leonardo and Castelli, Donatella and Tani, Alice},
+	month = apr,
+	year = {2016},
+	keywords = {Data infrastructures, Data Quality, Research Data Publishing, Scientific Data Repositories},
+	pages = {6},
+	file = {Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/W7JQCF6N/Assante et al. - 2016 - Are Scientific Data Repositories Coping with Resea.pdf:application/pdf;Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/UZZLCTUY/dsj-2016-006.html:text/html}
+}
+
+@article{Candela_2015,
+	title = {Data journals: {A} survey},
+	volume = {66},
+	copyright = {{\textcopyright} 2015 ASIS\&T},
+	issn = {2330-1643},
+	shorttitle = {Data journals},
+	url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/asi.23358},
+	doi = {10.1002/asi.23358},
+	abstract = {Data occupy a key role in our information society. However, although the amount of published data continues to grow and terms such as data deluge and big data today characterize numerous (research) initiatives, much work is still needed in the direction of publishing data in order to make them effectively discoverable, available, and reusable by others. Several barriers hinder data publishing, from lack of attribution and rewards, vague citation practices, and quality issues to a rather general lack of a data-sharing culture. Lately, data journals have overcome some of these barriers. In this study of more than 100 currently existing data journals, we describe the approaches they promote for data set description, availability, citation, quality, and open access. We close by identifying ways to expand and strengthen the data journals approach as a means to promote data set access and exploitation.},
+	language = {en},
+	number = {9},
+	urldate = {2019-08-02},
+	journal = {Journal of the Association for Information Science and Technology},
+	author = {Candela, Leonardo and Castelli, Donatella and Manghi, Paolo and Tani, Alice},
+	year = {2015},
+	keywords = {alternative publications, data, publications},
+	pages = {1747--1762},
+	file = {Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/3PY3PNDP/Candela et al. - 2015 - Data journals A survey.pdf:application/pdf;Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/5Z2KFNTQ/asi.html:text/html}
+}
+
+@article{Vines_2014,
+	title = {The {Availability} of {Research} {Data} {Declines} {Rapidly} with {Article} {Age}},
+	volume = {24},
+	issn = {0960-9822},
+	url = {https://www.cell.com/current-biology/abstract/S0960-9822(13)01400-0},
+	doi = {10.1016/j.cub.2013.11.014},
+	language = {English},
+	number = {1},
+	urldate = {2019-08-02},
+	journal = {Current Biology},
+	author = {Vines, Timothy H. and Albert, Arianne Y. K. and Andrew, Rose L. and D{\'e}barre, Florence and Bock, Dan G. and Franklin, Michelle T. and Gilbert, Kimberly J. and Moore, Jean-S{\'e}bastien and Renaut, S{\'e}bastien and Rennison, Diana J.},
+	month = jan,
+	year = {2014},
+	pmid = {24361065},
+	pages = {94--97},
+	file = {Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/DVXPQ97M/Vines et al. - 2014 - The Availability of Research Data Declines Rapidly.pdf:application/pdf;Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/UEYBU58Q/S0960-9822(13)01400-0.html:text/html}
+}
+
+@article{Vines_2013,
+	title = {Mandated data archiving greatly improves access to research data},
+	volume = {27},
+	issn = {0892-6638},
+	url = {https://www.fasebj.org/doi/full/10.1096/fj.12-218164},
+	doi = {10.1096/fj.12-218164},
+	abstract = {The data underlying scientific papers should be accessible to researchers both now and in the future, but how best can we ensure that these data are available? Here we examine the effectiveness of four approaches to data archiving: no stated archiving policy, recommending (but not requiring) archiving, and two versions of mandating data deposition at acceptance. We control for differences between data types by trying to obtain data from papers that use a single, widespread population genetic analysis, structure. At one extreme, we found that mandated data archiving policies that require the inclusion of a data availability statement in the manuscript improve the odds of finding the data online almost 1000-fold compared to having no policy. However, archiving rates at journals with less stringent policies were only very slightly higher than those with no policy at all. We also assessed the effectiveness of asking for data directly from authors and obtained over half of the requested datasets, albeit with \~{}8 d delay and some disagreement with authors. Given the long-term benefits of data accessibility to the academic community, we believe that journal-based mandatory data archiving policies and mandatory data availability statements should be more widely adopted.{\textemdash}Vines, T. H., Andrew, R. L., Bock, D. G., Franklin, M. T., Gilbert, K. J., Kane, N. C., Moore, J-S., Moyers, B. T., Renaut, S., Rennison, D. J., Veen, T., Yeaman, S. Mandated data archiving greatly improves access to research data.},
+	number = {4},
+	urldate = {2019-08-02},
+	journal = {The FASEB Journal},
+	author = {Vines, Timothy H. and Andrew, Rose L. and Bock, Dan G. and Franklin, Michelle T. and Gilbert, Kimberly J. and Kane, Nolan C. and Moore, Jean-S{\'e}bastien and Moyers, Brook T. and Renaut, S{\'e}bastien and Rennison, Diana J. and Veen, Thor and Yeaman, Sam},
+	month = jan,
+	year = {2013},
+	pages = {1304--1308},
+	file = {Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/Q9EG3ENE/Vines et al. - 2013 - Mandated data archiving greatly improves access to.pdf:application/pdf;Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/UH85KM4F/fj.html:text/html}
+}
+
+@article{Savage_2009,
+	title = {Empirical {Study} of {Data} {Sharing} by {Authors} {Publishing} in {PLoS} {Journals}},
+	volume = {4},
+	issn = {1932-6203},
+	url = {https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0007078},
+	doi = {10.1371/journal.pone.0007078},
+	abstract = {Background Many journals now require authors share their data with other investigators, either by depositing the data in a public repository or making it freely available upon request. These policies are explicit, but remain largely untested. We sought to determine how well authors comply with such policies by requesting data from authors who had published in one of two journals with clear data sharing policies. Methods and Findings We requested data from ten investigators who had published in either PLoS Medicine or PLoS Clinical Trials. All responses were carefully documented. In the event that we were refused data, we reminded authors of the journal's data sharing guidelines. If we did not receive a response to our initial request, a second request was made. Following the ten requests for raw data, three investigators did not respond, four authors responded and refused to share their data, two email addresses were no longer valid, and one author requested further details. A reminder of PLoS's explicit requirement that authors share data did not change the reply from the four authors who initially refused. Only one author sent an original data set. Conclusions We received only one of ten raw data sets requested. This suggests that journal policies requiring data sharing do not lead to authors making their data sets available to independent investigators.},
+	language = {en},
+	number = {9},
+	urldate = {2019-08-02},
+	journal = {PLOS ONE},
+	author = {Savage, Caroline J. and Vickers, Andrew J.},
+	month = sep,
+	year = {2009},
+	keywords = {Clinical trials, Data acquisition, Genomic libraries, Genomic medicine, Health care policy, Medicine and health sciences, Open access publishing, Scientific publishing},
+	pages = {e7078},
+	file = {Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/5AGY7M74/Savage and Vickers - 2009 - Empirical Study of Data Sharing by Authors Publish.pdf:application/pdf;Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/UT2NHCSJ/article.html:text/html}
+}
+
+@article{Baker_2016,
+	title = {1,500 scientists lift the lid on reproducibility},
+	volume = {533},
+	url = {http://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970},
+	doi = {10.1038/533452a},
+	abstract = {Survey sheds light on the {\textquoteleft}crisis{\textquoteright} rocking research.},
+	language = {en},
+	number = {7604},
+	urldate = {2019-08-02},
+	journal = {Nature News},
+	author = {Baker, Monya},
+	month = may,
+	year = {2016},
+	pages = {452},
+	file = {Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/5MMVAP2S/1.html:text/html}
+}
+
+@misc{NIHGuideFINALNIHSTATEMENTONSHARINGRESEARCHDATA_,
+	title = {{NIH} {Guide}: {FINAL} {NIH} {STATEMENT} {ON} {SHARING} {RESEARCH} {DATA}},
+	url = {https://grants.nih.gov/grants/guide/notice-files/NOT-OD-03-032.html},
+	urldate = {2019-08-02},
+	file = {NIH Guide\: FINAL NIH STATEMENT ON SHARING RESEARCH DATA:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/QUN2BW6G/NOT-OD-03-032.html:text/html}
+}
+
+@article{Kwok_2018,
+	title = {Lab {Notebooks} {Go} {Digital}},
+	volume = {560},
+	language = {en},
+	journal = {Nature},
+	author = {Kwok, Roberta and Kanza, S},
+	year = {2018},
+	pages = {269}
+}
+
+@article{Ohl_2001,
+	title = {Change in pattern of ongoing cortical activity with auditory category learning},
+	volume = {412},
+	copyright = {2001 Nature Publishing Group},
+	issn = {1476-4687},
+	url = {https://www.nature.com/articles/35089076},
+	doi = {10.1038/35089076},
+	abstract = {Humans are able to classify novel items correctly by category1,2; some other animals have also been shown to do this3,4,5,6,7. During category learning, humans group perceptual stimuli by abstracting qualities from similarity relationships of their physical properties1,2,8. Forming categories is fundamental to cognition9 and can be independent of a {\^a}{\texteuro}\~{}memory store{\^a}{\texteuro}{\texttrademark} of information about the items or a prototype10. The neurophysiological mechanisms underlying the formation of categories are unknown. Using an animal model of category learning6, in which frequency-modulated tones are distinguished into the categories of {\^a}{\texteuro}\~{}rising{\^a}{\texteuro}{\texttrademark} and {\^a}{\texteuro}\~{}falling{\^a}{\texteuro}{\texttrademark} modulation, we demonstrate here that the sorting of stimuli into these categories emerges as a sudden change in an animal's learning strategy. Electro-corticographical recording from the auditory cortex11 shows that the transition is accompanied by a change in the dynamics of cortical stimulus representation. We suggest that this dynamic change represents a mechanism underlying the recognition of the abstract quality (or qualities) that defines the categories.},
+	language = {en},
+	number = {6848},
+	urldate = {2019-03-15},
+	journal = {Nature},
+	author = {Ohl, F. W. and Scheich, H. and Freeman, W. J.},
+	month = aug,
+	year = {2001},
+	pages = {733--736},
+	file = {Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/V8QIHMJK/Ohl et al. - 2001 - Change in pattern of ongoing cortical activity wit.pdf:application/pdf;Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/2BEWC688/35089076.html:text/html}
+}
+
+@article{Kanza_2017,
+	title = {Electronic {Lab} {Notebooks}: {Can} {They} {Replace} {Paper}?},
+	volume = {9},
+	issn = {1758-2946},
+	shorttitle = {Electronic {Lab} {Notebooks}},
+	url = {http://jcheminf.springeropen.com/articles/10.1186/s13321-017-0221-3},
+	doi = {10.1186/s13321-017-0221-3},
+	abstract = {Despite the increasingly digital nature of society there are some areas of research that remain firmly rooted in the past; in this case the laboratory notebook, the last remaining paper component of an experiment. Countless electronic laboratory notebooks (ELNs) have been created in an attempt to digitise record keeping processes in the lab, but none of them have become a `key player' in the ELN market, due to the many adoption barriers that have been identified in previous research and further explored in the user studies presented here. The main issues identified are the cost of the current available ELNs, their ease of use (or lack of it) and their accessibility issues across different devices and operating systems. Evidence suggests that whilst scientists willingly make use of generic notebooking software, spreadsheets and other general office and scientific tools to aid their work, current ELNs are lacking in the required functionality to meet the needs of the researchers. In this paper we present our extensive research and user study results to propose an ELN built upon a pre-existing cloud notebook platform that makes use of accessible popular scientific software and semantic web technologies to help overcome the identified barriers to adoption.},
+	language = {en},
+	number = {1},
+	urldate = {2018-12-18},
+	journal = {Journal of Cheminformatics},
+	author = {Kanza, Samantha and Willoughby, Cerys and Gibbins, Nicholas and Whitby, Richard and Frey, Jeremy Graham and Erjavec, Jana and Zupan{\v c}i{\v c}, Klemen and Hren, Matja{\v z} and Kova{\v c}, Katarina},
+	month = dec,
+	year = {2017}
+}
+
+@article{Rubacha_2011,
+	title = {A {Review} of {Electronic} {Laboratory} {Notebooks} {Available} in the {Market} {Today}},
+	volume = {16},
+	issn = {22110682},
+	url = {http://journals.sagepub.com/doi/10.1016/j.jala.2009.01.002},
+	doi = {10.1016/j.jala.2009.01.002},
+	language = {en},
+	number = {1},
+	urldate = {2018-12-18},
+	journal = {Journal of Laboratory Automation},
+	author = {Rubacha, Michael and Rattan, Anil K. and Hosselet, Stephen C.},
+	month = feb,
+	year = {2011},
+	pages = {90--98}
+}
+
+@article{Deisseroth_2013,
+	title = {Engineering {Approaches} to {Illuminating} {Brain} {Structure} and {Dynamics}.},
+	volume = {80},
+	doi = {10.1016/j.neuron.2013.10.032},
+	number = {3},
+	journal = {Neuron},
+	author = {Deisseroth, Karl and Schnitzer, Mark J.},
+	year = {2013},
+	pages = {568--577}
+}
+
+@article{Geisler_2008,
+	title = {Visual {Perception} and the {Statistical} {Properties} of {Natural} {Scenes}},
+	volume = {59},
+	issn = {1545-2085},
+	doi = {10.1146/annurev.psych.58.110405.085632},
+	number = {1},
+	journal = {Annu. Rev. Psychol.},
+	author = {Geisler, Wilson S.},
+	year = {2008},
+	pages = {167--192}
+}
+
+@article{Grewe_2011,
+	title = {A {Bottom}-up {Approach} to {Data} {Annotation} in {Neurophysiology}},
+	volume = {5},
+	url = {http://dx.doi.org/10.3389/fninf.2011.00016},
+	doi = {10.3389/fninf.2011.00016},
+	journal = {Front. Neuroinform.},
+	author = {Grewe, Jan and Wachtler, Thomas and Benda, Jan},
+	year = {2011}
+}
+
+@article{Maldonado_2008,
+	title = {Synchronization of {Neuronal} {Responses} in {Primary} {Visual} {Cortex} of {Monkeys} {Viewing} {Natural} {Images}},
+	volume = {100},
+	issn = {1522-1598},
+	doi = {10.1152/jn.00076.2008},
+	number = {3},
+	journal = {Journal of Neurophysiology},
+	author = {Maldonado, P. and Babul, C. and Singer, W. and Rodriguez, E. and Berger, D. and Gr{\"u}n, S.},
+	year = {2008},
+	pages = {1523--1532}
+}
+
+@article{Miyamoto_2015,
+	title = {The {Fiber}-{Optic} {Imaging} and {Manipulation} of {Neural} {Activity} during {Animal} {Behavior}},
+	issn = {0168-0102},
+	doi = {10.1016/j.neures.2015.09.004},
+	journal = {Neuroscience Research},
+	author = {Miyamoto, Daisuke and Murayama, Masanori},
+	year = {2015}
+}
+
+@article{Moucek_2014,
+	title = {Software and hardware infrastructure for research in electrophysiology},
+	volume = {8},
+	journal = {Frontiers in neuroinformatics},
+	author = {Mou{\v c}ek, Roman and Br{\u u}ha, Petr and Jezek, Petr and Mautner, Pavel and Novotny, Jiri and Papez, Vaclav and Prokop, Tom{\'a}{\v s} and {\v R}ond{\'i}k, Tom{\'a}{\v s} and {\v S}t{\v e}bet{\'a}k, Jan and Vareka, Lukas},
+	year = {2014},
+	pages = {20}
+}
+
+@article{Nicolelis_2002,
+	title = {Multielectrode {Recordings}: {The} next {Steps}.},
+	volume = {12},
+	doi = {10.1016/S0959-4388(02)00374-4},
+	number = {5},
+	journal = {Curr Opin Neurobiol},
+	author = {Nicolelis, Miguel A L. and Ribeiro, Sidarta},
+	year = {2002},
+	pages = {602--606}
+}
+
+@article{Obien_2014,
+	title = {Revealing {Neuronal} {Function} through {Microelectrode} {Array} {Recordings}.},
+	volume = {8},
+	doi = {10.3389/fnins.2014.00423},
+	journal = {Front Neurosci},
+	author = {Obien, Marie Engelene J. and Deligkaris, Kosmas and Bullmann, Torsten and Bakkum, Douglas J. and Frey, Urs},
+	year = {2014},
+	pages = {423}
+}
+
+@article{Schwarz_2014,
+	title = {Chronic, {Wireless} {Recordings} of {Large}-{Scale} {Brain} {Activity} in {Freely} {Moving} {Rhesus} {Monkeys}},
+	volume = {11},
+	issn = {1548-7105},
+	doi = {10.1038/nmeth.2936},
+	number = {6},
+	journal = {Nat Meth},
+	author = {Schwarz, David A and Lebedev, Mikhail A and Hanson, Timothy L and Dimitrov, Dragan F and Lehew, Gary and Meloy, Jim and Rajangam, Sankaranarayani and Subramanian, Vivek and Ifft, Peter J and Li, Zheng and al, et},
+	year = {2014},
+	pages = {670--676}
+}
+
+@article{Willoughby_2014,
+	title = {Creating {Context} for the {Experiment} {Record}. {User}-{Defined} {Metadata}: {Investigations} into {Metadata} {Usage} in the {LabTrove} {ELN}},
+	volume = {54},
+	issn = {1549-9596},
+	url = {https://doi.org/10.1021/ci500469f},
+	doi = {10.1021/ci500469f},
+	number = {12},
+	journal = {Journal of Chemical Information and Modeling},
+	author = {Willoughby, Cerys and Bird, Colin L. and Coles, Simon J. and Frey, Jeremy G.},
+	month = dec,
+	year = {2014},
+	pages = {3268--3283}
+}
+
+@article{Bzdok_2017,
+	title = {Inference in the age of big data: {Future} perspectives on neuroscience},
+	volume = {155},
+	issn = {1053-8119},
+	shorttitle = {Inference in the age of big data},
+	url = {http://www.sciencedirect.com/science/article/pii/S1053811917303816},
+	doi = {10.1016/j.neuroimage.2017.04.061},
+	abstract = {Neuroscience is undergoing faster changes than ever before. Over 100 years our field qualitatively described and invasively manipulated single or few organisms to gain anatomical, physiological, and pharmacological insights. In the last 10 years neuroscience spawned quantitative datasets of unprecedented breadth (e.g., microanatomy, synaptic connections, and optogenetic brain-behavior assays) and size (e.g., cognition, brain imaging, and genetics). While growing data availability and information granularity have been amply discussed, we direct attention to a less explored question: How will the unprecedented data richness shape data analysis practices? Statistical reasoning is becoming more important to distill neurobiological knowledge from healthy and pathological brain measurements. We argue that large-scale data analysis will use more statistical models that are non-parametric, generative, and mixing frequentist and Bayesian aspects, while supplementing classical hypothesis testing with out-of-sample predictions.},
+	urldate = {2018-11-14},
+	journal = {NeuroImage},
+	author = {Bzdok, Danilo and Yeo, B. T. Thomas},
+	month = jul,
+	year = {2017},
+	keywords = {Epistemology, High-dimensional statistics, Hypothesis testing, Machine learning, Sample complexity, Systems biology},
+	pages = {549--564},
+	file = {ScienceDirect Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/QG59ID5F/Bzdok and Yeo - 2017 - Inference in the age of big data Future perspecti.pdf:application/pdf;ScienceDirect Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/MDWBX46V/S1053811917303816.html:text/html}
+}
+
+@inproceedings{Coles_2008,
+	title = {Experiences with repositories and blogs in laboratories},
+	url = {https://eprints.soton.ac.uk/50901/},
+	booktitle = {Open {Repositories} 2008},
+	author = {Coles, Simon and Carr, Leslie and Frey, Jeremy},
+	month = apr,
+	year = {2008},
+	keywords = {cyberinfrastructure, e-science, preservation, scientific data repositories}
+}
+
+@article{Foltz_1999,
+	title = {Guidelines for {Assessing} the {Health} and {Condition} of {Mice}},
+	volume = {28},
+	language = {en},
+	number = {4},
+	journal = {Lab Animal},
+	author = {Foltz, Charmaine J and Ullman-Cullere, Mollie},
+	year = {1999},
+	pages = {5},
+	file = {Foltz and Ullman-Cullere - 1999 - Guidelines for Assessing the Health and Condition .pdf:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/QDNIM9PD/Foltz and Ullman-Cullere - 1999 - Guidelines for Assessing the Health and Condition .pdf:application/pdf}
+}
+
+@article{Burkholder_2012,
+	title = {Health {Evaluation} of {Experimental} {Laboratory} {Mice}},
+	volume = {2},
+	issn = {2161-2617},
+	url = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3399545/},
+	doi = {10.1002/9780470942390.mo110217},
+	abstract = {Good science and good animal care go hand in hand. A sick or distressed animal does not produce the reliable results that a healthy and unstressed animal produces. This unit describes the essentials of assessing mouse health, colony health surveillance, common conditions, and determination of appropriate endpoints. Understanding the health and well-being of the mice used in research enables the investigator to optimize research results and animal care.},
+	urldate = {2019-02-08},
+	journal = {Curr Protoc Mouse Biol},
+	author = {Burkholder, Tanya and Foltz, Charmaine and Karlsson, Eleanor and Linton, C Garry and Smith, Joanne M},
+	month = jun,
+	year = {2012},
+	pmid = {22822473},
+	pmcid = {PMC3399545},
+	pages = {145--165},
+	file = {PubMed Central Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/FHINY3JX/Burkholder et al. - 2012 - Health Evaluation of Experimental Laboratory Mice.pdf:application/pdf}
+}
+
+@incollection{Denker_2016,
+	address = {Cham},
+	title = {Designing {Workflows} for the {Reproducible} {Analysis} of {Electrophysiological} {Data}},
+	volume = {10087},
+	isbn = {978-3-319-50861-0 978-3-319-50862-7},
+	url = {http://link.springer.com/10.1007/978-3-319-50862-7_5},
+	urldate = {2016-12-14},
+	booktitle = {Brain-{Inspired} {Computing}},
+	publisher = {Springer International Publishing},
+	author = {Denker, Michael and Gr{\~A}{\textonequarter}n, Sonja},
+	editor = {Amunts, Katrin and Grandinetti, Lucio and Lippert, Thomas and Petkov, Nicolai},
+	year = {2016},
+	pages = {58--72}
+}
+
+@article{Vargas-Irwin_2010,
+	title = {Decoding {Complete} {Reach} and {Grasp} {Actions} from {Local} {Primary} {Motor} {Cortex} {Populations}},
+	volume = {30},
+	issn = {1529-2401},
+	doi = {10.1523/jneurosci.5443-09.2010},
+	number = {29},
+	journal = {Journal of Neuroscience},
+	author = {Vargas-Irwin, C. E. and Shakhnarovich, G. and Yadollahpour, P. and Mislow, J. M. K. and Black, M. J. and Donoghue, J. P.},
+	year = {2010},
+	pages = {9659--9669}
+}
+
+@article{Verkhratsky_2006,
+	title = {From {Galvani} to {Patch} {Clamp}: {The} {Development} of {Electrophysiology}.},
+	volume = {453},
+	doi = {10.1007/s00424-006-0169-z},
+	number = {3},
+	journal = {Pflugers Arch},
+	author = {Verkhratsky, Alexei and Krishtal, O. A. and Petersen, Ole H.},
+	year = {2006},
+	pages = {233--247}
+}
+
+@article{Zehl_2016,
+	title = {Handling {Metadata} in a {Neurophysiology} {Laboratory}},
+	volume = {10},
+	url = {http://dx.doi.org/10.3389/fninf.2016.00026},
+	doi = {10.3389/fninf.2016.00026},
+	journal = {Front. Neuroinform.},
+	author = {Zehl, Lyuba and Jaillet, Florent and Stoewer, Adrian and Grewe, Jan and Sobolev, Andrey and Wachtler, Thomas and Brochier, Thomas G. and Riehle, Alexa and Denker, Michael and Gr{\~A}{\textonequarter}n, Sonja},
+	month = jul,
+	year = {2016}
+}
+
+@article{Brochier_2018,
+	title = {Massively parallel recordings in macaque motor cortex during an instructed delayed reach-to-grasp task},
+	volume = {5},
+	url = {https://doi.org/10.1038/sdata.2018.55},
+	doi = {10.1038/sdata.2018.55},
+	journal = {Scientific Data},
+	author = {Brochier, Thomas and Zehl, Lyuba and Hao, Yaoyao and Duret, Margaux and Sprenger, Julia and Denker, Michael and Gr{\~A}{\textonequarter}n, Sonja and Riehle, Alex},
+	month = apr,
+	year = {2018}
+}
+
+@article{Yatsenko_2015,
+	title = {{DataJoint}: {Managing} {Big} {Scientific} {Data} {Using} {MATLAB} or {Python}},
+	shorttitle = {{DataJoint}},
+	url = {http://biorxiv.org/lookup/doi/10.1101/031658},
+	doi = {10.1101/031658},
+	abstract = {The rise of big data in modern research poses serious challenges for data management: Large and intricate datasets from diverse instrumentation must be precisely aligned, annotated, and processed in a variety of ways to extract new insights. While high levels of data integrity are expected, research teams have diverse backgrounds, are geographically dispersed, and rarely possess a primary interest in data science. Here we describe DataJoint, an open-source toolbox designed for manipulating and processing scientific data under the relational data model. Designed for scientists who need a flexible and expressive database language with few basic concepts and operations, DataJoint facilitates multi-user access, efficient queries, and distributed computing. With implementations in both MATLAB and Python, DataJoint is not limited to particular file formats, acquisition systems, or data modalities and can be quickly adapted to new experimental designs. DataJoint and related resources are available at http://datajoint.github.com.},
+	urldate = {2019-01-23},
+	journal = {bioRxiv},
+	author = {Yatsenko, Dimitri and Reimer, Jacob and Ecker, Alexander S and Walker, Edgar Y and Sinz, Fabian and Berens, Philipp and Hoenselaar, Andreas and Cotton, Ronald James and Siapas, Athanassios S. and Tolias, Andreas S.},
+	month = nov,
+	year = {2015}
+}
+
+@article{Jacob_2010,
+	title = {The {Matrix}: {A} {New} {Tool} for {Probing} the {Whisker}-to-{Barrel} {System} with {Natural} {Stimuli}},
+	volume = {189},
+	issn = {01650270},
+	shorttitle = {The {Matrix}},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0165027010001548},
+	doi = {10.1016/j.jneumeth.2010.03.020},
+	abstract = {The whisker to barrel system in rodents has become one of the major models for the study of sensory processing. Several tens of whiskers (or vibrissae) are distributed in a regular manner on both sides of the snout. Many tactile discrimination tasks using this system need multiple contacts with more than one whisker to be solved. With the aim of mimicking those multi-whisker stimuli during electrophysiological recordings, we developed a novel mechanical stimulator composed of 24 independent multi-directional piezoelectric benders adapted to the five rows and the five caudal arcs of the rat whisker pad. The most widely used technology for producing mechanical deflections of the whiskers is based on piezoelectric benders that display a non-linear behavior when driven with high frequency input commands and, if not compensated, show high unwanted ringing at particular resonance frequencies. If not corrected, this nonlinear behavior precludes the application of high frequency deflections and the study of cortical responses to behaviorally relevant stimuli. To cope with the ringing problem, a mechanical and a software based solutions have been developed. With these corrections, the upper bound of the linear range of the bender is increased to 1 kHz. This new device allows the controlled delivery of large scale natural patterns of whisker deflections characterized by rapid high frequency vibrations of multiple whiskers.},
+	language = {en},
+	number = {1},
+	urldate = {2019-02-28},
+	journal = {Journal of Neuroscience Methods},
+	author = {Jacob, Vincent and Estebanez, Luc and Le Cam, Julie and Tiercelin, Jean-Yves and Parra, Patrick and Par{\'e}sys, G{\'e}rard and Shulz, Daniel E.},
+	month = may,
+	year = {2010},
+	pages = {65--74}
+}
+
+@article{Denker_2018,
+	title = {{LFP} {Beta} {Amplitude} {Is} {Linked} to {Mesoscopic} {Spatio}-{Temporal} {Phase} {Patterns}},
+	volume = {8},
+	issn = {2045-2322},
+	url = {http://www.nature.com/articles/s41598-018-22990-7},
+	doi = {10.1038/s41598-018-22990-7},
+	language = {en},
+	number = {1},
+	urldate = {2018-04-03},
+	journal = {Scientific Reports},
+	author = {Denker, Michael and Zehl, Lyuba and Kilavik, Bj{\o}rg E. and Diesmann, Markus and Brochier, Thomas and Riehle, Alexa and Gr{\"u}n, Sonja},
+	month = dec,
+	year = {2018},
+	pages = {5200}
+}
+
+@article{Bitzenhofer_2017,
+	title = {Layer-specific optogenetic activation of pyramidal neurons causes beta{\^a}{\texteuro}{\textquotedblleft}gamma entrainment of neonatal networks},
+	volume = {8},
+	copyright = {{\^A}{\textcopyright} 2017 Macmillan Publishers Limited, part of Springer Nature. All rights reserved.},
+	issn = {2041-1723},
+	url = {http://www.nature.com/ncomms/2017/170220/ncomms14563/full/ncomms14563.html},
+	doi = {10.1038/ncomms14563},
+	abstract = {Oscillations in cortical activity during development are important for functional maturation. Here, the authors use optogenetics in neonatal mice to determine a causal role for pyramidal cell firing in different prelimbic cortex layers in generating beta{\^a}{\texteuro}{\textquotedblleft}gamma range activity.},
+	language = {en},
+	urldate = {2017-02-24},
+	journal = {Nature Communications},
+	author = {Bitzenhofer, Sebastian H. and Ahlbeck, Joachim and Wolff, Amy and Wiegert, J. Simon and Gee, Christine E. and Oertner, Thomas G. and Hanganu-Opatz, Ileana L.},
+	month = feb,
+	year = {2017},
+	pages = {14563},
+	file = {Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/J98P88D4/ncomms14563.html:text/html}
+}
+
+@article{Garcia_2014,
+	title = {Neo: {An} {Object} {Model} for {Handling} {Electrophysiology} {Data} in {Multiple} {Formats}},
+	volume = {8},
+	issn = {1662-5196},
+	shorttitle = {Neo},
+	url = {http://journal.frontiersin.org/article/10.3389/fninf.2014.00010/abstract},
+	doi = {10.3389/fninf.2014.00010},
+	urldate = {2016-03-01},
+	journal = {Frontiers in Neuroinformatics},
+	author = {Garcia, Samuel and Guarino, Domenico and Jaillet, Florent and Jennings, Todd and Pr{\"o}pper, Robert and Rautenberg, Philipp L. and Rodgers, Chris C. and Sobolev, Andrey and Wachtler, Thomas and Yger, Pierre and Davison, Andrew P.},
+	year = {2014},
+	pages = {10}
+}
+
+@article{Stoewer_2014,
+	title = {File {Format} and {Library} for {Neuroscience} {Data} and {Metadata}},
+	issn = {1662-5196},
+	url = {http://www.frontiersin.org/Community/AbstractDetails.aspx?ABS_DOI=10.3389/conf.fninf.2014.18.00027},
+	doi = {10.3389/conf.fninf.2014.18.00027},
+	urldate = {2019-01-23},
+	journal = {Frontiers in Neuroinformatics Conference Abstract: Neuroinformatics 2014},
+	author = {Stoewer, Adrian and Kellner, Christian and Benda, Jan and Wachtler, Thomas and Grewe, Jan},
+	year = {2014}
+}
+
+@article{Wilkinson_2016,
+	title = {The {FAIR} {Guiding} {Principles} for {Scientific} {Data} {Management} and {Stewardship}},
+	volume = {3},
+	issn = {2052-4463},
+	url = {http://www.nature.com/articles/sdata201618},
+	doi = {10.1038/sdata.2016.18},
+	urldate = {2018-03-14},
+	journal = {Scientific Data},
+	author = {Wilkinson, Mark D. and Dumontier, Michel and Aalbersberg, IJsbrand Jan and Appleton, Gabrielle and Axton, Myles and Baak, Arie and Blomberg, Niklas and Boiten, Jan-Willem and da Silva Santos, Luiz Bonino and Bourne, Philip E. and Bouwman, Jildau and Brookes, Anthony J. and Clark, Tim and Crosas, Merc{\`e} and Dillo, Ingrid and Dumon, Olivier and Edmunds, Scott and Evelo, Chris T. and Finkers, Richard and Gonzalez-Beltran, Alejandra and Gray, Alasdair J.G. and Groth, Paul and Goble, Carole and Grethe, Jeffrey S. and Heringa, Jaap and 't Hoen, Peter A.C and Hooft, Rob and Kuhn, Tobias and Kok, Ruben and Kok, Joost and Lusher, Scott J. and Martone, Maryann E. and Mons, Albert and Packer, Abel L. and Persson, Bengt and Rocca-Serra, Philippe and Roos, Marco and van Schaik, Rene and Sansone, Susanna-Assunta and Schultes, Erik and Sengstag, Thierry and Slater, Ted and Strawn, George and Swertz, Morris A. and Thompson, Mark and van der Lei, Johan and van Mulligen, Erik and Velterop, Jan and Waagmeester, Andra and Wittenburg, Peter and Wolstencroft, Katherine and Zhao, Jun and Mons, Barend},
+	month = mar,
+	year = {2016},
+	pages = {160018}
+}
+
+@article{Tebaykin_2018,
+	title = {Modeling sources of interlaboratory variability in electrophysiological properties of mammalian neurons},
+	volume = {119},
+	url = {https://doi.org/10.1152/jn.00604.2017},
+	doi = {10.1152/jn.00604.2017},
+	abstract = {Patch-clamp electrophysiology is widely used to characterize neuronal electrical phenotypes. However, there are no standard experimental conditions for in vitro whole cell patch-clamp electrophysiology, complicating direct comparisons between data sets. In this study, we sought to understand how basic experimental conditions differ among laboratories and how these differences might impact measurements of electrophysiological parameters. We curated the compositions of external bath solutions (artificial cerebrospinal fluid), internal pipette solutions, and other methodological details such as animal strain and age from 509 published neurophysiology articles studying rodent neurons. We found that very few articles used the exact same experimental solutions as any other, and some solution differences stem from recipe inheritance from advisor to advisee as well as changing trends over the years. Next, we used statistical models to understand how the use of different experimental conditions impacts downstream electrophysiological measurements such as resting potential and action potential width. Although these experimental condition features could explain up to 43\% of the study-to-study variance in electrophysiological parameters, the majority of the variability was left unexplained. Our results suggest that there are likely additional experimental factors that contribute to cross-laboratory electrophysiological variability, and identifying and addressing these will be important to future efforts to assemble consensus descriptions of neurophysiological phenotypes for mammalian cell types.NEW \& NOTEWORTHY This article describes how using different experimental methods during patch-clamp electrophysiology impacts downstream physiological measurements. We characterized how methodologies and experimental solutions differ across articles. We found that differences in methods can explain some, but not all, of the study-to-study variance in electrophysiological measurements. Explicitly accounting for methodological differences using statistical models can help correct downstream electrophysiological measurements for cross-laboratory methodology differences.},
+	number = {4},
+	journal = {Journal of Neurophysiology},
+	author = {Tebaykin, Dmitry and Tripathy, Shreejoy J. and Binnion, Nathalie and Li, Brenna and Gerkin, Richard C. and Pavlidis, Paul},
+	year = {2018},
+	pmid = {29357465},
+	pages = {1329--1339}
+}
+
+@article{Chen_2019,
+	title = {Open is not enough},
+	volume = {15},
+	copyright = {2018 Springer Nature Limited},
+	issn = {1745-2481},
+	url = {https://www.nature.com/articles/s41567-018-0342-2},
+	doi = {10.1038/s41567-018-0342-2},
+	abstract = {The solutions adopted by the high-energy physics community to foster reproducible research are examples of best practices that could be embraced more widely. This first experience suggests that reproducibility requires going beyond openness.},
+	language = {En},
+	number = {2},
+	urldate = {2019-08-02},
+	journal = {Nature Physics},
+	author = {Chen, Xiaoli and Dallmeier-Tiessen, S{\"u}nje and Dasler, Robin and Feger, Sebastian and Fokianos, Pamfilos and Gonzalez, Jose Benito and Hirvonsalo, Harri and Kousidis, Dinos and Lavasa, Artemis and Mele, Salvatore and Rodriguez, Diego Rodriguez and {\v S}imko, Tibor and Smith, Tim and Trisovic, Ana and Trzcinska, Anna and Tsanaktsidis, Ioannis and Zimmermann, Markus and Cranmer, Kyle and Heinrich, Lukas and Watts, Gordon and Hildreth, Michael and Iglesias, Lara Lloret and Lassila-Perini, Kati and Neubert, Sebastian},
+	month = feb,
+	year = {2019},
+	pages = {113},
+	file = {Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/2KZC32SR/Chen et al. - 2019 - Open is not enough.pdf:application/pdf;Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/BP67FLHS/s41567-018-0342-2.html:text/html}
+}
+
+@misc{PEP8StyleGuideforPythonCode_,
+	title = {{PEP} 8 -- {Style} {Guide} for {Python} {Code}},
+	url = {https://www.python.org/dev/peps/pep-0008/},
+	abstract = {The official home of the Python Programming Language},
+	language = {en},
+	urldate = {2019-08-02},
+	journal = {Python.org},
+	file = {Snapshot:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/73GWKZXL/pep-0008.html:text/html}
 }

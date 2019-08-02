@@ -29,7 +29,7 @@ rule compile_manuscript:
            join(LATEX, 'figures', 'figures_complete.done') 
     output: join(LATEX,'main.pdf')
     params: latex=LATEX,
-            latex_params = '-shell-escape -interaction=nonstopmode',
+            latex_params = '-shell-escape -interaction=batchmode',
             # pdflatex --shell-escape is required for usage of svg package
             compiler = 'pdflatex'
     shell: '''

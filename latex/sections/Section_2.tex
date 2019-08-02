@@ -2,6 +2,39 @@
 \section{Sharing data}
 \label{sec:data}
 
+Scientific data as basis for findings
+Current system: experiment - analysis - paper -> manuscript publication
+Reprodicibility crisis in science
+
+Different levels of reproducibility: reusablility, replicability, reproducibility... and the interpretation depends on the scientific field
+
+first problem: data sharing, second problem: code and workflow sharing
+reasons for this: 'ownership of data, human data' additional effort of preparation not included in funding
+
+
+immediate approach for past research: reproduction papers: ReScience,...
+solultions for 1): fair principles, data publications (add list of journals, repositories for hosting)
+solutions for 2) partially also addressed by data journals
+\todo{replication, reproducibility - different field different meaning https://www.nature.com/articles/s41567-018-0342-2}
+
+
+
+\todo{fair principles http://opendata.cern.ch/record/5500}
+
+Reproducibility of scientific results is a recently highly debated topic.
+Making research data available for the scientific community is 
+
+\todo{ReScience}
+
+\todo{Data hosting sites: https://www.pangaea.de/submit/ https://bmcresnotes.biomedcentral.com/about/introducing-data-notes}
+\todo{Horizon 2020 - Open Access as a standard way of publishing  - text as well as research data %https://www.bmbf.de/upload_filestore/pub/Open_Access_in_Deutschland.pdf
+}
+
+\todo{The Availability of Research Data Declines Rapidly with Article Age https://www.cell.com/current-biology/fulltext/S0960-9822(13)01400-0}
+
+\todo{open data is not enough - include analysis and metadata -  CERN Analysis Preservation and REANA https://www.nature.com/articles/s41567-018-0342-2}
+\todo{Reuse of large data possible - CMS example (The CERN Open Data port) http://opendata.cern.ch/record/5500}
+
 \todo{This section is based on the scientific data publication and odML}
 
 
@@ -244,26 +277,17 @@
 % All data and metadata files as well as the code described above can be found in the data repository at XXX INSERT LOCATION HERE XXX. The subdirectory datasets contains all data files and the metadata odML-file for the two provided recording sessions. The subdirectory code contains the files example.py and neo_utils.py. For further reference and inspiration this subdirectory also contains the Python scripts generating the data figures of this manuscript. Furthermore, the subdirectories to code contain frozen versions of the required libraries (Neo, python-odml) as well as the custom loading routine combining data and metadata (reachgraspio.py). Finally, the datasets_matlab directory contains the annotated Neo data object containing all primary data saved in the mat-file format. Updated versions of the code, e.g., adapted to new releases of the Neo library, can be found at https://github.com/INM-6/reach-to-grasp-data-publication.
 }
 
-% ...
-%
-% \subsection{Exemplary Table}
-% \label{subsec:Intro/table}
-% ...
-% 
-% \begin{longtable}{l|ccccc}
-%   \caption{Exemplary Table}
-%   \label{table:table-1}
-%   \\
-%   \textbf{Id} & \textbf{Col 1} & \textbf{Col 2}& \textbf{Col 3} & \textbf{Col 4} & \textbf{Col 5}\\
-%   \hline
-%   1 & Col 1 & Col 2 & Col 3 & Col 4 & Col 5\\
-%   2 & Col 1 & Col 2 & Col 3 & Col 4 & Col 5\\
-%   3 & Col 1 & Col 2 & Col 3 & Col 4 & Col 5\\
-%   4 & Col 1 & Col 2 & Col 3 & Col 4 & Col 5\\
-%   5 & Col 1 & Col 2 & Col 3 & Col 4 & Col 5\\
-% \end{longtable}
-% 
-% \subsection{Exemplary Section and Table Referencing}
-% \label{subsec:Intro/rfs}
-% 
-% See Table \ref{table:table-1} in Section \ref{subsec:Intro/table}  for details.
+
+
+
+\subsection{Discussion}
+\todo{
+shortcomings of the presented workflow
+- moderate reusability (due to template modularization, but not enrichment code)
+
+general requirements for scientific workflow concepts:
+- versioning
+- reproducibility
+- 'out of the box' usability (user friendliness)
+- file size issues (with versioning (git/git-annex/gin \& loading of data)
+- central data hosting (especially for collaborative work)}
