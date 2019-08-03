@@ -2,40 +2,49 @@
 \section{Sharing data}
 \label{sec:data}
 
-Scientific data as basis for findings
-Current system: experiment - analysis - paper -> manuscript publication
-Reprodicibility crisis in science
+Scientific progress is a sequence of scientific findings building on top of each other. These findings are classically hypothesis tested against experimental data and the resulting interpretation is communicated to other scientists via the publication of a manuscript. However, in recent years, the practice of publishing papers has been critizised for a lack of robustness. Attemps in a number of scientific fields, including among others life sciences, to reproduce published scientific findings failed to support the same conclusions \citep{Baker_2016, Fidler_2017, Pashler_2012, Ioannidis_2005, Goodman_2007, Ioannidis_2007, Collaboration_2015}. To qualitatively distinguish between different types of reproduction, a collection of terms has been applied to describe different levels of reproducibility of a study: reprodicibility, replicability, repeatability \citep{Plesser_2018, Drummond_2009}. However the specific interpretation of each of these terms highly depends on the scientific field they are applied in. For example repeatability in the sense of running the same experiment with identical components differs a lot in the computer sciences versus experimental sciences. Replicating a study by running the same code on the identical machine might be a realistic project, running the identical experiment in psycholoy is not \citep{Anderson_2016}.
 
-Different levels of reproducibility: reusablility, replicability, reproducibility... and the interpretation depends on the scientific field
+\todo{Provide R-Word standards for this manuscript}
 
-first problem: data sharing, second problem: code and workflow sharing
-reasons for this: 'ownership of data, human data' additional effort of preparation not included in funding
+This already introduces another important aspect of scientific publications: the underlying data. Reproducing findings of publications is harder for older publications \citep{Vines_2013}, which to a large part can be accounted for by the decreasing retrevability of the original datasets. The obligation to provide data to other scientists is a default introduced already decades ago for many funding initiatives (e.g. NIH since 2003\footnote{\url{https://grants.nih.gov/grants/policy/data_sharing/}}, BMBF recommends OpenAccess 2016\footnote{\url{https://www.bmbf.de/upload_filestore/pub/Open\_Access\_in\_Deutschland.pdf}}) for publications in a number of journals \footnote{\url{https://www.springernature.com/gp/authors/research-data-policy/data-availability-statements/12330880}}, however the readiness to comply is rather low (1/10 in \citep{Savage_2009}). To address the problem of reproducibility for original research articles, a number of journals were opened, which invite to publish replications of the original articles in computational science \footnote{ReScience, \url{http://rescience.github.io/}}, economics\footnote{\url{http://www.economics-ejournal.org/special-areas/replications-1}}, psychology\footnote{\url{https://www.apa.org/pubs/journals/xge/replication-articles}} and neuroscience \citep{Yeung_2017}.
+To improve the situation of data availability, the Fair Principles were defined by \citep{Wilkinson_2016}   and a number of sites offering to host scientific data have become available: Zenodo\footnote{Zenodo, \url{https://zenodo.org/}}, Pangaea\footnote{Pangaea, \url{https://www.pangaea.de}}, BMC Research Notes\footnote{BMC Research Notes, \url{https://bmcresnotes.biomedcentral.com/} \& \url{https://bmcresnotes.biomedcentral.com/about/introducing-data-notes}}, DataDryad\footnote{Datadryad, \url{https://datadryad.org/}}, GIN\footnote{GIN, \url{https://gin.g-node.org/}}, Research Data Australia\footnote{RDA, \url{https://www.ands.org.au/online-services/research-data-australia/rda-registry}}, \citep{Assante_2016} and publishing data descriptor papers ScientificData\footnote{ScientificData, \url{https://www.nature.com/sdata/}}, DataScience\footnote{DataScience, \url{https://datascience.codata.org/}} \citep{Candela_2015}.
+It has been shown, that mandated data archiving upon publication highly improves data availablility \citep{Vines_2013}. Going one step further, \citet{Chen_2019} show that making only the data available is not sufficient for reproducible science, data need to be accompanied by software packages used for further analysis. In the optimal case this encompasses detailed analysis motivation a complete analysis workflow. Making the effort of publishing the data is possible for large scale datasets, e.g. from particle physics \citep{Jomhari_2017}.
 
-
-immediate approach for past research: reproduction papers: ReScience,...
-solultions for 1): fair principles, data publications (add list of journals, repositories for hosting)
-solutions for 2) partially also addressed by data journals
-\todo{replication, reproducibility - different field different meaning https://www.nature.com/articles/s41567-018-0342-2}
+In this section, we provide an example of a complex published dataset \citep{Brochier_2018}, demonstrating open-source tools for comprehesive handling of electrophysiology data and metadata.
 
 
+% replication, reproducibility - different field different meaning
+% 
+% Scientific data as basis for findings
+% Current system: experiment - analysis - paper -> manuscript publication
+% Reprodicibility crisis in science
+% 
+% Different levels of reproducibility: reusablility, replicability, reproducibility... and the interpretation depends on the scientific field
+% 
+% first problem: data sharing, second problem: code and workflow sharing
+% reasons for this: 'ownership of data, human data' additional effort of preparation not included in funding
+% 
+% immediate approach for past research: reproduction papers: ReScience,...
+% solultions for 1): fair principles, data publications (add list of journals, repositories for hosting)
+% solutions for 2) partially also addressed by data journals [open data is not enough]
 
-\todo{fair principles http://opendata.cern.ch/record/5500}
 
-Reproducibility of scientific results is a recently highly debated topic.
-Making research data available for the scientific community is 
-
-\todo{ReScience}
-
-\todo{Data hosting sites: https://www.pangaea.de/submit/ https://bmcresnotes.biomedcentral.com/about/introducing-data-notes}
-\todo{Horizon 2020 - Open Access as a standard way of publishing  - text as well as research data %https://www.bmbf.de/upload_filestore/pub/Open_Access_in_Deutschland.pdf
-}
-
-\todo{The Availability of Research Data Declines Rapidly with Article Age https://www.cell.com/current-biology/fulltext/S0960-9822(13)01400-0}
-
-\todo{open data is not enough - include analysis and metadata -  CERN Analysis Preservation and REANA https://www.nature.com/articles/s41567-018-0342-2}
-\todo{Reuse of large data possible - CMS example (The CERN Open Data port) http://opendata.cern.ch/record/5500}
-
-\todo{This section is based on the scientific data publication and odML}
+% \todo{replication, reproducibility - different field different meaning https://www.nature.com/articles/s41567-018-0342-2}
+% \todo{fair principles}
+% 
+% Reproducibility of scientific results is a recently highly debated topic.
+% Making research data available for the scientific community is 
+% 
+% \todo{ReScience}
+% 
+% \todo{Data hosting sites: https://www.pangaea.de/submit/ https://bmcresnotes.biomedcentral.com/about/introducing-data-notes}
+% \todo{Horizon 2020 - Open Access as a standard way of publishing  - text as well as research data %https://www.bmbf.de/upload_filestore/pub/Open_Access_in_Deutschland.pdf
+% }
+% 
+% \todo{The Availability of Research Data Declines Rapidly with Article Age https://www.cell.com/current-biology/fulltext/S0960-9822(13)01400-0}
+% 
+% \todo{open data is not enough - include analysis and metadata -  CERN Analysis Preservation and REANA https://www.nature.com/articles/s41567-018-0342-2}
+% \todo{Reuse of large data possible - CMS example (The CERN Open Data port) http://opendata.cern.ch/record/5500}
 
 
 \todo{Abstract We publish two electrophysiological datasets recorded in motor cortex of two macaque monkeys during an instructed delayed reach-to-grasp task, using chronically implanted 10-by-10 Utah electrode arrays. We provide a) raw neural signals (sampled at 30kHz), b) time stamps and spike waveforms of offline sorted single and multi units (93/156 SUA and 49/19 MUA for monkey L and N, respectively), c) trial events and the monkey's behavior, and d) extensive metadata hierarchically structured via the odML metadata framework (including quality assessment post-processing steps, such as trial rejections). The dataset of one monkey contains a simultaneously saved record of the local field potential (LFP) sampled at 1kHz. To load the datasets in Python, we provide code based on the Neo data framework that produces a data structure which is annotated with relevant metadata. We complement this loading routine with an example code demonstrating how to access the data objects (e.g., raw signals) contained in such structures. For Matlab users, we provide the annotated data structures as mat-files.
