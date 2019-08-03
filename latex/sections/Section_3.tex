@@ -32,7 +32,7 @@ In general, odMLtables facilitates access to sophisticated metadata management s
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.70\columnwidth]{figures/odmltables_figures/fig1_odML_workflow/workflow.pdf}
-\caption{{\label{fig:odMLgeneration}
+\caption[Generic workflow of generating metadata collections from source files using the odML framework]{{\label{fig:odMLgeneration}
 \textbf{Generic workflow of generating metadata collections from source files using the odML framework.} For a given metadata collection (top row, example metadata collections A-C), metadata are pooled from multiple files and enriched via manual entry (second row). These metadata are converted into individual collections via a scripted approach applying an odML template structure (third row). By further integrating individual multiple metadata collections (fourth row), a complete odML collection containing all recordings of a particular experiment can be created (bottom row).
 }}
 \end{center}
@@ -59,7 +59,7 @@ In the following, we describe in detail the structure of the hierarchical and ta
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.70\columnwidth]{figures/odmltables_figures/fig2_odml_table_conversion/odml-table-conversion.pdf}
-\caption{{\label{fig:min_workflow}
+\caption[Minimal workflow for manually editing odML files via odMLtables]{{\label{fig:min_workflow}
 \textbf{Minimal workflow for manually editing odML files via odMLtables.} Metadata is manually edited in tabular form using spreadsheet software and stored in \code{xls}{} and \code{csv}{} formats (left). The minimal functionality of odMLtables is to convert between such tabular representations and the hierarchical odML structure (right). The hierarchical placement of individual metadata entries, i.e., the Sections of the odML tree, is encoded in a specific column of the table (gray boxes and circles), whereas the values and attributes of metadata entries, i.e., a Property represented as leaves of the odML tree, are stored in rows of the table (colored boxes).%
 }}
 \end{center}
@@ -81,7 +81,7 @@ A number of features were merged or moved by the change from odML version 1.3 to
 \begin{figure}
     \centering
     \includegraphics[width=1.0\columnwidth]{figures/odmltables_figures/fig3_odml_data_model/odML_DataModel_version.png}
-    \caption{\textbf{Evolution of the odML data-model.} Each box represents an entity defined by the data model and is color coded. Connections between entities are illustrated using the UML aggregation relation where a diamond denotes the target of a connection; the numbers at source and target denote the cardinality of each entity in the connection. (A) Version 1.3 data model. Four entities are defined: The \textit{Document} (marked in white) as the root element of a metadata file contains information about the author, document date, the document version and a default repository containing definitions used within the Document. It further contains grouping elements, \textit{Section}s (marked in dark blue). These are defined via their name and type attributes and can hold Subsections and provide semantic structure to an odML Document. The "definition" attribute provides information about the nature of a Section, while "link" and "include" refer to further Sections within the same or a different Document, respectively. Sections may contain named \textit{Property} entities (marked in cyan) which hold at least one \textit{Value} (marked in light blue) thus creating an extended key-value pair. (B) Version 1.4 data model: To simplify the use of the odML data model the Value entity was integrated into the Property taking over the attributes "dtype" (data type), "unit", "uncertainty", "value origin", and "reference". In this version a Property may contain a list of values, which must be identical in terms of the relocated attributes thus reducing the risk of ambiguities in the value list. For more information on attributes that have not been modified please refer to the original publication \citep{Grewe_2011}. Figure with permission adapted from \cite{Grewe_2011}.}
+    \caption[Evolution of the odML data-model]{\textbf{Evolution of the odML data-model.} Each box represents an entity defined by the data model and is color coded. Connections between entities are illustrated using the UML aggregation relation where a diamond denotes the target of a connection; the numbers at source and target denote the cardinality of each entity in the connection. (A) Version 1.3 data model. Four entities are defined: The \textit{Document} (marked in white) as the root element of a metadata file contains information about the author, document date, the document version and a default repository containing definitions used within the Document. It further contains grouping elements, \textit{Section}s (marked in dark blue). These are defined via their name and type attributes and can hold Subsections and provide semantic structure to an odML Document. The "definition" attribute provides information about the nature of a Section, while "link" and "include" refer to further Sections within the same or a different Document, respectively. Sections may contain named \textit{Property} entities (marked in cyan) which hold at least one \textit{Value} (marked in light blue) thus creating an extended key-value pair. (B) Version 1.4 data model: To simplify the use of the odML data model the Value entity was integrated into the Property taking over the attributes "dtype" (data type), "unit", "uncertainty", "value origin", and "reference". In this version a Property may contain a list of values, which must be identical in terms of the relocated attributes thus reducing the risk of ambiguities in the value list. For more information on attributes that have not been modified please refer to the original publication \citep{Grewe_2011}. Figure with permission adapted from \cite{Grewe_2011}.}
     \label{fig:odml_versions}
 \end{figure}
 
@@ -98,7 +98,7 @@ odMLtables converts the hierarchical odML structure (\cref{tree_and_table}A) int
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=1.0\columnwidth]{figures/odmltables_figures/fig4_hierarchy_table_mapping/hierarchy_table_mapping.pdf}
-\caption{{\label{fig:tree_and_table}
+\caption[Mapping of an odML structure in (A) hierarchical metadata format to (B) tabular format.]{{\label{fig:tree_and_table}
 \textbf{Mapping of an odML structure in (A) hierarchical metadata format to (B) tabular format.} Individual attributes of the odML entities are represented in different columns in the tabular representation (e.g. 'Section Definition', 'Property Name', 'Data Uncertainty', compare color code). Document attributes ('author', 'date', 'repository' and 'version') are described separately in the first row of the tabular representation. The hierarchy of Sections is captured in an additional column ('Path to Section') describing the path between the odML Document and the current Section. Each metadata entry in the hierarchical format corresponds to a single row in the tabular format. Items of a list are treated as individual entries.
 }}
 \end{center}
@@ -138,7 +138,7 @@ This function converts metadata collections between the representations in the d
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.70\columnwidth]{figures/odmltables_figures/fig5_odMLtables_screenshot/Screenshot.png}
-\caption{{\label{fig:GUI_mainwindow}
+\caption[Main window of the odMLtables GUI]{{\label{fig:GUI_mainwindow}
 \textbf{Main window of the odMLtables GUI}. The interface gives access to the main functionalities available by the tool: Converting files from hierarchical to tabular (flat) representations, generating an empty generic odML table (template), comparing entries within a metadata collection, merging contents of two collections, and selecting a subset of a metadata collection (filtering). Each button starts a series of dialogs (wizards) that guide the user through the corresponding process.
 }}
 \end{center}
@@ -172,7 +172,7 @@ To guarantee a consistent structure of such a score sheet, initially a template 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.5\columnwidth]{figures/odmltables_figures/fig6_template_table/template_table.pdf}
-\caption{\label{fig:template_table}
+\caption[Template score sheet]{\label{fig:template_table}
 \textbf{Template score sheet.} The template score sheet contains the measures required for each measurement day, including optional default values (here: ``Alice'' for ``Experimenter'' and ``g'' as unit for ``Weight'').}
 \end{center}
 \end{figure}
@@ -218,7 +218,7 @@ As the common odML structure grows day by day it is of advantage to extract spec
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.5\columnwidth]{figures/odmltables_figures/fig7_missing_values_table/missing_values_table.pdf}
-\caption{\label{fig:missing_values_table}
+\caption[Metadata collection filtered to show only Properties with an empty value]{\label{fig:missing_values_table}
 \textbf{Metadata collection filtered to show only Properties with an empty value.} Missing values entries are highlighted in red by odMLtables.}
 \end{center}
 \end{figure}
@@ -256,7 +256,7 @@ By use of the odML library together with the odMLtables Python API, users have a
 
 \begin{codeenv}
 \inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{python}{figures/code_odmltables_automation.py}
-\caption{Program to assemble a target odML document covering metadata of multiple recording days by pooling information from multiple \code{csv} files and generate visualizations and overviews. Individual functions are automatizing functionalities presented in previous scenarios.}
+\caption[Assemble metadata using \software{odMLtables}]{Program to assemble a target odML document covering metadata of multiple recording days by pooling information from multiple \code{csv} files and generate visualizations and overviews. Individual functions are automatizing functionalities presented in previous scenarios.}
 \label[codelisting]{code:neo_visualization}
 \end{codeenv}
 
@@ -304,7 +304,7 @@ For example users would be able to define specific Values as required for a part
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=1.0\columnwidth]{figures/odmltables_figures/fig8_global_picture/global_picture.pdf}
-\caption{\label{fig:global_workflow}
+\caption[Integrating odMLtables and other software tools in the different stages of an experiment from preparation to publication]{\label{fig:global_workflow}
 \textbf{Integrating odMLtables and other software tools in the different stages of an experiment from preparation to publication.} During the preparation of an experiment odMLtables in combination with spreadsheet software is used to develop an experiment specific structure of the metadata collection (templates, \fgenerate{}). During the execution and documentation of the experiment, odMLtables converts (\fconvert{}) between the tabular and odML representations. The compare functionality (\fcompare{}) is used to generate overviews of odML Properties across different Sections of a metadata collection. The filter (\ffilter{}) and merge (\fmerge{}) functionalities are used to create and merge subsets of odML collections, respectively. For analysis and sharing, data can be represented using the Neo framework and annotated with metadata from the odML metadata collection using custom scripts. This combined representation can be saved in a single format using the NIX framework, e.g., to share of data and metadata via a database. In parallel, metadata collections can be incorporated in databases, for example using an export of the odML to the RDF standard.}
 \end{center}
 \end{figure}
