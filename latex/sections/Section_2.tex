@@ -2,7 +2,7 @@
 \section{Sharing data}
 \label{sec:data}
 
-Scientific progress is a sequence of scientific findings building on top of each other. These findings are classically hypothesis tested against experimental data and the resulting interpretation is communicated to other scientists via the publication of a manuscript. However, in recent years, the practice of publishing papers has been critizised for a lack of robustness. Attemps in a number of scientific fields, including among others life sciences, to reproduce published scientific findings failed to support the same conclusions \citep{Baker_2016, Fidler_2017, Pashler_2012, Ioannidis_2005, Goodman_2007, Ioannidis_2007, Collaboration_2015}. To qualitatively distinguish between different types of reproduction, a collection of terms has been applied to describe different levels of reproducibility of a study: reprodicibility, replicability, repeatability \citep{Plesser_2018, Drummond_2009}. However the specific interpretation of each of these terms highly depends on the scientific field they are applied in. For example repeatability in the sense of running the same experiment with identical components differs a lot in the computer sciences versus experimental sciences. Replicating a study by running the same code on the identical machine might be a realistic project, running the identical experiment in psycholoy is not \citep{Anderson_2016}. A widely accepted version of reproducibility terminology by \citet{Goodman_2007} is omitting 'replicability' and 'repeatability' for simplification and defines instead \citep[from][]{Plesser_2018}: 
+Scientific progress is a sequence of scientific findings building on top of each other. These findings are classically hypothesis tested against experimental data and the resulting interpretation is communicated to other scientists via the publication of a manuscript. However, in recent years, the practice of publishing papers has been critizised for a lack of robustness. Attemps in a number of scientific fields, including among others life sciences, to reproduce published scientific findings failed to support the same conclusions \citep{Baker_2016, Fidler_2017, Pashler_2012, Ioannidis_2005, Goodman_2007, Ioannidis_2007, Collaboration_2015}. To qualitatively distinguish between different types of reproduction, a collection of terms has been applied to describe different levels of reproducibility of a study: reprodicibility, replicability, repeatability \citep{Plesser_2018, Drummond_2009}. However the specific interpretation of each of these terms highly depends on the scientific field they are applied in. For example repeatability in the sense of running the same experiment with identical components differs a lot in the computer sciences versus experimental sciences. Replicating a study by running the same code on the identical machine might be a realistic project, running the identical experiment in psycholoy is not \citep{Anderson_2016}. A widely accepted version of reproducibility terminology by \citet{Goodman_2007} is omitting 'replicability' and 'repeatability' for simplification and defines instead \citep[from][]{Plesser_2018}:
 
 \begin{description}
  \item[Methods reproducibility] \textit{'provide sufficient detail about procedures and data so that the same procedures could be exactly repeated.'}
@@ -52,10 +52,12 @@ In this section, we provide an example of two complex published datasets from th
 % \todo{Reuse of large data possible - CMS example (The CERN Open Data port) http://opendata.cern.ch/record/5500}
 
 
-\todo{ THIS NEEDS TO BE REWRITTEN!!!!!!!!}
+
 % Abstract We publish two electrophysiological datasets recorded in motor cortex of two macaque monkeys during an instructed delayed reach-to-grasp task, using chronically implanted 10-by-10 Utah electrode arrays. We provide a) raw neural signals (sampled at 30kHz), b) time stamps and spike waveforms of offline sorted single and multi units (93/156 SUA and 49/19 MUA for monkey L and N, respectively), c) trial events and the monkey's behavior, and d) extensive metadata hierarchically structured via the odML metadata framework (including quality assessment post-processing steps, such as trial rejections). The dataset of one monkey contains a simultaneously saved record of the local field potential (LFP) sampled at 1kHz. To load the datasets in Python, we provide code based on the Neo data framework that produces a data structure which is annotated with relevant metadata. We complement this loading routine with an example code demonstrating how to access the data objects (e.g., raw signals) contained in such structures. For Matlab users, we provide the annotated data structures as mat-files.
 % 
+\rewrite{
 \subsection{Background and Summary}
+\todo{Add figures and repair citations!}
 
 We publish high-dimensional and multi-scale datasets that contain recordings from motor cortex with a 10-by-10 Utah electrode array during controlled reach-to-grasp movements for two monkeys (L and N). In particular, we provide the activities of a large number of simultaneously recorded single neurons (93 and 156, for L and N respectively) along with the continuous neuronal “raw” signals (sampled at 30kHz, and broadly band-pass filtered to 0.3Hz - 7.5kHz). To study the local field potential (LFP) [Mitzdorf85, Logothetis04, Einevoll13], a down-sampled and filtered version of the latter is provided for monkey N and can be computed from the data of monkey L. These high-dimensional parallel datasets provide the opportunity for neuroscientists and computational neuroscientists to study interactions in the cortical network during different epochs of a well described behavior. 
 
@@ -294,57 +296,93 @@ In our example, we show how to create a plot of the data of the analysis epoch i
 From the selected Segment, LFP data and raw signals can be obtained via the AnalogSignal objects referenced by the analogsignals property, while spike trains and corresponding unit waveforms can be extracted from the SpikeTrain objects referenced by the spiketrains property. The remainder of example.py uses the matplotlib library to create a figure of the data.
 
 All data and metadata files as well as the code described above can be found in the data repository at \todo{XXX INSERT LOCATION HERE XXX}. The subdirectory datasets contains all data files and the metadata odML-file for the two provided recording sessions. The subdirectory code contains the files example.py and neo\_utils.py. For further reference and inspiration this subdirectory also contains the Python scripts generating the data figures of this manuscript. Furthermore, the subdirectories to code contain frozen versions of the required libraries (Neo, python-odml) as well as the custom loading routine combining data and metadata (reachgraspio.py). Finally, the datasets\_matlab directory contains the annotated Neo data object containing all primary data saved in the mat-file format. Updated versions of the code, e.g., adapted to new releases of the Neo library, can be found at https://github.com/INM-6/reach-to-grasp-data-publication.
+}
 
-
-
-
-\subsection{Discussion}
-% August 2019: 1974 in /datasets/marseille/congloue/data/DataGrasp
+\subsection{Weaknesses of the odMLgeneration pipeline}
+\label{sec:scidata_weaknesses}
+% August 2019: 1974 datasets available at /datasets/marseille/congloue/data/DataGrasp
 The presented data publication demonstrates the complexity of the datasets and the required preparation for release of the data. However, only two datasets out of almost 2000 recording sessions being performed were published due to multiple reasons:
 
+% additional features in other datasets
+\paragraph{Additional features}
 The describing two datasets in a high degree of detail in a manuscript requires 23 pages of descriptor to provide all necessary details. Including additional datasets following the same experimental paradigm would expand the descriptor as additional features observed in the data need to be described. Extending the descriptor to include all peculiarities of all datasets will confound the reader therefore make the dataset less easily reusable.
 An example for additional features which would require explicit description is an additional type of artifact, which is not described in \citet{Brochier_2018} as these two datasets do not exhibit unintended gaps during the recording. This type of artifact was first described in \citet{Sprenger_2014} and occurs when individual data packets are lost during data recording within the recording hardware. The loss of data packets does not cause in interruption of the recording or is tracked in the recording file, but the recording files appear intact. Lost data packets can only be detected afterwards by comparing raw continously recorded data with the corresponding online detected threshold crossing events. After the occurrence of a lost data packet, these two signal are not aligned, as only the continous signal is affected by lost data packages and not threshold crossing events.
 \todo{Add a more detailed description of gappofacts? subsubsection?}
 
-Preparing the data for data publication requires implementation and cross check of all preprocessing steps (e.g. detection and correction of data packet loss) necessary for that particlar set of dataset. However, typically depending on the analysis aim, datasets are selected to be suited for the particular analysis, e.g. spiking activity from a session with lost data packets can still be used, as long as not compared to continously sampled data.  This typically means, that first only rudimentary preprocessing and artifact checking is performed on the datasets, and detailed, potentially manual checking of the data is only performed when required. 
+% thorough preparation of all preprocessing steps required
+\paragraph{Manual validation}
+Preparing the data for data publication requires implementation and cross check of all preprocessing steps (e.g. detection and correction of data packet loss) necessary for that particlar set of data. However, typically depending on the analysis aim, datasets are selected to be suited for the particular analysis, e.g. spiking activity from a session with lost data packets can still be used, as long as not compared to continously sampled data.  This typically means, that first only rudimentary preprocessing and artifact checking is performed on the datasets, and detailed, potentially manual checking of the data is only performed when required. 
 
+% variability across datasets not covered by published version
+\paragraph{Variability across datasets}
 The pipeline for automatic metadata aggregation as presented here has been tested extensively for the two datasets published and the generated file have been manually checked. Running the exact same pipline on different recording datasets from the same recording is likely to fail, due to slight variations between recording sessions. A prime example for this is the set of event codes observed within a recording \ref{sec:}. The observed event codes in this experiment highly depend on the monkey, as some react faster on provided cues, resulting in a specific event code being store and others react slower, wherefore the recording system already switched into another state and the action of the monkey is encoded differently.
 
+% availability of source files
+\paragraph{Availability of source files}
+The preparation of source files for the metadata aggregation in to a single odML file is costly and requires thorough cross checking. Typically there is no dedicated person being responsible for this, but the task is shared between people being involved in the experiments. This results in a diffusion of responsibility, as all scientists also have additional projects to care about. For the discussed experiment, not all source file are available for all recording sessions, therefore the generation of an odML file will not succeed for part of the recording sessions. This mainly affects sessions, which are anyway not used for analysis due to other quality exclusion criteria.
+\newline
 
-The preparation of source files
+In addition to the factors complicating the publication of numerous additional datasets from the same experiment as above, there are additional factors to be taken into account, when implementing a metadata aggregation pipeline of the complexity as presented here:
+
+\paragraph{Multiple contributors}
+In the case of multiple people being involved this also requires coordinated activity among all of them. Having individual copies of source files and running the metadata aggregation workflow using different configurations will lead to various, potentially inconsistent metadata collections. Also the updates of metadata need to be tracked and communicated in a reproducible manner.
+
+\paragraph{Robustness \& Usability}
+Special attention also needs to be invested making the execution of the pipeline (or minimally: the result of the exection) available to all collaborators, taking into account different needs and software (version) requirements of scientific projects. The pipeline therefore has to be robust to be run on different machines and different system environments and results need to be compatible with all analyis setups in use.
+
+\paragraph{Structure \& Reusability} The presented metadata pipeline separates the structural templates of the odML and the enrichment with metadata values. This separation is a good approach during the design of the metadata workflow, as a general structure first needs to be established before implementing the enrichment. During the production phase of the odML generation however, this separation results in a coupling between the two phases, as the enrichment needs to contain information where to put the enrichment. During the runtime of an experimental series frequently also adjustments and extensions need to be performed as the experimental design was updated or the need to track additional metadata was recognised. The modification and extension of the metadata structure during the production phase always require changes on both ends of the odML generation process, leading to an overly complex to adjust pipeline which is hard to maintain.
+
+\paragraph{Portability} The presented metadata pipeline relies on specific versions of software packages, whereas the exact version required is not necessarily well documented. Running the workflow on different machines or moving the workflow to a high performance cluster requires expert knowledge and additional effort in setting up the correct environment for the workflow.
 
 
 
-\subsection{Requirements for Sustainable and Reproducible Data and Metadatamanagement}
+\subsection{Requirements for Sustainable and Reproducible Metadatamanagement}
+Based on the experience from publishing the two datasets (\ref{sec:Weaknesses of the odMLgeneration pipeline}) we identify essential requirements for metadata management workflows in complex, collaborative projects.
 
 \begin{description}
- \item[Common terminologies]
- \item[Structured machine \& human readable metadata]
- \item[Central data and metadata location]
- \item[Version control]
- \item[Mostly automatic metadata compilation]
- \item[Extendable metadata workflow]
- \item[Standardized \& reproducible preprocessing]
- \item[Easy to access data and metadata for non-experts]
- \item[Consistent data and metadata]
- \item[Open source tools]
+ \item[R1: Common terminologies] To have a foundation of communication between collaboration partners it is important to agree on common terminologies. Within a scientific disciplin, this might be given by default, but as soon as scientists from multiple backgrounds need to interact, agreeing on common names is an essential first step. Concreting this in a documented way in the metadata collection is part of this and documents the terminology also for future generations of scientists.
+ \item[R2: Structured machine \& human readable metadata] The metadata collection needs to be programmatically accessible to be used for data annotation and querying. However, metadata also needs to human readable, for manual checks and scanning of metadata. This becomes of special importance in the context of laboratory notebooks and how automatically generated metadata collections can substitute the manual notebooks in the long term. Finally, analysis results and figures need to be labelled in a human readable fashion for discussion and publication.
+ \item[R3: Central data and metadata location] As discussed in \cref{sec:scidata_weaknesses}, in a collaborative environment a systematic organization of metadata is essential. Providing access to data and metadata via a central data storage is a straight forward solution. 
+ \item[R4: Version control] To be able to communicate efficiently about data and metadata version control is an important tool. Using version control identical data and metadata selections by different scientist can be guaranteed on the one side as well as changes in the data and metadata collection can be tracked easily. This permits to track updates and changes on the data and metadata side and documents these in a basic manner.
+ \item[R5: Mostly automatic metadata compilation] With the huge amount of metadata accumulating it is a high priority to automate metadata aggregation as far as possible. In some cases this is not possible in all cases, e.g. when metadata are only available in hand-written form in laboratory notebooks. This type of metadata however is a very small fraction of metadata and has in most cases to be digitized manually.
+ \item[R6: Extendable metadata workflow] As discussed in \cref{sec:scidata_weaknesses} scientific metadata workflows need to be easily extendable to cope with latest analysis requirements and scientific findings.
+ \item[Reusability] Scientific workflows should be (partially) reusable for related projects to simplify the setup of similar workflows and save time in implementing these.
+ \item[R7: Standardized \& reproducible preprocessing] Standardizing preprocessing steps improves understandability of the preprocessing tools and contributes to the aspect of reusability of the workflow. Making the individual preprocessing steps reproducible e.g. by provenance tracking used packages and documenting the code version helps making the whole workflow reproducible.
+ \item[R8: Easy to access data and metadata for non-experts] Data and metadata should be easy to use by non-experts of the preprocessing pipeline. In the ideal case an out-of-the-box solution can be presented to the user, who can load the data immediately without installing a series of software dependencies. 
+ \item[R9: Consistent data and metadata] Data and metadata should always be consistent, version control and reproducibility aid this.
+ \item[R10: Open source tools] Open source software tools are transparent software packages which provide their source code to the community. This has the advantage of validation of the correct functionality by other users and permits to fix potential errors. For community software projects also code corrections and enhancements can be suggested and will usually be reviewed and integrated into the tool. Open source tools are free of charge and therefore provide a suitable basis for scientific work to be independent of industry.
 \end{description}
 
 
+\paragraph{Evaluation of presented metadata pipeline}
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+Requirement                                          &  \cite{Brochier_2018} \\  \hline
+R1: Common terminologies                             &  yes \\ \hline
+R2: Structured machine \& human readable metadata    &  yes \\ \hline
+R3: Central data and metadata location               &  no \\ \hline
+R4: Version control                                  &  no \\ \hline
+R5: Mostly automatic metadata compilation            &  manual initialization \\ \hline
+R6: Extendable metadata workflow                     &  minimal \\ \hline
+R7: Standardized \& reproducible preprocessing       &  no \\ \hline
+R8: Easy to access data and metadata for non-experts &  partial \\ \hline
+R9: Consistent data and metadata                     &  partial \\ \hline
+R10: Open source tools                               &  yes \\ \hline
+\end{tabular}
+\caption[Overview of workflow requirements for \cite{Brochier_2018}]{Overview of workflow requirements for \cite{Brochier_2018} based on requirements for data and metadata workflows as defined in \ref{sec:scidata_weaknesses}. The presented pipeline fullfills basic criteria regarding common terminilogy definition and structured and readable metadata and the usage of open source tools. Other criteria are partially or not met.}
+\label{tab:requirement_check_brochier}
+\end{table}
 
 
 
-
-
-
-
-\todo{
-shortcomings of the presented workflow
-- moderate reusability (due to template modularization, but not enrichment code)
-
-general requirements for scientific workflow concepts:
-- versioning
-- reproducibility
-- 'out of the box' usability (user friendliness)
-- file size issues (with versioning (git/git-annex/gin \& loading of data)
-- central data hosting (especially for collaborative work)}
+% \todo{
+% shortcomings of the presented workflow
+% - moderate reusability (due to template modularization, but not enrichment code)
+% 
+% general requirements for scientific workflow concepts:
+% - versioning
+% - reproducibility
+% - 'out of the box' usability (user friendliness)
+% - file size issues (with versioning (git/git-annex/gin \& loading of data)
+% - central data hosting (especially for collaborative work)}
