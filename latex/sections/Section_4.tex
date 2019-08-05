@@ -55,7 +55,7 @@ Support for Python 2 will is planned to be dropped beginning of 2020.
 
 
 \paragraph{Data Objects}
-Data objects are based on \software{Numpy} arrays \citep{vanderWalt_2011} for efficient computation on large datasets. In addition, \software{Neo} objects are aware of physical quantities by using the \software{Quantities} package\citep{Dale_}.
+Data objects are based on \software{Numpy} arrays \citep{Walt_2011} for efficient computation on large datasets. In addition, \software{Neo} objects are aware of physical quantities by using the \software{Quantities} package\citep{Dale_}.
 % Continuously Sampled Signals
 \software{Neo} provides data objects to capture regularly as well as irregularly sampled continuous signals in \code{AnalogSignal} and \code{IrregularlySampledSignal} objects, respectively. Both objects rely on a 2 dimensional \software{Quantities} (\software{Numpy}) array capturing the basic data signal, whereas the first dimension is describing the time and the second dimension different signal traces. For \code{IrregularlySampledSignal}s time information is captured in a second separate \software{Quantities} array, sharing the first dimension with the signal array. For \code{AnalogSignal}s this in implemented in a more compact fashion by storing only the sampling rate (\code{sampling\_rate}) and the starting time point of the recording (\code{t\_start}). A \software{Quantities} array containing the time values corresponding to the data point can be generated on request via the \code{times} attribute of the \code{AnalogSignal}.
 % Time series data
