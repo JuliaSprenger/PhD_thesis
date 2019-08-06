@@ -28,11 +28,12 @@
 \pagestyle{fancy}
 \renewcommand{\sectionmark}[1]{\markright{\thesection~- ~#1}}
 % \renewcommand{\chaptermark}[1]{\markboth{\chaptername~\thechapter~-~ #1}{}}
+% \renewcommand{\chaptermark}[1]{\markleft{\thesection- ~#1}}
 \fancyhead{}
 \fancyfoot{}
 % \fancyhead[LE]{\footnotesize\scshape\leftmark}
 \fancyhead[RO]{\footnotesize\scshape\rightmark}
-\fancyhead[LE]{\footnotesize\scshape\leftmark}
+\fancyhead[LE]{\footnotesize\scshape Section \thesection}
 % \fancyhead[RE,LO]{\thesisauthor}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
@@ -148,6 +149,7 @@
 \input{./sections/Section_4}
 \input{./sections/Section_5}
 \input{./sections/Section_6}
+% \input{/sections/acknowledgements}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
