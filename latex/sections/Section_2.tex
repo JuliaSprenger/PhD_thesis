@@ -578,7 +578,7 @@ Setting up this workflow required prepratory work on multiple levels: A) The man
 
 \begin{figure}
  \includegraphics[width=\textwidth]{./figures/scidata_reachgraspio_diagram}
- \caption[Schematic data loading pipeline used in \citet{Brochier_2018}]{Schematic data loading pipeline used in \citet{Brochier_2018}. \todo{to be extended...}}
+ \caption[Schematic data loading pipeline used in \citet{Brochier_2018}]{Schematic data loading pipeline used in \citet{Brochier_2018}. The \software{ReachGraspIO} utilized \software{Neo} to load the original recording data (top right). In a second step it enriches and extends the data structure based on additional metadata information from two sources: a metadata collection in \software{odML} format (blue) and ReachGraspIO internal lookup tables (green) containing the essential information required for interpretation the data from the original data files. The extension of the \software{Neo} structure includes correction of time shifts of the recording signals, addition of events which were offline extracted from analogsignals and the merging of multiple event arrays ('correct filter shifts', 'add analog events' and 'merge digital \& analog events', respectively; red panels). The enrichment of the \software{Neo} structure encompasses the addition of numerous annotations (gray panels). Finally the extended \software{Neo} structure is returned and can be used for the generation of a metadata collection if this does not exist yet or further processing and analysis steps.}
  \label{fig:scidata_reachgraspio_diagram}
 \end{figure}
 
