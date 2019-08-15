@@ -1,6 +1,57 @@
 \clearpage
 \section{Structuring scientific work - Workflow management}
 \label{sec:workflows}
+
+The process from data generation to a scientific publication can be usually split into individual steps performing only a subset of the complete processing requirend. The separation of these steps can occur on different levels from very coarse like the separation of the experiment and analysis to very fine where each individual processing step is implemented in a independent script.
+
+Workflow management is a concept to organize the individual steps forming a process. The granularity of the steps to manage highly depend on the complexity of the tasks and the diversity of the processing steps. A common and generic example forming a workflow management system is a queueing system used for cluster computing. Here users submit a number of in the simplest case independent jobs (computing steps) which are then depending on the available resources scheduled and distributed to suitable compute resources. This is a simple example, because the individual processing steps typically do not depend on each other and only the required amount of resources and time needs to be taken into account when organizing the execution.
+
+For scientific projects like the Reach-to-Grasp experiment described in \cref{sec:data} there are dependencies between individual steps of the process from data acquisition to publication (see \cref{fig:scidata_metadata_pipeline,fig:scidata_reachgraspio_diagram}). The workflow management concept has been applied in a number of scientifics fields like genomics or imaging data. In these fields a systematic approach to data processing and analysis is required and feasable, since the they are dealing with large and numerous datasets which exceed manual monitoring or processing power. \todo{add reference to PLI or similar paper}
+For these disciplines, there are a number of platforms and tools available to implement pre \& postprocessing as well as analysis processing steps: galaxy\footnote{\url{}} for genomic workflows, vistrains\footnote{\url{}}, Taverna\footnote{\url{}},  GenePattern\footnote{\url{}}, Renku\footnote{\url{}}, Terra\footnote{\url{https://terra.bio/}}, ugene\footnote{\url{}} and snakemake\footnote{\url{}}. \todo{add references and short descriptions here}
+
+In this section we present the usage of snakemake as a workflow management tool as it easily integrates with Python based projects, similar to the Reach-to-Grasp project \cref{sec:data}.
+
+\subsection{Workflow management tools - Snakemake}
+Snakemake is a generic worklfow management tool derived from the Make concept\footnote{\url{}} combined with Python features. It is available as conda package\footnote{\url{}} with the latest version $ $, which is applied version within the scope of this manuscript. The description of individual steps of a workflow within snakemake is closely related to Make: A processing step is defined via its input and output files \ref{code:snakemake_simple}. 
+
+
+
+
+\begin{codeenv}
+\inputminted[firstline=3, lastline=10, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/snakemake_simple.snakefile}
+\caption[Minimal snakemake example workflow]{Minimal snakemake example workflow. The workflow consists of two rules, for generation of a markdown file (.md) and conversion to a text file by plain copy of the content into a file with .txt extension. There are two versions of each rule demonstrating snakemake feature of different complexity: The simle version of the rule (\code{simple\_...}) handles filenames explicitely, whereas the standard version of the rule is using wildcards (\code{\{...\}}) to handle filenames.}
+\label[codelisting]{code:workflows_simple_snakefile}
+\end{codeenv}
+
+
+The modification time stamps of the files are used for 
+
+
+
+
+
+
+
+\todo{inspiration from computer sciences \& industrial software development: Continuous integration \& deployment}
+
+
+
+\subsection{Vision 4 Action}
+\subsection{Waves project}
+\subsection{Summary \& Guidelines}
+
+
+
+\begin{figure}
+    \centering
+    \todo{Fix include of svgs with underscores}
+%     \escapeus{\includesvg[width=\textwidth]{./figures/workflows/rulegraph_colored}}
+    \caption[Metadata workflow for Vision4Action experiment]{}
+    \label{fig:demo_visualization}
+\end{figure}
+
+
+
 \todo{workflow management systems: Renku, https://terra.bio/, ugene, from genomics: galaxy, vistrains, Taverna,  GenePattern...}
 \todo{introduce the concept of workflow management, snakemake, Apps,  categories
 - general apps

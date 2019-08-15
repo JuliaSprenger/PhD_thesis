@@ -11,7 +11,7 @@ Scientific progress is a sequence of scientific findings building on top of each
 \end{description}
 
 
-This definition of 'methods reproducibility' highlights another important aspect of scientific publications: the underlying data. Reproducing findings of publications is harder for older publications \citep{Vines_2013}, which to a large part can be accounted for by the decreasing retrievability of the original datasets. The obligation to provide research data to other scientists is a standard introduced already decades ago by many funding initiatives (e.g. NIH since 2003\footnote{\url{https://grants.nih.gov/grants/policy/data_sharing/}}) for publications in a number of journals (e.g. Springer Nature\footnote{\url{https://www.springernature.com/gp/authors/research-data-policy/data-availability-statements/12330880}}), however the readiness to comply is rather low (1/10 publications provides research data on request \citep{Savage_2009}). To address the problem of reproducibility for original research articles, a number of journals were opened, which invite to publish replications of the original articles in computational science \footnote{ReScience, \url{http://rescience.github.io/}}, economics\footnote{\url{http://www.economics-ejournal.org/special-areas/replications-1}}, psychology\footnote{\url{https://www.apa.org/pubs/journals/xge/replication-articles}} and neuroscience \citep{Yeung_2017}.
+This definition of 'methods reproducibility' highlights another important aspect of scientific publications: the underlying data. Reproducing findings of publications is harder for older publications \citep{Vines_2013}, which to a large part can be accounted for by the decreasing retrievability of the original datasets. The obligation to provide research data to other scientists is a standard introduced already decades ago by many funding initiatives (e.g. NIH since 2003\footnote{\url{https://grants.nih.gov/grants/policy/data_sharing/}} \todo{mention nfdi here?}) for publications in a number of journals (e.g. Springer Nature\footnote{\url{https://www.springernature.com/gp/authors/research-data-policy/data-availability-statements/12330880}}), however the readiness to comply is rather low (1/10 publications provides research data on request \citep{Savage_2009}). To address the problem of reproducibility for original research articles, a number of journals were opened, which invite to publish replications of the original articles in computational science \footnote{ReScience, \url{http://rescience.github.io/}}, economics\footnote{\url{http://www.economics-ejournal.org/special-areas/replications-1}}, psychology\footnote{\url{https://www.apa.org/pubs/journals/xge/replication-articles}} and neuroscience \citep{Yeung_2017}.
 
 To improve the situation of data availability, \citet{Wilkinson_2016} defined the Fair Principles, providing guidelines to make research data Findable, Accessible, Interoperable, Reusable. Complementing these guidelines, a number of sites have become available for hosting scientific data (Zenodo\footnote{Zenodo, \url{https://zenodo.org/}}, Pangaea\footnote{Pangaea, \url{https://www.pangaea.de}}, BMC Research Notes\footnote{BMC Research Notes, \url{https://bmcresnotes.biomedcentral.com/} \& \url{https://bmcresnotes.biomedcentral.com/about/introducing-data-notes}}, DataDryad\footnote{Datadryad, \url{https://datadryad.org/}}, GIN\footnote{GIN, \url{https://gin.g-node.org/}}, Research Data Australia\footnote{RDA, \url{https://www.ands.org.au/online-services/research-data-australia/rda-registry}}, \citep{Assante_2016}) and publishing data descriptor papers (ScientificData\footnote{ScientificData, \url{https://www.nature.com/sdata/}}, DataScience\footnote{DataScience, \url{https://datascience.codata.org/}} \citep{Candela_2015}).
 It has been shown, that mandated data archiving upon publication highly improves data availability \citep{Vines_2013}. Going one step further, \citet{Chen_2019} show that making only the data available is not sufficient for reproducible science, data need to be accompanied by software packages used for further analysis. In the optimal case this encompasses detailed analysis motivation a complete analysis workflow. Making the effort of publishing the data is possible for large scale datasets, e.g. from particle physics \citep{Jomhari_2017}.
@@ -88,9 +88,8 @@ The published datasets contain unique recordings from a complex electrophysiolog
 
 The experiment is a complex reach-to-grasp task performed by macaque monkeys. The basic component of the experiment are displayed in \cref{fig:r2g_introduction}. The two monkeys are trained to attend two cues coding for the grip type and force to perform. After the second cue the monkey performs the movement, pull the object and holds it to receive a reward. At the same time neuronal activity is recorded from motor and premotor areas of the cortex via a chronically implanted Utah Array. 
 
-The subjects of the experiment are two Rhesus macaque monkeys (Macaca mulatta) who were trained to perform the delayed reach-to-grasp task prior to implantation of the recording arrays. Details on the two subjects are summarized in \ref{tab:monkeys}. Depending on the monkey character and learning abilities the different instruction steps (accustoming to the experimenter, setup, different versions of the task) requires multiple months of daily training. The training was completed when the monkey had an average success rate of 85\% of the trials in the standard task setting.
-
-The two monkeys trained for the task differ in gender (monkey L is female, monkey N is male) and active hand of the task (monkey L's active hand is left, monkey N's active hand is right
+The subjects of the experiment are two Rhesus macaque monkeys (Macaca mulatta) who were trained to perform the delayed reach-to-grasp task prior to implantation of the recording arrays. Details on the two subjects are summarized in \ref{tab:scidata_data_overview}. Depending on the monkey character and learning abilities the different instruction steps (accustoming to the experimenter, setup, different versions of the task) requires multiple months of daily training. The training was completed when the monkey had an average success rate of 85\% of the trials in the standard task setting.
+The two monkeys trained for the task differ in gender, active hand of the task and character resulting in different behaviours observed during the recording task. As monkey N is rather calm and less motivated he is in general performing shorter sessions and less trials per session as monkey L, who is eager to work (see \cref{tab:scidata_data_overview}). A recording day typically consisted of multiple recording sessions, whereas each session lasts between $10$ and $20$ minutes resulting in an average working time per weekday of $1.5$ hours. Weekends and holidays were usually excluded from training and recording.
 
 
 \begin{figure}[!ht]
@@ -100,7 +99,6 @@ The two monkeys trained for the task differ in gender (monkey L is female, monke
 \label{fig:r2g_introduction}
 \end{center}
 \end{figure}
-
 
 \begin{table}[]
 \scriptsize
@@ -113,7 +111,8 @@ birthdate                                                                       
 weight                                                                                        & \multicolumn{3}{l|}{5kg}                                                                                 & \multicolumn{3}{l|}{7kg}                                                                          &                                                                                                  \\ \hline
 active hand                                                                                   & \multicolumn{3}{l|}{left}                                                                                & \multicolumn{3}{l|}{right}                                                                        &                                                                                                  \\ \hline
 character                                                                                     & \multicolumn{3}{l|}{\begin{tabular}[c]{@{}l@{}}eager to work\\ quick\\ efficient\\ nervous\end{tabular}} & \multicolumn{3}{l|}{\begin{tabular}[c]{@{}l@{}}slow learner\\ calm\\ less motivated\end{tabular}} &                                                                                                  \\ \hline
-\multicolumn{8}{|l|}{\textbf{Recording}}                                                                                                                                                                                                                                                                                                                                                                        \\ \hline
+Utah array rotation                                                                           & \multicolumn{3}{l|}{216$^\circ$}                                                                          & \multicolumn{3}{l|}{239$^\circ$}                                                                   &                                                                                                  \\ \hline
+\textbf{Recording}                                                                            &                                        &                                &                                &                                      &                              &                             &                                                                                                  \\ \hline
 session name (*)                                                                              & \multicolumn{3}{l|}{\textbf{l101210-001}}                                                                & \multicolumn{3}{l|}{\textbf{i140703-001}}                                                         &                                                                                                  \\ \hline
 session files                                                                                 & *.ccf                                  & \multicolumn{2}{l|}{108.2 kB}                                   & *.ccf                                & \multicolumn{2}{l|}{187.1 kB}                              & cerebus configuration                                                                            \\ \hline
                                                                                               & *.nev                                  & \multicolumn{2}{l|}{287.7 MB}                                   & .nev                                 & \multicolumn{2}{l|}{168.3 MB}                              & \begin{tabular}[c]{@{}l@{}}digital events\\ unsorted spikes times\\ spike waveforms\end{tabular} \\ \hline
@@ -137,114 +136,38 @@ daily recording id                                                              
 \# electrodes with SUA                                                                        & \multicolumn{3}{l|}{65}                                                                                  & \multicolumn{4}{l|}{78}                                                                                                                                                                              \\ \hline
 \begin{tabular}[c]{@{}l@{}}\# electrodes with \\     SUA or MUA\end{tabular}                  & \multicolumn{3}{l|}{86}                                                                                  & \multicolumn{4}{l|}{89}                                                                                                                                                                              \\ \hline
 \end{tabular}
-\caption[Overview of recording sessions]{Overview of recording session files, dates, spike sorting and monkey performance. The \todo{add more descriptions in table}}
+\caption[Overview of subjects and recording sessions]{Overview of monkeys, recording session files and dates, spike sorting and monkey performance. The monkeys differ in gender, age, weight and active hand used for the task. Information is provided about individual recording files, sessions, performance of the monkey as well as single unit (SUA) and multi unit activity (MUA). \todo{add more descriptions in table and nicefy table}}
 \label{tab:scidata_data_overview}
 \end{table}
 
-\rewrite{
-% \subsection{Background and Summary}
 
-% We publish high-dimensional and multi-scale datasets that contain recordings from motor cortex with a 10-by-10 Utah electrode array during controlled reach-to-grasp movements for two monkeys (L and N). In particular, we provide the activities of a large number of simultaneously recorded single neurons (93 and 156, for L and N respectively) along with the continuous neuronal “raw” signals (sampled at 30kHz, and broadly band-pass filtered to 0.3Hz - 7.5kHz). To study the local field potential (LFP) \cite{Mitzdorf_1985,Logothetis_2004, Einevoll_2013}, a down-sampled and filtered version of the latter is provided for monkey N and can be computed from the data of monkey L. These high-dimensional parallel datasets provide the opportunity for neuroscientists and computational neuroscientists to study interactions in the cortical network during different epochs of a well described behavior. 
-% 
-% To date not many tools enable to study network coordination in high-dimensional data, since non-experimentalists, such as statisticians or theoretical/computational neuroscientists often do not have access to such data. Nevertheless, methods for correlation analysis of high-dimensional data that do not run into a combinatorial explosion and do have acceptable computing times are highly needed. This implies also the strong need for methods and tools that perform dimensionality reduction to reduce the complexity of the data and the computational load (e.g. [Cowley13]). The development of such analysis methods requires to know the typical features of experimental data, such as non-stationarity in time and across trials, as well as deviations from typical theoretical assumptions (e.g. Poisson), in order to make the methods applicable to experimental data. If these features are ignored and not considered in the method, there is a considerable danger of generating false positive outcomes and potentially wrong interpretations of the results [Gruen09\_1126, Louis10\_127]. The data we publish allow non-experimentalists to get insights in features of cortical data from awake behaving animals.
-% 
-% Our data also provide the possibility to test and validate spike sorting methods (see [Denker2014]). Besides the raw data we publish the corresponding spike data resulting from an offline spike sorting using the Plexon Offline Sorter. Other sorting methods can be applied to the same (raw) data, and differences in the results can be compared and analyzed.
+For recording of neural activity, each monkey had a single Utah array\footnote{Blackrock Microsystems, Salt Lake City, UT, USA} implanted in the motor cortex contralateral to the active hand. The Utah array is an electrode array with 100 electrodes arranged in a $10\times10$ grid. 96 of 100 of the iridium coated electrodes can be used for recording (\cref{fig:implant_locations}). The individual electrodes are $1.5mm$ long, $400\mu m$ apart and have an average pre-implantation impedance of $50k\Omega$. The electrode array is connected to a head stage via a fiber bundle connecting individual electrodes to contact of the CerePort Connector, which is a connector external to the skin permitting the daily coupling of the implant to the recording setup. In addition to the array electrodes one ground and two reference electrodes are implanted. During the implantation surgery the skull was opened and the dura removed to pneumatically insert the Utah array into the cortex. The dura and skull were close, whereby the cables were arranged to lead to the connector which was attached to the skull on the other hemisphere. The Utah arrays were implanted a few millimeters anterior to the central sulcus and they were rotated before implantation to cover the arm/hand representation of the primary motor cortex as well as parts of premotor cortex (\cref{fig:implant_locations}).
 
-% Complex datasets, as the two provided here (high-dimensional, multi-scale during complex behavior), are a challenge for performing reproducible analysis. Besides the often rather variable nature of the circumstances under which such data were recorded, the data additionally experience a number of often interactively performed preprocessing steps before they can be used in actual data analyses. Without a detailed knowledge about all these steps, the actual data analysis may be biased or strongly affected. In most cases, electrophysiological data available as open source are in this respect not sufficiently annotated and documented. For this reason, we provide here a comprehensive description of how and under which circumstances the datasets were recorded as well as a detailed description of preprocessing steps that need to be considered before performing analyses on the data. We additionally publish a machine-readable format of these metadata including our parameters and results of the described preprocessing steps. We are aware that all this information may not be sufficient for the reproducible analysis of such data. The reason is that reproducible pipelines including the provenance trail are not yet established for electrophysiological neuroscience, especially not for such complex experiments as presented here. Thus, we hope to make researchers from other fields, such as computer science, process engineering or others become interested to support the neuroscience field with solutions for reproducible research. Approaches from neuroinformatics / computer science are not yet sufficient to generate a complete provenance track of the processes involved (see e.g. [Badia2015]). We provide here a concrete use case for such a development. 
+The task the monkeys had to perform involved grasping an object using one of two grip types: side (SG) or precision grip (PG). Detailed sketches of the different grips are depicted in\cref{fig:r2g_introduction} A center and top panel. For both grip types the position of thumb (T), index (I) and middle (M) finger are indicated relative to the profile of the object. The force required to pull the object towards the monkey was either about $1N$ (low force) or $2N$ (high force).  In a trial the monkey was always instructed by the first cue a(CUE) bout the grip type (SG/PG) and with the second cue (GO) about the force level (LF/HF), resulting in 4 different trial types (SGLF, SGHF, PGLF, PGHF) possible. The first and second cue are presented with $1s$ delay in which the monkey has to memorize the presented grip type and can prepare for the movement, which can be initialized after the second (GO) cue. Cues are presented by combinations of two of five illuminated LEDs. The encoding of the grip and force type can be seen in \cref{fig:r2g_introduction} B (CUE-ON and GO-ON). The setup consisted of three main parts, the neural recording platform for acquisition of neuronal signals, the experimental apparatus providing the environment for performing the task and the behavioral control system controlling and coordinating the task procedure (\cref{fig:scidata_setup_overview}).
 
-% In summary, we publish two datasets (one for each monkey, both having performed the same behavioral task) containing the raw neuronal data, offline sorted single and multi unit activity, the behavioral data, and metadata containing all information about each dataset including our parameters and results of the described preprocessing steps (see \cite{Zehl_2016} on how to create a comprehensive metadata collection in a common file format). These are the first published datasets of massively parallel recordings from monkeys while they perform a complex instructed delayed reach-to-grasp task.
+\paragraph{Differences between the datasets}
+In principle the same setup was used for both monkeys, however small deviations exist which are highlighted in the corresponding figures in yellow (monkey L) and red (monkey N). The four main aspects area
+\begin{description}
+ \item[Recording Arrays] the recording from different Utah arrays, including different electrode mapping as well as a different implant location
+ \item[Connecting Hardware] Usage of different hardware for connecting the implant with the data acquisition system. The two headstages (samtec/patient cable) influence the recording quality by their specific electrical properties.
+ \item[Software versions and settings] The recording software versions and setting differ, since an update was available between the recordings. This includes the usage of different file extensions for recordings of continuous data (ns5 in monkey L vs ns6 in monkey N) and additionally a downsampled and filtered version of the neural data being recorded in the ns2 format for monkey N. Furthermore the number of samples extracted online for each of the threshold crossing events was extended from 39 samples in monkey L to 48 samples in monkey N.
+ \item[Experiment Control] The LabView program controlling and monitoring the task was updated which leads to the usage of different binary coding for digital events (\cref{tab:bit_translation}). 
+\end{description}
 
-
-
-\paragraph{Subjects}
-
- Monkey L and N are both Rhesus macaque monkeys (Macaca mulatta) which were trained to perform an instructed delay reach-to-grasp task for food reward (drops of apple sauce). Generally, the training started with getting the monkey accustomed to the experimenter and the monkey chair. After this setting-in period, the monkey had to learn a complex reach-to-grasp task in which he/she had to control both the grip type used to grasp an object and the force required to displace it. The training of the monkey was completed after he/she was able to perform the correct grip in 85\% of the trials on average.
-
-\textbf{Monkey L} 
-
-Monkey L is female and was born on March 15, 2004. She started training in a preliminary version of the task in 2008. After a long break in 2009, she restarted training in June 2010 on the final version of the task. She had one phalanx missing on her right thumb and was therefore trained to perform the task with the left hand. The training was easy and fast with monkey L. She habituated rapidly to the training chair and could start the task training within a month from chair training onset. Generally, monkey L was described as being eager to work, quick and efficient during the task, but rather nervous. The surgery for the Utah-array implant took place on September 15, 2010. About 2 weeks after the surgery recordings started. At that time she had a body weight of 5 kg. Neuronal data were recorded during task performance until May 6, 2011. After this date, the quality of the recordings deteriorated suddenly and did not recover. On June 23, during a short surgery, the array wire bundle was cut, the connector was removed, but the array left in place. Monkey L is still alive. File names from monkey L are identified by the letter “l”.
-
-\textbf{Monkey N} 
-
-Monkey N is male and was born on May 15, 2008. He was initially trained to perform the task with the right hand between April 2012 and April 2013. After a first and disappointing recording period from the left hemisphere which ended in September 2013, he was retrained to perform the task with the left hand and implanted with another Utah array in the right hemisphere on May 22, 2014. In general, he was calmer than monkey L, but overall less motivated. He learned the task at a much lower pace, performed on average less trials per recording and was often less attentive than monkey L. When the recording period started he had a body weight of 7 kg. Neuronal data were recorded until January, 2015. As for monkey L, the quality of the recordings decayed gradually throughout the recording period. At the end of February, 2015, the monkey damaged the wire bundle between the connector and the array. As for monkey L, the wire bundle was then cut, the connector was removed but the array was left in place. Monkey N is also still alive. File names from monkey N are identified by the letter “i” (second letter of monkey N’s name, as reference for the recordings obtained from the second hemisphere). 
-
-\paragraph{Surgery and Array Location}
-\label{sec:surgery_array_location}
-
-\begin{figure}
-\includegraphics[width=0.6\textwidth]{./figures/scidata_figures/array_placements}
-\caption[Implant locations of the Utah arrays]{Implant locations of the Utah arrays. The figure displays the anatomical location of the Utah array of both monkeys after implantation as well as the fabrication settings of each array provided by Blackrock. a) Schematic drawing of a macaque cortex with implant location of array of both monkeys. Both arrays were implanted along the central sulcus and overlapping the putative border (dotted line) between primary motor cortex (M1) and dorsal or ventral premotor cortex (PMd or PMv) of the right hemisphere. b, d) Exact location of the array for each monkey in the close-up picture of the implantation site taken during the surgery (length of an array side is 4mm). The central sulcus, the arcuate sulcus and the superior precentral dimple are emphasized as thick black lines (to the left, right and top, respectively). c, e) Display the scheme of each array setting in a default array orientation where the wire bundle (indicated with white triangles in b - e) to the connector points to the right. Each array scheme shows the 10-by-10 electrode grid with the electrode identification numbers (IDs) defined by Blackrock (black numbers) and the location of the non-active electrodes (indicated in black as ID =-1). Gray numbers show an alternative set of connector-aligned electrode IDs, assigned based on electrode location with respect to the connector of the array, which are more practical for data analysis and comparisons across monkeys. In order to best cover the arm/hand representation of the primary motor cortex, each array was rotated for the implantation. The center of rotation is indicated by a colored triangle (b - e), stating below (in c and e) the degree of rotation for each array.}
-\label{fig:implant_locations}
-\end{figure}
-
-
-At the end of the training period, each monkey was chronically implanted with a Utah array (Blackrock Microsystems, Salt Lake City, UT, USA) in the motor cortex contralateral to the working hand. The array consisted of one 10-by-10 electrode grid with 96 active iridium oxide electrodes. Each electrode was 1.5mm long with an inter-electrode distance of 400 micrometer. The electrodes had on average an industrial impedance of 50kOhm. The industrial impedance for each electrode is provided in the respective metadata file for each dataset. The electrodes were connected, along with one ground and two references, through a wire bundle of 4 cm length to a high-density CerePort Connector. 
-
-The surgery was performed under deep general anesthesia using full aseptic procedures. Anesthesia was induced with 10 mg/kg intramuscular ketamine and maintained with 2-2.5 \% isoflurane in 40:60 O2 air. To prevent cortical swelling, 2 ml/kg of intravenous mannitol infusion was slowly injected over a period of 10 min. A large craniotomy (20x20 mm and 30x20 mm for monkey L and N, respectively) was performed over the motor cortex and the dura was incised and reflected. The array was inserted using a pneumatic inserter (Array Inserter, Blackrock Microsystems) and covered with a sheet of an artificial non-absorbable dura (Preclude, Gore-tex) to avoid attachment of the array to the dura. The real dura was sutured back and also covered with a piece of an artificial absorbable dura (Seamdura, Codman). The bone flap was put back at its original position and attached to the skull by means of a 4mm x 40 mm strip of titanium (Bioplate, Codman). The array connector was fixed to the skull on the opposite side with titanium bone screws (Bioplate, Codman). The skin was sutured back over the bone flap and around the connector. The monkey received a full course of antibiotics and analgesics before returning to the home cage (\cite{Riehle_2013}).
-
-In both monkeys, the array was implanted a few millimeters anterior to the central sulcus with the wire bundle pointing in medio-caudal direction. We aimed at implanting the array in the arm/hand representation of the primary motor cortex with the most anterior electrodes encroaching upon the premotor cortex. For this reason, the arrays were rotated by 216 and 239 degrees for monkey L and N, respectively (cf. \cref{fig:implant_locations} b - e). The center of rotation was set to the bottom left corner of the default array orientation where the wire bundle to the connector points to the right (cf. \cref{fig:implant_locations} c and e). With respect to the precentral dimple and the spur of the arcuate sulcus, the array was located a few millimeters more lateral in monkey N than in monkey L (see \cref{fig:implant_locations}). Therefore, with respect to putative borders between MI, PMd, and PMv, the anterior electrodes of the array are assumed to cover part of PMd in monkey L and part of PMv in monkey N. 
-
-\textbf{Daily Routines}
-
-Recordings were performed on regular workdays. Weekends as well as holidays were usually excluded. During workdays the monkeys had unrestrained water access, but were only fed with dry food in the home cage. During the weekend and during holidays the food was supplemented with fruits and vegetables. A typical recording day consisted in: a) taking the monkey out of the cage, b) placing him/her in front of the experimental apparatus (see \cref{sec:experimental_apparatus}) in the primate chair, c) conducting several recordings of the neuronal activity while the monkey performed the behavioral task, and then d) returning the monkey back to its cage. A single recording session lasted between 10 to 20 minutes. The number of recording sessions per day depended on the motivation of the monkey, but on average a recording day lasted for 1.5 hour.
-
-\paragraph{Task}
-
-During a trial, the monkey had to grasp the object using either a side grip (SG) or a precision grip (PG). The PG had to be performed by placing the tips of index and thumb in a groove on the upper and lower sides of a cubic object, respectively (see \cref{fig:task_trialscheme} a, right). For SG, the tip of the thumb and the lateral surface of the other fingers were placed on the right and left sides of the object (see \cref{fig:task_trialscheme} a, middle). The monkey had to pull the object towards him/her against one of 2 possible loads requiring either a high or low pulling force (HF and LF, respectively). As a result, from the possible combinations of grip types and object loads, the monkey had to perform in total 4 different trial types (SG-LF, SG-HF, PG-LF, PG-HF). In each trial, the grip and force instructions for the requested trial type were provided to the monkeys independently through two consecutive visual cues (CUE and GO) which were separated by a one second delay. Both cues were coded by the illumination of specific combinations of 2 LEDs of a 5 LED cue panel positioned above the target object. Details on how the task, the trial scheme and the corresponding behavior of the monkey were controlled are stated in \cref{sec:behavioral_control_system}.
-
-\paragraph{Setup}
-
-The setup was organized in three major parts, the neural recording platform, the experimental apparatus, and the behavioral control system. The components of each part and their connections are summarized in \cref{fig:setup_overview} and described in more detail in the following sub chapters. Even though overall the same setup was used for both monkeys, the following differences are important to keep in mind: 
-
-\begin{itemize}
- \item The electrode configurations of the array are not identical between the two monkeys (cf. \cref{fig:implant_locations} ).
- \item As headstage, Samtec or Patient cable was used for monkey L and N, respectively (cf. in \cref{fig:setup_overview}, and \cref{fig:cerebus_system}).
- \item The software version of Central Suite was updated between the recording periods of the monkeys. This led to differences in the data formats of the neural raw data (ns5 in monkey L vs. ns6 in monkey N) and in the content of the parallel saved data of the ns2-file which either only contained the behavioral signals from the target object manipulation (monkey L) or also included a downsampled and filtered version of the neural data (monkey N).
- \item The settings of the waveform window for the online spike shape extraction in Central Suite are not identical between the monkeys (cf. in \cref{fig:cerebus_system}).
- \item The LabView implemented program to control and monitor the task and behavior was updated between the monkeys. This led to differences in the binary codings of the digital events stored in the nev file (cf. in \cref{tab:bit_translation}).
-\end{itemize}
-
-The differences are described in more detail below and, in the referenced figures, marked in yellow and red for monkey L and N, respectively. 
-
-
-
-\subsection{Experimental apparatus}
-\label{sec:experimental_apparatus}
-
-The experimental apparatus was composed by a target object, a table switch, a visual cue, and a reward system. On each recording day, the monkey was seated in a custom-made primate chair and placed in front of that apparatus. The non-working arm of the monkey was loosely restrained in a semi-flexed position. To control the home position of the working hand between the reach-to-grasp movements, the table switch which was installed close to the monkey at waist level, 5cm lateral to the mid-line, needed to be pressed down. The target object was a stainless steel rectangular cuboid (40mm x 16mm x 10mm) rotated 45 degrees around the horizontal axis and pointing towards the monkey (\cref{fig:task_trialscheme}a). It was located 13cm away from the table switch at 14cm height. The posterior end of the object was attached through a low-friction horizontal shuttle to a counterweight hidden inside the apparatus, which was used to set the object load. The object load was set to one of two possible values to define the force type (LF and HF) needed for pulling the object in each trial by deactivating and activating an electromagnetic weight resting below the counterweight inside the apparatus. When activated, it attached to the counterweight and increased overall weight from usually 100gram to 200gram, which corresponds roughly to a pulling force of 1Newton and 2Newton for LF and HF, respectively. 
-
-As already mentioned, the object was equipped with six sensors which monitored the monkey's reach-to-grasp behavior. Four force sensitive resistance sensors (FSR sensors) on the object surface provided continuous measurement of the grip forces applied on the object sides by the index and middle finger, as well as the thumb. The different activation patterns of these four FSR sensors, in particular the different placement of the thumb (see \cref{fig:task_trialscheme} a), were used to detect online if the correct grip type was performed. An additional FSR sensor was installed between the object and its counterweight. This FSR sensor was used to measure the horizontally applied force needed to oppose the corresponding object load. Due to the low, but still existing friction of the object moving inside the horizontal shuttle, the measured force signal of this sensor is not perfectly proportional to the horizontal force needed to lift the opposed object load, but sufficient to distinguish between LF and HF settings (cf., example in bottom right panel of \ref{fig:overview_data_l_1} and \ref{fig:overview_data_n_1}). The horizontal displacement of the object over a maximal distance of 15mm was measured by a hall-effect (HE) sensor. All sensors of the object are summarized in \cref{tab:overview_sensors}. The visual cue system, composed of a square of five LEDs (size 10 x 10 mm), was located just above the target object and used to instruct the monkey about the requested behavior. While the central yellow LED was used to warn the monkey that a trial had started, the four red corner LEDs were used to code separately the grip and the force type for the requested trial type of each trial. In this context the illumination of the two left, the two right, the two bottom, or the two top LEDs coded for SG, PG, LF, or HF, respectively (see \cref{fig:task_trialscheme} b for illustration). The reward system consisted of a bucket filled with apple sauce and equipped with a feeding tube and a pump allowing to deliver on demand the reward (few drops of the apple sauce) to the monkey (\cref{fig:task_trialscheme} a).
-
-\subsubsection{Behavioral control system}
-\label{sec:behavioral_control_system}
-
-The core of the behavioral control system is a custom-made Virtual Instrument (VI) in LabView that controls the digital event sequence and the requested behavior of each trial in a recording. A digital event reflects hereby the activation or deactivation of a physical device of the experimental apparatus. In this context, the LabView VI is responsible to activate and deactivate the LEDs of the visual cue system, the reward pump, and the electromagnet. The latter is not controlled by a digital event, but by an analog square signal that switches the magnet on or off. To control the requested behavior, the LabView VI monitors the monkey's manipulation of the table switch and the target object. The table switch as well as all sensors of the target object produce continuous analog signals that are digitized by the NI converter card and fed into the LabView VI of the setup computer (see \cref{fig:setup_overview} computer 2). The square signal of the table switch is then online reinterpreted as digital activation or deactivation event. \cref{fig:task_trialscheme} c displays a schematic diagram on how the physical devices of the experimental apparatus are connected to the setup computer and controlled and monitored by the LabView VI. We will now describe a typical execution of the LabView VI during a recording session in more detail. 
-
-The possible trial types were set to SG-LF, SG-HF, PG-LF, and PG-HF, alternating with equal probability randomly in sequence between trials. Once the settings of the overall task were defined, the LabView VI was started to repetitively run and control the event sequence and behavior for each trial during the recording session. 
-
-Each single trial was run and controlled as follows: 
-
-The LabView VI only started a trial when the monkey deactivated the table switch by pressing and holding it down (home position, \cref{fig:task_trialscheme} a, left). This required not much muscle activity, but simply the weight of the monkey's hand on top of the smooth-running switch. If the table switch was deactivated, the LabView VI internally initiated a trial with a short time delay (TS-ON). In parallel, the program picked randomly one of the possible trial types (e.g., SG-HF) and activated or deactivated the electromagnet accordingly to fit the chosen load force of the object (e.g., activated for HF). To inform (or warn) the monkey that a new trial has started, the central LED was illuminated 400ms after the trial was initiated by the program (WS-ON). Four hundred ms after WS-ON the grip type was revealed to the monkey by illuminating the corresponding corner LEDs of the chosen trial type (CUE-ON, e.g., left LEDs for SG-ON). The LEDs of this first cue were turned off again after 300ms (CUE-OFF). The CUE-OFF was followed by a 1000ms preparatory delay at the end of which the monkey was informed about the upcoming force type by again illuminating the corresponding corner LEDs of the chosen trial type (GO-ON, e.g., top LEDs for HF-ON). This second cue also served as a GO signal for the monkey to initiate the movement which was registered by the activation of the table switch (SR-ON) when the monkey released it after a variable reaction time (RT). The execution of the movement was composed of reaching, grasping, pulling and holding the object in the position window for 500ms. The LabView VI controlled the movement execution online by checking the used grip type, the object displacement and the hold time. For checking the grip type, the grasp of the object was registered by small deflections of the FSR surface sensor signals caused by the monkey's fingers. A FSR sensor was registered as activated if the deflection surpassed a predefined threshold. The pattern of activated FSR sensors was then used by the LabView VI to control if the monkey performed the requested grip type. This meant, in particular, to check for SG and PG, if the FSR sensor on the right (GF side2), or on the bottom (GF pr2) of the object was activated by the monkey's thumb, respectively (see \cref{fig:task_trialscheme} a, middle and right). The other 2 sensors that measured force from the index and middle fingers for the 2 grip types (GF side1, and GF pr1) were not controlled online. If the correct grip was detected, the grip cue was illuminated again as a positive feedback. To check the object displacement, the LabView VI measured if the deflection of the HE sensor signal of the object was within the two defined position thresholds (4 and 14mm). The time point at which the displacement signal surpassed the lower threshold was used by the LabView VI to define the estimated start of the holding period (HS) online. If the object remained within the position window for 500ms after the HS was set, LabView activated the reward pump which provided the monkey with a drop of apple sauce as reward for a successful trial. The time until the reward pump was deactivated again by LabView was proportional to the duration of the object hold in the position window, with a maximum duration and with this a maximum amount of reward for a 500ms holding period. With this mechanism, both monkeys rapidly learned to hold the object at least 500ms in nearly all trials. In parallel to the deactivation of the reward pump, LabView turned off all LEDs to indicate that the running trial ended (WS-OFF). The monkey was allowed to release the object at its own pace as soon as it received the reward. A new trial sequence was started by LabView (TS-ON) as soon as the monkey returned to the home position (new deactivation of the table switch).
-
-An abort of the described trial sequence by LabView (error trial) was triggered by the following three scenarios: (i) the monkey released the table switch before the GO cue, (ii) the wrong grip type was registered, and (iii) the object was not pulled and held long enough in the position window. In case one of these scenarios were registered by LabView the trial was aborted. For monkey L, the LabView VI provided additionally a negative feedback when aborting a trial by flickering all LEDs three times. 
-
-As displayed in \cref{fig:task_trialscheme} c. the behavioral control system was connected to the NSP of the Cerebus DAQ system to store the trial event sequence and the monkey's behavior of each trial in a recording along with the neural data registered by the neural recording platform. For this, the analog signals of the sensors of the target object were copied from the NI connector block to the analog input port of the Cerebus System NSP via DC coupled BNC cables and connectors. In the NSP they were digitized with a 16-bit resolution at 0.15 mV/bit and a sampling rate of 1kHz and saved in the ns2 file under the channel ids listed in \cref{tab:overview_sensors}. All digital or digitized events that register the activation and deactivation of the table switch, the LEDs of the cue system, and the reward pump, as well as the internally generated digital trial start event (TS-ON) were coded as a 8-bit binary signal (see \cref{tab:bit_translation}) and transferred via the NI connector block to a 16-bit DB-37 input port of the NSP where they occupy the first 8 digits (remaining digits are set to 1). In the NSP the now 16-bit binary signal of each event was stored in its decimal representation and with its corresponding time point in the nev file (see \cref{tab:bit_translation} and \cref{fig:cerebus_system}).
 
 \begin{figure}
  \includegraphics[width=0.7\textwidth]{./figures/scidata_figures/task_trialscheme}
- \caption[Overview of the experimental apparatus and behavioral control system.]{Overview of the experimental apparatus and behavioral control system. (a) Sketches of the experimental apparatus and the monkey performing the reach-to-grasp task. Left: monkey in its home position with the working hand on the table switch. Middle and right: monkey grasping the object with a side grip (SG) and a precision grip (PG), respectively. Insets of middle and right sketch show the actual position of the index finger (I), the thumb (T), and the middle finger (M) on the object (brown cube) 11 . (b) Trial scheme of an example trial with
+ \caption[Overview of the experimental apparatus and behavioral control system.]{\rewrite{Overview of the experimental apparatus and behavioral control system. (a) Sketches of the experimental apparatus and the monkey performing the reach-to-grasp task. Left: monkey in its home position with the working hand on the table switch. Middle and right: monkey grasping the object with a side grip (SG) and a precision grip (PG), respectively. Insets of middle and right sketch show the actual position of the index finger (I), the thumb (T), and the middle finger (M) on the object (brown cube) 11 . (b) Trial scheme of an example trial with
 the respective visual cues (different illumination combinations of the 5 LEDs illustrated on top) shown to the monkey at its respective times. The behavioral events are marked along the time axis (see main text for abbreviations). Events with black font mark digitally recorded events, whereas events with brown font indicate events (object touch OT, object release OR, displacement onset DO, and object back to baseline OBB) which were extracted offline from baseline deviations of the analog signals of the object’s sensors. Additionally, we indicate by italic fonts events which were generated by the monkey, while all other events are produced by LabView. The 8-bit binary code for the digital event signals sent from LabView VI to the NSP at the respective times is shown below the time axis. Example traces for the analog signals of the HE sensor (Displ; dark solid line) and one of the 4 FSR sensors located at the object’s surface (GF pr2, light dotted line) used to monitor the monkeys behavior and extract
-OT, OR, DO, and OBB are shown at the bottom. (c) Outline of the devices and their wiring controlling the behavior. All analog signal streams are colored in brown, whereas all digital signal streams are colored in black.}
+OT, OR, DO, and OBB are shown at the bottom. (c) Outline of the devices and their wiring controlling the behavior. All analog signal streams are colored in brown, whereas all digital signal streams are colored in black.} Figure from \cite{Brochier_2018}.}
 \label{fig:task_trialscheme}
 \end{figure}
 
-
 \begin{figure}
  \includegraphics[width=\textwidth]{./figures/scidata_figures/setup_overview}
- \caption[Overview of the setup]{Overview of the setup. The setup consisted of three main parts: the neural recording platform, the experimental apparatus, and the behavioral control system. The neural recording platform (top) was composed of the implanted Utah array with its corresponding connector (CerePort), a headstage (Samtec or Patient cable), and the Cerebus data acquisition (DAQ) system (i.e. the Front-End Amplifier, Neural Signal Processor (NSP), and the Cerebus control software, Central Suite, installed on the setup computer 1). The experimental apparatus (bottom left) consisted of the physical devices which the monkeys had to interact with (i.e., the visual cue panel (square with 5 LEDs), the target object, the table switch, and the reward system). The behavioral control system (bottom right) was built from hard- and software of National Instruments (NI, National Instruments Corporation, Austin, Texas, USA). It was composed of a NI connector block which was linked via a NI 6023E A-D converter card to setup computer 2 on which the NI system design software, LabView, was running. To record the behavioral data the behavioral control system was interlinked with the neuronal recording platform via the NSP and the NI connector block. All three parts are separately described in more detail in the main text, as well as Figures 2 and 4. Setup differences between the two monkeys are indicated in yellow and red for monkeys L and N, respectively.}
- \label{fig:setup_overview}
+ \caption[Overview of the setup]{\rewrite{Overview of the setup. The setup consisted of three main parts: the neural recording platform, the experimental apparatus, and the behavioral control system. The neural recording platform (top) was composed of the implanted Utah array with its corresponding connector (CerePort), a headstage (Samtec or Patient cable), and the Cerebus data acquisition (DAQ) system (i.e. the Front-End Amplifier, Neural Signal Processor (NSP), and the Cerebus control software, Central Suite, installed on the setup computer 1). The experimental apparatus (bottom left) consisted of the physical devices which the monkeys had to interact with (i.e., the visual cue panel (square with 5 LEDs), the target object, the table switch, and the reward system). The behavioral control system (bottom right) was built from hard- and software of National Instruments (NI, National Instruments Corporation, Austin, Texas, USA). It was composed of a NI connector block which was linked via a NI 6023E A-D converter card to setup computer 2 on which the NI system design software, LabView, was running. To record the behavioral data the behavioral control system was interlinked with the neuronal recording platform via the NSP and the NI connector block. All three parts are separately described in more detail in the main text, as well as Figures 2 and 4. Setup differences between the two monkeys are indicated in yellow and red for monkeys L and N, respectively.} Figure from \cite{Brochier_2018}.}
+ \label{fig:scidata_setup_overview}
 \end{figure}
-
 
 \begin{table}[]
 \footnotesize
@@ -258,10 +181,9 @@ FSR 4  & 140        & GF side2  & object’s right   & thumb touch           & S
 FSR 5  & 141        & LoadForce & object’s spring  & object loading        & pulling force     \\ \hline
 HE     & 143        & Displ     & object's shuttle & object displacement   & object’s position \\ \hline
 \end{tabular}
- \caption[Overview of six objects sensonsr to monitor and control the monkey's behavior]{Overview of the six object sensors used to monitor and control the monkey's behavior. The first four force sensitive resistance (FSR) sensors are used to monitor the applied grip type. They are located on the surface of each object side and are activated by the touch of the corresponding monkey's finger. The fifth FSR is located at the spring counterbalancing the pull resistance of the object and is used to measure the pulling force applied by the monkey. The hall-effect sensor (HE) is located along the low-friction shuttle of the object and used to measure the position of the object. The signals of all sensors are saved in the ns2 with the stated channel ID and label (cf. \cref{fig:cerebus_system}).}
+ \caption[Overview of six objects sensonsr to monitor and control the monkey's behavior]{\rewrite{Overview of the six object sensors used to monitor and control the monkey's behavior. The first four force sensitive resistance (FSR) sensors are used to monitor the applied grip type. They are located on the surface of each object side and are activated by the touch of the corresponding monkey's finger. The fifth FSR is located at the spring counterbalancing the pull resistance of the object and is used to measure the pulling force applied by the monkey. The hall-effect sensor (HE) is located along the low-friction shuttle of the object and used to measure the position of the object. The signals of all sensors are saved in the ns2 with the stated channel ID and label (cf. \cref{fig:cerebus_system}).} Table from \cite{Brochier_2018}.}
  \label{tab:overview_sensors}
 \end{table}
-
 
 \begin{table}[]
 \scriptsize
@@ -295,17 +217,43 @@ HE     & 143        & Displ     & object's shuttle & object displacement   & obj
 \multirow{2}{*}{}                                               & \textbf{pump} & \textbf{LED}                    & \textbf{switch} & \textbf{TS} & \multicolumn{4}{c|}{\textbf{LED}}                                                                                                         & \multicolumn{3}{l|}{\multirow{2}{*}{}}                                                             \\ \cline{2-9}
                                                                 &               & \multicolumn{1}{c|}{\textbf{c}} & \multicolumn{2}{c|}{}         & \multicolumn{1}{c|}{\textbf{bl}} & \multicolumn{1}{c|}{\textbf{tr}} & \multicolumn{1}{c|}{\textbf{tl}} & \multicolumn{1}{c|}{\textbf{br}} & \multicolumn{3}{l|}{}                                                                              \\ \hline
 \end{tabular}
-\caption[Translation table of 8-bit binary to decimal event codes and their interpretation in a trial context]{Translation table of 8-bit binary to decimal event codes and their interpretation in a trial context. The 8-bit binary event code created by LabView states the activation (bit status 1) and deactivation (bit status 0) of the LEDs of the cue system (c:center, t:top, b:bottom, l:left, r:right), the table switch (switch), the reward pump (pump) or the trial start (TS) internally set by LabView. During each trial the (8-bit binary) status of these devices/settings (cf. bottom row) were sent from LabView to the NSP of the Cerebus DAQ system (Figure 2). There, the event codes were converted to a decimal code of the bit sequence assuming another byte with all bits set to 1 in front. The decimal event codes are found in the nev files with a time stamp. The correct interpretation of these events in context of a trial are here indicated in the second column from the right. Due to different versions of the LabView control program for monkey L and N the decimal codes for the same event may differ between the monkeys (cf. first column from the right). Some event codes (65381, 65386, 65390, 65440, 65504) are not listed here, because they do not have a concrete meaning and occur only sporadically in the nev file due to a mistake in the sampling of the digital events - they have to be ignored. Except for the "ERROR" codes, the event codes are sorted in sequential order from top to bottom with respect to the task, i.e. their order corresponds to the sequence found in the nev file in a reach-to-grasp trial. Note that some events are represented by the same decimal codes and are just differently interpreted due to their sequential occurrence in a trial (cf. TS-OFF and STOP, as well as WS-ON and CUE-OFF).}
+\caption[Translation table of 8-bit binary to decimal event codes and their interpretation in a trial context]{\rewrite{Translation table of 8-bit binary to decimal event codes and their interpretation in a trial context. The 8-bit binary event code created by LabView states the activation (bit status 1) and deactivation (bit status 0) of the LEDs of the cue system (c:center, t:top, b:bottom, l:left, r:right), the table switch (switch), the reward pump (pump) or the trial start (TS) internally set by LabView. During each trial the (8-bit binary) status of these devices/settings (cf. bottom row) were sent from LabView to the NSP of the Cerebus DAQ system (Figure 2). There, the event codes were converted to a decimal code of the bit sequence assuming another byte with all bits set to 1 in front. The decimal event codes are found in the nev files with a time stamp. The correct interpretation of these events in context of a trial are here indicated in the second column from the right. Due to different versions of the LabView control program for monkey L and N the decimal codes for the same event may differ between the monkeys (cf. first column from the right). Some event codes (65381, 65386, 65390, 65440, 65504) are not listed here, because they do not have a concrete meaning and occur only sporadically in the nev file due to a mistake in the sampling of the digital events - they have to be ignored. Except for the "ERROR" codes, the event codes are sorted in sequential order from top to bottom with respect to the task, i.e. their order corresponds to the sequence found in the nev file in a reach-to-grasp trial. Note that some events are represented by the same decimal codes and are just differently interpreted due to their sequential occurrence in a trial (cf. TS-OFF and STOP, as well as WS-ON and CUE-OFF).} Table from \cite{Brochier_2018}.}
 \label{tab:bit_translation}
 \end{table}
 
 \begin{figure}
  \includegraphics[width=0.7\textwidth]{./figures/scidata_figures/cerebus_system}
- \caption[Sketch of the components related to the recording of the neuronal signals]{Sketch of the components related to the recording of the neuronal signals. Data were recorded
+ \caption[Sketch of the components related to the recording of the neuronal signals]{\rewrite{Sketch of the components related to the recording of the neuronal signals. Data were recorded
 using a Utah array, which was linked via its connector (CerePort) to a headstage (Samtec or Patient Cable) with a unity gain. From there the neural signals were transfered to the Cerebus Front-End Amplifier, where they were amplified, filtered and digitized. The digitized signals were converted into a single multiplex optical output and sent via a fiber-optic data link to the Neural Signal Processor (NSP), which is controlled by the Cerebus control software (Central Suite). Within the NSP the time points and waveforms of potential spikes were extracted online from a correspondingly processed copy of the neural signals and saved in the nev file. Simultaneously, the continuous raw signals (sampled at 30 kHz) were saved in the ns5 (for monkey L) or ns6 file (for monkey N). In parallel to the neural signals the NSP received also the digital trial events produced by the LabView VI, and the analog signals of the object’s sensors via the NI connector block of the behavioral control system. While the digital trial events were saved along with the extracted potential spikes in the nev file,
-the analog signals of the sensors were digitized and saved in the ns2 file. For monkey N, a filtered and downsampled version of the neural signals (0.3–250 Hz at 1 kHz) was also saved in the ns2 file. Components and settings specific to monkey L and N are indicated by yellow and red, respectively.}
+the analog signals of the sensors were digitized and saved in the ns2 file. For monkey N, a filtered and downsampled version of the neural signals (0.3–250 Hz at 1 kHz) was also saved in the ns2 file. Components and settings specific to monkey L and N are indicated by yellow and red, respectively.} Figure from \cite{Brochier_2018}.}
 \label{fig:cerebus_system}
 \end{figure}
+
+
+
+\rewrite{
+
+\subsection{Experimental apparatus}
+\label{sec:experimental_apparatus}
+
+The experimental apparatus was composed by a target object, a table switch, a visual cue, and a reward system. On each recording day, the monkey was seated in a custom-made primate chair and placed in front of that apparatus. The non-working arm of the monkey was loosely restrained in a semi-flexed position. To control the home position of the working hand between the reach-to-grasp movements, the table switch which was installed close to the monkey at waist level, 5cm lateral to the mid-line, needed to be pressed down. The target object was a stainless steel rectangular cuboid (40mm x 16mm x 10mm) rotated 45 degrees around the horizontal axis and pointing towards the monkey (\cref{fig:task_trialscheme}a). It was located 13cm away from the table switch at 14cm height. The posterior end of the object was attached through a low-friction horizontal shuttle to a counterweight hidden inside the apparatus, which was used to set the object load. The object load was set to one of two possible values to define the force type (LF and HF) needed for pulling the object in each trial by deactivating and activating an electromagnetic weight resting below the counterweight inside the apparatus. When activated, it attached to the counterweight and increased overall weight from usually 100gram to 200gram, which corresponds roughly to a pulling force of 1Newton and 2Newton for LF and HF, respectively. 
+
+As already mentioned, the object was equipped with six sensors which monitored the monkey's reach-to-grasp behavior. Four force sensitive resistance sensors (FSR sensors) on the object surface provided continuous measurement of the grip forces applied on the object sides by the index and middle finger, as well as the thumb. The different activation patterns of these four FSR sensors, in particular the different placement of the thumb (see \cref{fig:task_trialscheme} a), were used to detect online if the correct grip type was performed. An additional FSR sensor was installed between the object and its counterweight. This FSR sensor was used to measure the horizontally applied force needed to oppose the corresponding object load. Due to the low, but still existing friction of the object moving inside the horizontal shuttle, the measured force signal of this sensor is not perfectly proportional to the horizontal force needed to lift the opposed object load, but sufficient to distinguish between LF and HF settings (cf., example in bottom right panel of \ref{fig:overview_data_l_1} and \ref{fig:overview_data_n_1}). The horizontal displacement of the object over a maximal distance of 15mm was measured by a hall-effect (HE) sensor. All sensors of the object are summarized in \cref{tab:overview_sensors}. The visual cue system, composed of a square of five LEDs (size 10 x 10 mm), was located just above the target object and used to instruct the monkey about the requested behavior. While the central yellow LED was used to warn the monkey that a trial had started, the four red corner LEDs were used to code separately the grip and the force type for the requested trial type of each trial. In this context the illumination of the two left, the two right, the two bottom, or the two top LEDs coded for SG, PG, LF, or HF, respectively (see \cref{fig:task_trialscheme} b for illustration). The reward system consisted of a bucket filled with apple sauce and equipped with a feeding tube and a pump allowing to deliver on demand the reward (few drops of the apple sauce) to the monkey (\cref{fig:task_trialscheme} a).
+
+\subsubsection{Behavioral control system}
+\label{sec:behavioral_control_system}
+
+The core of the behavioral control system is a custom-made Virtual Instrument (VI) in LabView that controls the digital event sequence and the requested behavior of each trial in a recording. A digital event reflects hereby the activation or deactivation of a physical device of the experimental apparatus. In this context, the LabView VI is responsible to activate and deactivate the LEDs of the visual cue system, the reward pump, and the electromagnet. The latter is not controlled by a digital event, but by an analog square signal that switches the magnet on or off. To control the requested behavior, the LabView VI monitors the monkey's manipulation of the table switch and the target object. The table switch as well as all sensors of the target object produce continuous analog signals that are digitized by the NI converter card and fed into the LabView VI of the setup computer (see \cref{fig:scidata_setup_overview} computer 2). The square signal of the table switch is then online reinterpreted as digital activation or deactivation event. \cref{fig:task_trialscheme} c displays a schematic diagram on how the physical devices of the experimental apparatus are connected to the setup computer and controlled and monitored by the LabView VI. We will now describe a typical execution of the LabView VI during a recording session in more detail. 
+
+The possible trial types were set to SG-LF, SG-HF, PG-LF, and PG-HF, alternating with equal probability randomly in sequence between trials. Once the settings of the overall task were defined, the LabView VI was started to repetitively run and control the event sequence and behavior for each trial during the recording session. 
+
+Each single trial was run and controlled as follows: 
+
+The LabView VI only started a trial when the monkey deactivated the table switch by pressing and holding it down (home position, \cref{fig:task_trialscheme} a, left). This required not much muscle activity, but simply the weight of the monkey's hand on top of the smooth-running switch. If the table switch was deactivated, the LabView VI internally initiated a trial with a short time delay (TS-ON). In parallel, the program picked randomly one of the possible trial types (e.g., SG-HF) and activated or deactivated the electromagnet accordingly to fit the chosen load force of the object (e.g., activated for HF). To inform (or warn) the monkey that a new trial has started, the central LED was illuminated 400ms after the trial was initiated by the program (WS-ON). Four hundred ms after WS-ON the grip type was revealed to the monkey by illuminating the corresponding corner LEDs of the chosen trial type (CUE-ON, e.g., left LEDs for SG-ON). The LEDs of this first cue were turned off again after 300ms (CUE-OFF). The CUE-OFF was followed by a 1000ms preparatory delay at the end of which the monkey was informed about the upcoming force type by again illuminating the corresponding corner LEDs of the chosen trial type (GO-ON, e.g., top LEDs for HF-ON). This second cue also served as a GO signal for the monkey to initiate the movement which was registered by the activation of the table switch (SR-ON) when the monkey released it after a variable reaction time (RT). The execution of the movement was composed of reaching, grasping, pulling and holding the object in the position window for 500ms. The LabView VI controlled the movement execution online by checking the used grip type, the object displacement and the hold time. For checking the grip type, the grasp of the object was registered by small deflections of the FSR surface sensor signals caused by the monkey's fingers. A FSR sensor was registered as activated if the deflection surpassed a predefined threshold. The pattern of activated FSR sensors was then used by the LabView VI to control if the monkey performed the requested grip type. This meant, in particular, to check for SG and PG, if the FSR sensor on the right (GF side2), or on the bottom (GF pr2) of the object was activated by the monkey's thumb, respectively (see \cref{fig:task_trialscheme} a, middle and right). The other 2 sensors that measured force from the index and middle fingers for the 2 grip types (GF side1, and GF pr1) were not controlled online. If the correct grip was detected, the grip cue was illuminated again as a positive feedback. To check the object displacement, the LabView VI measured if the deflection of the HE sensor signal of the object was within the two defined position thresholds (4 and 14mm). The time point at which the displacement signal surpassed the lower threshold was used by the LabView VI to define the estimated start of the holding period (HS) online. If the object remained within the position window for 500ms after the HS was set, LabView activated the reward pump which provided the monkey with a drop of apple sauce as reward for a successful trial. The time until the reward pump was deactivated again by LabView was proportional to the duration of the object hold in the position window, with a maximum duration and with this a maximum amount of reward for a 500ms holding period. With this mechanism, both monkeys rapidly learned to hold the object at least 500ms in nearly all trials. In parallel to the deactivation of the reward pump, LabView turned off all LEDs to indicate that the running trial ended (WS-OFF). The monkey was allowed to release the object at its own pace as soon as it received the reward. A new trial sequence was started by LabView (TS-ON) as soon as the monkey returned to the home position (new deactivation of the table switch).
+
+An abort of the described trial sequence by LabView (error trial) was triggered by the following three scenarios: (i) the monkey released the table switch before the GO cue, (ii) the wrong grip type was registered, and (iii) the object was not pulled and held long enough in the position window. In case one of these scenarios were registered by LabView the trial was aborted. For monkey L, the LabView VI provided additionally a negative feedback when aborting a trial by flickering all LEDs three times. 
+
+As displayed in \cref{fig:task_trialscheme} c. the behavioral control system was connected to the NSP of the Cerebus DAQ system to store the trial event sequence and the monkey's behavior of each trial in a recording along with the neural data registered by the neural recording platform. For this, the analog signals of the sensors of the target object were copied from the NI connector block to the analog input port of the Cerebus System NSP via DC coupled BNC cables and connectors. In the NSP they were digitized with a 16-bit resolution at 0.15 mV/bit and a sampling rate of 1kHz and saved in the ns2 file under the channel ids listed in \cref{tab:overview_sensors}. All digital or digitized events that register the activation and deactivation of the table switch, the LEDs of the cue system, and the reward pump, as well as the internally generated digital trial start event (TS-ON) were coded as a 8-bit binary signal (see \cref{tab:bit_translation}) and transferred via the NI connector block to a 16-bit DB-37 input port of the NSP where they occupy the first 8 digits (remaining digits are set to 1). In the NSP the now 16-bit binary signal of each event was stored in its decimal representation and with its corresponding time point in the nev file (see \cref{tab:bit_translation} and \cref{fig:cerebus_system}).
 
 
 \subsubsection{Neural recording platform}
@@ -409,13 +357,6 @@ All data and metadata are publicly available via the data portal of the German N
 \end{figure}
 
 
-% \begin{figure}
-%  \includegraphics[width=\textwidth]{./figures/scidata_figures/...}
-%  \caption[]{}
-%  \label{}
-% \end{figure}
-% \subsection{Dataset information}
-
 Overview of recording days of the published datasets. For both monkeys, we chose to publish the first dataset (rec*-001) of the recording day. For details on the published datasets see \cref{tab:datafiles_trials} and \cref{tab:datafiles_overview}.
 
 The dataset l101210-001 from monkey L is the first out of 9 recording sessions conducted on Friday, December 10, 2010, while the dataset i140703-001 from monkey N is the first out of only 3 recording sessions conducted on Thursday, July 3, 2014. Both datasets were recorded in the late morning. The following recording day went on for nearly one hour and a half for monkey L, and one hour for monkey N. Although the recording from monkey N lasted with 16:43 min several minutes longer than the recording from monkey L with only 11:49 min, monkey L executed 204 trials, while monkey N only performed 160 trials in total. However, monkey L performed only ~70\% of all trials correctly, whereas monkey N successfully completed ~90\% of all trials during the recording (cf. \cref{tab:datafiles_trials}). Nonetheless, the high percentage of error trials in monkey L are mainly caused by an too early movement onsets reflecting the eagerness, but also the nervousness of the monkey L's character. In contrast to these error types, monkey L used only 12 times the wrong grip compared to monkey N who performed an incorrect grip type 16 times during the recording. 
@@ -427,106 +368,105 @@ For both monkeys the trial types alternated randomly between trials leading to s
 
 
 The quality of the spiking activity in the datasets of both monkeys was high, which allowed us to perform a relatively robust offline spike sorting with high numbers of single unit activity (SUA) distributed over all electrodes of the array (for details see \ref{tab:datafiles_unitactivity}). For details on how the offline sorting was performed and checked please have a look at \cref{sec:offline_spike_sorting} and \cref{sec:spike_data_quality}. 
-
-\begin{table}
-\begin{tabular}{|l|l|l|}
-\hline 
-\multicolumn{3}{|c|}{\textbf{monkey L}}\tabularnewline
-\hline 
-\textbf{file names} & \textbf{file size} & \textbf{file content}\tabularnewline
-\hline 
-\hline 
-l101210-001.ccf & 108.2 kB & cerebus configuration file\tabularnewline
-\hline 
-l101210-001.nev & 287.7 MB & digital events, unsorted spikes times \& waveforms\tabularnewline
-\hline 
-l101210-001-02.nev & 287.7 MB & digital events, sorted spikes times \& waveforms\tabularnewline
-\hline 
-l101210-001.ns2 & 8.5 MB & analog signals of object sensors\tabularnewline
-\hline 
-l101210-001.ns5 & 4.1 GB & raw neuronal signal\tabularnewline
-\hline 
-l101210-001.odml &  & metadata\tabularnewline
-\hline 
-l101210-001.mat &  & neuronal data annotated with metadata\tabularnewline
-\hline 
-\hline 
-\multicolumn{3}{|c|}{\textbf{monkey N}}\tabularnewline
-\hline 
-\textbf{file names} & \textbf{file size} & \textbf{file content}\tabularnewline
-\hline 
-\hline 
-i140703-001.ccf & 187.1 kB & cerebus configuration file\tabularnewline
-\hline 
-i140703-001.nev & 168.3 MB & digital events, unsorted spikes times \& waveforms\tabularnewline
-\hline 
-i140703-001-03.nev & 168.3 MB & digital events, sorted spikes times \& waveforms\tabularnewline
-\hline 
-i140703-001.ns2 & 204.7 MB & analog signals of object sensors and LFP signals\tabularnewline
-\hline 
-i140703-001.ns6 & 5.8 GB & raw neuronal signal\tabularnewline
-\hline 
-i140703-001.odml &  & metadata\tabularnewline
-\hline 
-i140703-001.mat &  & neuronal data annotated with metadata\tabularnewline
-\hline 
-\end{tabular}
-
-\caption[Overview of files (names, size, and content) for each provided dataset of monkey L and N]{Overview of files (names, size, and content) for each provided dataset of monkey L and N. Besides the listed data and metadata files, we also provide a mat file collection from the dataset of each monkey that contains the analog and digital signals of the nev, ns5/6, and ns2 files annotated with the corresponding metadata information of the odml file.}
-\label{tab:datafiles_overview}
-\end{table}
-
-\begin{table}
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline 
-\multirow{2}{*}{\textbf{monkey}} & \multirow{2}{*}{\textbf{date}} & \multirow{2}{*}{\textbf{weekday}} & \multirow{2}{*}{\textbf{start}} & \multirow{2}{*}{\textbf{dur}} & \multirow{2}{*}{\textbf{\# rec}} & \multirow{2}{*}{\textbf{dur of rec{*}-001}}\tabularnewline
- &  &  &  &  &  & \tabularnewline
-\hline 
-\hline 
-\textbf{L} & 2010-12-10 & Friday & 10:50 am & 01:28 h & 9 & 11:49 min\tabularnewline
-\hline 
-\textbf{N} & 2014-07-03 & Thursday & 10:41 am & 00:51 h & 3 & 16:43 min\tabularnewline
-\hline 
-\end{tabular}
-\caption[Overview of recording days of the published datasets]{Overview of recording days of the published datasets. For both monkeys, we chose to publish the first dataset (rec{*}-001) of the recording day. For details on the published datasets
-see \cref{tab:datafiles_trials} and \cref{tab:datafiles_overview}.}
-\label{tab:datasets_recday}
-\end{table}
-
-
-\begin{table}
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-\hline 
-\multirow{2}{*}{\textbf{monkey}} & \textbf{\# trials} & \multicolumn{2}{c|}{\textbf{\# error trials}} & \multicolumn{5}{c|}{\textbf{\# correct trials }}\tabularnewline
-\cline{2-9} 
- & 
-\textbf{total}
- & 
-\textbf{total}
- & 
-\textbf{grip}
- & 
-\textbf{total}
- & 
-\textbf{SG-LF}
- & 
-\textbf{SG-HF}
- & 
-\textbf{PG-LF}
- & 
-\textbf{PG-HF}
-\tabularnewline
-\hline 
-\hline 
-\textbf{L} & 204 & 69 & 12 & 135 & 41 & 30 & 31 & 33\tabularnewline
-\hline 
-\textbf{N} & 160 & 19 & 16 & 141 & 35 & 35 & 35 & 36\tabularnewline
-\hline 
-\end{tabular}
-\caption[Overview of trials performed during the published datasets]{Overview of trials performed during the published datasets. Of the stated number of error trials, the monkey L and N used the wrong grip type in 12 and 16 trials, respectively. In the remaining error trials the monkeys initiated the movement too
-early. Trial types were altered randomly in the recordings which led to slightly different trial numbers for the different trial types.}
-\label{tab:datafiles_trials}
-\end{table}
+% 
+% \begin{table}
+% \begin{tabular}{|l|l|l|}
+% \hline 
+% \multicolumn{3}{|c|}{\textbf{monkey L}}\tabularnewline
+% \hline 
+% \textbf{file names} & \textbf{file size} & \textbf{file content}\tabularnewline
+% \hline 
+% \hline 
+% l101210-001.ccf & 108.2 kB & cerebus configuration file\tabularnewline
+% \hline 
+% l101210-001.nev & 287.7 MB & digital events, unsorted spikes times \& waveforms\tabularnewline
+% \hline 
+% l101210-001-02.nev & 287.7 MB & digital events, sorted spikes times \& waveforms\tabularnewline
+% \hline 
+% l101210-001.ns2 & 8.5 MB & analog signals of object sensors\tabularnewline
+% \hline 
+% l101210-001.ns5 & 4.1 GB & raw neuronal signal\tabularnewline
+% \hline 
+% l101210-001.odml &  & metadata\tabularnewline
+% \hline 
+% l101210-001.mat &  & neuronal data annotated with metadata\tabularnewline
+% \hline 
+% \hline 
+% \multicolumn{3}{|c|}{\textbf{monkey N}}\tabularnewline
+% \hline 
+% \textbf{file names} & \textbf{file size} & \textbf{file content}\tabularnewline
+% \hline 
+% \hline 
+% i140703-001.ccf & 187.1 kB & cerebus configuration file\tabularnewline
+% \hline 
+% i140703-001.nev & 168.3 MB & digital events, unsorted spikes times \& waveforms\tabularnewline
+% \hline 
+% i140703-001-03.nev & 168.3 MB & digital events, sorted spikes times \& waveforms\tabularnewline
+% \hline 
+% i140703-001.ns2 & 204.7 MB & analog signals of object sensors and LFP signals\tabularnewline
+% \hline 
+% i140703-001.ns6 & 5.8 GB & raw neuronal signal\tabularnewline
+% \hline 
+% i140703-001.odml &  & metadata\tabularnewline
+% \hline 
+% i140703-001.mat &  & neuronal data annotated with metadata\tabularnewline
+% \hline 
+% \end{tabular}
+% 
+% \caption[Overview of files (names, size, and content) for each provided dataset of monkey L and N]{Overview of files (names, size, and content) for each provided dataset of monkey L and N. Besides the listed data and metadata files, we also provide a mat file collection from the dataset of each monkey that contains the analog and digital signals of the nev, ns5/6, and ns2 files annotated with the corresponding metadata information of the odml file.}
+% \label{tab:datafiles_overview}
+% \end{table}
+% 
+% \begin{table}
+% \begin{tabular}{|c|c|c|c|c|c|c|}
+% \hline 
+% \multirow{2}{*}{\textbf{monkey}} & \multirow{2}{*}{\textbf{date}} & \multirow{2}{*}{\textbf{weekday}} & \multirow{2}{*}{\textbf{start}} & \multirow{2}{*}{\textbf{dur}} & \multirow{2}{*}{\textbf{\# rec}} & \multirow{2}{*}{\textbf{dur of rec{*}-001}}\tabularnewline
+%  &  &  &  &  &  & \tabularnewline
+% \hline 
+% \hline 
+% \textbf{L} & 2010-12-10 & Friday & 10:50 am & 01:28 h & 9 & 11:49 min\tabularnewline
+% \hline 
+% \textbf{N} & 2014-07-03 & Thursday & 10:41 am & 00:51 h & 3 & 16:43 min\tabularnewline
+% \hline 
+% \end{tabular}
+% \caption[Overview of recording days of the published datasets]{Overview of recording days of the published datasets. For both monkeys, we chose to publish the first dataset (rec{*}-001) of the recording day. For details on the published datasets
+% see \cref{tab:datafiles_trials} and \cref{tab:datafiles_overview}.}
+% \label{tab:datasets_recday}
+% \end{table}
+% 
+% \begin{table}
+% \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+% \hline 
+% \multirow{2}{*}{\textbf{monkey}} & \textbf{\# trials} & \multicolumn{2}{c|}{\textbf{\# error trials}} & \multicolumn{5}{c|}{\textbf{\# correct trials }}\tabularnewline
+% \cline{2-9} 
+%  & 
+% \textbf{total}
+%  & 
+% \textbf{total}
+%  & 
+% \textbf{grip}
+%  & 
+% \textbf{total}
+%  & 
+% \textbf{SG-LF}
+%  & 
+% \textbf{SG-HF}
+%  & 
+% \textbf{PG-LF}
+%  & 
+% \textbf{PG-HF}
+% \tabularnewline
+% \hline 
+% \hline 
+% \textbf{L} & 204 & 69 & 12 & 135 & 41 & 30 & 31 & 33\tabularnewline
+% \hline 
+% \textbf{N} & 160 & 19 & 16 & 141 & 35 & 35 & 35 & 36\tabularnewline
+% \hline 
+% \end{tabular}
+% \caption[Overview of trials performed during the published datasets]{Overview of trials performed during the published datasets. Of the stated number of error trials, the monkey L and N used the wrong grip type in 12 and 16 trials, respectively. In the remaining error trials the monkeys initiated the movement too
+% early. Trial types were altered randomly in the recordings which led to slightly different trial numbers for the different trial types.}
+% \label{tab:datafiles_trials}
+% \end{table}
 
 \subsubsection{Information on metadata framework}
 \label{sec:scidata_metadat_framework}
@@ -579,7 +519,7 @@ As outlined above, the datasets are stored in two types of files. The primary da
 
 We chose the data object model provided by the open-source Neo library \cite{Garcia_2014} as the primary representation of the datasets. Neo provides a hierarchical data structure composed of Python objects that aim to represent electrophysiological data in a generic manner. In addition, Neo provides a number I/Os that enable the user to read from (and in part, write to) a large number of open and vendor-specific file formats. In particular, Neo provides an I/O module for the file format used by Blackrock Microsystems (class BlackrockIO in file neo.io.blackrockio.py). The output of this I/O is a Neo data structure that is a faithful representation of the contents of the primary data files. For detailed information on the structure of the Neo data object model, please consult \cite{Garcia_2014} and the online documentation (http://neo.readthedocs.io/en/latest/index.html). The specific realization of the Neo output structure generated by the readblock() and readsegment() methods of the BlackrockIO are given in detail in the I/O's documentation. 
 
-Here, we briefly summarize the output of the reach-to-grasp datasets obtained when calling the I/O. The readblock() method of an instantiation of the BlackrockIO returns a Neo Block object as a top level grouping object representing one recording session. In the hierarchy directly below the Block is one single Segment object spanning the complete continuous recording, and one ChannelIndex object for each of the 96 electrodes of the Utah Array (\ref{sec:surgery_array_location}) and each of the 6 sensor signals monitoring the target object manipulation (\cref{sec:experimental_apparatus}). The data from these 102 recording channels is each saved in one AnalogSignal object. All of these are linked to the Segment and the respective ChannelIndex object. Likewise, the spike times (and optionally, the spike waveforms) of each identified unit are saved to a SpikeTrain object. As for the AnalogSignal objects, these are linked to the Segment, and to the ChannelIndex object via a Unit object. Finally, all digital events are saved into a single Event object that lists their time of occurrences and the corresponding event IDs. Additional information from the file is provided as annotations on each individual Neo object (accessible via the annotation property of the object), in particular as annotations to the top level Block object. Note, that although this generic I/O can be used to access the raw data records, no interpretation of the file contents is given. For example, digital events are not interpreted as behavioral events, but only given as the raw numeric codes shown in \cref{fig:setup_overview}. 
+Here, we briefly summarize the output of the reach-to-grasp datasets obtained when calling the I/O. The readblock() method of an instantiation of the BlackrockIO returns a Neo Block object as a top level grouping object representing one recording session. In the hierarchy directly below the Block is one single Segment object spanning the complete continuous recording, and one ChannelIndex object for each of the 96 electrodes of the Utah Array (\ref{sec:surgery_array_location}) and each of the 6 sensor signals monitoring the target object manipulation (\cref{sec:experimental_apparatus}). The data from these 102 recording channels is each saved in one AnalogSignal object. All of these are linked to the Segment and the respective ChannelIndex object. Likewise, the spike times (and optionally, the spike waveforms) of each identified unit are saved to a SpikeTrain object. As for the AnalogSignal objects, these are linked to the Segment, and to the ChannelIndex object via a Unit object. Finally, all digital events are saved into a single Event object that lists their time of occurrences and the corresponding event IDs. Additional information from the file is provided as annotations on each individual Neo object (accessible via the annotation property of the object), in particular as annotations to the top level Block object. Note, that although this generic I/O can be used to access the raw data records, no interpretation of the file contents is given. For example, digital events are not interpreted as behavioral events, but only given as the raw numeric codes shown in \cref{fig:scidata_setup_overview}. 
 
 In order to access the metadata stored in the odML file, we use the corresponding library API python-odML described in \cite{Grewe_2011}. In short, odML files store metadata in form of hierarchically structured key-value pairs. The odML files accompanying the provided datasets contain extensive metadata grouped into different sections describing different aspects of the experiment. A tutorial on how to work with the odML library can be found in the online documentation shipped with the library (https://g-node.github.io/python-odml/), and a more detailed description of how to manage metadata by example of the odML framework can be found in \cite{Zehl_2016}. In short, the library supports to read the content of an odML file, provides an API to navigate through the hierarchical structure, and to extract metadata of interest from the key-value pairs. Thus, the python-odML library provides a standardized way to access stored metadata records. 
 
