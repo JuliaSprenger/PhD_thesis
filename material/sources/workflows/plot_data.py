@@ -4,16 +4,16 @@ import matplotlib.pyplot as plt
 def load_neo_block(filename):
     """ Load data from file into Neo structure """
     with neo.get_io(filename) as io:
-        return neo.load_block()
+        return io.read_block()
 
-def plot_analogsignal(block, filename)
+def plot_analogsignal(block, filename):
     """ Plot first AnalogSignal of Neo block """
     anasig = block.segments[0].analogsignals[0]
     plt.plot(anasig.times, anasig.magnitude, label=anasig.name)
-    plt.legend(True)
     plt.xlabel('Time [{}]'.format(anasig.times.dimensionality.latex))
     plt.ylabel('Amplitude [{}]'.format(anasig.dimensionality.latex))
-    plot.save_fig(filename)
+    plt.legend()
+    plt.savefig(filename)
     
 if __name__=='__main__':
     neo_filename, plot_filename = sys.argv[1:]

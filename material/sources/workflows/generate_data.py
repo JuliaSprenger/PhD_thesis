@@ -21,5 +21,5 @@ def save_neo_block(block, filename):
 if __name__=='__main__':
     filename = sys.argv[1]
     block = generate_neo_data()
-    save_neo_block(block)
+    save_neo_block(block, filename)
     
