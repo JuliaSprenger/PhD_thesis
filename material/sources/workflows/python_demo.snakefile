@@ -1,7 +1,8 @@
 configfile: 'config.yaml'
+# extract neo data format to use from configuration
 data_format = config['data_format']
 
-# descriptors always have to start with 'descriptor_*'
+# restrict the data extension to use for 
 wildcard_constraints:
     data_ext=data_format
 
@@ -17,7 +18,7 @@ rule create_data:
     
 # visualize data
 rule plot_data:
-    input: '{{filename}}.{data_ext}'.format(data_ext=data_format)
+    input: '{{filename}}.{dext}'.format(dext=data_format)
     output: '{filename}.{ext}'
     conda: 'envs/plotting_environment.yaml'
     shell: 'python plot_data.py {input} {output}'

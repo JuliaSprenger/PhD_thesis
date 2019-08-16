@@ -2,6 +2,8 @@
 \section{Structuring scientific work - Workflow management}
 \label{sec:workflows}
 
+\todo{Include snakemake demo workflow 1) in manuscript snakemake and 2) in manuscript below}
+
 The process from data generation to a scientific publication can be usually split into individual steps performing only a subset of the complete processing requirend. The separation of these steps can occur on different levels from very coarse like the separation of the experiment and analysis to very fine where each individual processing step is implemented in a independent script.
 
 Workflow management is a concept to organize the individual steps forming a process. The granularity of the steps to manage highly depend on the complexity of the tasks and the diversity of the processing steps. A common and generic example forming a workflow management system is a queueing system used for cluster computing. Here users submit a number of in the simplest case independent jobs (computing steps) which are then depending on the available resources scheduled and distributed to suitable compute resources. This is a simple example, because the individual processing steps typically do not depend on each other and only the required amount of resources and time needs to be taken into account when organizing the execution.

@@ -14,11 +14,11 @@ def get_source_filenames():
 
 
 ruleorder:
-    copy_sources > visualize_scidata > plot_neo_ios
+    copy_sources > visualize_scidata > plot_neo_ios > run_demo_workflow
 
 rule all_figures:
     params: FIGURES
-    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf', 'i140703-001.svg', 'i140703-001_annotations.txt'] + get_source_filenames())
+    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf', 'i140703-001.svg', 'i140703-001_annotations.txt', join('workflows','data.png'), join('workflows','data.svg'), join('workflows','python_demo.svg')] + get_source_filenames())
     output: join(FIGURES, 'figures_complete.done')
     shell: 'touch {output}'
 
@@ -101,5 +101,16 @@ rule annotate_scidata:
     shell:
         '''
         python {input.script} datasets/i140703-001 datasets/i140703-001.odml >> {output}
+        '''
+        
+rule run_demo_workflow:
+    input: expand(join(FIGURES, 'workflows', '{f}'), f=['python_demo.snakefile', 'generate_data.py', 'plot_data.py', 'config.yaml', join('envs','data_generation_environment.yaml'), join('envs','plotting_environment.yaml')])
+    output: expand(join(FIGURES, 'workflows', '{f}'), f=['data.png', 'data.svg', 'python_demo.svg'])
+    params: working_dir = join(FIGURES, 'workflows')
+    shell:
+        '''
+        cd {params.working_dir}
+        snakemake -s python_demo.snakefile --dag | dot -T svg > python_demo.svg
+        snakemake -s python_demo.snakefile --use-conda
         '''
 
