@@ -57,6 +57,12 @@
 
 \usepackage{svg}
 \pdfsuppresswarningpagegroup=1 % suppressing multiple page inclusion warnings
+\makeatletter
+\DeclareRobustCommand*{\escapeus}[1]{%
+    \begingroup\@activeus\scantokens{#1\endinput}\endgroup}
+\begingroup\lccode`\~=`\_\relax
+    \lowercase{\endgroup\def\@activeus{\catcode`\_=\active \let~\_}}
+\makeatother
 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,filecolor=magenta,urlcolor=cyan}
@@ -88,15 +94,6 @@
 \newcommand{\requirement}[1]{\texttt{{#1}}}
 \definecolor{magenta}{rgb}{0.72,0.30,0.66}
 \newcommand{\rewrite}[1]{{\color{magenta} #1}}
-
-% for importing svg files which contain non-escaped underscores
-\makeatletter
-\newcommand{\escapeus}[1]{%
-    \begingroup\@activeus\scantokens{#1\endinput}\endgroup}
-\begingroup\lccode`\~=`\_\relax
-    \lowercase{\endgroup\def\@activeus{\catode`\_=\active \let~\_}}
-\makeatother
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %DOCUMENT

@@ -20,9 +20,60 @@ Snakemake is a generic worklfow management tool derived from the Make concept\fo
 
 
 \begin{codeenv}
-\inputminted[firstline=3, lastline=10, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/snakemake_simple.snakefile}
-\caption[Minimal snakemake example workflow]{Minimal snakemake example workflow. The workflow consists of two rules, for generation of a markdown file (.md) and conversion to a text file by plain copy of the content into a file with .txt extension. There are two versions of each rule demonstrating snakemake feature of different complexity: The simle version of the rule (\code{simple\_...}) handles filenames explicitely, whereas the standard version of the rule is using wildcards (\code{\{...\}}) to handle filenames.}
+\textbf{Snakemake header}
+\inputminted[firstline=1, lastline=3, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/simple_demo.snakefile}
+\begin{multicols}{2}
+\textbf{Simple rules}
+\inputminted[firstline=5, lastline=13, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/simple_demo.snakefile}
+\columnbreak
+\textbf{Flexible rules}
+\inputminted[firstline=15, lastline=23, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/simple_demo.snakefile}
+\end{multicols}
+\caption[Minimal snakemake example workflow]{Minimal snakemake example workflow. The workflow consists of two rules, for generation of a markdown file (.md) and conversion to a text file by plain copy of the content into a file with .txt extension. There are two versions of each rule demonstrating snakemake features at different complexities: The simple version of the rule handles filenames explicitely, whereas the flexible version of the rule is using wildcards to handle filenames. To resolve ambiguities between the two versions of the rules, we define a rule priority order in the first lines of the snakemake file.}
 \label[codelisting]{code:workflows_simple_snakefile}
+\end{codeenv}
+
+
+\begin{codeenv}
+\begin{multicols}{2}
+\textbf{Snakefile}\\
+\inputminted[firstline=1, lastline=40, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/python_demo.snakefile}
+\columnbreak
+\textbf{Environments}\\
+\textbf{plotting\_environment.yaml}
+\inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{yaml}{figures/workflows/envs/plotting_environment.yaml}
+\textbf{data\_generation\_environment.yaml}
+\inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{yaml}{figures/workflows/envs/data_generation_environment.yaml}
+\textbf{config.yaml}
+\inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{yaml}{figures/workflows/config.yaml}
+\end{multicols}
+\caption[Snakemake example workflow for data generation and plotting]{Snakemake example workflow for data generation and plotting. The workflow consists of three rules, for data generation, data visualization and specification of the all output files of the workflow. The first two rules can be executed in dedicated conda environments, specified via the \code{conda:} directive and shown at the right. The workflow uses a configuration file (Snakefile line 1, \code{config.yaml}), specifying the format for storing \software{Neo} structures. This specification is also used to provide a constraint for wildcards with the name \code{data\_ext}, which resolves ambiguities between the data generation and visualization rule. The rule \code{all}, is by default executed when snakemake is run, it specifies two required output formats of the workflow. For the visualizaion of the workflow diagram when running the \code{all} rule see \ref{fig:python_demo}.}
+\label[codelisting]{code:workflows_python_snakefile}
+\end{codeenv}
+
+\begin{figure}
+    \begin{multicols}{2}
+    \todo{Fix include svg with underscores}
+%     \includesvg[width=0.4\textwidth]{figures/workflows/python_demo}
+    \columnbreak
+    \includegraphics[width=0.5\textwidth]{figures/workflows/data}
+    \end{multicols}
+ \caption[Snakemake example workflow for data generation and plotting]{Snakemake example workflow for data generation and plotting. The workflow diagram (left) and result (right). The workflow consists of two rules of which the \code{plot\_data} rule is executed twice with different parameters to generate the final plot in two file formats (\code{ext: svg}, \code{ex:png}, respecively). Different rules are color coded and the rule name is indicated at the top of each node. The frame style (solid/dashed) indicates if this rule needs to be run to generate a final output file. The arrows indicate the dependencies between the rule executions, rules at the top need to be executed first, since they generate output files that are required as input for the subsequent rules executions.}
+\label{fig:python_demo}
+\end{figure}
+
+
+\begin{codeenv}
+\begin{multicols}{2}
+\textbf{Data generation}
+\inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{python}{figures/workflows/generate_data.py}
+\columnbreak
+\textbf{Data visualization}
+\inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{python}{figures/workflows/plot_data.py}
+\end{multicols}
+\caption[Standalone Python scripts used in \cref{code:workflows_python_snakefile}]{Standalone Python scripts used in \cref{code:workflows_python_snakefile}. The two scripts for data generation and visualization contain generic functions, relying on command line parameters to provide the arguments for the function calls (line 21-24 and line 18-21, respectively). The \textbf{data generation} is split into two functions, one for generation of the \software{Neo} structure (\code{generate\_neo\_data}) and one for saving the \software{Neo} structure to disc (\code{save\_neo\_block}). The first function generates a \software{Neo} \code{Block} containing a single \code{AnalogSignal} with randomly generated data (line 4-12). The second function recieves an generic \software{Neo} \code{Block} and saves it in the format specified by the provided filename (line 16-19). If the script is executed from the command line the input parameter \code{filename} is extracted from the command line arguments and both functions are executed consecutively, passing the \software{Neo} \code{Block} from one function the next (line 21-24). The \textbf{data visualization} uses the same concept as the data generation. Here the two internal functions are loading a \software{Neo} block from the specified data source filename (\code{load\_neo\_block}, line 4-7) and visualize the first \code{AnalogSignal} of a given plot, saving the result in a requested filename (code{plot\_analogsignal}, line 9-16). Both functions are called if the script is called from the command line and the two parameters specifying the data location as well as the output plot filename are extracted from the command line arguments.
+}
+\label[codelisting]{code:workflows_python_scripts}
 \end{codeenv}
 
 

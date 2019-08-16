@@ -46,9 +46,9 @@ rule get_figures:
     params:
         input=join(FIGURES,'.'),
         output=join(LATEX, 'figures')
-    shell: '''echo {params.input}
-            echo {params.output}
-            cp -a {params.input} {params.output}'''
+    shell: '''
+           cp -a {params.input} {params.output}
+           '''
 
 rule clean:
     params:
