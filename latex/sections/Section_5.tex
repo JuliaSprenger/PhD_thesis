@@ -11,6 +11,7 @@ For these disciplines, there are a number of platforms and tools available to im
 In this section we present the usage of snakemake as a workflow management tool as it is domain independent, slim and easily integrates with Python based projects, e.g. to the Reach-to-Grasp and related projects \cref{sec:data}.
 
 \subsection{Workflow management tools - Snakemake}
+\label{sec:snakemake}
 Snakemake is a generic workflow management tool derived from the build automation tool Make combined with Python features. It is available as bioconda\footnote{\url{https://anaconda.org/bioconda/snakemake}} and PyPi package\footnote{\url{https://pypi.org/project/snakemake}} with the latest version $5.5.4$ being considered here.
 
 We demonstrate the basic features of snakemake based on two minimal workflow examples. The first one (\cref{code:workflows_simple_snakefile}) generates and copies files in two alternative ways and the second, more complex workflow uses two python scripts (\ref{code:workflows_python_scripts}) to generate data using \software{Neo} and visualize it using \software{Matplotlib} (\cref{code:workflows_python_snakefile,fig:python_demo}).
@@ -170,7 +171,6 @@ file format & content                                               \\ \hline
 \label{tab:v4a_recording_files}
 \end{table}
 
-
 \begin{table}[]
 \scriptsize
 \begin{tabular}{lll}
@@ -214,21 +214,41 @@ file format & content                                               \\ \hline
 \label{tab:v4a_metadata_files}
 \end{table}
 
-\subsection{Waves project}
-\subsection{Summary \& Guidelines}
+\subsection{Metadata workflow in the Vision-for-Action project}
+
+Based on the metadata source files described in \cref{tab:v4a_metadata_files} we designed a workflow for metadata collection and enrichment which consisting processing steps that can be classified into one of five processing categories (\cref{fig:v4a_metadata_workflow_dag}). We implement the workflow using snakemake in combination with python scripts, which are implemented in a standalone fashion as described in \cref{sec:snakemake} (\cref{code:workflows_python_scripts}). In the context of this workflow we term these standalone python scripts 'application' ('app'). Each app performs only a single, definite processing step based on as few input files as possible, to avoid unnessesary dependencies.
 
 
 
 \begin{figure}
     \centering
     \includesvg[width=\textwidth, pretex=\relscale{0.7}]{./figures/workflows/rulegraph_colored_escus}
-    \caption[Metadata workflow for Vision4Action experiment]{Metadata workflow for Vision4Action experiment.  Metadata are aggregated, data are loaded and combined in multiple workflow steps.}
-    \label{fig:demo_visualization}
+    \caption[Metadata workflow rules for Vision-for-Action experiment]{Metadata workflow rules for Vision4Action experiment. Visualized are only the general dependencies between rules irrespective of the input parameters and multiple executions during the run of the workflow. Metadata are aggregated, data are loaded and combined in multiple workflow steps.}
+    \label{fig:v4a_metadata_workflow_dag}
 \end{figure}
 
+\begin{sidewaysfigure}
+    \textbf{A}\\
+    \includesvg[width=\textwidth, pretex=\relscale{0.05}]{./figures/workflows/v4a_dag_all_descriptors_mod_escus}\\
+    \vspace{1cm}
+    \textbf{B}\\
+    \includesvg[width=\textwidth, pretex=\relscale{0.01}]{./figures/workflows/v4a_dag_all_apps_mod_escus}\\
+    \caption[Metadata workflow examples from Vision4Action experiment]{Example metadata workflow steps in the Vision-for-Action project.}
+    \label{fig:v4a_metadata_workflow_dag}
+\end{sidewaysfigure}
 
 
-\todo{workflow management systems: Renku, https://terra.bio/, ugene, from genomics: galaxy, vistrains, Taverna,  GenePattern...}
+advantages:
+- apps can be tested e.g. via unittest framework
+- snakemake workflow can run in 'incomplete' mode
+
+discussion
+- additional overhead via repetetive data loading \& saving
+
 \todo{introduce the concept of workflow management, snakemake, Apps,  categories
 - general apps
 - experiment specific apps}
+
+
+% \subsection{Waves project}
+\subsection{Summary \& Guidelines}
