@@ -12,9 +12,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="969.48193pt"
-   height="308.12543pt"
-   viewBox="0 0 969.48195 308.12543"
+   width="989.77979pt"
+   height="308.1254pt"
+   viewBox="0 0 989.7798 308.1254"
    version="1.1"
    id="svg296"
    sodipodi:docname="v4a_dag_all_apps_mod_escus.svg"
@@ -46,9 +46,9 @@
      inkscape:window-height="1412"
      id="namedview298"
      showgrid="false"
-     inkscape:zoom="5.6731564"
-     inkscape:cx="211.37698"
-     inkscape:cy="205.67083"
+     inkscape:zoom="2.0057637"
+     inkscape:cx="917.04545"
+     inkscape:cy="212.70296"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -57,6 +57,26 @@
      fit-margin-left="-0.1"
      fit-margin-right="0"
      fit-margin-bottom="0" />
+  <path
+     d="m 977.0298,169.83985 c 0,0 -142.99996,0 -142.99996,0 -6,0 -12,6 -12,12 0,0 0,17 0,17 0,6 6,12 12,12 0,0 142.99996,0 142.99996,0 6,0 12.00004,-6 12.00004,-12 0,0 0,-17 0,-17 0,-6 -6.00004,-12 -12.00004,-12"
+     id="path63-9"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;fill-opacity:1;stroke:#009900;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     d="m 966.56004,169.83984 c 0,0 -143.00003,0 -143.00003,0 -6,0 -12,6 -12,12 0,0 0,17 0,17 0,6 6,12 12,12 0,0 143.00003,0 143.00003,0 6,0 12,-6 12,-12 0,0 0,-17 0,-17 0,-6 -6,-12 -12,-12"
+     id="path63-8"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;fill-opacity:1;stroke:#009900;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     d="m 157.64447,74.769125 c 0,0 -130.999995,0 -130.999995,0 -6.000001,0 -12,6 -12,11.999999 0,0 0,12 0,12 0,5.999996 5.999999,11.999996 12,11.999996 0,0 130.999995,0 130.999995,0 6,0 12,-6 12,-11.999996 0,0 0,-12 0,-12 0,-5.999999 -6,-11.999999 -12,-11.999999"
+     id="path183-0-6"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;fill-opacity:1;stroke:#009973;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     d="m 151.431,75.16573 c 0,0 -130.999998,0 -130.999998,0 -6,0 -12,6 -12,12.000001 0,0 0,12 0,12 0,5.999999 6,11.999999 12,11.999999 0,0 130.999998,0 130.999998,0 6,0 12,-6 12,-11.999999 0,0 0,-12 0,-12 0,-6.000001 -6,-12.000001 -12,-12.000001"
+     id="path183-0-7"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;fill-opacity:1;stroke:#009973;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <g
      class="node"
      id="node8"
@@ -93,7 +113,7 @@
      inkscape:connector-curvature="0"
      style="fill:none;stroke:#c0c0c0;stroke-width:2" />
   <polygon
-     points="1146.4481,-115.1991 1154.2927,-108.0778 1143.7193,-108.7529 "
+     points="1154.2927,-108.0778 1143.7193,-108.7529 1146.4481,-115.1991 "
      id="polygon58"
      style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
      transform="translate(-955.68908,391.68321)" />
@@ -101,7 +121,7 @@
      d="m 956.73193,170.05033 c 0,0 -143,0 -143,0 -6,0 -12,6 -12,12 0,0 0,17 0,17 0,6 6,12 12,12 0,0 143,0 143,0 6,0 12,-6 12,-12 0,0 0,-17 0,-17 0,-6 -6,-12 -12,-12"
      id="path63"
      inkscape:connector-curvature="0"
-     style="fill:none;stroke:#009900;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:#ffffff;fill-opacity:1;stroke:#009900;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <path
      sodipodi:nodetypes="cc"
      d="m 688.51605,114.0024 c -137.6659,15.34928 -524.92823,6.90228 -473.2815,150.22265"
@@ -109,7 +129,7 @@
      inkscape:connector-curvature="0"
      style="fill:none;stroke:#c0c0c0;stroke-width:2" />
   <polygon
-     points="1197,-108.1087 1193.5001,-118.1087 1200.5001,-118.1086 "
+     points="1193.5001,-118.1087 1200.5001,-118.1086 1197,-108.1087 "
      id="polygon76"
      style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
      transform="rotate(-18.981771,1825.922,3011.9912)" />
@@ -138,7 +158,7 @@
      style="fill:none;stroke:#009973;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <path
      sodipodi:nodetypes="cc"
-     d="M 93.221458,155.84579 C 116.33205,207.9661 136.53421,235.10032 195.60362,285.10541"
+     d="m 93.22146,155.84579 c 23.11059,52.12031 43.31275,79.25453 102.38216,129.25962"
      id="path124"
      inkscape:connector-curvature="0"
      style="fill:none;stroke:#c0c0c0;stroke-width:2" />
@@ -154,7 +174,7 @@
      inkscape:connector-curvature="0"
      style="fill:none;stroke:#c0c0c0;stroke-width:2" />
   <polygon
-     points="1283.586,-103.6569 1273.0902,-105.102 1282.1964,-110.5176 "
+     points="1273.0902,-105.102 1282.1964,-110.5176 1283.586,-103.6569 "
      id="polygon160"
      style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
      transform="rotate(-84.926437,989.62173,611.91716)" />
@@ -200,7 +220,7 @@
     <polygon
        style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
        id="polygon271"
-       points="350.0108,-182.8548 339.4185,-182.6265 347.5565,-189.4105 " />
+       points="339.4185,-182.6265 347.5565,-189.4105 350.0108,-182.8548 " />
   </g>
   <g
      class="edge"
@@ -216,7 +236,7 @@
     <polygon
        style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
        id="polygon278"
-       points="493.5001,-192.6265 490,-182.6265 486.5001,-192.6265 " />
+       points="490,-182.6265 486.5001,-192.6265 493.5001,-192.6265 " />
   </g>
   <g
      class="edge"
@@ -232,13 +252,13 @@
     <polygon
        style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
        id="polygon285"
-       points="619.046,-189.6693 626.9611,-182.6265 616.3816,-183.1962 " />
+       points="626.9611,-182.6265 616.3816,-183.1962 619.046,-189.6693 " />
   </g>
   <path
      d="m 143.65,75.25 c 0,0 -131,0 -131,0 -6,0 -12,6 -12,12 0,0 0,12 0,12 0,6 6,12 12,12 0,0 131,0 131,0 6,0 12,-6 12,-12 0,0 0,-12 0,-12 0,-6 -6,-12 -12,-12"
      id="path183-0"
      inkscape:connector-curvature="0"
-     style="fill:none;stroke:#009973;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:#ffffff;fill-opacity:1;stroke:#009973;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <text
      x="279.22012"
      y="291.87543"
@@ -394,7 +414,7 @@
     <polygon
        style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
        id="polygon271-9"
-       points="350.0108,-182.8548 339.4185,-182.6265 347.5565,-189.4105 "
+       points="339.4185,-182.6265 347.5565,-189.4105 350.0108,-182.8548 "
        transform="translate(1.0576123,2.6440307)" />
   </g>
   <path
@@ -407,13 +427,13 @@
      style="fill:none;stroke:#009973;stroke-width:2.00024986;stroke-miterlimit:4;stroke-dasharray:2.00024981, 12.00149885;stroke-dashoffset:0;stroke-opacity:1"
      inkscape:connector-curvature="0"
      id="path269-4-5-5"
-     d="m 198.64282,93.832897 -42.59832,0.04229"
+     d="m 198.64282,93.832897 -30.25888,0.04229"
      sodipodi:nodetypes="cc" />
   <path
      style="fill:none;stroke:#c0c0c0;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:2.00000001, 12.00000004;stroke-dashoffset:0"
      inkscape:connector-curvature="0"
      id="path124-5"
-     d="m 73.348878,116.34428 19.87258,39.50151"
+     d="M 73.348878,116.34428 93.22146,155.84579"
      sodipodi:nodetypes="cc" />
   <path
      style="fill:none;stroke:#009900;stroke-width:2.0002501;stroke-miterlimit:4;stroke-dasharray:2.00024986, 12.00149913;stroke-dashoffset:0;stroke-opacity:1"
@@ -436,12 +456,12 @@
        x="490">run\_data\_app</text>
   </g>
   <polygon
-     points="1197,-108.1087 1193.5001,-118.1087 1200.5001,-118.1086 "
+     points="1193.5001,-118.1087 1200.5001,-118.1086 1197,-108.1087 "
      id="polygon76-0"
      style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
      transform="rotate(-25.476948,1537.0149,2269.5991)" />
   <polygon
-     points="1197,-108.1087 1193.5001,-118.1087 1200.5001,-118.1086 "
+     points="1193.5001,-118.1087 1200.5001,-118.1086 1197,-108.1087 "
      id="polygon76-2"
      style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
      transform="rotate(-26.754411,1507.3302,2178.6949)" />
@@ -452,17 +472,17 @@
      d="m 803.56784,214.89243 -56.60814,8.49734"
      sodipodi:nodetypes="cc" />
   <polygon
-     points="1282.1964,-110.5176 1283.586,-103.6569 1273.0902,-105.102 "
+     points="1283.586,-103.6569 1273.0902,-105.102 1282.1964,-110.5176 "
      id="polygon160-9"
      style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
      transform="rotate(-16.608186,2072.0998,3347.9603)" />
   <polygon
-     points="1283.586,-103.6569 1273.0902,-105.102 1282.1964,-110.5176 "
+     points="1273.0902,-105.102 1282.1964,-110.5176 1283.586,-103.6569 "
      id="polygon160-9-7"
      style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
      transform="rotate(-2.043169,11218.015,25984.436)" />
   <polygon
-     points="1283.586,-103.6569 1273.0902,-105.102 1282.1964,-110.5176 "
+     points="1273.0902,-105.102 1282.1964,-110.5176 1283.586,-103.6569 "
      id="polygon160-9-8"
      style="fill:#c0c0c0;stroke:#c0c0c0;stroke-width:2"
      transform="rotate(8.299306,-1804.5369,-6211.5382)" />

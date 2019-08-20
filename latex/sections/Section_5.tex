@@ -14,7 +14,7 @@ In this section we present the usage of snakemake as a workflow management tool 
 \label{sec:snakemake}
 Snakemake is a generic workflow management tool derived from the build automation tool Make combined with Python features. It is available as bioconda\footnote{\url{https://anaconda.org/bioconda/snakemake}} and PyPi package\footnote{\url{https://pypi.org/project/snakemake}} with the latest version $5.5.4$ being considered here.
 
-We demonstrate the basic features of snakemake based on two minimal workflow examples. The first one (\cref{code:workflows_simple_snakefile}) generates and copies files in two alternative ways and the second, more complex workflow uses two python scripts (\ref{code:workflows_python_scripts}) to generate data using \software{Neo} and visualize it using \software{Matplotlib} (\cref{code:workflows_python_snakefile,fig:python_demo}).
+We demonstrate the basic features of snakemake based on two minimal workflow examples. The first one (\cref{code:workflows_simple_snakefile}) generates and copies files in two alternative ways and the second, more complex workflow uses two python scripts (\cref{code:workflows_python_scripts}) to generate data using \software{Neo} and visualize it using \software{Matplotlib} (\cref{code:workflows_python_snakefile,fig:python_demo}).
 
 The description of individual steps of a workflow within snakemake is closely related to Make: A processing step is defined via its input and output files (\cref{code:workflows_simple_snakefile} line 11 and 12). The core of a rule is the instruction how to generate the output files based on the input files. Here snakemake offers multiple options based on direct execution of Python scripts or bash scripting. Bash scripts offer the most flexibility and are maked with the \code{shell} keyword (\cref{code:workflows_simple_snakefile} line 13). Within executed shell command references to the input and output files can be used via Python based reformatting of the command before execution. E.g. in \cref{code:workflows_simple_snakefile} line 13 the filename specified by the input of the rule \code{simple\_copy\_rule} (line 11) is automatically copied to the filename specified by the output of the rule by using \code{\{input\}} and \code{\{output\}} in the shell command. The same concept can be used to formulate snakemake rules in a more flexible fashion. E.g. in \cref{code:workflows_simple_snakefile} a set of flexible rules is introduces, which use an additional wildcard \code{\{filename\}} to be able to generate and copy not only files with filename \code{'file.md'}, but any markdown file. Here, the value of the variable \code{\{filename\}} is only determined during the exectution of the workflow. Therefore the same rule can be used multiple times within a workflow with different wildcard parameters. Hereby the value of the wildcard is determined recursively by the required output file.
 
@@ -53,7 +53,7 @@ Snakemake rule can be executed in dedicated containerized environments. For Pyth
 \textbf{config.yaml}
 \inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{yaml}{figures/workflows/config.yaml}
 \end{multicols}
-\caption[Snakemake example workflow for data generation and plotting]{Snakemake example workflow for data generation and plotting. The workflow consists of three rules, for data generation, data visualization and specification of the all output files of the workflow. The first two rules can be executed in dedicated conda environments, specified via the \code{conda:} directive and shown at the right. The workflow uses a configuration file (Snakefile line 1, \code{config.yaml}), specifying the format for storing \software{Neo} structures. This specification is also used to provide a constraint for wildcards with the name \code{data\_ext}, which resolves ambiguities between the data generation and visualization rule. The rule \code{all}, is by default executed when snakemake is run, it specifies two required output formats of the workflow. For the visualizaion of the workflow diagram when running the \code{all} rule see \ref{fig:python_demo}.}
+\caption[Snakemake example workflow for data generation and plotting]{Snakemake example workflow for data generation and plotting. The workflow consists of three rules, for data generation, data visualization and specification of the all output files of the workflow. The first two rules can be executed in dedicated conda environments, specified via the \code{conda:} directive and shown at the right. The workflow uses a configuration file (Snakefile line 1, \code{config.yaml}), specifying the format for storing \software{Neo} structures. This specification is also used to provide a constraint for wildcards with the name \code{data\_ext}, which resolves ambiguities between the data generation and visualization rule. The rule \code{all}, is by default executed when snakemake is run, it specifies two required output formats of the workflow. For the visualizaion of the workflow diagram when running the \code{all} rule see \cref{fig:python_demo}.}
 \label[codelisting]{code:workflows_python_snakefile}
 \end{codeenv}
 
@@ -130,7 +130,7 @@ For coherent data recording from three different systems a shared time frame bet
 \paragraph{Data and metadata files}
 The RIVER setup generates two sets of \software{Blackrock} recording data files: one containing neural signals from motor and the other from visual cortical areas in the \code{ns6} format. In addition both datasets contain partially identical behavioral signals for the hand, arm and gaze position in the \code{ns2} format(\cref{tab:v4a_recording_files}). In addition also the position of the active target is stored with a $1kHz$ sampling rate as well as the synchronization signals which are shared between the two NSP / Cerebus systems.
 Same as for the Reach-to-Grasp experiment, the \code{nev} file also contains online extracted spikes, but in addition it also captures a large amount of structured metadata in form of events, which encode experimental metadata in a generic fashion.
-These metadata are complemented by a set of metadata descriptors. These are text files in \code{csv} format, structured in an \software{odMLtables} compatible fashion. These files generated by the experimenter in a manual, but strongly programming aided fashion. The content of these files contains a basic structure for metadata branches to be integrated in an hierarchical \software{odML} metadata collection. A complete set of descriptor files comprises $9$ \code{csv} files and covers all metadata not captured in the event recording file. Essential metadata stored in these \code{csv} files is information about the monkey, the hardware components used, the global and specific codes used in the session, the signal flow for digital and analog signals in the recording setups and the general description of the recording session and meta information about all required descriptor files (\ref{tab:v4a_metadata_files}). Additionally configuration and supplemental files that can not be captured in a csv file but are used during the recording are referenced in the session descriptor. Most of the metadata files are constant across sessions, some change with the task type and only a few need to be generated / tracked explicitely for each session. Nevertheless, we decided to copy even seemingly constant metadata files for each session anew, since during the life time of the experiment also some these metadata can change unexpectedly, e.g. when a part of the setup needs to be replaced due to malfunction.
+These metadata are complemented by a set of metadata descriptors. These are text files in \code{csv} format, structured in an \software{odMLtables} compatible fashion. These files generated by the experimenter in a manual, but strongly programming aided fashion. The content of these files contains a basic structure for metadata branches to be integrated in an hierarchical \software{odML} metadata collection. A complete set of descriptor files comprises $9$ \code{csv} files and covers all metadata not captured in the event recording file. Essential metadata stored in these \code{csv} files is information about the monkey, the hardware components used, the global and specific codes used in the session, the signal flow for digital and analog signals in the recording setups and the general description of the recording session and meta information about all required descriptor files (\cref{tab:v4a_metadata_files}). Additionally configuration and supplemental files that can not be captured in a csv file but are used during the recording are referenced in the session descriptor. Most of the metadata files are constant across sessions, some change with the task type and only a few need to be generated / tracked explicitely for each session. Nevertheless, we decided to copy even seemingly constant metadata files for each session anew, since during the life time of the experiment also some these metadata can change unexpectedly, e.g. when a part of the setup needs to be replaced due to malfunction.
 
 
 
@@ -216,34 +216,69 @@ file format & content                                               \\ \hline
 
 \subsection{Metadata workflow in the Vision-for-Action project}
 
-Based on the metadata source files described in \cref{tab:v4a_metadata_files} we designed a workflow for metadata collection and enrichment which consisting processing steps that can be classified into one of five processing categories (\cref{fig:v4a_metadata_workflow_dag}). We implement the workflow using snakemake in combination with python scripts, which are implemented in a standalone fashion as described in \cref{sec:snakemake} (\cref{code:workflows_python_scripts}). In the context of this workflow we term these standalone python scripts 'application' ('app'). Each app performs only a single, definite processing step based on as few input files as possible, to avoid unnessesary dependencies.
+Based on the metadata source files described in \cref{tab:v4a_metadata_files} we designed a workflow for metadata collection and enrichment which consisting processing steps that can be classified into one of five processing categories (\cref{fig:v4a_metadata_workflow_rulegraph}). The implementation of the workflow is still work in progress, but the basic concepts and completed implementation steps are presented in the following. We implement the workflow using snakemake in combination with python scripts, which are implemented in a standalone fashion as described in \cref{sec:snakemake} (\cref{code:workflows_python_scripts}). In the context of this workflow we term these standalone python scripts 'application' (\textbf{app}). Each app performs only a single, definite processing step based on as few input files as possible, to avoid unnessesary dependencies.
+
+\paragraph{Grouping of apps}
+We grouped similar apps according to their interface. This way a single rule can handle multiple apps in case they are having a similar dependency structure and require the same parameters. An example for this are \code{metadata apps}(\cref{fig:v4a_metadata_workflow_rulegraph}, green panel). This rule covers all apps, which generate metadata based on the original recording data and generate an \software{odMLtables} compatible csv file summarizing the extracted metadata or processing results. In constrast to this \code{data\_apps} extend the original data (in the \software{Neo} representation) and generate an \software{odMLtables} compatible \code{csv} file. Each generated \code{csv} file is saved with an app-specific filename and typically contains only a few values of additional metadata, since apps are modularized to cover very specific tasks.
+In the current workflow, metadata and data apps are implemented in a flexible manner, as these apps are located in a dedicated folder. All apps in these folders are automatically included in the workflow and are executed by the the \code{run\_metadata\_app} and \code{run\_data\_app} rules.
+
+Two minimal examples depicting two subsets of the workflow are shown in \cref{fig:v4a_metadata_workflow_dag}. Here we focus on the integration of the original \code{csv} descriptors into a single \software{odML} file as well as the execution of preprocessing steps (\cref{fig:v4a_metadata_workflow_dag}A and B, respecively). The general  dependencies between the corresponding rules is visible in \cref{fig:v4a_metadata_workflow_rulegraph}, whereas the executions of the rule with varying parameters is depicted in \cref{fig:v4a_metadata_workflow_dag}. The large number of apps handled by some of the rules prevents a visualization of the complete workflow in this context, hence only a small selection of apps is depicted.
+In the first, descriptor conversion example, the metadata descriptors first all \code{csv} descriptors need to be copied to the working directory of the workflow as the descriptors are stored together with the original data in a read-only folder. This prevents unintentional changes of the original data and makes the workflow therefore less error-prone. Each descriptor files in copied by an application of the \code{copy\_descriptors} rule with parameters specifying the descriptor. These copies serve as an input for the \code{csv\_to\_odml} rule, which permits the conversion of any \software{odMLtables} compatible \code{csv} file to the \software{odML}. This step is also run for all descriptors separately. In addition the \code{csv\_to\_odml} rule also requires an \software{odML} style sheet for the user friendly visualization of the \software{odML} file via \code{html}. This is a required input for all realizations of the \code{copy\_to\_csv} rule, but will only be executed once as the \code{add\_odML\_style\_sheet} rule does not depend on the identity of the descriptor, but downloads the style sheet once to the descriptor working directory. Finally, the \code{integrate\_descriptors} rule uses all previously create \software{odML files} as input and integrates all \software{odML} files referenced in the session \software{odML} into a common \software{odML} file.
+In the second, data and metadata preprocessing example, two types of preprocessing steps are performed: preprocessing and metadata extractraction with and without extension of the neuronal data set. Apps that only access the original neuronal data to extract metadata (e.g. data integrity checks) are coordinated by the \code{run\_metadata\_app} and access the neuronal data in the original \software{Blackrock} format. Preprocessing steps that extend the original neuronal dataset (e.g. by performing spike sorting) require a data representation in the \software{Nix} format, to be able to successively extend the dataset. The initial conversion from the \software{Blackrock} to the \software{Nix} format is performed by the \code{data\_to\_nix} rule. Here, the order of execution of the data apps is not specified in the workflow, hence only independent data processing steps can be implemented with this mechanism. Future extensions by interdependent preprocessing steps can be added as complementary rules with a higher rule priority order than the \code{run\_data\_app} rule (see \cref{code:workflows_simple_snakefile} line 1-3).
 
 
+
+
+
+\paragraph{Code and data folder structure}
+
+
+\paragraph{}
+
+\todo{- disentangle rule and app (no 1-1 mapping!)}
 
 \begin{figure}
     \centering
     \includesvg[width=\textwidth, pretex=\relscale{0.7}]{./figures/workflows/rulegraph_colored_escus}
     \caption[Metadata workflow rules for Vision-for-Action experiment]{Metadata workflow rules for Vision4Action experiment. Visualized are only the general dependencies between rules irrespective of the input parameters and multiple executions during the run of the workflow. Metadata are aggregated, data are loaded and combined in multiple workflow steps.}
-    \label{fig:v4a_metadata_workflow_dag}
+    \label{fig:v4a_metadata_workflow_rulegraph}
 \end{figure}
 
 \begin{sidewaysfigure}
     \textbf{A}\\
     \includesvg[width=\textwidth, pretex=\relscale{0.05}]{./figures/workflows/v4a_dag_all_descriptors_mod_escus}\\
-    \vspace{1cm}
     \textbf{B}\\
     \includesvg[width=\textwidth, pretex=\relscale{0.01}]{./figures/workflows/v4a_dag_all_apps_mod_escus}\\
-    \caption[Metadata workflow examples from Vision4Action experiment]{Example metadata workflow steps in the Vision-for-Action project.}
+    \caption[Metadata workflow examples from Vision-for-Action experiment]{Example metadata workflow steps in the Vision-for-Action project. \textbf{A)} Integration of original \code{csv} descriptors into a single \software{odML} file by repeated application of the \code{copy\_descriptors} and \code{csv\_to\_odml} rule. Each application is specific for a single descriptor and resulting \software{odML} files are merged via the \code{integrate\_descriptors} rule. \textbf{B)} Preprocessing and metadata extraction via repeated application of the \code{run\_data\_app} and \code{run\_metadata\_app} rule. Both rules have similar parameter sets, but \code{run\_data\_app} additionally depends on an extendable version of the original recording data structure, which is generated by the \code{data\_to\_nix} rule. All rules above are triggered by a utility rule requiring the output files of all preprocessing apps as input.}
     \label{fig:v4a_metadata_workflow_dag}
 \end{sidewaysfigure}
 
 
-advantages:
+\begin{codeenv}
+\textbf{Snakemake header}
+\inputminted[firstline=149, lastline=164, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/v4a_workflow.snakefile}
+% \begin{multicols}{2}
+% \textbf{Simple rules}
+% \inputminted[firstline=5, lastline=13, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/simple_demo.snakefile}
+% \columnbreak
+% \textbf{Flexible rules}
+% \inputminted[firstline=15, lastline=23, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/simple_demo.snakefile}
+% \end{multicols}
+\caption[Exerpt of the snakemake workflow definition for the Vision-for-Action project]{Exerpt of the snakemake workflow definition for the Vision-for-Action project}
+\label[codelisting]{code:v4a_workflow_snakemake}
+\end{codeenv}
+
+\todo{advantages:
 - apps can be tested e.g. via unittest framework
-- snakemake workflow can run in 'incomplete' mode
+- snakemake workflow can run in incomplete mode
+
+further improvements:
+- adding data apps with dependencies. Outside of data\_app, explicit dependency.
+- extraction of general rules and apps into external snakemake file (and public repo), e.g. copy\_descriptors, csv\_to\_odml, (integrate\_descriptors) -> integrate\_odmls etc
 
 discussion
 - additional overhead via repetetive data loading \& saving
+}
 
 \todo{introduce the concept of workflow management, snakemake, Apps,  categories
 - general apps
