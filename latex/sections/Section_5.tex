@@ -224,18 +224,97 @@ In the current workflow, metadata and data apps are implemented in a flexible ma
 
 Two minimal examples depicting two subsets of the workflow are shown in \cref{fig:v4a_metadata_workflow_dag}. Here we focus on the integration of the original \code{csv} descriptors into a single \software{odML} file as well as the execution of preprocessing steps (\cref{fig:v4a_metadata_workflow_dag}A and B, respecively). The general  dependencies between the corresponding rules is visible in \cref{fig:v4a_metadata_workflow_rulegraph}, whereas the executions of the rule with varying parameters is depicted in \cref{fig:v4a_metadata_workflow_dag}. The large number of apps handled by some of the rules prevents a visualization of the complete workflow in this context, hence only a small selection of apps is depicted.
 In the first, descriptor conversion example, the metadata descriptors first all \code{csv} descriptors need to be copied to the working directory of the workflow as the descriptors are stored together with the original data in a read-only folder. This prevents unintentional changes of the original data and makes the workflow therefore less error-prone. Each descriptor files in copied by an application of the \code{copy\_descriptors} rule with parameters specifying the descriptor. These copies serve as an input for the \code{csv\_to\_odml} rule, which permits the conversion of any \software{odMLtables} compatible \code{csv} file to the \software{odML}. This step is also run for all descriptors separately. In addition the \code{csv\_to\_odml} rule also requires an \software{odML} style sheet for the user friendly visualization of the \software{odML} file via \code{html}. This is a required input for all realizations of the \code{copy\_to\_csv} rule, but will only be executed once as the \code{add\_odML\_style\_sheet} rule does not depend on the identity of the descriptor, but downloads the style sheet once to the descriptor working directory. Finally, the \code{integrate\_descriptors} rule uses all previously create \software{odML files} as input and integrates all \software{odML} files referenced in the session \software{odML} into a common \software{odML} file.
-In the second, data and metadata preprocessing example, two types of preprocessing steps are performed: preprocessing and metadata extractraction with and without extension of the neuronal data set. Apps that only access the original neuronal data to extract metadata (e.g. data integrity checks) are coordinated by the \code{run\_metadata\_app} and access the neuronal data in the original \software{Blackrock} format. Preprocessing steps that extend the original neuronal dataset (e.g. by performing spike sorting) require a data representation in the \software{Nix} format, to be able to successively extend the dataset. The initial conversion from the \software{Blackrock} to the \software{Nix} format is performed by the \code{data\_to\_nix} rule. Here, the order of execution of the data apps is not specified in the workflow, hence only independent data processing steps can be implemented with this mechanism. Future extensions by interdependent preprocessing steps can be added as complementary rules with a higher rule priority order than the \code{run\_data\_app} rule (see \cref{code:workflows_simple_snakefile} line 1-3).
+In the second, data and metadata preprocessing example, two types of preprocessing steps are performed: preprocessing and metadata extractraction with and without extension of the neuronal data set. Apps that only access the original neuronal data to extract metadata (e.g. data integrity checks) are coordinated by the \code{run\_metadata\_app} and access the neuronal data in the original \software{Blackrock} format. Preprocessing steps that extend the original neuronal dataset (e.g. by performing spike sorting) require a data representation in the generic, open source \software{Nix} format (see \cref{sec:nix_format}), to be able to successively extend the dataset. The initial conversion from the \software{Blackrock} to the \software{Nix} format is performed by the \code{data\_to\_nix} rule. Here, the order of execution of the data apps is not specified in the workflow, hence only independent data processing steps can be implemented with this mechanism. Future extensions by interdependent preprocessing steps can be added as complementary rules with a higher rule priority order than the \code{run\_data\_app} rule (see \cref{code:workflows_simple_snakefile} line 1-3).
 
+Currently implemented and envisioned metadata apps cover both aspects of data quality assurance as well as extraction of essential information for easy access. Some examples for data quality assurance are listed below:
+\begin{itemize}
+ \item check for the existance of all recording files
+ \item check for the integrity of events recorded with both NSP systems. This ensures synchronicity of the datasets between the two independent \software{Blackrock} recording systems.
+ \item check for integrity of online extracted spikes and continously sampled raw data. In case of a silent data packet loss during the recording, spike and continous data are not aligned from the time point of data loss (see also \ref{sec:additional_features_gaps}). The occurrence of a gap can be automatically detected with a high probablity.
+\end{itemize}
 
+Examples for extraction of basic metadata are:
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+ \item the collection of channel specific information in a specific branch of the metadata collection
+ \item the evaluation whether a session was already offline spike sorted
+ \item the evaluation of the monkey's performance
+ \item the creation of overview plots of 
+ \begin{itemize}
+  \item the basic recording data
+  \item detected hyper-synchronous events in the spiking data and their complexity distribution (see \cref{sec:spike_data_quality})
+ \end{itemize}
+\end{itemize}
 
+In constrast to metadata apps, data apps extent the \software{Neo} data structure. Some examples of implemented and envisioned data apps are:
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+ \item the detection of cross talk between individual electrodes and annotation of the corresponding recording traces
+  \item the detection and annotation of hyper-synchronous events in spiking data (see \cref{sec:spike_data_quality})
+ \item the extraction of events from continous recording signals such as
+ \begin{itemize}
+  \item the extraction of saccades from the eye (gaze) position
+  \item the segmentation of the hand movement into subtrajectories
+ \end{itemize}
+\end{itemize}
 
 
 \paragraph{Code and data folder structure}
+The workflow project is organized in the following structure:\\
+
+\renewcommand*\DTstylecomment{\color{gray}\textit}
+\renewcommand*\DTstyle{\textcolor{black!90}}
+\begin{minipage}[t]{\textwidth}
+\dirtree{%
+.1 workflow folder\DTcomment{workflow repository folder}. 
+.2 Snakefile\DTcomment{definition of snakemake workflow}.
+.2 config.yaml\DTcomment{configuration of snakemake workflow}.
+.2 config\_template.yaml\DTcomment{template for setting up config.yaml}.
+.2 envs.
+.3 metadata\_env.yaml\DTcomment{contains conda Python environment definitions}.
+.2 scripts\DTcomment{contains python scripts coordinated by snakemake}.
+.3 data\_apps\DTcomment{contains data enriching apps}.
+.3 metadat\_apps\DTcomment{contains metadata aggregating apps}.
+.3 infrastructure\DTcomment{contains general purpose apps}.
+.3 utilities.
+.4 util.py\DTcomment{contains utility functions used by apps}.
+.3 tests\DTcomment{contains test suite for apps}.
+.3 app\_example.py\DTcomment{template implementation of an app}.
+}
+\ \\
+\end{minipage}
+
+The separation of different types of apps into subfolders permits to automatically collect data and metadata applications during the runtime of the snakemake workflow. This avoids hard coding of app names in the workflow and provides a more flexible approach.
+Within the snakemake workflow, different pathes need to be configured via the \code{config.yaml}: i) the location of the original data files, typically only with read access, ii) the output location of the workflow, iii) potentially the server repository the results will be commited to. In addition to this, the configuration file can be used to specify a set of recording sessions to run the workflow on. Otherwise all available data folders will be used by default.
+Within the snakemake workflow multiple folders are used to separate data and metadata at different levels of processing:\\
+
+\begin{minipage}[t]{\textwidth}
+\dirtree{%
+.1 <session>\DTcomment{session specific data and metadata workflow folder}. 
+.2 <session>\_original.nix\DTcomment{data as present in \software{Blackrock} files descriptors}.
+.2 <session>.nix\DTcomment{processed and extended data and metadata}.
+.2 <session>\_small.nix\DTcomment{slim version of the processed and extended file}.
+.2 metadata\_complete.odml\DTcomment{metadata from descriptors and preprocessing}.
+.2 app\_results\DTcomment{contains metadata output from preprocessing}.
+.3 preprocessing\_integrated.odml\DTcomment{all metadata from preprocessing}.
+.3 csvs\DTcomment{contains csvs generated by preprocessing steps}.
+.3 odMLs\DTcomment{contains csvs converted to odML format}.
+.2 app\_stats\DTcomment{contains execution status files of apps}.
+.2 descriptors\DTcomment{contains descriptor processing steps}.
+.3 csvs\DTcomment{contains csv descriptors as provided with data}.
+.3 odMLs\DTcomment{contains csvs converted to odML format}.
+.4 descriptor\_session\_integrated.odml\DTcomment{all descriptor metadata}.
+}
+\ \\
+\end{minipage}
+
 
 
 \paragraph{}
-
-\todo{- disentangle rule and app (no 1-1 mapping!)}
 
 \begin{figure}
     \centering
@@ -257,27 +336,28 @@ In the second, data and metadata preprocessing example, two types of preprocessi
 \begin{codeenv}
 \textbf{Snakemake header}
 \inputminted[firstline=149, lastline=164, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/v4a_workflow.snakefile}
-% \begin{multicols}{2}
-% \textbf{Simple rules}
-% \inputminted[firstline=5, lastline=13, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/simple_demo.snakefile}
-% \columnbreak
-% \textbf{Flexible rules}
-% \inputminted[firstline=15, lastline=23, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/simple_demo.snakefile}
-% \end{multicols}
-\caption[Exerpt of the snakemake workflow definition for the Vision-for-Action project]{Exerpt of the snakemake workflow definition for the Vision-for-Action project}
-\label[codelisting]{code:v4a_workflow_snakemake}
+\caption[Excerpt of the snakemake workflow definition for the Vision-for-Action project]{Excerpt of the snakemake workflow definition for the Vision-for-Action project. The \code{run\_metadata\_app} rule requires any app located in the \code{metadata\_app} subfolder, the data location of the original dataset and the location of the utility functions for this workflow. It generates a \code{.done} file with an app specific names for housekeeping purposes as well as a \code{csv} file containing the extracted metadata. The execution environment is defined via a conda environment. The rule executes three lines of bash code for making the utility functions available, running the app with the specific parameters and generating / updating the housekeeping \code{.done} file. The variables \code{DATALOC, OUTPUTLOC and UTILDIR} are fixed within the snakemake workflow and either defined via the configuration or are set at the beginning of the workflow description.}
+\label[codelisting]{code:v4a_workflow_snakemake_rule}
 \end{codeenv}
+
+\todo{explain remaining steps of the workflow}
+
+\todo{check v4a repo issues to also discuss here}
 
 \todo{advantages:
 - apps can be tested e.g. via unittest framework
 - snakemake workflow can run in incomplete mode
+- updated files can trigger only required subsequent steps
 
 further improvements:
 - adding data apps with dependencies. Outside of data\_app, explicit dependency.
 - extraction of general rules and apps into external snakemake file (and public repo), e.g. copy\_descriptors, csv\_to\_odml, (integrate\_descriptors) -> integrate\_odmls etc
+- better separation of folders in working directory (cache, metadata, output, source)?
 
 discussion
 - additional overhead via repetetive data loading \& saving
+- better implementation for utility functionality?
+- source data already under version control? gin functionality for triggering workflow?!
 }
 
 \todo{introduce the concept of workflow management, snakemake, Apps,  categories
