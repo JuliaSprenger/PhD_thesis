@@ -1,0 +1,42 @@
+digraph snakemake_dag {
+	graph [bb="0,0,194,185",
+		bgcolor=white,
+		margin=0
+	];
+	node [fontname=sans,
+		fontsize=10,
+		label="\N",
+		penwidth=2,
+		shape=box,
+		style=rounded
+	];
+	edge [color=grey,
+		penwidth=2
+	];
+	0	 [color="0.44 0.6 0.85",
+		height=0.5,
+		label=all,
+		pos="97,18",
+		width=0.75];
+	1	 [color="0.22 0.6 0.85",
+		height=0.56944,
+		label="plot_data\next: svg\nfilename: data",
+		pos="44,92.5",
+		width=1.2222];
+	1 -> 0	 [pos="e,84.117,36.109 58.763,71.748 64.798,63.264 71.851,53.351 78.244,44.364"];
+	2	 [color="0.22 0.6 0.85",
+		height=0.56944,
+		label="plot_data\next: png\nfilename: data",
+		pos="150,92.5",
+		style="rounded,dashed",
+		width=1.2222];
+	2 -> 0	 [pos="e,109.88,36.109 135.24,71.748 129.2,63.264 122.15,53.351 115.76,44.364"];
+	3	 [color="0.00 0.6 0.85",
+		height=0.5,
+		label="create_data\ndata_ext: nix",
+		pos="97,167",
+		style="rounded,dashed",
+		width=1.1111];
+	3 -> 1	 [pos="e,58.774,113.27 84.17,148.97 78.306,140.72 71.213,130.75 64.628,121.5"];
+	3 -> 2	 [pos="e,135.23,113.27 109.83,148.97 115.69,140.72 122.79,130.75 129.37,121.5"];
+}
