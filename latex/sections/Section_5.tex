@@ -381,15 +381,18 @@ Fourthly, with respect to the different needs for archival of intermediate and f
 
 Fifthly, to exploit snakemake capabilities the workflow should run parallely in a compute cluster. With snakemake supporting common queing systems, it facilitates the migration from a local, serial implementation of the workflow towards a parallelized execution on a high performance cluster.
 
-\todo{
-discussion
-- problems when integrating snakemake and gin
-- additional overhead via repetetive data loading \& saving
-- better implementation for utility functionality?
-- source data already under version control? gin functionality for triggering workflow?!
-}
+\paragraph{Future challenges}
+% integration snakemake gin
+The integration of a file modification timestamp based workflow management system with a version control system which modifying files based on checkout out versions is not straight forward. Version control systems like git don't track the original modification time stamp of a file, but update the timestamp every time they modify the file representation on disc. This can lead to inconsistencies in the workflow management of snakemake if a version control system was used to checkout files. In the presented workflow scenario this is not an acute problem, since gin is only used to capture the content of all files of the workflow once at the end of the generation process and not to review older versions of the files. A workaround for avoiding version control and workflow management interferece would be to additionally track the original modification time stamp of files and restore this information upon checkout.
 
+% additional overhead via repetetive loading \& saving
+The file based workflow management as implemented by snakemake leads to frequent reading and writing of data, which could be prevented in a monolithic workflow implementation in a single script, as presented in \ref{sec:r2g_preprocessing_pipeline}. Here, the workflow management increases the overhead of data preprocessing. However, there are multiple factors which can counteract or attenuate this effect: i) the usage of efficient reading and writing routines, ii) the reading of only the required part of the data and iii) the workflow management itself, as it only executes required workflow rules.
 
+% how to handle utility files in snakemake?
+The current snakemake workflow impementation features a utility script, which centralized functionality needed by multiple apps (e.g. read and writing data to \software{Nix} or \code{csv}). This script is therefore a required input file for a multitude of rules, and it it stated explicitely in all \code{input} declarations. This duplicated code is not conform with the common software development principle \textit{'Don't repeat yourself'}. However, within the framework of snakemake up to now, there is no satisfying for this instead of explicitely listing the utility script (see \ref{code:v4a_workflow_snakemake_rule}). 
+
+% snakemake integration with gin
+Version control was introduced to track changes after with each execution of the workflow. However, also hosting the original source files in a version controlled environment has advantages. For example changes in the source files can automatially trigger the workflow and therefore form a fully automated system to update the packaged data upon updates in the source files. However the original source files and packaged data should be hosted in two separate repositories as the read and write access to the first one should be much stricter than for the second one. This would require the repository of the original source files to trigger the snakemake workflow to build a packaged version of the data and commit it to the second repository. The concept is the same as for continuous integration platforms for software testing, with the only difference of the size of datafiles handled. Therefore existing systems can potentially be modified to serve this modified purpose.
 
 % \subsection{Waves project}
 \subsection{Summary \& Guidelines}
