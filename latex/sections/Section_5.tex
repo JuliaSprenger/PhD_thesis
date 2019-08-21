@@ -220,7 +220,7 @@ Based on the metadata source files described in \cref{tab:v4a_metadata_files} we
 
 \paragraph{Grouping of apps}
 We grouped similar apps according to their interface. This way a single rule can handle multiple apps in case they are having a similar dependency structure and require the same parameters. An example for this are \code{metadata apps}(\cref{fig:v4a_metadata_workflow_rulegraph}, green panel). This rule covers all apps, which generate metadata based on the original recording data and generate an \software{odMLtables} compatible csv file summarizing the extracted metadata or processing results. In constrast to this \code{data\_apps} extend the original data (in the \software{Neo} representation) and generate an \software{odMLtables} compatible \code{csv} file. Each generated \code{csv} file is saved with an app-specific filename and typically contains only a few values of additional metadata, since apps are modularized to cover very specific tasks.
-In the current workflow, metadata and data apps are implemented in a flexible manner, as these apps are located in a dedicated folder. All apps in these folders are automatically included in the workflow and are executed by the the \code{run\_metadata\_app} and \code{run\_data\_app} rules.
+In the current workflow, metadata and data apps are implemented in a flexible manner, as these apps are located in a dedicated folder. All apps in these folders are automatically included in the workflow and are executed by the the \code{run\_metadata\_app} and \code{run\_data\_app} rules (\cref{code:v4a_workflow_snakemake_rule}.
 
 Two minimal examples depicting two subsets of the workflow are shown in \cref{fig:v4a_metadata_workflow_dag}. Here we focus on the integration of the original \code{csv} descriptors into a single \software{odML} file as well as the execution of preprocessing steps (\cref{fig:v4a_metadata_workflow_dag}A and B, respecively). The general  dependencies between the corresponding rules is visible in \cref{fig:v4a_metadata_workflow_rulegraph}, whereas the executions of the rule with varying parameters is depicted in \cref{fig:v4a_metadata_workflow_dag}. The large number of apps handled by some of the rules prevents a visualization of the complete workflow in this context, hence only a small selection of apps is depicted.
 In the first, descriptor conversion example, the metadata descriptors first all \code{csv} descriptors need to be copied to the working directory of the workflow as the descriptors are stored together with the original data in a read-only folder. This prevents unintentional changes of the original data and makes the workflow therefore less error-prone. Each descriptor files in copied by an application of the \code{copy\_descriptors} rule with parameters specifying the descriptor. These copies serve as an input for the \code{csv\_to\_odml} rule, which permits the conversion of any \software{odMLtables} compatible \code{csv} file to the \software{odML}. This step is also run for all descriptors separately. In addition the \code{csv\_to\_odml} rule also requires an \software{odML} style sheet for the user friendly visualization of the \software{odML} file via \code{html}. This is a required input for all realizations of the \code{copy\_to\_csv} rule, but will only be executed once as the \code{add\_odML\_style\_sheet} rule does not depend on the identity of the descriptor, but downloads the style sheet once to the descriptor working directory. Finally, the \code{integrate\_descriptors} rule uses all previously create \software{odML files} as input and integrates all \software{odML} files referenced in the session \software{odML} into a common \software{odML} file.
@@ -340,29 +340,57 @@ Within the snakemake workflow multiple folders are used to separate data and met
 \label[codelisting]{code:v4a_workflow_snakemake_rule}
 \end{codeenv}
 
-\todo{explain remaining steps of the workflow}
+
+\paragraph{Metadata aggregation}
+Primary metadata are available as \software{odMLtables} compatible \code{csv} descriptors. Secondary metadata are generated in the same format by a number of preprocessing steps implemented as \code{metadata} and \code{data} apps (\cref{fig:v4a_metadata_workflow_rulegraph} green panels). Both sets of \code{csv} files are converted into the \software{odML} format using the generic \code{csv\_to\_odml} rule which is based on \software{odMLtables}. In a two level approach, first metadata information originating from descriptors and preprocessing steps are each merged into single \software{odML} files, which are in a second step integrated into the complete metadata collection for the given recording session (\cref{fig:v4a_metadata_workflow_rulegraph} blue panels).
+
+\paragraph{Data packaging}
+The original data are stored in a \software{Blackrock} binary data format, which is optimized for recording of large data streams. To access, analyze and extend the data we use the open-source \code{hdf5} based \software{Nix} format which offers a direct interface to the Python \software{Neo} package. Hence, all data processing and extension apps are based on a data representation in the \software{Nix} format, which is generated by the \code{data\_to\_nix} rule (\ref{fig:v4a_metadata_workflow_rulegraph}). This representation is then extended first by a number of data preprocessing apps (\code{run\_data\_app} rule) and second by the complete metadata collection (\code{integrate\_metadata} rule). Next, links between the data and metadata within the \software{Nix} file are established, connecting \software{Neo} objects to the corresponding sections of the metadata collection (\code{link\_metadata}). To provide resonably sized packaged data for different analysis purposes, we define two flavours of \software{Nix} files: a \code{full} flavour, containing the complete dataset and a \code{small} flavour containing only memory friendly spiking activity and metadata.
+
+\paragraph{Versioning \& deployment}
+We envision the automatic tracking of final metadata and data files generated by the presented workflow using a version control system capable of handling large data files (\ref{fig:v4a_metadata_workflow_rulegraph}, orange rules). We started investigating the integration with \software{Gin}, since it is based on the common versioning softwares \software{git}\footnote{git, \url{https://git-scm.com}} and \software{git-annex}\footnote{git-annex, \url{https://git-annex.branchable.com/}}. This requires the configuration of a local and optionally remote repository including access right handling. Automatic versioning and remote hosting of results from the snakemake workflow would guarantee the consistency of datasets across time. Additionally the snakemake workflow itself can also be tracked in the same repository, assuring a direct link between the workflow result and the contributing source code.
+Another advantage of hosting the packaged data files remotely is the central storage providing a single reference location for all scientists working with the data. At the same time the version control system permits easy and clear communication about the data and the up-to-dateness is ensured via the automatic registration of results from the snakemake execution.
+
+\paragraph{Validation}
+Modularization of the individual processing steps into apps permits the implementation of validation routines to ensure correct functionalty of the code. Since in this experiment the apps are Python based, tests can be implemented e.g. via the \code{unittest}\footnote{unittest, \url{https://docs.python.org/3.7/library/unittest.html}} framework. These tests can also be integrated one of the available continous integration system (see \cref{sec:r2gpipeline_evaluation}). 
+
+\subsubsection{Workflow evaluation and discussion}
+
+\paragraph{Efficiency \& reliability}
+By implementing the workflow in snakemake inherently only workflow steps are executed for which updated input files exist. This reduces the amount of overhead in comparison to a non-modular workflow for which all steps can only be executed at once without taking into account intermediate results.
+At the same time using snakemake for determining which steps need to be reexecuted is a much more reliable approach in comparison to manual evaluation of the up-to-dateness of intermediate results and initialization subsequent processing steps.
+
+\paragraph{Flexibility \& usability}
+During the setup phase of the workflow already intermediate files can be generated (e.g. the complete metadata collection in \software{odML} format or the recording data in \software{Nix} format). These preliminary output files will grow in the amount of information and infrastructure contained by rule-wise extension of the workflow definition. This permits already at early implementation stages to provide output files to the collaboration community according to the software development philosopy \textit{'Release early, release often'}. At the same time the modular structure and simple definition of the workflow in a snakemake file permit a flexible extension of the procedure also at later time points during the production, e.g. when a new method for data quality estimation was developed and should be applied also to all previously recorded sessions. In simple cases this can be achieved by adding an new app to the \code{data} or \code{metadata} apps folder, which will be automatically considered in the next workflow run. For more complex changes, which require additional steps in the workflow process, new rules can be added, which will be automatically integrated based on their \code{input} and \code{output} file dependencies.
+
+\paragraph{Reusability}
+\todo{introduce the concept
+- general apps
+- experiment specific apps}
+\paragraph{}
+
+
+
+
 
 \todo{check v4a repo issues to also discuss here}
 
 \todo{advantages:
-- apps can be tested e.g. via unittest framework
 - snakemake workflow can run in incomplete mode
-- updated files can trigger only required subsequent steps
 
 further improvements:
 - adding data apps with dependencies. Outside of data\_app, explicit dependency.
 - extraction of general rules and apps into external snakemake file (and public repo), e.g. copy\_descriptors, csv\_to\_odml, (integrate\_descriptors) -> integrate\_odmls etc
 - better separation of folders in working directory (cache, metadata, output, source)?
+- move workflow to cluster
 
 discussion
+- problems when integrating snakemake and gin
 - additional overhead via repetetive data loading \& saving
 - better implementation for utility functionality?
 - source data already under version control? gin functionality for triggering workflow?!
 }
 
-\todo{introduce the concept of workflow management, snakemake, Apps,  categories
-- general apps
-- experiment specific apps}
 
 
 % \subsection{Waves project}
