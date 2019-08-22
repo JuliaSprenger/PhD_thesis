@@ -12,10 +12,21 @@ Finally we introduce the second electrophysiological experiment, the successor o
 
 
 \section{Comparison of Reach-to-Grasp and Vision-for-Action data and metadata handling}
+Since the implementation of the original metadata pipeline as published in the Reach-to-Grasp datasets \citep{Brochier_2018} software tools aiding data and metadata handling in neurosciences evolved (see e.g. \cref{sec:neo}). These changes in tool availability and conceptual differences in the planning and execution of the Vision-for-Action experiment led to different data and metadata approaches in the two projects. We discuss the differences with respect to specific aspects of the experiment in the following.
 
 \subsection{Experimental design}
+In the Reach-to-Grasp project systematic metadata collection started during the runtime of the experiment. This resulted in metadata being present in distributed files and various formats, aggravating the systematic collection. To quickly make the most essential metadata accessible with the data, the \code{ReachGraspIO} was implemented partially containing hard coded metadata. This decision complicated the systematic metadata aggregation in the long run by introducing circular dependencies in the metadata pipeline set up around the \code{IO}.
+In the Vision-for-Action project we therefore tried to i) minimize the amount of metadata source files ii) provide them in a consistent, standardized format that is also human readable and user-friendly. The \code{csv} format fulfills these criteria, and together with additional structural restrictions, these tables can be easily converted to a hierarchical \software{odML} structure using \software{odMLtables} (\cref{sec:metadata}).
+In addition internal changes in the design of the data recording were implemented: With the RIVER setup, special attention went into the integration of the three different types of recording systems. Instead of running the three systems for tracking neuronal, hand and eye data in parallel, these were integrated with the kinarm system acting as master system for signal integration and coordination and the two Neural Signal Processors serving as the output stream of the setup by not only writing neuronal, but also eye and hand signals via the two Cerebus systems to disc.
+Another improvement implemented in the RIVER setup is the generic encoding of events, which is also used to systematically write parameters and additional metadata into the same files as the neuronal recording data. Storing the complete recording data and metadata in as few files as possible ensures to a high degree data consistency. The introduced generic encoding of events ameliorates the complex event interpretation as is was required in the Reach-to-Grasp experiment, where the interpretation of individual events depended on the history of previous events. With the introduced encoding events have a static interpretation independent of other events, they are more recording error robust as they always consist of a pair of events, forming an information block and they are can be flexibly used for different modes (e.g. task types) of the recording as each task has a unique mapping from these generic to task specific events.
+
+\subsection{Build philosophy}
+\todo{R2G: separate structure and content, V4A combine}
+
 \subsection{Pipeline and workflow approach}
 \subsection{}
+
+\section{Next steps} \todo{what is building on top of this? Neo and other tools, what options does this offer, 2nd data publcation?}
 
 \todo{mention improved approaches on the experimental side, better metadata tracking, less files, systematic, generic approach...}
 
