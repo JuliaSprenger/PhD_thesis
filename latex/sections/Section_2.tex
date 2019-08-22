@@ -1,5 +1,5 @@
 \clearpage
-\section{Sharing data - Publication of two complex electrophysiological datasets}
+\chapter[Sharing data]{Sharing data - Publication of two complex electrophysiological datasets}
 \label{sec:data}
 
 Scientific progress is a sequence of scientific findings building on top of each other. These findings are classically hypothesis tested against experimental data and the resulting interpretation is communicated to other scientists via the publication of a manuscript. In recent years, however, the practice of publishing papers has been criticized for a lack of robustness. Attempts in a number of scientific fields, including among others life sciences, to reproduce published scientific findings failed to support the same conclusions \citep{Baker_2016, Fidler_2017, Pashler_2012, Ioannidis_2005, Goodman_2007, Ioannidis_2007, OpenScienceCollaboration_2015}. To qualitatively distinguish between different levels of reproducibility, a collection of terms has been applied: reproducibility, replicability, repeatability \citep{Plesser_2018, Drummond_2009}. However the specific interpretation of each of these terms highly depends on the scientific field they are applied in. Repeatability for example can be the re-performance of the same experimental study using identical components. However, for computer sciences repeating an experiment might be the re-running of the same software simulation on the same machine using the same software packages. Replicating a study by running the same code on the identical machine might be a realistic project, whereas running the identical experiment in psychology is not \citep{Anderson_2016}. A widely accepted version of reproducibility terminology by \citet{Goodman_2007} is therefore omitting the terms 'replicability' and 'repeatability' for simplification and defines instead three different types of reproducibility \citep[from][]{Plesser_2018}:
@@ -57,12 +57,12 @@ In this section, we provide an example of two complex published datasets from th
 % Abstract We publish two electrophysiological datasets recorded in motor cortex of two macaque monkeys during an instructed delayed reach-to-grasp task, using chronically implanted 10-by-10 Utah electrode arrays. We provide a) raw neural signals (sampled at 30kHz), b) time stamps and spike waveforms of offline sorted single and multi units (93/156 SUA and 49/19 MUA for monkey L and N, respectively), c) trial events and the monkey's behavior, and d) extensive metadata hierarchically structured via the odML metadata framework (including quality assessment post-processing steps, such as trial rejections). The dataset of one monkey contains a simultaneously saved record of the local field potential (LFP) sampled at 1kHz. To load the datasets in Python, we provide code based on the Neo data framework that produces a data structure which is annotated with relevant metadata. We complement this loading routine with an example code demonstrating how to access the data objects (e.g., raw signals) contained in such structures. For Matlab users, we provide the annotated data structures as mat-files.
 % 
 
-% \subsection{Publication of two complex electrophysiological datasets}
+% \section{Publication of two complex electrophysiological datasets}
 In \citet{Brochier_2018} we publish two complete high-dimensional electrophysiological datasets containing Utah Array recordings from monkey motor cortex. Recording subjects are two macaque monkeys (monkey L and N) which performed a complex instructed delayed reach-to-grasp task. Each recording contains continuously sampled data from 96 electrodes accompanied by the corresponding spiking activity. Spikes were extracted during online recording and offline sorted using the \software{Plexon Offline Sorter}\footnote{Plexon Offline Sorter, \url{https://plexon.com/products/offline-sorter/}}. Electrophysiological data are accompanied by a number of behavioral and control signals. Detailed metadata were aggregated and are provided in the \software{odML} format (see \cref{sec:scidata_metadata_structure,sec:metadata}).
 
 \rewrite{Complex datasets, as the two provided here (high-dimensional, multi-scale during complex behavior), are a challenge for performing reproducible analysis. Besides the often rather variable nature of the circumstances under which such data were recorded, the data additionally experience a number of often interactively performed preprocessing steps before they can be used in actual data analyses. Without a detailed knowledge about all these steps, the actual data analysis may be biased or strongly affected. In most cases, electrophysiological data available as open source are in this respect not sufficiently annotated and documented. For this reason, we provide here a comprehensive description of how and under which circumstances the datasets were recorded as well as a detailed description of preprocessing steps that need to be considered before performing analyses on the data. We additionally publish a machine-readable format of these metadata including our parameters and results of the described preprocessing steps. We are aware that all this information may not be sufficient for the reproducible analysis of such data. The reason is that reproducible workflows including the provenance trail are not yet established for electrophysiological neuroscience, especially not for such complex experiments as presented here.}
 
-\subsection{Relevance to the field}
+\section{Relevance to the field}
 The published datasets contain unique recordings from a complex electrophysiological setup. There are very few datasets of this type of experiment with this level of complexity available, wherefore we provide a valuable addition to the openly available dataset collection. The datasets are interesting for multiple reasons and can be used in a variety of contexts:
 \begin{itemize}
  \item Public datasets are great for teaching and demonstration purposes. Especially for teaching it is important to not only work with toy examples, but having real-world data at hand. This improves the teaching quality and provides a better insight into the field.
@@ -76,7 +76,7 @@ The published datasets contain unique recordings from a complex electrophysiolog
 \end{itemize}
 
 
-% \subsubsection{Recording Modalities}
+% \subsection{Recording Modalities}
 % The modalities recorded in the two example datasets can be separated in 3 categories: neuronal, behavioural \& control signals and metadata. The neuronal signals encompass continously sampled raw data, which are hardware filtered between band-pass filtered to $0.3Hz - 7.5kHz$
 
 
@@ -84,7 +84,7 @@ The published datasets contain unique recordings from a complex electrophysiolog
 
 
 \todo{provide introduction to odml here or forward reference the odMLtables chapter? -> give detailed intro to odml here, since this is rather short in the odmltables chapter}
-\subsection{The experiment}
+\section{The experiment}
 
 The experiment is a complex reach-to-grasp task performed by macaque monkeys. The basic component of the experiment are displayed in \cref{fig:r2g_introduction}. The two monkeys are trained to attend two cues coding for the grip type and force to perform. After the second cue the monkey performs the movement, pull the object and holds it to receive a reward. At the same time neuronal activity is recorded from motor and premotor areas of the cortex via a chronically implanted Utah Array. 
 
@@ -233,14 +233,14 @@ the analog signals of the sensors were digitized and saved in the ns2 file. For 
 
 \rewrite{
 
-\subsection{Experimental apparatus}
+\section{Experimental apparatus}
 \label{sec:experimental_apparatus}
 
 The experimental apparatus was composed by a target object, a table switch, a visual cue, and a reward system. On each recording day, the monkey was seated in a custom-made primate chair and placed in front of that apparatus. The non-working arm of the monkey was loosely restrained in a semi-flexed position. To control the home position of the working hand between the reach-to-grasp movements, the table switch which was installed close to the monkey at waist level, 5cm lateral to the mid-line, needed to be pressed down. The target object was a stainless steel rectangular cuboid (40mm x 16mm x 10mm) rotated 45 degrees around the horizontal axis and pointing towards the monkey (\cref{fig:task_trialscheme}a). It was located 13cm away from the table switch at 14cm height. The posterior end of the object was attached through a low-friction horizontal shuttle to a counterweight hidden inside the apparatus, which was used to set the object load. The object load was set to one of two possible values to define the force type (LF and HF) needed for pulling the object in each trial by deactivating and activating an electromagnetic weight resting below the counterweight inside the apparatus. When activated, it attached to the counterweight and increased overall weight from usually 100gram to 200gram, which corresponds roughly to a pulling force of 1Newton and 2Newton for LF and HF, respectively. 
 
 As already mentioned, the object was equipped with six sensors which monitored the monkey's reach-to-grasp behavior. Four force sensitive resistance sensors (FSR sensors) on the object surface provided continuous measurement of the grip forces applied on the object sides by the index and middle finger, as well as the thumb. The different activation patterns of these four FSR sensors, in particular the different placement of the thumb (see \cref{fig:task_trialscheme} a), were used to detect online if the correct grip type was performed. An additional FSR sensor was installed between the object and its counterweight. This FSR sensor was used to measure the horizontally applied force needed to oppose the corresponding object load. Due to the low, but still existing friction of the object moving inside the horizontal shuttle, the measured force signal of this sensor is not perfectly proportional to the horizontal force needed to lift the opposed object load, but sufficient to distinguish between LF and HF settings (cf., example in bottom right panel of \ref{fig:overview_data_l_1} and \ref{fig:overview_data_n_1}). The horizontal displacement of the object over a maximal distance of 15mm was measured by a hall-effect (HE) sensor. All sensors of the object are summarized in \cref{tab:overview_sensors}. The visual cue system, composed of a square of five LEDs (size 10 x 10 mm), was located just above the target object and used to instruct the monkey about the requested behavior. While the central yellow LED was used to warn the monkey that a trial had started, the four red corner LEDs were used to code separately the grip and the force type for the requested trial type of each trial. In this context the illumination of the two left, the two right, the two bottom, or the two top LEDs coded for SG, PG, LF, or HF, respectively (see \cref{fig:task_trialscheme} b for illustration). The reward system consisted of a bucket filled with apple sauce and equipped with a feeding tube and a pump allowing to deliver on demand the reward (few drops of the apple sauce) to the monkey (\cref{fig:task_trialscheme} a).
 
-\subsubsection{Behavioral control system}
+\subsection{Behavioral control system}
 \label{sec:behavioral_control_system}
 
 The core of the behavioral control system is a custom-made Virtual Instrument (VI) in LabView that controls the digital event sequence and the requested behavior of each trial in a recording. A digital event reflects hereby the activation or deactivation of a physical device of the experimental apparatus. In this context, the LabView VI is responsible to activate and deactivate the LEDs of the visual cue system, the reward pump, and the electromagnet. The latter is not controlled by a digital event, but by an analog square signal that switches the magnet on or off. To control the requested behavior, the LabView VI monitors the monkey's manipulation of the table switch and the target object. The table switch as well as all sensors of the target object produce continuous analog signals that are digitized by the NI converter card and fed into the LabView VI of the setup computer (see \cref{fig:scidata_setup_overview} computer 2). The square signal of the table switch is then online reinterpreted as digital activation or deactivation event. \cref{fig:task_trialscheme} c displays a schematic diagram on how the physical devices of the experimental apparatus are connected to the setup computer and controlled and monitored by the LabView VI. We will now describe a typical execution of the LabView VI during a recording session in more detail. 
@@ -256,7 +256,7 @@ An abort of the described trial sequence by LabView (error trial) was triggered 
 As displayed in \cref{fig:task_trialscheme} c. the behavioral control system was connected to the NSP of the Cerebus DAQ system to store the trial event sequence and the monkey's behavior of each trial in a recording along with the neural data registered by the neural recording platform. For this, the analog signals of the sensors of the target object were copied from the NI connector block to the analog input port of the Cerebus System NSP via DC coupled BNC cables and connectors. In the NSP they were digitized with a 16-bit resolution at 0.15 mV/bit and a sampling rate of 1kHz and saved in the ns2 file under the channel ids listed in \cref{tab:overview_sensors}. All digital or digitized events that register the activation and deactivation of the table switch, the LEDs of the cue system, and the reward pump, as well as the internally generated digital trial start event (TS-ON) were coded as a 8-bit binary signal (see \cref{tab:bit_translation}) and transferred via the NI connector block to a 16-bit DB-37 input port of the NSP where they occupy the first 8 digits (remaining digits are set to 1). In the NSP the now 16-bit binary signal of each event was stored in its decimal representation and with its corresponding time point in the nev file (see \cref{tab:bit_translation} and \cref{fig:cerebus_system}).
 
 
-\subsubsection{Neural recording platform}
+\subsection{Neural recording platform}
 \label{sec:neural_recording_platform}
 The recording of the neural signals was performed using a neural recording platform with components produced by Blackrock Microsystems (Salt Lake City, UT, USA, www.blackrockmicro.com). The platform consisted of the multi-electrode Utah array, a headstage, and a Cerebus data acquisition (DAQ) system. The latter is composed of a Front-End Amplifier, a real-time Neural Signal Processor (NSP) and the control software, Central Suite (version 4.15.0 and 6.03.01 for L and N, respectively), running on Windows XP for L, and Windows 7 for N on the setup computer 1 (see Fig. \cref{fig:cerebus_system}). The Cerebus DAQ system was also connected to the behavioral control system via the NI connector block to save the analog behavioral data and digital trial event signals that were described in the previous section in parallel with the neural signals. All data were transmitted from the NSP via an ethernet cable to be saved first locally on the setup computer 1. After a recording day, all recordings were transferred to a data server. In the following, we will describe the function of the different components of the neural recording platform in more detail.
 
@@ -273,7 +273,7 @@ The thresholds (one for each channel) for the spike waveform detection were not 
 All data files (nev, ns5/6, ccf) were saved on disk and backed-up on a data server at the end of the recording sessions. The information collected here are partly taken from \citep{Riehle_2013, Zehl_2016}.
 
 
-\subsubsection{Origin of the channel IDs}
+\subsection{Origin of the channel IDs}
 \label{sec:channel_ids}
 
 The neuronal signal inputs to the Front-End Amplifier were grouped into four banks (A-D or 0-3) from which only the first 3 were used. Each bank consists of a male header with 34 pins of which 32 were the neuronal signal input channels. The other two channels served as reference and ground, respectively. In Central Suite, the identification (ID) number of each electrode of the array is defined by the position on the input bank and pin of the Cerebus Front-End Amplifier. For this Central Suite multiplies the bank ID (0, 1, 2, or 3) with the number of pins for neural signal input channels (32) and adds the ID of the pin the electrode is connected to (cf. ID conversion in \cref{fig:cerebus_system}). The electrode wiring of the Utah array is, though, not coordinated to the input banks of the Front-End Amplifer which leads to spatially unordered electrode IDs. Nevertheless, Utah arrays are fabricated usually in the same way where the corner electrodes are unconnected leading to a default (unordered) electrode ID configuration (cf. electrode configuration of monkey N in \cref{fig:implant_locations}). If in the fabrication process one of the corner electrodes was registered to be of significantly higher quality than any other electrodes of the grid, the corner electrode was connected instead and thereby changed the corresponding electrode configuration (cf. electrode configuration of monkey L in \cref{fig:implant_locations}). This led to the different ID sequences of the arrays for monkey L and N (see \cref{fig:implant_locations}). To facilitate the comparison of results between arrays with different electrode configurations, we assigned new IDs that reflect the spatial organization of the array. For this we used as reference the lower left corner electrode, when the connected wire bundle is showing to the right. These fabrication-independent, connector-aligned IDs increase linearly from bottom left to top right, line by line. They are also shown in \cref{fig:implant_locations} d as gray numbers in the array sketch, which thereby provides the mapping of the Blackrock IDs to the connector-aligned IDs. 
@@ -281,22 +281,22 @@ The neuronal signal inputs to the Front-End Amplifier were grouped into four ban
 A visual summary of the available data is given in \cref{fig:overview_data_l_1} and \cref{fig:overview_data_l_2}  for monkey L, and \cref{fig:overview_data_n_1} and \cref{fig:overview_data_n_2} for monkey N. The first of these figures shows the sequence of trials as well as selected raw recorded time series, spike trains, unit wave forms, and behavioral signals for one particular trial. The second of these figures contrasts parallel neuronal data across channels in a specific trial with neuronal data across trials in a specific channel.
 
 
-\subsection{Data Preprocessing}
+\section{Data Preprocessing}
 \label{sec:data_preprocessing}
 
 After the recordings, a number of preprocessing steps (pre in the sense of before the actual upcoming data analysis, but being the post-processing after the recording) were performed as described below. This includes (i) the translation of the digital events from their binary codes set by the DAQ system to a human-readable format putting the events in context of the expected executed trial event sequence, (ii) the offline detection of behavioral trial events and object load force from the analog signals recorded by the sensors of the target object, and (iii) the offline spike sorting.
 
-\subsubsection{Translation of digital events to trial events }
+\subsection{Translation of digital events to trial events }
 
 Table \cref{tab:bit_translation} lists the 8-bit combinations that were sent by LabView to the Experimental Apparatus to control the behavior. Following a binary to decimal conversion, they were saved as event codes (Table \cref{tab:bit_translation}) during the experiment along with their time stamps in the .nev file. In the first preprocessing step, these event codes were translated to a human-readable format and put into context of an expected trial event sequence. The validation against the latter was used to identify incomplete, correct and error trials. Error trials were further differentiated into error types (e.g., grip error). This digital event translation and interpretation (cf. \cref{tab:bit_translation}) performed automatically within the reach-to-grasp loading routine. 
 
 Translation table of the 8 bits to the event codes and their behavioral meaning (labels). The 8 bits (see Table \cref{tab:bit_translation} for their meaning) were sent from LabView to NSP during the trial sequence (Fig. \cref{fig:task_trialscheme}). The event codes are the decimal version of the bit sequence assuming another byte with all bits set to 1 in front. The event codes are found in the .nev files with a time stamp and indicate the occurrence of a stimulus / behavioral event as indicated in the center colum ('label'). Due to different versions of the LabView control program for monkey L and N (see text for details) the event codes for the same label may be different for the two monkeys. Also some event codes do not have a concrete meaning (miscellaneous) and occur sporadically in the .nev file due to a mistake in the sampling of the digital events - they have to be ignored. In the table the event codes are sorted in sequential order from top to bottom with respect to the task, i.e. their order corresponds to the sequence found in the .nev file in an successful trial. 
 
-\subsubsection{Preprocessing of behavioral analog signals}
+\subsection{Preprocessing of behavioral analog signals}
 
 Some behavioral events such as the monkey touching the object or the onset of the object displacement by the monkey were controlled during the experiment, but their online-detected timing was approximate and not saved (see details in section \cref{sec:behavioral_control_system}). However, these events can be relevant for data analysis and they were thus computed offline from the analog signals of the four FSR sensors measuring the monkey's grip and the HE sensor measuring the object displacement. We implemented a custom-made Matlab Event-Detection toolbox to detect 8 specific events: the precise timing of object touch (OT) and object release (OR) from the force traces as well as the timing of displacement onset (DO) and object back to baseline (OBB) from the displacement trace, and finally the onset and offset of the plateau phase in the force and displacement traces. The plateau phase of the displacement signal indicates the timing and stability of the holding period, and its onset is used to calculate offline the hold start (HS) signal. The toolbox performed an automatic detection of these events and their timing was first approximated by threshold crossing and then fine-tuned by back-comparison of the traces with baseline level from the point of threshold crossing. Since the automatic detection was prone to errors, the trials were visually inspected one by one and the timing of the automatically detected events were manually corrected if they did not match the event times as visually identified. In addition, a Matlab script was used to inspect the load force traces in each trial to control if the actual object load corresponded to the programmed object load. This procedure ensured that the electro-magnet controlling the object load was properly activated throughout the recording session. 
 
-\subsubsection{Offline spike sorting}
+\subsection{Offline spike sorting}
 \label{sec:offline_spike_sorting}
 The spike waveforms which were extracted and saved (in the nev file) during the recording were offline sorted using the Plexon Offline Sorter (version 3.3.3). To keep the variability in the half-manual spike sorting at a minimum, all sortings were performed by the same person (A. Riehle). The spike sorting started with loading the complete nev file of a session into the Plexon Offline Sorter. The spike sorting was performed on a duplicate of the data file to keep the original data intact. We started by joining all different waveforms extracted online from each channel separately back again into one pool and initially marked as “unsorted waveforms” in the Plexon Offline Sorter. Thereby, we ignored the result of the preliminary online waveform sorting (units 0-16 in the nev file) that was performed during the recording via Central Suite software, which served solely to extract waveforms and gain an overview of the quality of the spiking activity. For the invalidation of cross-channel artifacts (e.g., chewing artifacts) all waveforms that occurred simultaneously on a defined percentage of channels (70\%) were marked as “invalidated waveforms” in Plexon Offline Sorter. Such artifacts occurred only in the recording session of monkey L. Furthermore, a waveform rejection was performed. Thereby all waveforms of abnormally large amplitude and/or atypical shape on a channel were manually marked as “invalidated waveforms” in Plexon Offline Sorter.
 
@@ -321,14 +321,14 @@ The actual spike sorting was then performed on the remaining unsorted waveforms 
 \label{tab:datafiles_unitactivity}
 \end{table}
 
-\subsubsection{Code availability}
+\subsection{Code availability}
 \label{sec:code_availability}
 
 All available code required to access the data as described in \cref{sec:usage} is stored along with the datasets. The provided code includes, in particular: (i) a snapshot of the Python Neo package, (ii) a snapshot of the Python odML package, (iii) the custom-written ReachGraspIO extending the Neo package, (iv) the example script shown and described in \cref{sec:usage}, (v) the code shown and described in \cref{sec:usage} demonstrating how to access the data in Matlab.
 
 In addition to these frozen versions of the code, we recommend to use updated versions of the code to benefit from future enhancements, bug fixes and increased compatibility with future Python releases or novel applications that rely on recent versions of Neo and/or odML. Complete link collections to the python-neo and python-odML libraries can be found at http://neuralensemble.org/neo/ and http://www.g-node.org/projects/odml, respectively. Importantly, both projects are hosted and version-controlled via Github at https://github.com/NeuralEnsemble/python-neo and https://github.com/G-Node/python-odml. Updated versions of the ReachGraspIO and all example code can be found on Github under https://github.com/INM-6/reachgrasp-dataset.
 
-\subsection{Data Records}
+\section{Data Records}
 
 All data and metadata are publicly available via the data portal of the German Neuroinformatics Node (G-Node) of the International Neuroinformatics Coordination Facility (INCF), called GNData (http://g-node.github.io/g-node-portal/). \cref{tab:datafiles_overview} provides an overview of the name, size, and content of all files for each published dataset of monkey L and N. The datasets of both monkeys consist of four parts: (i) the primary data are provided as the original data files obtained from the Central Suite software stored in the data format specified by the manufacturer (in particular, nev, ns5 and ns6 format) of the neural recording platform, Blackrock Microsystems; (ii) an offline sorted version of the neural spike data (cf. \cref{sec:offline_spike_sorting}) is provided in a second nev file; (iii) metadata are provided as one file per dataset in the odML format \citep{Grewe_2011, Zehl_2016}; and (iv) a mat file is provided containing the continuous neural raw data together with the offline sorted spike data, both annotated with the corresponding metadata.
 
@@ -468,24 +468,24 @@ The quality of the spiking activity in the datasets of both monkeys was high, wh
 % \label{tab:datafiles_trials}
 % \end{table}
 
-\subsubsection{Information on metadata framework}
+\subsection{Information on metadata framework}
 \label{sec:scidata_metadat_framework}
 
  All metadata information about the experiment, the subject, the setup, the settings, the processing of the data etc were originally distributed over several source files, but were collected offline in one metadata file per recording using the odML metadata framework. This odML framework was first introduced by \citet{Grewe_2011} and is a supported metadata management project of the G-Node (http://www.g-node.org/projects/odml). odML files are machine readable and can be used via application programming interfaces (APIs) in Java (https://github.com/G-Node/odml-java-lib), Python (https://github.com/G-Node/python-odml) and Matlab (https://github.com/G-Node/matlab-odml). Moreover, odML files are human readable and can be screened best by either using the odML Editor which is part of the odML Python API, or using a browser via a metadata stylesheet available as download on the G-Node project website. For details on how to manage metadata for such a complex experiment using the odML framework please have a look at \citet{Zehl_2016}. This reference also includes tutorial like code examples on how to use odML files in Python and Matlab (see main article as well as supplementary material).
 
-\subsection{Technical Validation}
+\section{Technical Validation}
 
 In addition to the above described preprocessing steps that needed to be performed to gain more content of the raw data, some technical validations of the data also had to be conducted. These technical validations include the correction of the irregular alignment data files of the Cerebus DAQ system and a general quality assessment of the data. In order to validate the quality of the recording, a series of algorithms were applied to the data. On the one hand the quality of the LFP signals was assessed per electrode and per trial by evaluating the variance of the corresponding signal in multiple frequency bands. On the other hand the quality of the offline sorted single units (\cref{sec:offline_spike_sorting}) was determined by a signal-to-noise measure. In addition, noise artifacts occurring simultaneously in the recorded spiking activity were detected and marked. In the following, we explain these technical validation steps in detail.
 
-\subsubsection{Correction of data alignment}
+\subsection{Correction of data alignment}
 
 The ns6 file starts always 82 samples later than ns5, ns2 and nev files. This miss-alignment is caused by an error in the Blackrock recording software. However, this shift is correctly recorded in the ns6 file, and therefore will be automatically corrected in the generic Neo loading routine (cf., BlackrockIO in \cref{sec:usage} below). In addition, due to the online filter procedure, the LFP signals in the ns2 file are delayed by approximately 3.6 ms with respect to the time stamps in the nev file and the analog signal of the ns6 file. This offset was heuristically determined, documented in the metadata file, and can be automatically corrected for by the experiment-specific loading routine (cf., ReachGraspIO in \cref{sec:usage} below). Note that the time stamps of the spike times provided in the nev file correspond to start of the waveform and not to the time point of threshold crossing.
 
-\subsubsection{Quality assessment}
+\subsection{Quality assessment}
 
 The occurrence of noise in electrophysiological recordings is to a certain degree unavoidable and therefore needs to be carefully examined. It depends to a large extent on the quality of the headstage used to record the neurophysiological data. In our data, two different types of headstages were used for the two monkeys - the Samtec-CerePort headstage (monkey L) and the Patient Cable (monkey N). The former is much more sensitive to noise than the latter. The type of noise, its cause and appearance in the data is quite variable. Depending on the direct influence of the different types of noise on subsequent analysis methods, one needs to balance the corresponding data rejection between being very permissive and very conservative. For this reason, it is wise not remove or delete data of bad quality, but instead mark them with the judgment of a corresponding quality assessment procedure. For the here published datasets, we provide the results of our quality assessment of the electrodes, trials and spiking units along with the analysis parameters of the used procedure in the odML metadata files for each recording. The reach-to-grasp IO integrates this information by annotating the corresponding data objects in Neo. This approach not only allows the user to finally decide which data to reject for an analysis, but also provides the opportunity to provide different quality assessments of the same electrode, trial and unit at the same time. This is helpful if one considers that certain types of noise can differently contaminate signals in different frequency bands. For the here published datasets, the quality of the recorded signals was therefore separately tested for the sorted spike data and different frequency bands of the LFP data. The used corresponding procedures are described in detail below. 
 
-\subsubsection{LFP data quality}
+\subsection{LFP data quality}
 
 The LFP data were examined for noise in three broad frequency bands excluding the 50Hz European line noise (low: 3Hz - 10Hz, middle: 12Hz - 40Hz, high: 60Hz - 250Hz) in each session individually. The goal of the quality assessment was, first, to detect channels with a noisy signal throughout the session and, second, to detect noisy trials in the remaining “clean” channels. To do so, the analog signals of each electrode were first z-scored and filtered in the three frequency bands (low, middle, and high) using a Butterworth filter (of order 2, 3, and 4, respectively). For each frequency band the quality assessment analysis was carried out separately. The detection of noisy electrodes was performed in three steps: 
 
@@ -499,7 +499,7 @@ The electrode IDs of the final outliers as well as the parameters chosen for the
 
 For the remaining non-noisy electrodes, an analogous procedure was carried out afterwards to detect noisy trials. The procedure differed in one respect: the variance of the filtered analog signal was calculated for each trial on each electrode separately. At the end, the trial IDs of the identified outliers were pooled and marked as noisy for the tested frequency band on all electrodes. The marked trial IDs were saved in the odML metadata file of the corresponding recording together with the chosen analysis parameters for their detection. Note again that with this procedure a trial is marked as noisy on all electrodes as soon as it is classified as noisy on one electrode.
 
-\subsubsection{Spike data quality}
+\subsection{Spike data quality}
 \label{sec:spike_data_quality}
 
 To test and judge the quality of the spike data, the results of the offline spike sorting were controlled first, for the signal-to-noise ratio (SNR) from the waveforms of the identified single units and second, for the occurrence of hyper-synchronous event artifacts.
@@ -510,7 +510,7 @@ To test and judge the quality of the spike data, the results of the offline spik
 
 In \cite{Torre_2016} we combined both quality assessments of the spike data and only considered spikes with a SNR>2.5 and additionally removed all hyper-synchronous events with $\ge2$ spikes. 
 
-\subsection{Usage Notes}
+\section{Usage Notes}
 \label{sec:usage}
 
 In the following, we describe how the provided data files can be practically used in a data analysis scenario. To this end, we first briefly present the open source software libraries we recommend to use in order to access data and metadata using the Python programming language. We also demonstrate how to merge data and metadata in a common representation that facilitates data handling and analysis. Finally, we present an example program that produces a visualization of the most important data items contained in the files, and can be used as a template script for accessing the provided data. All software discussed below is provided in the code subfolder of the provided datasets, and links to the code repositories are listed in \cref{sec:code_availability}.
@@ -544,7 +544,7 @@ From the selected Segment, LFP data and raw signals can be obtained via the Anal
 All data and metadata files as well as the code described above can be found in the data repository at \url{https://web.gin.g-node.org/INT/multielectrode_grasp}. The subdirectory datasets contains all data files and the metadata odML-file for the two provided recording sessions. The subdirectory code contains the files example.py and neo\_utils.py. For further reference and inspiration this subdirectory also contains the Python scripts generating the data figures of this manuscript. Furthermore, the subdirectories to code contain frozen versions of the required libraries (Neo, python-odml) as well as the custom loading routine combining data and metadata (reachgraspio.py). Finally, the datasets\_matlab directory contains the annotated Neo data object containing all primary data saved in the mat-file format. Updated versions of the code, e.g., adapted to new releases of the Neo library, can be found at https://github.com/INM-6/reach-to-grasp-data-publication.
 }
 
-\subsubsection{The metadata structure}
+\subsection{The metadata structure}
 \label{sec:scidata_metadata_structure}
 All aggregated metadata for a single recording session are collected in an separate \software{odML} file (\ref{tab:datafiles_overview}). Within an \software{odML} file, information is organized in a hierarchical fashion, following an experimenter-defined schema. \cref{fig:scidata_l101210odml} shows an exemplary part of the metadata collection of the recording session of monkey L. The \software{odML} files contains the following eight top-level sections: \textit{Project} (general information on the reach-to-grasp project), \textit{Subject} (information on the monkey), \textit{Setup} (details of the experimental apparatus), \textit{Cerebus} (settings of the recording system), \textit{UtahArray} (information on the multi-electrode array including spike sorting results and the corresponding quality assessment), \textit{Headstage} (general settings), \textit{Recording} (task settings, trial definitions with event time stamps and periods), \textit{PreProcessing} (results of LFP quality assessment and general information on the spike sorting procedure) (\cref{fig:scidata_l101210odml}). Each top-level \code{Section} contains a branch structure build from \code{Section}s to logically organize the information about the specific aspect of the experiment. For example, the \code{Subject} \code{Section} contains nine \code{Properties} (denoted by a folder icon), and two \code{Subsection}s, \code{Training} and \code{ArrayImplant} (denoted by a collapsible folder icon). All metadata available describing the training of monkey L are the coach (Thomas Brochier), start and end date of the training period (June 2010 - September 2010) and a comment stating that the training was easy and fast. Larger quantities of metadata are stored for describing the recording array used for the recording. Here the \code{Section} \code{UtahArray} contains general information about the hardware (material, dimensions, etc) and detailed information about each electrode is contained in the \code{Electrode} \code{Section}s. Each electrode \code{Section} contains information about the electrodes identity in different reference systems, the impedance value and offline sorting results for data recorded here (not shown in \cref{fig:scidata_l101210odml}). The metadata collection of monkey N has a analogous structure.
 
@@ -554,7 +554,7 @@ All aggregated metadata for a single recording session are collected in an separ
  \label{fig:scidata_l101210odml}
 \end{figure}
 
-\subsection{Preprocessing pipeline}
+\section{Preprocessing pipeline}
 \label{sec:r2g_preprocessing_pipeline}
 The metadata information as described \cref{sec:scidata_metadata_structure} was aggregated from multiple files and formats into a single file in the odML format (\cref{sec:scidata_metadat_framework}). This aggregation requires access to, and interpretation of a variety of files and formats, extraction of the corresponding information and integration in the designated location a pre-designed odML structure. In the pipeline used here (\cref{fig:scidata_metadata_pipeline}), the design of the odML structure is strictly separated from the enrichment of the structure with metadata content. In a first step an odML structure with default metadata entries is set up based on multiple Python scripts generating individual branches of the odML structure. Since the particular structure required for a recording session depends on the specifications of the recording this process depends to some extend on the metadata to be added (see \cref{fig:scidata_metadata_pipeline}, red arrows). This interdependency requires the metadata to be loaded and partially interpreted prior to the initialization of the structured metadata collection.
 
@@ -568,7 +568,7 @@ Setting up this workflow required prepratory work on multiple levels: A) The man
  \label{fig:scidata_metadata_pipeline}
 \end{figure}
 
-\subsection{Data loading and enrichment}
+\section{Data loading and enrichment}
 \label{sec:data_loading_and_enrichment}
 To benefit from a complete metadata collection in the \software{odML} format when loading the original data we provide the \software{ReachGrapsIO} Python class which extends the \software{Neo} data structure upon loading (\cref{sec:usage}). The \software{ReachGraspIO} inherts from the \software{Neo} \code{BlackrockIO} and exploits its functionality to read data from \code{nsX}\footnote{$X \in \{1,2,3,4,5,6\}$} and \code{nev} file formats (\cref{fig:scidata_reachgraspio_diagram}). It returns a \software{Neo} \code{Block} based on the original structure generated by the \software{Neo} \code{BlackrockIO}. The API to interact with the data is therefore the same when using directly the \software{Neo} \code{BlackrockIO} and the \code{ReachGraspIO}.
 
@@ -614,7 +614,7 @@ The \software{ReachGraspIO} extends and annotate the \software{Neo} structure ge
 
 The original pipeline was implemented using Python 2 and odML version 1.3. The published datasets were updated in 2019 to be compatible with Python 3 and odML version 1.4. Old versions are still accessible via the published DOI\footnote{10.12751/g-node.f83565, \url{https://gin.g-node.org/doi/multielectrode_grasp}} and the version control system of GIN\footnote{GIN, \url{https://web.gin.g-node.org/}}.
 
-\subsection{Shortcomings of the odMLgeneration pipeline}
+\section{Shortcomings of the odMLgeneration pipeline}
 \label{sec:scidata_shortcomings}
 % August 2019: 1974 datasets available at /datasets/marseille/congloue/data/DataGrasp
 The presented data publication demonstrates the complexity of the datasets and the required preparation for release of the data. However, only two datasets out of almost 2000 recording sessions being performed were published due to multiple reasons:
@@ -658,7 +658,7 @@ The presented pipeline for generating a metadata collection relies on the usage 
 
 
 
-\subsection{Requirements for Maintainable and Reproducible Metadata Management}
+\section{Requirements for Maintainable and Reproducible Metadata Management}
 \label{sec:metadata_requirements}
 Based on the experience from publishing the two datasets (\ref{sec:scidata_shortcomings}) we identify essential requirements for metadata management workflows in complex, collaborative projects.
 
@@ -677,7 +677,7 @@ Based on the experience from publishing the two datasets (\ref{sec:scidata_short
 \end{description}
 
 
-\subsubsection{Evaluation of presented metadata pipeline}
+\subsection{Evaluation of presented metadata pipeline}
 \label{sec:r2gpipeline_evaluation}
 The pipeline used for metadata aggregation and access in \citet{Brochier_2018} is described in \cref{sec:scidata_metadata_structure}. In \cref{sec:metadata_requirements} we identify a eleven requirements for comprehensive metadata management. In the following we evaluate the presented pipeline with respect to these requirements. \cref{tab:requirement_check_scidata} summarizes the findings.
 \newline

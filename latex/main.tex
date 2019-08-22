@@ -1,4 +1,4 @@
-\documentclass[a4paper, twoside, 12pt]{article}
+\documentclass[a4paper, twoside, 12pt]{book}
 \usepackage[subpreambles=true]{standalone}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -28,16 +28,10 @@
 % set headers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\renewcommand{\sectionmark}[1]{\markright{\thesection~- ~#1}}
-% \renewcommand{\chaptermark}[1]{\markboth{\chaptername~\thechapter~-~ #1}{}}
-% \renewcommand{\chaptermark}[1]{\markleft{\thesection- ~#1}}
-\fancyhead{}
-\fancyfoot{}
-% \fancyhead[LE]{\footnotesize\scshape\leftmark}
 \fancyhead[RO]{\footnotesize\scshape\rightmark}
-\fancyhead[LE]{\footnotesize\scshape Section \thesection}
-% \fancyhead[RE,LO]{\thesisauthor}
-\fancyfoot[C]{\thepage}
+\fancyhead[LO]{}
+\fancyhead[LE]{\footnotesize\scshape\leftmark}
+\fancyhead[RE]{}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
@@ -151,13 +145,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% \input{./sections/Section_1}
+\input{./sections/Section_1}
 \input{./sections/Section_2}
-% \input{./sections/Section_3}
-% \input{./sections/Section_4}
+\input{./sections/Section_3}
+\input{./sections/Section_4}
 \input{./sections/Section_5}
-% \input{./sections/Section_6}
-% \input{./sections/acknowledgements}
+\input{./sections/Section_6}
+\input{./sections/acknowledgements}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

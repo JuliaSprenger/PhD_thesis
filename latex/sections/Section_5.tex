@@ -1,5 +1,5 @@
 \clearpage
-\section{Structuring scientific work - Workflow management}
+\chapter[Workflow management]{Structuring scientific work - Workflow management}
 \label{sec:workflows}
 The process from data generation to a scientific publication can be usually split into individual steps performing only a subset of the complete processing requirend. The separation of these steps can occur on different levels from very coarse like the separation of the experiment and analysis to very fine where each individual processing step is implemented in a independent script.
 
@@ -10,7 +10,7 @@ For these disciplines, there are a number of platforms and tools available to im
 
 In this section we present the usage of snakemake as a workflow management tool as it is domain independent, slim and easily integrates with Python based projects, e.g. to the Reach-to-Grasp and related projects \cref{sec:data}.
 
-\subsection{Workflow management tools - Snakemake}
+\section{Workflow management tools - Snakemake}
 \label{sec:snakemake}
 Snakemake is a generic workflow management tool derived from the build automation tool Make combined with Python features. It is available as bioconda\footnote{\url{https://anaconda.org/bioconda/snakemake}} and PyPi package\footnote{\url{https://pypi.org/project/snakemake}} with the latest version $5.5.4$ being considered here.
 
@@ -98,10 +98,10 @@ The presented features make snakemake our tool of choice for the implementation 
 
 
 
-\subsection{Practical application}
+\section{Practical application}
 Snakemake has been applied in a variety of different fields and projects. Many of the provided examples and tutorials are set in the field of genomics\footnote{\url{https://snakemake.readthedocs.io/en/stable/getting_started/examples.html}}\footnote{\url{https://snakemake.readthedocs.io/en/stable/tutorial/basics.html}} here we present a workflow design in the context of the Vision4Action project, a successor project of Reach-to-Grasp.
 
-\subsubsection{The Vision-For-Action project}
+\subsection{The Vision-For-Action project}
 The Vision-For-Action project is building on top of the Reach-to-Grasp project by extending the investigation of motor control only to the interaction of motor and visual activity. For this a modified task is used, involving the continuous integration of visual input and motor control. The experimental hardware is a Real-time visuomotor behavior and electrophysiology recording
 (RIVER) setup and consists partially of the same components used in the Reach-to-Grasp experiment. For a detailed description of the recording setup see \cite{deHaan_2018,deHaan_2018a}. The Reach-to-Grasp experiment was extended by an eye as well as hand movement control system and a complex task design including the sequential pointing to up to six targets. To the current date, only a single monkey was recorded in the Vision-For-Action setup.
 
@@ -214,7 +214,7 @@ file format & content                                               \\ \hline
 \label{tab:v4a_metadata_files}
 \end{table}
 
-\subsection{Metadata workflow in the Vision-for-Action project}
+\section{Metadata workflow in the Vision-for-Action project}
 
 Based on the metadata source files described in \cref{tab:v4a_metadata_files} we designed a workflow for metadata collection and enrichment which consisting processing steps that can be classified into one of five processing categories (\cref{fig:v4a_metadata_workflow_rulegraph}). The implementation of the workflow is still work in progress, but the basic concepts and completed implementation steps are presented in the following. We implement the workflow using snakemake in combination with python scripts, which are implemented in a standalone fashion as described in \cref{sec:snakemake} (\cref{code:workflows_python_scripts}). In the context of this workflow we term these standalone python scripts 'application' (\textbf{app}). Each app performs only a single, definite processing step based on as few input files as possible, to avoid unnessesary dependencies.
 
@@ -354,7 +354,7 @@ Another advantage of hosting the packaged data files remotely is the central sto
 \paragraph{Validation}
 Modularization of the individual processing steps into apps permits the implementation of validation routines to ensure correct functionalty of the code. Since in this experiment the apps are Python based, tests can be implemented e.g. via the \code{unittest}\footnote{unittest, \url{https://docs.python.org/3.7/library/unittest.html}} framework. These tests can also be integrated one of the available continous integration system (see \cref{sec:r2gpipeline_evaluation}). 
 
-\subsubsection{Discussion}
+\subsection{Discussion}
 
 \paragraph{Efficiency \& reliability}
 By implementing the workflow in snakemake inherently only workflow steps are executed for which updated input files exist. This reduces the amount of overhead in comparison to a non-modular workflow for which all steps can only be executed at once without taking into account intermediate results.
@@ -395,7 +395,7 @@ The current snakemake workflow impementation features a utility script, which ce
 Version control was introduced to track changes after with each execution of the workflow. However, also hosting the original source files in a version controlled environment has advantages. For example changes in the source files can automatially trigger the workflow and therefore form a fully automated system to update the packaged data upon updates in the source files. However the original source files and packaged data should be hosted in two separate repositories as the read and write access to the first one should be much stricter than for the second one. This would require the repository of the original source files to trigger the snakemake workflow to build a packaged version of the data and commit it to the second repository. The concept is the same as for continuous integration platforms for software testing, with the only difference of the size of datafiles handled. Therefore existing systems can potentially be modified to serve this modified purpose. A pilot study investigating this is 
 
 
-\subsubsection{Workflow evaluation}
+\subsection{Workflow evaluation}
 We evaluate the presented snakemake workflow with respect to the essential requirements for metadata management workflows in complex, collaborative projects defined in \cref{sec:metadata_requirements}:
 
 \todo{add evaluation statements below}
@@ -451,7 +451,7 @@ R11: Open source tools                               &  mostly & yes \\ \hline
 
 
 
-\subsection{Summary \& Guidelines}
+\section{Summary \& Guidelines}
 We motivated the need of and introduce the concept of workflow management tools. We demonstrated the snakemake as our tool of choice for Pythonic make-style workflow description and explained the main features based on two examples. In the next step we introduced the Vision-for-Action experiment as is a successor of the Reach-to-Grasp experiment. We described a workflow to handle data and metadata for this complex electrophysiology experiment from the original recorded data to user friendly, comprehensively annotated data packages. We also provided detailed examples discussed features and limitations as well as and future plans and challenges. In the following we abstract general guidelines from the presented example workflow:
 \todo{Add guidelines here}
 
