@@ -392,25 +392,26 @@ The file based workflow management as implemented by snakemake leads to frequent
 The current snakemake workflow impementation features a utility script, which centralized functionality needed by multiple apps (e.g. read and writing data to \software{Nix} or \code{csv}). This script is therefore a required input file for a multitude of rules, and it it stated explicitely in all \code{input} declarations. This duplicated code is not conform with the common software development principle \textit{'Don't repeat yourself'} \citep{Martin_2008}. However, within the framework of snakemake up to now, there is no satisfying for this instead of explicitely listing the utility script (see \cref{code:v4a_workflow_snakemake_rule}). 
 
 % automatic workflow tiggrering on gin
-Version control was introduced to track changes after with each execution of the workflow. However, also hosting the original source files in a version controlled environment has advantages. For example changes in the source files can automatially trigger the workflow and therefore form a fully automated system to update the packaged data upon updates in the source files. However the original source files and packaged data should be hosted in two separate repositories as the read and write access to the first one should be much stricter than for the second one. This would require the repository of the original source files to trigger the snakemake workflow to build a packaged version of the data and commit it to the second repository. The concept is the same as for continuous integration platforms for software testing, with the only difference of the size of datafiles handled. Therefore existing systems can potentially be modified to serve this modified purpose. A pilot study investigating this is 
+Version control was introduced to track changes after with each execution of the workflow. However, also hosting the original source files in a version controlled environment has advantages. For example changes in the source files can automatially trigger the workflow and therefore form a fully automated system to update the packaged data upon updates in the source files. However the original source files and packaged data should be hosted in two separate repositories as the read and write access to the first one should be much stricter than for the second one. This would require the repository of the original source files to trigger the snakemake workflow to build a packaged version of the data and commit it to the second repository. The concept is the same as for continuous integration platforms for software testing, with the only difference of the size of datafiles handled. Therefore existing systems can potentially be modified to serve this modified purpose. A pilot study investigating the integration of \software{snakemake} workflows into the \software{GIN} system started in June 2019 \footnote{\url{https://github.com/G-Node/gin-proc}}.
 
 
 \subsection{Workflow evaluation}
-We evaluate the presented snakemake workflow with respect to the essential requirements for metadata management workflows in complex, collaborative projects defined in \cref{sec:metadata_requirements}:
+We evaluate the presented snakemake workflow with respect to the essential requirements for metadata management workflows in complex, collaborative projects defined in \cref{sec:metadata_requirements}. An overview of the evaluation can be found in \cref{tab:requirement_check_v4a}.
 
-\todo{add evaluation statements below}
-\begin{description}
- \item[R1: Common terminologies]
- \item[R2: Structured machine \& human readable metadata]
- \item[R3: Central data and metadata location] 
- \item[R4: Version control] 
- \item[R5: Mostly automatic metadata compilation] 
- \item[R6: Extendable metadata workflow] 
- \item[R7: Reusability] 
- \item[R8: Standardized \& reproducible preprocessing] 
- \item[R9: Easy to access data and metadata for non-experts] 
- \item[R11: Open source tools] 
-\end{description}
+The presented workflow is using \software{odML} as a basis for metadata structuring. By using the \software{odML} framework common terminologies are automatically defined when setting up the \software{odML} document (\requirement{R1}). This also automatically makes the metadata collection machine and human readable (\requirement{R2}), as \software{odML} is \code{xml} based and offers user-friendly tools for comprehensive visualization (\software{odMLtables}, odML-UI, odml\_view).
+
+We discussed potential extensions of the workflow including the automatic registration of workflow results at a central server. The combination of the presented workflow with such a remote repository is a realistic addition to the worklfow and can also be used to host the workflow definition and included scripts (\requirement{R3}). This can be achieved by extending the local version control tracking using \code{git}, \code{git-annex} with a remote server, e.g. the \software{GIN} web service \requirement{R4}.
+
+The presented workflow does not require manual interaction during the execution and automatically executes only required workflow steps, improving the efficiency and making the workflow less error-prone than a manual execution (\requirement{R5}). In case manual preprocessing steps can not be avoided, e.g. for spike sorting, the generated files enter as input files in the workflow. A mechanism for automatic initiation of a snakemake workflow hosted on \software{GIN} is under development.
+
+The modulatization introduced in the workflow by using \software{snakemake} rules and apps makes the workflow highly flexible for future adaption and extensions (\requirement{R6}). Depending on the required change, only additional preprocessing scripts need to be added and the workflow definition itself remains unchanged. Changes including the adaptation of the workflow can be implemented by introducing addition in- and output files, relating new \software{snakemake} rules to existing ones.
+Due to the modularization of the workflow, generic and project specific workflow steps can be easily separated making large parts of the workflow reusable in different contexts (\requirement{R7}). The reusability can be further improved by separating generic rules in a dedicated, public repository.
+
+Integrating the workflow definition and scripts or version identifiers of these together with the generated output files makes the workflow reproducible. In an optimal case this also includes version identifiers of the original, read-only source files. The provenance tracking of Python dependencies can be implemented by specifying exact software versions for the conda environments used for different rules in the workflow (\requirement{R8}).
+
+The workflow generates a compiled version of the data and metadata in single \software{Nix} file ensuring the consistency of contained data and metadata (\requirement{R10}). Accessing the data only requires a current installation of the \software{Neo} package, making the data available also to unexperienced users. Since \software{Nix} is based on the standardized \code{hdf5} format accessing the data is memory efficient and can also be implemented for other programming languages besides Python. Data and metadata are linked, making it easy for users who are not familiar with the metadata structure to access the metadata of a corresponding data object (\requirement{R9}).
+
+By building the workflow based on Python, all utilized software packages are open-source (\requirement{R11}). This includes \software{odML} and \software{odMLtables} (\cref{sec:metadata}) for metadata handling, \software{Neo} and \software{Nix} for data representation and storage, and \software{snakemake} for the implementation of the workflow. Additional  canonical Python packages are used in the context of individual apps, like \software{Matplotlib} for visualization as well as \software{NumPy} and \software{SciPy} for efficient array based computation.
 
 \begin{table}[]
 \footnotesize
@@ -429,30 +430,25 @@ R9: Easy to access data and metadata for non-experts &  partial & yes \\ \hline
 R10: Consistent data and metadata                    &  partial & yes \\ \hline
 R11: Open source tools                               &  mostly & yes \\ \hline
 \end{tabular}
-\caption[Overview of workflow features for \cite{Brochier_2018}]{Overview of workflow features for \cite{Brochier_2018} based on requirements for data and metadata workflows as defined in \cref{sec:scidata_shortcomings}. The presented pipeline fullfills basic criteria regarding common terminilogy definition and structured and readable metadata and the usage of open source tools. Other criteria are partially or not met.}
-\label{tab:requirement_check_scidata}
+\caption[Overview of workflow features for Vision-for-Action project]{Overview of features of the pipeline and workflow applied in the Reach-to-Grasp (\cite{Brochier_2018}) and Vision-for-Action projects based on requirements for data and metadata workflows as defined in \cref{sec:scidata_shortcomings} (extension of \cref{requirement_check_scidata}). The presented workflow fullfills almost all essential requirements for metadata management workflows in complex, collaborative projects.}
+\label{tab:requirement_check_v4a}
 \end{table}
 
 
-
-% \begin{description}
-%  \item[R1: Common terminologies] To have a foundation of communication between collaboration partners it is important to agree on common terminologies. Within a scientific disciplin, this might be given by default, but as soon as scientists from multiple backgrounds need to interact, agreeing on common names is an essential first step. Concreting this in a documented way in the metadata collection is part of this and documents the terminology also for future generations of scientists.
-%  \item[R2: Structured machine \& human readable metadata] The metadata collection needs to be programmatically accessible to be used for data annotation and querying. However, metadata also needs to human readable, for manual checks and scanning of metadata. This becomes of special importance in the context of laboratory notebooks and how automatically generated metadata collections can substitute the manual notebooks in the long term. Finally, analysis results and figures need to be labelled in a human readable fashion for discussion and publication.
-%  \item[R3: Central data and metadata location] As discussed in \cref{sec:scidata_shortcomings}, in a collaborative environment a systematic organization of metadata is essential. Providing access to data and metadata via a central data storage is a straight forward solution. 
-%  \item[R4: Version control] To be able to communicate efficiently about data and metadata version control is an important tool. Using version control identical data and metadata selections by different scientist can be guaranteed on the one side as well as changes in the data and metadata collection can be tracked easily. This permits to track updates and changes on the data and metadata side and documents these in a basic manner.
-%  \item[R5: Mostly automatic metadata compilation] With the huge amount of metadata accumulating it is a high priority to automate metadata aggregation as far as possible. In some cases this is not possible in all cases, e.g. when metadata are only available in hand-written form in laboratory notebooks. This type of metadata however is a very small fraction of metadata and has in most cases to be digitized manually.
-%  \item[R6: Extendable metadata workflow] As discussed in \cref{sec:scidata_shortcomings} scientific metadata workflows need to be easily extendable to cope with latest analysis requirements and scientific findings.
-%  \item[R7: Reusability] Scientific workflows should be (partially) reusable for related projects to simplify the setup of similar workflows and save time in implementing these.
-%  \item[R8: Standardized \& reproducible preprocessing] Standardizing preprocessing steps improves understandability of the preprocessing tools and contributes to the aspect of reusability of the workflow. Making the individual preprocessing steps reproducible e.g. by provenance tracking used packages and documenting the code version helps making the whole workflow reproducible.
-%  \item[R9: Easy to access data and metadata for non-experts] Data and metadata should be easy to use by non-experts of the preprocessing pipeline. In the ideal case an out-of-the-box solution can be presented to the user, who can load the data immediately without installing a series of software dependencies. 
-%  \item[R10: Consistent data and metadata] Data and metadata should always be consistent, version control and reproducibility aid this.
-%  \item[R11: Open source tools] Open source software tools are transparent software packages which provide their source code to the community. This has the advantage of validation of the correct functionality by other users and permits to fix potential errors. For community software projects also code corrections and enhancements can be suggested and will usually be reviewed and integrated into the tool. Open source tools are free of charge and therefore provide a suitable basis for scientific work to be independent of industry.
-% \end{description}
-
-
-
 \section{Summary \& Guidelines}
-We motivated the need of and introduce the concept of workflow management tools. We demonstrated the snakemake as our tool of choice for Pythonic make-style workflow description and explained the main features based on two examples. In the next step we introduced the Vision-for-Action experiment as is a successor of the Reach-to-Grasp experiment. We described a workflow to handle data and metadata for this complex electrophysiology experiment from the original recorded data to user friendly, comprehensively annotated data packages. We also provided detailed examples discussed features and limitations as well as and future plans and challenges. In the following we abstract general guidelines from the presented example workflow:
+We motivated the need of and introduced the concept of workflow management tools. We demonstrated the snakemake as our tool of choice for Pythonic make-style workflow description and explained the main features based on two examples. In the next step we introduced the Vision-for-Action experiment as is a successor of the Reach-to-Grasp experiment. We described a workflow to handle data and metadata for this complex electrophysiology experiment from the original recorded data to user friendly, comprehensively annotated data packages. We also provided detailed examples, discussed features and limitations as well as future plans and challenges. In the following we abstract general guidelines from the presented example workflow and our experinces in setting it up:
+
+\begin{description}
+ \item[G1: Plan ahead] Integration and usage of data and metadata is a topic discussed concurrently with the development of an experimental setup. There are typically a number of decisions which can simplify your life later, like agreeing on a consistent metadata output format for all hardware components or merging data into a single file for saving instead of realigning numerous files during preprocessing. Also spend some time on the design and structure of your metadata collection to avoid reorganizing metadata in later steps.
+ \item[G2: Make it explicit] Implement the workflow used for data and metadata management explicitely instead of running scripts manually in a certain order. This will make the workflow i) easier understandable for others and for yourself at a later time ii) gives you an overview of the project iii) is a good way of documenting your approach and iv) is a good basis for provenance tracking on the level of individual preprocessing steps.
+ \item[G3: Modularize] Try to segment your workflow into independent steps, this will automatically make your workflow easier understandable and reusable, especially when well documented. Try to separate generic processing steps from project specific aspects to improve reusability.
+ \item[G4: Keep it linear] Avoid circular dependencies in your workflow, these introduce complex dependency structures and indicate a non-optimal segmentation of data / processing steps. When using \software{snakemake} circular dependencies are innately not permitted.
+ \item[G5: Think like a user] Be user friendly! Try to provide your data and metadata in a format, which requires as little prior knowledge as possible. This increases the chances other can and will make use of your data. Additionally, it paves the way for publishing your data without too much additional overhead.
+ \item[G6: Deploy Continously] This advice from the agile software development approach may as well be applied in a scientific context. Do not attempt to build the perfect workflow, but provide early on intermediate results to your collaborators. This enables them to give you valuable feedback and gives them a chance to work with the data while they are still excited about them. For this to be pracitally feasible version management is essential to be able to communicate about different realzations of the workflow output.
+ 
+\end{description}
+
+
 \todo{Add guidelines here}
 
 
