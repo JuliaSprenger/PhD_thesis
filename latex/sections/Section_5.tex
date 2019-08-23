@@ -355,7 +355,7 @@ Another advantage of hosting the packaged data files remotely is the central sto
 Modularization of the individual processing steps into apps permits the implementation of validation routines to ensure correct functionalty of the code. Since in this experiment the apps are Python based, tests can be implemented e.g. via the \code{unittest}\footnote{unittest, \url{https://docs.python.org/3.7/library/unittest.html}} framework. These tests can also be integrated one of the available continous integration system (see \cref{sec:r2gpipeline_evaluation}). 
 
 \subsection{Discussion}
-
+\label{sec:workflow_discussion}
 \paragraph{Efficiency \& reliability}
 By implementing the workflow in snakemake inherently only workflow steps are executed for which updated input files exist. This reduces the amount of overhead in comparison to a non-modular workflow for which all steps can only be executed at once without taking into account intermediate results.
 At the same time using snakemake for determining which steps need to be reexecuted is a much more reliable approach in comparison to manual evaluation of the up-to-dateness of intermediate results and initialization subsequent processing steps.
