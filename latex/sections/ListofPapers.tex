@@ -1,48 +1,49 @@
 \hypersetup{pageanchor=false} % needed to avoid 'destination with the same identifier (nam e{page.1}) has been already used, duplicate ignored' warning
 
 \clearpage
-\thispagestyle{empty}
+\pagestyle{plain}
 \section*{List of contributing papers and software projects}
 \label{sec:ListofPapers}
 
-\vspace{2.5cm}
+% \vspace{2.5cm}
 
 The presented thesis is based on the publications and software projects listed below.
 
-\vspace{1cm}
+% \vspace{1cm}
 
 \subsection*{Massively parallel multi-electrode recordings of macaque motor cortex during an instructed delayed reach-to-grasp task}
-by Thomas Brochier*, Lyuba Zehl*, Yaoyao Hao, Margaux Duret, Julia Sprenger, Michael Denker, Sonja Grün, and Alexa Riehle
+\textit{by Thomas Brochier*, Lyuba Zehl*, Yaoyao Hao, Margaux Duret, Julia Sprenger, Michael Denker, Sonja Grün, and Alexa Riehle}
 
-Published in Scientific Data on April, 10th, 2018. \citep{Brochier_2018}
+Published in Scientific Data on April, 10th, 2018. \citep{Brochier_2018}\\
 
-This paper forms the basis of \cref{sec:metadata}. The individual authors contributed to the following aspects of the publication as described in \citep{Zehl_2018}: 'Thomas Brochier designed, set up and performed the experiment and wrote the manuscript. Lyuba Zehl designed and performed the data and metadata management of the experiment, developed and implemented the data and metadata loading and pre-processing routines, wrote the manuscript and designed the corresponding figures. Yaoyao Hao performed the experiment, helped with technical issues of the experimental setup and provided valuable feedback for the manuscript. Margaux Duret was involved in setting up and performing the experiment and corresponding pre-processing steps, and provided valuable feedback for the manuscript. Julia Sprenger was involved in implementing experimental pre-processing steps, supported the implementation of the data and metadata loading routines, and provided valuable feedback for the manuscript. Michael Denker provided valuable feedback for the data and metadata management, was involved in implementing the data and metadata loading routines, and provided valuable feedback for the manuscript. Sonja Grün was involved in writing the manuscript and provided valuable feedback. Alexa Riehle was involved in setting up performing the experiment, performed the spike sorting and provided valuable feedback for the manuscript.'
+This paper forms the basis of \cref{sec:data}. The individual authors contributed to the following aspects of the publication as described by \citet{Zehl_2018}: 'Thomas Brochier designed, set up and performed the experiment and wrote the manuscript. Lyuba Zehl designed and performed the data and metadata management of the experiment, developed and implemented the data and metadata loading and pre-processing routines, wrote the manuscript and designed the corresponding figures. Yaoyao Hao performed the experiment, helped with technical issues of the experimental setup and provided valuable feedback for the manuscript. Margaux Duret was involved in setting up and performing the experiment and corresponding pre-processing steps, and provided valuable feedback for the manuscript. Julia Sprenger was involved in implementing experimental pre-processing steps, supported the implementation of the data and metadata loading routines, and provided valuable feedback for the manuscript. Michael Denker provided valuable feedback for the data and metadata management, was involved in implementing the data and metadata loading routines, and provided valuable feedback for the manuscript. Sonja Grün was involved in writing the manuscript and provided valuable feedback. Alexa Riehle was involved in setting up performing the experiment, performed the spike sorting and provided valuable feedback for the manuscript.'
 
 
 \subsection*{odMLtables: A user-friendly approach for managing metadata of neurophysiological experiments}
-by Julia Sprenger, Lyuba Zehl, Jana Pick, Michael Sonntag, Jan Grewe, Thomas Wachtler, Sonja Grün and Michael Denker
+\textit{by Julia Sprenger, Lyuba Zehl, Jana Pick, Michael Sonntag, Jan Grewe, Thomas Wachtler, Sonja Grün and Michael Denker}
 
-Submitted to Frontiers in Neuroinformatics (28 Mar 2019), under review.
+Submitted to Frontiers in Neuroinformatics (28 Mar 2019), under review.\\
 
 This paper forms the basis of \cref{sec:metadata}. The individual authors contributed to the following aspects of the publication:
 
-Julia Sprenger designed and developed the publicly available software including the graphical user interface, testing framework and documentation. Lyuba Zehl initialized the software project, supervised the software design and gave valuable feedback for the manuscript. Jana Pick designed and implemented an early version of the software. Michael Sonntag and Jan Grewe developed the underlying odML package, contributed to the manuscript and provided feedback to the manuscript. Thomas Wachtler and Sonja Grün gave valuable feedback on the manuscript. Michael Denker was involved ni the software design and contributed to the manuscript.
+Julia Sprenger designed and developed the publicly available software including the graphical user interface, testing framework and documentation. Lyuba Zehl initialized the software project, supervised the software design and gave valuable feedback for the manuscript. Jana Pick designed and implemented an early version of the software. Michael Sonntag and Jan Grewe developed the underlying odML package, contributed to the manuscript and provided feedback to the manuscript. Thomas Wachtler and Sonja Grün gave valuable feedback on the manuscript. Michael Denker was involved in the software design and contributed to the manuscript.
 
-\subsection*{Neo\footnote{Neo, \url{http://neuralensemble.org/neo}, RRID:SCR\_000634}}
-The open-source software package \software{Neo}\citep{Garcia_2014} is the main focus of \cref{sec:data}. 
+\subsection*{The \software{Neo} Python Package\footnote{Neo, \url{http://neuralensemble.org/neo}, RRID:SCR\_000634}}
+The open-source software package \software{Neo} \citep{Garcia_2014} is the main focus of \cref{sec:neo}  with version $0.7.1$ being considered here. Among other active \software{Neo} developers, Julia Sprenger contributed to the release versions $0.5.1$, $0.5.2$, $0.6.0$, $0.7.0$ in form of extending the software package to new formats (\code{NeuralynxIO}, \code{NestIO}), performance improvement and bug fixes for already supported formats (\code{BlackrockIO}), testing and feedback of writable formats (\code{NixIO}), conceptual contribution and feedback on the structural development of the data representation (\code{RawIO} mechanism, lazy loading, future versions of \code{ChannelIndex} mechanism), development and support of utility functionality and community support. She also contributed to closely related projects like the nix-odML-converter\footnote{nix-odML-converter, \url{https://pypi.org/project/nixodmlconverter}}.
 
-The software version 0.7.1 forms the basis of \cref{sec:data}. Among other active Neo developers, Julia Sprenger contributed to the release versions 0.5.1, 0.5.2, 0.6.0, 0.7.0 in form of extending the software package to new formats (NeuralynxIO, NestIO), performance improvement and bug fixes for already supported formats (BlackrockIO), testing and feedback of writable formats (NixIO), conceptual contribution and feedback on the structural development of the data representation (RawIO mechanism, lazy loading, future versions of ChannelIndex mechanism), development and support of utility functionality and community support.
-\todo{add related projects and contributions, e.g. nixodmlconverter, ...}
+\clearpage
+
+Additional publications not discussed in this thesis:
 
 \subsection*{Using Elephant to construct reproducible analysis workflows of electrophysiological activity data from experiment and simulation}
-by \todo{to be discussed; Michael Denker, Alper Yegenoglu, Andrew P. Davison, Julia Sprenger, Danylo Ulianych, Sonja Grün, All Elephant contributors..}
+\textit{by \todo{to be discussed; Michael Denker, Alper Yegenoglu, Andrew P. Davison, Julia Sprenger, Danylo Ulianych, Sonja Grün, All Elephant contributors..}}
 
-This manuscript forms the basis of \cref{sec:implementation}. Expected submission is end of 2019 \citep{Denker_elephant_2019}.
+Expected submission is end of 2019.\\
 
-% Alternative reference of elephant based on just the software without the paper.
-% \subsection*{Electrophysiology Analysis Toolkit\footnote{Elephant, \url{http://neuralensemble.org/elephant}, RRID:SCR\_003833}}
+Julia Sprenger contributed tutorial material demonstrating the interaction between \software{Elephant}, \software{Neo}, \software{odML} and \software{odMLtables}. She developed a pilot structure for the integration of external spike sorting software into elephant, implemented the spike field coherence and spike triggered average functionality and contributed to the maintainance of the project.
 
-% Are we initializing a manuscript draft for publication of the workflow until submission of the thesis?
-%\subsection*{Workflows for electrophysiology projects - from experiment to analysis}
+\todo{Add aitors data publication plans? most likely yes!}
+
+\todo{Add plan to publish workflow?}
 
 \hypersetup{pageanchor=true} % needed to avoid 'destination with the same identifier (nam e{page.1}) has been already used, duplicate ignored' warning

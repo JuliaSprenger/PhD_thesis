@@ -1,12 +1,38 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TITLE PAGE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\makeatletter
+\documentclass[
+    pdftex,
+    fontsize=11pt,
+    a4paper
+   ]{scrbook}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,includeall,bindingoffset=0cm,margin=4cm,
+            marginparsep=0cm,marginparwidth=0cm]{geometry}
+\usepackage{titling}
+
+            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%THESIS Parameters 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\title}{Tools and Workflows for Complex Collaborative Neuroscientific Projects\\-\\Building a Basis for Reliable Analyses}
+\newcommand{\thesisdate}{September 01, 2019}
+\newcommand{\thesisauthor}{Julia Sprenger}
+\newcommand{\authorbirthplace}{Stuttgart}
+\newcommand{\authordegree}{Master of Science in Physics}
+\newcommand{\thesistype}{PhD Thesis}
+% \newcommand{\supervisor}{Prof. Dr. Sonja Grün}
+% \newcommand{\cosupervisor}{???}
+            
+\begin{document}
+% \makeatletter
 \begin{titlepage}
     \begin{center}
         \vspace*{1cm}
         \Large
-        \textbf{\@title}\\
+        \textbf{\title}\\
         \vspace{3.5cm}
         \large
         Der Fakultät Mathematik, Informatik und Naturwissenschaften\\
@@ -21,7 +47,28 @@
         aus \authorbirthplace\\
         \vspace{2cm}
         \large
-        \@date
+        \thesisdate
     \end{center}
 \end{titlepage}
-\makeatother
+% \makeatother
+\end{document}
+
+
+% \documentclass[
+%     pdftex,
+%     fontsize=11pt,
+%     a4paper
+%    ]{scrbook}
+% 
+% \usepackage[utf8]{inputenc}
+% \usepackage[a4paper,includeall,bindingoffset=0cm,margin=2cm,
+%             marginparsep=0cm,marginparwidth=0cm]{geometry}
+% 
+% \begin{document}
+% 
+% \begin{titlepage}
+% \thispagestyle{empty}
+%     ...
+% \end{titlepage}
+% 
+% \end{document}

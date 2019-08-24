@@ -26,6 +26,7 @@ rule compile_manuscript:
     input: get_all_latex_files(),
            join(LATEX, 'main.tex'),
            join(LATEX, 'thesis.bib'),
+           join(LATEX, 'cover.pdf'),
            join(LATEX, 'figures', 'figures_complete.done') 
     output: join(LATEX,'main.pdf')
     params: latex=LATEX,
@@ -39,6 +40,14 @@ rule compile_manuscript:
             {params.compiler} {params.latex_params} main.tex
             {params.compiler} {params.latex_params} main.tex'''        
 
+    
+rule generate_cover:
+    input: join(LATEX, 'template', 'cover.tex')
+    output: join(LATEX, 'cover.pdf')
+    params: dir=LATEX
+    shell: '''
+           pdflatex -output-directory {params.dir} {input}
+           '''
     
 rule get_figures:
     input: figureworkflow(join(FIGURES[len(subworkdir)+1:], 'figures_complete.done'))

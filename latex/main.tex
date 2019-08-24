@@ -1,4 +1,4 @@
-\documentclass[a4paper, twoside, 12pt]{book}
+\documentclass[a4paper, twoside, 10pt]{book}
 \usepackage[subpreambles=true]{standalone}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -9,6 +9,7 @@
 \usepackage{relsize}
 \usepackage{rotating}
 \usepackage{dirtree}
+\usepackage{pdfpages}
 \usepackage{caption}
 %%% making 'figure label' bold and upper case
 % \DeclareCaptionLabelFormat{bsc}{\textbf{\textsc{#1}\ #2}}
@@ -71,21 +72,6 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%THESIS Parameters 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\title{Tools and Workflows for Complex Collaborative Neuroscientific Projects\\-\\from Experiment to Analysis}
-
-\newcommand{\thesisdate}{January 01, 2020}
-\newcommand{\thesisauthor}{Julia Sprenger}
-\newcommand{\authorbirthplace}{Stuttgart}
-\newcommand{\authordegree}{Master of Science in Physics}
-\newcommand{\thesistype}{PhD Thesis}
-% \newcommand{\supervisor}{Prof. Dr. Sonja Grün}
-% \newcommand{\cosupervisor}{???}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %custom commands
 \newcommand{\code}[1]{\texttt{{#1}}}
 \newcommand{\software}[1]{\textsf{\textsl{{#1}}}}
@@ -104,31 +90,18 @@
 %TITLE PAGE (Pre-defined, just change parameters above)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{template/title.tex}
+% \input{template/title.tex}
+\includepdf{./cover}
+\cleardoublepage
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%SOOA
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{Template/SOOA.tex}
 \input{sections/ListofPapers.tex}
 \input{sections/Summary.tex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%ABSTRACT
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \clearpage
-% \thispagestyle{empty}
-% \section*{Abstract}
-% 
-% [Abstract goes here (max. 1 page)]
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%TOC,TOF,TOT
+%TOC,TOF,TOT, TOCode
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
+\cleardoublepage
 \pagenumbering{Roman}
 \tableofcontents
 \clearpage
@@ -138,7 +111,6 @@
 \clearpage
 \listofcodeenvs
 \clearpage
-
 \pagenumbering{arabic}
 
 
@@ -152,7 +124,7 @@
 \input{./sections/Section_3}
 \input{./sections/Section_4}
 \input{./sections/Section_5}
-\input{./sections/Section_6}
+% \input{./sections/Section_6}
 % \input{./sections/acknowledgements}
 
 
@@ -165,7 +137,7 @@
 \renewcommand*{\thesection}{\Alph{section}}\textbf{}
 
 % APPENDIX A
-\input{appendices/appendix_1.tex}
+% \input{appendices/appendix_1.tex}
 
 
 
