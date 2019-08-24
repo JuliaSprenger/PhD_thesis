@@ -1,13 +1,34 @@
 \clearpage
 \thispagestyle{empty}
-\chapter*{Summary}
+\subsection*{Summary}
 \label{sec:summary}
+The scientific knowledge of mankind is based on the verification of hypotheses by carrying out experiments. New conclusions are drawn from the analysis and interpretation of the experimental data. As the construction and conduct of an experiment becomes increasingly complex, even with technological and scientific evolution, more and more scientists are involved in a single project. In order to make the data generated easily accessible to all scientists and, at best, to the entire scientific community, it is essential to comprehensively document the circumstances of the data generation, as these contain essential information for later analysis and interpretation.\\
+
+In this paper, I present two successive complex neuroscience projects and the strategies, tools, and concepts that can be used to comprehensively track, process, organize, and prepare the collected data for joint analysis. First, I describe the first experiment and explain in detail the generation of data and metadata and the pipeline for aggregating metadata. A hierarchical approach based on the open source software \software{odML} for metadata organization was implemented to capture the complex metainformation of this project. I evaluate the design concepts and tools used and derive a general catalogue of requirements for scientific collaboration in complex projects.
+
+I developed a complementary tool (\software{odMLtables}) to facilitate the capture of metadata in a structure way and to convert these easily into the hierarchical, standardized metadata format \software{odML}. \software{odMLtables} provides an interface between the easy-to-read tabular metadata representation in the formats commonly used in laboratory environments \code{csv} or \code{xls} and the hierarchically organized \software{odML} based on \code{xml}, which is designed for a comprehensive collection of complex metadata records in an easily machine-readable manner.
+
+Supplementing the coordinated capturing of metadata, I have contributed to and shaped the \software{Neo} Toolbox for the standardized presentation of electrophysiological data. This toolbox is a key component for electrophysiological data analysis as it integrates different proprietary and non-proprietary file formats and serves as a bridge between different electrophysiological formats. Furthermore, the standardized representation provided by \software{Neo} forms an important basis for later data analysis.
+
+I introduce the concept of workflow management into the field of scientific data processing, based on the common Python-based \software{snakemake} package. For the second extended electrophysiological project, I designed and implemented the workflow for capturing and packaging metadata and data in a comprehensive form. Here I use the generic \code{hdf5} based neuroscience information exchange format (\software{Nix}) for the user-friendly packaging of data sets including data and metadata in combined form.
+
+Finally, I evaluate the implemented workflow against the requirements of collaborative scientific work in complex projects and establish general guidelines for conducting such experiments and workflows in a scientific environment. I present the next development steps for the presented worklow like the combination with a continuous integration and deploy systems and introduce tools for comprehensive analysis of the packaged data.
 
 
-\todo{add summary enlish}
 \clearpage
 \thispagestyle{empty}
-\todo{add summary german}
+\subsection*{Zusammenfassung}
+Das wissenschaftlichen Erkenntnisse der Menschheit beruhen auf der Überprüfung von Hypothesen durch die Durchführung von Experimenten. Durch die Analyse und Interpretation der experimentellen Daten werden neue Schlüsse gezogen. Da der Aufbau und die Durchführung eines Experiments selbst mit der technologischen und wissenschaftlichen Evolution immer komplexer wird, werden immer mehr Wissenschaftler an einem einzigen Projekt beteiligt. Um die generierten Daten allen Wissenschaftlern und im besten Fall der gesamten wissenschaftlichen Gemeinschaft leicht zugänglich zu machen, ist es unerlässlich, die Umstände der Datengenerierung umfassend zu dokumentieren, da diese wesentliche Information für spätere Analysen und Interpretationen enthalten.
+In dieser Arbeit stelle ich zwei aufeinanderfolgende, komplexe neurowissenschaftliche Projekte und die Strategien, Werkzeuge und Konzepte vor, mit denen die erfassten Daten umfassend verfolgt, verarbeitet, organisiert und für eine gemeinsame Analyse vorbereitet werden können. Zunächst beschreibe ich das erste Experiment und erläutere detailliert die Generierung der Daten und Metadaten sowie die Pipeline zur Aggregation von Metadaten. Hier wurde ein hierarchischer Ansatz auf Basis der Open-Source-Software \software{odML} für die Metadatenorganisation implementiert, um die komplexe Metainformation dieses Projekts zu erfassen. Ich evaluiere die verwendeten Designkonzepte und -werkzeuge und leite daraus einen allgemeinen Anforderungskatalog für die wissenschaftliche Zusammenarbeit in komplexen Projekten ab.
+
+Ich habe ein ergänzendes Werkzeug (\software{odMLtables}) entwickelt, um diese Metadaten leichter und strukturierter zu erfassen und einfach in das hierarchische, standardisierte Metadatenformat \software{odML} zu konvertieren. \software{odMLtables} bietet eine Schnittstelle zwischen der leicht lesbaren, tabellarischen Metadaten-Darstellung in den in Laborumgebungen gebräuchlichen Formaten \code{csv} oder \code{xls} und dem auf \code{xml} basierenden, hierarchisch organisierten \software{odML} Format, das für eine umfassende Sammlung komplexer Metadatensätze in einer einfach maschinenlesbaren Weise konzipiert ist.
+
+Über die im Rahmen des beschriebenen Experiments entwickelte Metadaten-Pipeline hinaus habe ich die \software{Neo} Toolbox zur standardisierten Darstellung elektrophysiologischer Daten beigetragen und gestaltet. Diese Toolbox bildet eine Schlüsselkomponente für die elektrophysiologische Datenanalyse, da sie  verschiedenen properietären und nicht-proprietären Dateiformaten integriert und somit als Brücke zwischen verschiedenen elektrophysiologischen Einrichtungen dient. Desweiteren bildet die standardisierte Darstellung mit Hilfe von \software{Neo} eine wichtige basis für spätere Datenanalyse.
+
+Ich führe das Konzept des Workflow-Managements in den Bereich der wissenschaftlichen Datenverarbeitung ein, basierend auf dem gebräuchlichen Python-basierten \software{snakemake}-Paket. Für das zweite, erweiterte elektrophysiologische Projekt entwarf und implementierte ich den Workflow zur Erfassung und Verpackung von Metadaten und Daten in einer umfassenden Form. Hier verwende ich das generische, auf \code{hdf5} basierende neuroscience information exchange Format (\software{Nix}) für die benutzerfreundliche Verpackung der Datensätze einschließlich Daten und Metadaten in kombinierter Form.
+
+Schließlich evaluiere ich den implementierten Workflow anhand der Anforderungen an die kollaborative wissenschaftliche Arbeit in komplexen Projekten und lege allgemeine Richtlinien für die Durchführung solcher Experimente und Workflows in einem wissenschaftlichen Umfeld fest. Ich stelle die nächsten Schritte für den präsentierten Worklow vor, z.B. die Kombination mit einem kontinuierlichen Integrations- und Bereitstellungssystem und stelle Werkzeuge für umfassende Analyse der verpackten Daten vor.
+
 
 
 \vspace{2.5cm}
