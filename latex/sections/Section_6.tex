@@ -10,6 +10,15 @@ A comprehensive metadata collection is essential for the interpretability of dat
 
 Finally we introduce the second electrophysiological experiment, the successor of the Reach-to-Grasp experiment, which is also recording neuronal signals from a behaving monkey, but in a more complex experimental design: In the Vision-for-Action experiment neuronal signals are recorded from two cortical areas at once using two parallel, synchronized recording setups. In addition the monkey is trained to track visual targets in a horizontal plane with a manually operated curser while his eye and hand movements are recorded in simultaneously. The organization of data and metadata in this experiment is designed for facilitated access and organization in later processing steps. We implemented a comprehensive metadata workflow integrating metadata in a modular, automatized fashion using the \code{snakemake} workflow management system and described the combination of data and metadata into user-friendly data packages. We evaluate the workflow based on the requirements identified in \cref{sec:data} and provide generalized guidelines for the design of future projects.
 
+Combining all of the presented approaches and tools, we can build a general schema of scientific data and metadata handling from generation to publication (\cref{fig:disc_general_schema}).
+
+\begin{figure}
+ \includesvg[width=\textwidth]{figures/discussion_global_picture_escus}
+ \caption[General schema of scientific data and metadata handling]{General schema of scientific data and metadata handling. Data and metadata generated during an experiment are processed, compiled, integrated and packaged to be deployed to a central data \& metadata repository. From this reference data and metadata package scientist can run specific analysis and / or publish the packaged data. The process can be initialized by using a continous integration system, where it is executed automatically and then be deployed in a readily packaged version to a central repository. By following this process, the data can successively be made sense of and used by a larger community up to a global level, when data are published.}
+ \label{fig:disc_general_schema}
+\end{figure}
+
+
 
 \section{Comparison of Reach-to-Grasp and Vision-for-Action data and metadata handling}
 Since the implementation of the original metadata pipeline as published in the Reach-to-Grasp datasets \citep{Brochier_2018} software tools aiding data and metadata handling in neurosciences evolved (see e.g. \cref{sec:neo}). These changes in tool availability and conceptual differences in the planning and execution of the Vision-for-Action experiment led to different data and metadata approaches in the two projects. We discuss the differences with respect to specific aspects of the experiment in the following.
@@ -49,8 +58,8 @@ Applying the same strategy in the Vision-for-Action project would have resulted 
 \subsection{Pipeline and workflow approach}
 Within the Reach-to-Grasp project a single Python script is coordinating the generation of the \software{odML} structure and enrichment with metadata. This results in convoluted code trying to separate the \software{odML} structure and metadata sources with moderate success. In the Vision-for-Action project this separation is not intended, but in constrast actively avoided resulting in a much more flexible, reusable and scalable workflow consisting of modular steps interacting only via their in- and output files. In addition, the workflow is easier to understand as the dependencies can be automatically visualized and the workflow can inherently be executed piecewise, which aids troubleshooting and exploration. In addition the workflow steps can be separated into generic and experiment specific components providing a basis for the exchange and sharing of metadata workflow approaches across projects and laboratories. This automatically makes data and metadata handling more comparable and provides therefore a foundation for exchange and publication of scientific data. For this reason we abstracted a set of general guidelines for the handling of data and metadata from our experiences, which are described in \cref{sec:guidelines}.
 
-\section{Outlook}
 
+\section{Outlook}
 \subsection{The future of \software{odMLtables}}
 \software{odMLtables} emerged from a collection of \software{odML} utility functions accumulating in the context of the Reach-to-Grasp project. Currently it is a standalone Python package with key dependencies on \software{odML} and \software{PyQt5} for the graphical user interface (gui) providing non-programming access to the core features of \software{odMLtables}. For historic reasons, \software{odMLtables} internally uses a custom, dictionary based representation of the \software{odML} structure. Replacing this with a native \software{odML} Python object would ensure consistency during the metadata manipulation using \software{odMLtables}.
 
