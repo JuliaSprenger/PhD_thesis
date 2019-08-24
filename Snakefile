@@ -62,7 +62,7 @@ rule get_figures:
 rule clean:
     params:
         tmp_figures = FIGURES,
-        tmp_latex = expand(join(LATEX, '{f}'), f=['main.aux', 'main.bcf', 'main.locodeenv', 'main.lof', 'main.log', 'main.lot', 'main.out', 'main.pdf', 'main.run.xml', 'main.sta', 'main.toc', 'figures', '_minted-main', 'svg-inkscape'])
+        tmp_latex = expand(join(LATEX, '{f}'), f=['main.aux', 'main.bcf', 'main.locodeenv', 'main.lof', 'main.log', 'main.lot', 'main.out', 'main.pdf', 'main.run.xml', 'main.sta', 'main.toc', 'figures', '_minted-main', 'svg-inkscape', cover.*])
     shell: 
         '''
         rm -rf {params.tmp_figures}
