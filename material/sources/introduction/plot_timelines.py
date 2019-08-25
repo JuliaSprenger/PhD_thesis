@@ -1,83 +1,57 @@
-pubmed - Reproducibility
-year,count
-2020,2
-2019,8079
-2018,18876
-2017,22694
-2016,23790
-2015,24520
-2014,24348
-2013,24087
-2012,22930
-2011,20120
-2010,19730
-2009,20785
-2008,19843
-2007,19479
-2006,16776
-2005,15238
-2004,13948
-2003,13081
-2002,10693
-2001,9245
-2000,9596
-1999,8627
-1998,8024
-1997,7692
-1996,7154
-1995,6050
-1994,5392
-1993,4117
-1992,3327
-1991,2836
-1990,2280
-1989,1180
-1988,807
-1987,661
-1986,578
-1985,547
-1984,541
-1983,518
-1982,444
-1981,379
-1980,367
-1979,356
-1978,329
-1977,286
-1976,276
-1975,249
-1974,70
-1973,54
-1972,62
-1971,61
-1970,43
-1969,35
-1968,32
-1967,43
-1966,47
-1965,57
-1964,67
-1963,60
-1962,65
-1961,51
-1960,41
-1959,34
-1958,44
-1957,34
-1956,35
-1955,44
-1954,32
-1953,31
-1952,54
-1951,29
-1950,20
-1949,20
-1948,16
-1947,22
-1946,10
-1945,3
-1944,1
-1941,1
-1933,1
-1931,1
+import sys, csv
+import numpy as np
+import matplotlib.pyplot as plt
 
+def plot_timelines(*filenames):
+    for filename in filenames:
+        with open(filename, 'r') as csvfile:
+            year, count = [], []
+            plot_label = ''
+            x_label, y_label = '', ''
+            spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for r, row in enumerate(spamreader):
+                if not row:
+                    continue
+                if r == 0:
+                    # extract label
+                    plot_label = row[0].strip('pubmed - ')
+                    continue
+                if r==1:
+                    x_label, y_label = row
+                    continue
+                year.append(row[0])
+                count.append(row[1])
+
+            year, count = np.asarray(year, dtype=int), np.asarray(count,dtype=int)
+
+            if plot_label == 'Reproducibility':
+                f = 100
+                plot_label += ' (x{})'.format(f)
+                count = count / f
+
+            if plot_label == 'Repeatability':
+                f = 10
+                plot_label += ' (x{})'.format(f)
+                count = count / f
+
+            plt.bar(year, count, width=1, alpha=0.3, label=plot_label)
+            linex, liney = [], []
+            for y, c in zip(year[::-1], count[::-1]):
+                linex.extend([y-0.5,y+0.5])
+                liney.extend([c,c])
+            linex, liney = np.asarray(linex), np.asarray(liney)
+            plt.plot(linex, liney)
+            plt.xlabel(x_label)
+            plt.ylabel(y_label)
+            plt.legend()
+            plt.xlim(1980,2020)
+
+    plt.savefig('timelines.svg', format='svg')
+    plt.show()
+
+
+
+
+
+if __name__=='__main__':
+    plot_timelines(*sys.argv[1:])
