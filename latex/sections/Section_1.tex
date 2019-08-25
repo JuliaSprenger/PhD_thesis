@@ -18,17 +18,17 @@ Standardization of data and metadata is a fundamental requirement for the usabil
 \subsection{Hierarchical metadata in the \software{odML} model}
 \label{sec:subodML}
 
-odML\footnote{\url{https://github.com/G-Node/python-odml}, RRID:SCR\_001376} is a versatile hierarchical format for metadata \citep{Grewe_2011} developed by the German Neuroinformatics Node (G-Node). While it was originally designed for electrophysiological metadata, its generic structure makes it also applicable to other scientific contexts.
+odML\footnote{\url{https://github.com/G-Node/python-odml}, RRID:SCR\_001376} is a versatile hierarchical format for metadata \citep{Grewe_2011}. While it was originally designed for electrophysiological metadata, its generic structure makes it also applicable to other scientific contexts.
 
 The basic concept is to use a tree-like structure of \textbf{Sections} to store metadata as \textbf{Properties} (extended key-value pairs) in a common \textbf{Document} (\cref{fig:odml_versions}B). For example, using this paradigm,  parameter settings of a specific device used in the experiment would be represented as Properties collected in a specific Section for that device. For a detailed tutorial\footnote{\url{https://github.com/G-Node/python-odml/blob/master/doc/tutorial.rst}} on \software{odML} please refer to the online reference documentation\footnote{\url{http://g-node.github.io/python-odml}}. The usage of \software{odML} in different environments with varying requirements has led to diversification, the identification of unused features, and the need for improvement of the original data model. In case of the \software{odMLtables} project, for example, the original internal data representation required only a subset of the complete \software{odML} data model. These and other re-implementations (NIX and RELACS projects) did not fully comply with the original specifications and led to a diversification of the de-facto implemented data models. In order to resolve this situation, with the latest release of \software{odML} version 1.4\footnote{\url{https://github.com/G-Node/python-odml/releases/tag/v1.4.0}} (i) data model and implemented features were streamlined and adapted to ensure compatibility between the various project implementations and (ii) additional features were introduced. The following paragraph briefly reviews the changes of the data model since its publication in \cite{Grewe_2011}.
 
 
 \begin{figure}
     \centering
-    \includestandalone[mode=image|tex, width=\textwidth, obeyclassoptions=true]{./figures/introduction/odML_structure}
+    \includestandalone[mode=image|tex, width=0.7\textwidth, obeyclassoptions=true]{./figures/introduction/odML_structure}
 %     \include[width=\textwidth,pretex=\relscale{0.8}]{./figures/neo07_schema.svg}
-    \caption[Neo embedding]{\software{Neo} embedding. \software{Neo} 0.7. supports a number of file formats for reading (light blue) and writing (dark blue). Many of the supported formats can be read in a improved fashion, permitting for more efficient memory usage (black frames).  Neo provides an interface for many advanced tools for visualization, simulation, analysis and data storage.}
-    \label{fig:neo_ios}
+    \caption[\software{odML} structure and objects]{\software{odML} structure and objects.}
+    \label{fig:intro_odML_structure}
 \end{figure}
 
 \paragraph{\software{odML} model revision and streamlining}

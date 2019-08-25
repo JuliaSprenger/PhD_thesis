@@ -18,7 +18,7 @@ ruleorder:
 
 rule all_figures:
     params: FIGURES
-    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf', 'i140703-001.svg', 'i140703-001_annotations.txt', 'discussion_global_picture_escus.svg', join('workflows','data.png'), join('workflows','data.svg'), join('workflows','python_demo.svg'), join('workflows', 'python_demo_escus.svg'), join('workflows', 'rulegraph_colored_escus.svg')] + get_source_filenames())
+    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf', 'i140703-001.svg', 'i140703-001_annotations.txt', 'discussion_global_picture_escus.svg', join('introduction','odML_structure.pdf'), join('workflows','data.png'), join('workflows','data.svg'), join('workflows','python_demo.svg'), join('workflows', 'python_demo_escus.svg'), join('workflows', 'rulegraph_colored_escus.svg')] + get_source_filenames())
     output: join(FIGURES, 'figures_complete.done')
     shell: 'touch {output}'
 
@@ -57,6 +57,16 @@ rule plot_neo_ios:
     output: FIGURES + 'neo_ios_and_tools.pdf'
     shell: '''
            cd {FIGURES}
+           pdflatex {params.scriptname} --shell-escape
+           '''
+           
+rule plot_odml_structure:
+    input: script = FIGURES + 'introduction/odML_structure.tex',
+    params: scriptname = 'odML_structure.tex',
+            dirname = FIGURES + 'introduction'
+    output: FIGURES + 'introduction/odML_structure.pdf'
+    shell: '''
+           cd {params.dirname}
            pdflatex {params.scriptname} --shell-escape
            '''
 
