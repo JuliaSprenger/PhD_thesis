@@ -22,7 +22,7 @@
 
 % \node at (0cm,-5cm) {\pgfuseplotmark{*}};
 
-\node (State00) [state,fill=black!75,label=right:root section] {} [->]
+\node (State00) [state,fill=black!75,label=right: Document] {} [->]
 child{ [sibling distance=4cm]
     node (State01) [state] {}    
     child{ [sibling distance=1.5cm]
@@ -68,7 +68,7 @@ child{ [sibling distance=4cm]
 	}
     }    
     child{ [sibling distance=2cm]
-	node (State02) [state,label=right:tree section] {}
+	node (State02) [state,label=right:Section] {}
 	child{
 	    node (State03) [leaf] {
 	    \begin{tikzpicture}
@@ -90,7 +90,7 @@ child{ [sibling distance=4cm]
 		  \end{tikzpicture}}
 	    }
 	    child{
-		  node (State07) [leaf,label=south:properties] {
+		  node (State07) [leaf,label=south:Properties] {
 		  \begin{tikzpicture}
 		    \node (state) [value] {};
 		  \end{tikzpicture}}
@@ -106,16 +106,17 @@ child{ [sibling distance=4cm]
 };
 
 
+\node[circle,densely dashed, rounded corners,anchor=north, draw=black,thin,fill=Black,shift={(8cm,1cm)},text=white, align=left,minimum width=3cm, align=center, scale=0.6] (sec)
+       {\textbf{Document}\\[5pt]\textit{the basis of}\\\textit{the metadata}\\ \textit{collection}};
 
-\node[circle,densely dashed, rounded corners,anchor=north, draw=black,thin,fill=NavyBlue,shift={(8cm,1cm)},text=white, align=left, scale=0.8] (sec)
-       {\textbf{Section}\\name\\type\\definition\\ \hspace{0.2cm}\vdots};
+\node[circle,densely dashed, rounded corners,anchor=north, draw=black,thin,fill=NavyBlue,shift={(8cm,-1.5cm)},text=white, align=center, scale=0.6] (sec)
+       {\textbf{Section}\\[5pt]\textit{provide the}\\\textit{hierarchical}\\\textit{structure}\\\textit{and context}};
 
-\node[rectangle,densely dashed,rounded corners, draw=black, anchor=north, thin,fill=DarkOrchid,shift={(8cm,-3cm)},text=white, align=left, scale=0.8, text width=3cm] (prop)
-       {\textbf{Property}\\name\\definition\\[5pt]
+\node[rectangle,densely dashed,rounded corners, draw=black, anchor=north, thin,fill=DarkOrchid,shift={(8cm,-4cm)},text=white, scale=0.7, text width=3cm, align=center] (prop)
+       {\textbf{Property}\\[5pt]\textit{provide}\\\textit{annoteted}\\\textit{key for storage}\\\textit{of the}\\[5pt]
         \begin{tikzpicture}
-	    \node[rectangle,fill=Violet,text=white,align=left, text width=2.7cm] {values};
+	    \node[rectangle,fill=Violet,text=white,align=center, text width=2.7cm] {\textit{metadata}\\\textit{values}};
         \end{tikzpicture}
-	\\unit\\uncertainity\\type\\ \hspace{0.2cm}\vdots
 	};
 
 

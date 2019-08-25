@@ -14,11 +14,11 @@ def get_source_filenames():
 
 
 ruleorder:
-    copy_sources > visualize_scidata > plot_neo_ios > run_demo_workflow > escape_underscores
+    copy_sources > visualize_scidata > plot_neo_ios > run_demo_workflow > plot_odml_structure > escape_underscores
 
 rule all_figures:
     params: FIGURES
-    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf', 'i140703-001.svg', 'i140703-001_annotations.txt', 'discussion_global_picture_escus.svg', join('introduction','odML_structure.pdf'), join('workflows','data.png'), join('workflows','data.svg'), join('workflows','python_demo.svg'), join('workflows', 'python_demo_escus.svg'), join('workflows', 'rulegraph_colored_escus.svg')] + get_source_filenames())
+    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf', 'i140703-001.svg', 'i140703-001_annotations.txt', 'discussion_global_picture_escus.svg', join('introduction', 'odML_DataModel_escus.svg'), join('introduction','odML_structure.pdf'), join('workflows','data.png'), join('workflows','data.svg'), join('workflows','python_demo.svg'), join('workflows', 'python_demo_escus.svg'), join('workflows', 'rulegraph_colored_escus.svg')] + get_source_filenames())
     output: join(FIGURES, 'figures_complete.done')
     shell: 'touch {output}'
 
