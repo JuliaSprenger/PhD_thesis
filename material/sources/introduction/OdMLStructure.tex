@@ -1,0 +1,140 @@
+\documentclass[12pt,a4paper,border=10pt]{standalone}
+% \usepackage[a4paper,margin=1cm,landscape]{geometry}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{tikz}
+% \usetikzlibrary{plotmarks}
+\usetikzlibrary{shapes.geometric,positioning,fit,calc,positioning}
+
+
+\begin{document}
+% \begin{center}
+\begin{tikzpicture}[
+%     fact/.style={rectangle, draw=none, rounded corners=1mm, fill=blue, %drop shadow,
+%         text centered, anchor=north, text=white},
+    state/.style={circle, radius=5cm, draw=none, fill=NavyBlue, %circular drop shadow,
+        text centered, anchor=north, text=white,text width=0.3cm},
+    leaf/.style={rectangle, draw=none, rounded corners, fill=DarkOrchid,
+        text centered, anchor=north, text=white},
+    value/.style={rectangle,draw=none,fill=Violet,
+        text centered, anchor=north, text=white},
+    level distance=0.5cm, growth parent anchor=south
+]
+
+% \node at (0cm,-5cm) {\pgfuseplotmark{*}};
+
+\node (State00) [state,fill=black!75,label=right:root section] {} [->]
+child{ [sibling distance=4cm]
+    node (State01) [state] {}    
+    child{ [sibling distance=1.5cm]
+	node (State10) [state] {}
+	child{
+	    node (State11) [leaf] {
+	    \begin{tikzpicture}
+	      \node (state) [value] {};
+	    \end{tikzpicture}}
+	}
+	child{[sibling distance=1cm]
+	    node (State12) [state] {}
+% 	    child{ [sibling distance=1cm]
+% 		node (State14) [state] {}
+		child{[sibling distance=2cm]
+		    node (State15) [leaf] {
+			      \begin{tikzpicture}
+				\node (state) [value] {};
+			      \end{tikzpicture}}
+		}
+% 		child{[sibling distance=1cm]
+% 		      node (State16) [leaf] {
+% 			      \begin{tikzpicture}
+% 				\node (state) [value] {};
+% 			      \end{tikzpicture}}
+% 		}
+% 	    }
+	    child{[sibling distance=2cm]
+		node (State13) [leaf] {
+		\begin{tikzpicture}
+		  \node (state) [value] {};
+		\end{tikzpicture}}
+	    }
+	}
+	child{[sibling distance=2cm]
+	    node (State14) [state] {}
+	    child{[sibling distance=2cm]
+		node (State16) [leaf] {
+			  \begin{tikzpicture}
+			    \node (state) [value] {};
+			  \end{tikzpicture}}
+	    }
+	}
+    }    
+    child{ [sibling distance=2cm]
+	node (State02) [state,label=right:tree section] {}
+	child{
+	    node (State03) [leaf] {
+	    \begin{tikzpicture}
+	      \node (state) [value] {};
+	    \end{tikzpicture}}
+	}
+	child{ [sibling distance=0.9cm]
+	    node (State04) [state] {}
+	    child{
+		node (State05) [leaf] {
+		\begin{tikzpicture}
+		  \node (state) [value] {};
+		\end{tikzpicture}}
+	    }
+	    child{
+		  node (State06) [leaf] {
+		  \begin{tikzpicture}
+		    \node (state) [value] {};
+		  \end{tikzpicture}}
+	    }
+	    child{
+		  node (State07) [leaf,label=south:properties] {
+		  \begin{tikzpicture}
+		    \node (state) [value] {};
+		  \end{tikzpicture}}
+	    }
+	    child{
+		  node (State08) [leaf] {
+		  \begin{tikzpicture}
+		    \node (state) [value] {};
+		  \end{tikzpicture}}
+	    }
+	}
+    }
+};
+
+
+
+\node[circle,densely dashed, rounded corners,anchor=north, draw=black,thin,fill=NavyBlue,shift={(8cm,1cm)},text=white, align=left, scale=0.8] (sec)
+       {\textbf{Section}\\name\\type\\definition\\ \hspace{0.2cm}\vdots};
+
+\node[rectangle,densely dashed,rounded corners, draw=black, anchor=north, thin,fill=DarkOrchid,shift={(8cm,-3cm)},text=white, align=left, scale=0.8, text width=3cm] (prop)
+       {\textbf{Property}\\name\\definition\\[5pt]
+        \begin{tikzpicture}
+	    \node[rectangle,fill=Violet,text=white,align=left, text width=2.7cm] {values};
+        \end{tikzpicture}
+	\\unit\\uncertainity\\type\\ \hspace{0.2cm}\vdots
+	};
+
+
+\draw  [dotted] (6cm,1cm) -- (6cm,-6.5cm); 
+ 
+% \draw [densely dashed, rounded corners, thin,fill=NavyBlue]
+%       circle [radius=1cm,shift={(-2cm,-8cm)}];
+      
+% \node [name = Y,text=white,align=left] at (-1.5cm,-7.5cm) {\textbf{Section}\\name\\type\\definition\\...};
+
+% \draw (0,-7) circle [radius=.3cm, draw=red,draw=none, fill=NavyBlue, %circular drop shadow,
+%         text centered, anchor=north, text=white];
+
+% \draw [circle, radius=1cm, draw=none, fill=NavyBlue, %circular drop shadow,
+%         text centered, anchor=north, text=white,shift={(0cm,-5cm)}] {};
+% \node (Legend) [state,radius=10cm,fill=black!75] {};
+        
+\end{tikzpicture}
+% \end{center}
+\end{document}
+
+
