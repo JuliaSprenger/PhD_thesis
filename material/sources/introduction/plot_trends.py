@@ -46,7 +46,7 @@ def plot_medline_trends(*filenames):
     plt.xlim(1970, 2018)
 
     plt.savefig('trends.svg', format='svg')
-    plt.show()
+    # plt.show()
 
 def plot_timelines(*filenames):
     for filename in filenames:
