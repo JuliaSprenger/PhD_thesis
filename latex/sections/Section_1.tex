@@ -1,13 +1,17 @@
 \clearpage
 \chapter{Introduction}
 \label{sec:intro}
+\todo{this should contain more refences! but which?}
 
-Performing experiments is a key component of human development and has been the foundation of knowledge gain during the evolution of mankind. However, the exchange of such experimental results requires the long term documentation of the  experimental procedure. This is only possible with the means of writing down the experimental purpose, execution and result since the invention of scripture. Nowadays, tideous manual scripture has largely been replaced by digital information, making information easier transportable, searchable and duplicatable. Therefore all scientific research nowadays relies mainly on digital information acquisition and storage. Although data can be easily stored and transferred with modern technologies, interpretation of research data is not straight forward as datasets are highly diverse between scientific areas. Depending on the area of research, the diversity within a field highly depends on the field, e.g. in fields which require large experimental setups (particle physics / high field FMRI) data formats and structures  there are only a few data formats defined by the community / company producing the corresponding setup. In other fields the diversity of data is bigger since the scientific methods and aims require a diversity of approaches. Unification would require organizational large-scale efforts arcoss the community and implies additional overhead on the level of each experiment. A number of initiatives try to screen, collect and evaluate community specific and community overarching data and metadata approaches. Some examples here are the human brain project (HBP), developing a platform for gathering neuroscientific data from all neuroscientific areas. A community overarching approach is a recent german initiative for systematic and sustainable research data management within and across disciplines (national research data infrastructure). However, these large-scale approaches aim to unify very diverse datasets, reducing the common aspects of the datasets to a very small amount. An supplementary approach is to provide tools and workflows for the implementation of sustainable data and metadata management on a laboratory level. This permits the integration of data and metadata on a detailed level in a standardized structure, which can later be integrated in large scale infrastructure projects. 
-In this thesis I discuss approaches for data and metadata management for efficient and robust handling of research data from data acquisition to analyis with the focus on easy implementation and usability by individual scientist and laboratory-scale collaborations.
+Performing experiments is a key component of human development and has been the foundation of knowledge gain during the evolution of mankind. However, the exchange of such experimental results requires the long term documentation of the  experimental procedure. This is only possible with the means of writing down the experimental purpose, execution and result since the invention of scripture. Nowadays, tideous manual scripture has largely been replaced by digital information, making information easier transportable, searchable and duplicatable. Therefore all scientific research nowadays relies mainly on digital information acquisition and storage. Although data can be easily stored and transferred with modern technologies, interpretation of research data is not straight forward as datasets are highly diverse between scientific areas. Depending on the area of research, the diversity within a field highly depends on the field, e.g. in fields which require large experimental setups (particle physics / high field FMRI) data formats and structures  there are only a few data formats defined by the community / company producing the corresponding setup. In other fields the diversity of data is bigger since the scientific methods and aims require a diversity of approaches. Unification would require organizational large-scale efforts arcoss the community and implies additional overhead on the level of each experiment. A number of initiatives try to screen, collect and evaluate community specific and community overarching data and metadata approaches. Some examples here are the human brain project (HBP), developing a platform for gathering neuroscientific data from all neuroscientific areas. A community overarching approach is a recent german initiative for systematic and sustainable research data management within and across disciplines (national research data infrastructure). However, these large-scale approaches aim to unify very diverse datasets, reducing the common aspects of the datasets to a very small amount. An supplementary approach is to provide tools and workflows for the implementation of sustainable data and metadata management on a laboratory level. This permits the integration of data and metadata on a detailed level in a standardized structure, which can later be integrated in large scale infrastructure projects.
 
-The diversity in data modalities and file formats promotes also a heterogeneity in data analysis steps and tools used for extraction of scientific findings.
+The diversity in data modalities and file formats promotes also a heterogeneity in data analysis steps and tools used for extraction of scientific findings. Almost 700\footnote{697 results for a query of resource type = 'resource' and 'software resource' and 'data analysis software' and keyword='analysis', accessed on 26.08.2019}. data analysis software tools are registered with SciCrunch, a curated repository of scientific resources, with a focus data analysis on biomedical research, which is including tools, databases and core facilities. Despite this large set of tools being available for software anlysis disregarding data recording and preprocessing, many scientific findings have been found to lack reproducibility. One reason for this might be usage of custom code and the neglect of tracking processing and analysis circumstances (provenance tracking). Other reasons might be the inaccessibility of the original data used for the publication due to the lack of the original data, deprecated formats or undocumented data selection criteria.
 
+This finding has started a scientific debate about the general reproducibility of scientific insights, resulting in a number of publications evaluating the reproducibility of published findings, which is still diverting a growing fraction of the scientific debate (\cref{fig:intro_reproducibility}). Within this debate different levels of reproducibility have been defined with by the terms reproducibility, replicability and repeatability \citep{Plesser_2018}. However, these definitions are typically limited to a small scientific field, since the restrictions by the methods used (e.g. laboratory equipment versus human subjects versus scientific simulation software) are not permitting a straitforward translation to other areas. This makes the communication on the topic of reproducibility across communities even more complex and potentially delays the development of a reproducibility awareness in specific scientific fields with respect to other areas.
 
+While reproducibility is a topic entering the scientific literature already since 1990, especially in the neurosciences it has been relatively unattended and is growing in actuality recently (\cref{fig:intro_reproducibility}). In addition to the terminology differences described abovo, another reason for this might be the interdisciplinary setting of the neurosciences between biology, engineering, physics, chemistry, computer sciences and mathematics, which introducing additional barriers for interactions between different areas within neurosciences and therefore questioning of related findings from these areas. Another reason might be the relative young age of neuroscience compared to well established scientific fields. This comes with in comparison delayed approach, tool and standarization developments, which accompany the reproducibility awareness in the community.
+
+In this thesis I present and discuss approaches for data and metadata management for efficient and robust handling of research data from data acquisition to analyis with the focus on easy implementation and usability by individual scientist and laboratory-scale collaborations. The presented examples are set in the field of neuroscience, but many concepts, approaches and tools are of generic nature such that they can be transferred to other scientific disciplines. 
 
 
 \begin{figure}
@@ -17,14 +21,8 @@ The diversity in data modalities and file formats promotes also a heterogeneity 
  \label{fig:intro_reproducibility}
 \end{figure}
 
-\todo{TODO: go on here with describing need to standardize analyses and the requirement of complete / consistent metadata}
-\todo{Introduce: Reproducible vs replicable vs ...}
-
-\todo{Introduce odML, nix, ...}
-
-
 \section{Data and metadata models}
-Standardization of data and metadata is a fundamental requirement for the usability of data and metadata. This work is based on two common, generic models for capturing metadata and data. Both software projects are developed and maintained by the German Neuroinformatics Node (G-Node) an organization aiming to improve the infrastructure for data access, data storage and data analysis. 
+Standardization of data and metadata is a fundamental requirement for the usability of data and metadata. This work is based on two common, generic models for data and metadata representation and storage. Both software projects are developed and maintained by the German Neuroinformatics Node (G-Node) an organization aiming to improve the infrastructure for data access, data storage and data analysis currently focussing on the field of electrophysiology.
 
 \subsection{Hierarchical metadata in the \software{odML} model}
 \label{sec:subodML}
@@ -95,7 +93,47 @@ The \software{Nix} model is natively integrated in the the electrophysiology rec
 \end{figure}
 
 \section{Thesis overview}
-In \cref{sec:data} we describe two published datasets of a complex, collaborative electrophysiological experiment including an extensive metadata collection. We describe the process of data and metadata preparation required for the data publication and discuss the workflow used in this publication to identify strengths and shortcomings of the presented approach. In \cref{sec:metadata} we present odMLtables, a tool for facilitation of metadata collection compatible with the previously presented workflow. We demonstrate the embedding of odMLtables in a real-world metadata workflow and highlight the latest features and developments of the tool. \cref{sec:neo} complements the the previous section by introducing tools for standardized data representation and presents three example applications. \cref{sec:workflows} introduces modern workflow management software for efficient organization and structuring of scientific projects. We demonstrate the integration of the previously presented tools in a systematic fashion using modern workflow management software to coordinate the application of data and metadata software in a neuroscientific project. Finally, in \cref{sec:discussion} we discuss the presented approaches and provide an outlook on future development of the tools and concepts.
+In \cref{sec:data} we describe two published datasets of a complex, collaborative electrophysiological experiment including an extensive metadata collection. We describe the process of data and metadata preparation required for the data publication and discuss the pipeline used in this publication to identify strengths and shortcomings of the presented approach. In \cref{sec:metadata} we present odMLtables, a tool for facilitation of metadata collection compatible with the previously presented pipeline. We demonstrate the embedding of odMLtables in a real-world metadata application and highlight the latest features and developments of the tool. \cref{sec:neo} complements the the previous section by introducing tools for standardized data representation and presents three example applications. \cref{sec:workflows} gos beyond the pipeline approach presented in \cref{sec:data} by introducing the concept of modern workflow management software for efficient organization and structuring of scientific projects. We demonstrate the integration of the previously presented tools in a systematic fashion using modern workflow management software to coordinate the application of data and metadata software in a neuroscientific project. Finally, in \cref{sec:discussion} we discuss the presented approaches and provide an outlook on future development of the tools and concepts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
