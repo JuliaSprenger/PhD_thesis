@@ -290,10 +290,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4990664"
-     inkscape:cx="453.66337"
+     inkscape:cx="283.89104"
      inkscape:cy="330.85865"
      inkscape:document-units="mm"
-     inkscape:current-layer="g12567-1"
+     inkscape:current-layer="g9962-4"
      showgrid="true"
      showguides="false"
      inkscape:window-width="2560"
@@ -324,7 +324,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -851,15 +851,15 @@
       <text
          transform="rotate(-105.52396)"
          id="text12534"
-         y="140.41002"
-         x="-96.933517"
+         y="140.46669"
+         x="-94.752434"
          style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
          xml:space="preserve"><tspan
            id="tspan12536"
            style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';stroke-width:0.26458332"
-           y="140.41002"
-           x="-96.933517"
-           sodipodi:role="line">setup location</tspan></text>
+           y="140.46669"
+           x="-94.752434"
+           sodipodi:role="line">monkey</tspan></text>
       <g
          id="g12567">
         <path
@@ -997,17 +997,17 @@
       <text
          transform="rotate(-106.35964)"
          id="text12534-5"
-         y="146.46646"
-         x="-95.412369"
+         y="146.76456"
+         x="-94.396881"
          style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
          xml:space="preserve"
          inkscape:transform-center-x="2.1769074"
          inkscape:transform-center-y="6.4311723"><tspan
            id="tspan12536-7"
            style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';stroke-width:0.26458332"
-           y="146.46646"
-           x="-95.412369"
-           sodipodi:role="line">nev versions</tspan></text>
+           y="146.76456"
+           x="-94.396881"
+           sodipodi:role="line">session files</tspan></text>
       <g
          id="g23956">
         <path
