@@ -18,7 +18,7 @@ ruleorder:
 
 rule all_figures:
     params: FIGURES
-    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf', 'i140703-001.svg', 'i140703-001_annotations.txt', 'discussion_global_picture_escus.svg', join('introduction', 'odML_DataModel_escus.svg'), join('introduction','odML_structure.pdf'), join('introduction','nix_example_merged_escus.svg'), join('workflows','data.png'), join('workflows','data.svg'), join('workflows','python_demo.svg'), join('workflows', 'python_demo_escus.svg'), join('workflows', 'rulegraph_colored_escus.svg'), join('introduction', 'trends.svg')] + get_source_filenames())
+    input: expand(FIGURES + '{f}', f=['neo_architecture03.svg', 'neo_architecture07.svg', 'neo_architecture_future.svg', 'neo_ios_and_tools.pdf', 'i140703-001.svg', 'i140703-001_annotations.txt', 'discussion_global_picture_escus.svg', 'scidata_gaps_escus.svg', join('introduction', 'odML_DataModel_escus.svg'), join('introduction','odML_structure.pdf'), join('introduction','nix_example_merged_escus.svg'), join('workflows','data.png'), join('workflows','data.svg'), join('workflows','python_demo.svg'), join('workflows', 'python_demo_escus.svg'), join('workflows', 'rulegraph_colored_escus.svg'), join('introduction', 'trends.svg')] + get_source_filenames())
     output: join(FIGURES, 'figures_complete.done')
     shell: 'touch {output}'
 
@@ -129,7 +129,7 @@ rule escape_underscores:
     output: join(FIGURES, '{filename}_escus.{ext}')
     shell:
         """
-        cat {input} | sed '2,$s/[_]/\\\_/g' | sed '2,$s/[&]/\\\&/g' > {output}
+        cat {input} | sed '2,$s/[_]/\\\_/g' | sed '2,$s/[&]/\\\&/g' | sed '2,$s/[@]/\\\@/g' > {output}
         """
 
 rule plot_trends:
