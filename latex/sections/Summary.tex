@@ -1,4 +1,4 @@
-\clearpage
+\cleardoublepage
 \thispagestyle{empty}
 \subsection*{Summary}
 \label{sec:summary}
@@ -17,7 +17,7 @@ I introduce the concept of workflow management into the field of scientific data
 Finally, I evaluate the improved workflow against the requirements of collaborative scientific work in complex projects. I establish general guidelines for conducting such experiments and workflows in a scientific environment. In conclusion, I present the next development steps for the presented workflow and potential avenues for deploying this prototype as a production prototype to a wider scientific community.
 \end{minipage}
 
-\clearpage
+\cleardoublepage
 \thispagestyle{empty}
 \subsection*{Zusammenfassung}
 
@@ -33,21 +33,5 @@ Ergänzend zur koordinierten Erfassung von Metadaten habe ich die \software{Neo}
 Ich führe das Konzept des Workflow-Managements in den Bereich der wissenschaftlichen Datenverarbeitung ein, basierend auf dem gängigen Python-basierten \software{snakemake} Paket. Für das zweite, neuere elektrophysiologische Experiment habe ich den Workflow zur Erfassung und Verpackung von Metadaten und Daten in einer umfassenden Form konzipiert und implementiert. Hier habe ich das generische neurowissenschaftliche Informationsaustauschformat (\software{Nix}) für die benutzerfreundliche Verpackung von Datensätzen mit Daten und Metadaten in kombinierter Form verwendet.
 
 Schließlich evaluiere ich den verbesserten Workflow anhand der Anforderungen an die wissenschaftliche Zusammenarbeit in komplexen Projekten. Ich erstelle allgemeine Richtlinien für die Durchführung solcher Experimente und Workflows in einem wissenschaftlichen Umfeld. Abschließend stelle ich die nächsten Entwicklungsschritte für den vorgestellten Workflow und mögliche Wege vor, diesen Prototyp als Serienprototyp einer breiteren wissenschaftlichen Gemeinschaft zur Verfügung zu stellen.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%
-Das wissenschaftlichen Erkenntnisse der Menschheit beruhen auf der Überprüfung von Hypothesen durch die Durchführung von Experimenten. Durch die Analyse und Interpretation der experimentellen Daten werden neue Schlüsse gezogen. Da der Aufbau und die Durchführung eines Experiments selbst mit der technologischen und wissenschaftlichen Evolution immer komplexer wird, werden immer mehr Wissenschaftler an einem einzigen Projekt beteiligt. Um die generierten Daten allen Wissenschaftlern und im besten Fall der gesamten wissenschaftlichen Gemeinschaft leicht zugänglich zu machen, ist es unerlässlich, die Umstände der Datengenerierung umfassend zu dokumentieren, da diese wesentliche Information für spätere Analysen und Interpretationen enthalten.
-In dieser Arbeit stelle ich zwei aufeinanderfolgende, komplexe neurowissenschaftliche Projekte und die Strategien, Werkzeuge und Konzepte vor, mit denen die erfassten Daten umfassend verfolgt, verarbeitet, organisiert und für eine gemeinsame Analyse vorbereitet werden können. Zunächst beschreibe ich das erste Experiment und erläutere detailliert die Generierung der Daten und Metadaten sowie die Pipeline zur Aggregation von Metadaten. Hier wurde ein hierarchischer Ansatz auf Basis der Open-Source-Software \software{odML} für die Metadatenorganisation implementiert, um die komplexe Metainformation dieses Projekts zu erfassen. Ich evaluiere die verwendeten Designkonzepte und -werkzeuge und leite daraus einen allgemeinen Anforderungskatalog für die wissenschaftliche Zusammenarbeit in komplexen Projekten ab.
-
-Ich habe ein ergänzendes Werkzeug (\software{odMLtables}) entwickelt, um diese Metadaten leichter und strukturierter zu erfassen und einfach in das hierarchische, standardisierte Metadatenformat \software{odML} zu konvertieren. \software{odMLtables} bietet eine Schnittstelle zwischen der leicht lesbaren, tabellarischen Metadaten-Darstellung in den in Laborumgebungen gebräuchlichen Formaten \code{csv} oder \code{xls} und dem auf \code{xml} basierenden, hierarchisch organisierten \software{odML} Format, das für eine umfassende Sammlung komplexer Metadatensätze in einer einfach maschinenlesbaren Weise konzipiert ist.
-
-Über die im Rahmen des beschriebenen Experiments entwickelte Metadaten-Pipeline hinaus habe ich die \software{Neo} Toolbox zur standardisierten Darstellung elektrophysiologischer Daten beigetragen und gestaltet. Diese Toolbox bildet eine Schlüsselkomponente für die elektrophysiologische Datenanalyse, da sie  verschiedenen properietären und nicht-proprietären Dateiformaten integriert und somit als Brücke zwischen verschiedenen elektrophysiologischen Einrichtungen dient. Desweiteren bildet die standardisierte Darstellung mit Hilfe von \software{Neo} eine wichtige basis für spätere Datenanalyse.
-
-Ich führe das Konzept des Workflow-Managements in den Bereich der wissenschaftlichen Datenverarbeitung ein, basierend auf dem gebräuchlichen Python-basierten \software{snakemake}-Paket. Für das zweite, erweiterte elektrophysiologische Projekt entwarf und implementierte ich den Workflow zur Erfassung und Verpackung von Metadaten und Daten in einer umfassenden Form. Hier verwende ich das generische, auf \code{hdf5} basierende neuroscience information exchange Format (\software{Nix}) für die benutzerfreundliche Verpackung der Datensätze einschließlich Daten und Metadaten in kombinierter Form.
-
-Schließlich evaluiere ich den implementierten Workflow anhand der Anforderungen an die kollaborative wissenschaftliche Arbeit in komplexen Projekten und lege allgemeine Richtlinien für die Durchführung solcher Experimente und Workflows in einem wissenschaftlichen Umfeld fest. Ich stelle die nächsten Schritte für den präsentierten Worklow vor, z.B. die Kombination mit einem kontinuierlichen Integrations- und Bereitstellungssystem und stelle Werkzeuge für umfassende Analyse der verpackten Daten vor.
-
-
 
 \vspace{2.5cm}
