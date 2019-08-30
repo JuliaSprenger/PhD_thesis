@@ -54,12 +54,6 @@
 
 \usepackage{svg}
 \pdfsuppresswarningpagegroup=1 % suppressing multiple page inclusion warnings
-\makeatletter
-\DeclareRobustCommand*{\escapeus}[1]{%
-    \begingroup\@activeus\scantokens{#1\endinput}\endgroup}
-\begingroup\lccode`\~=`\_\relax
-    \lowercase{\endgroup\def\@activeus{\catcode`\_=\active \let~\_}}
-\makeatother
 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,filecolor=magenta,urlcolor=cyan}
