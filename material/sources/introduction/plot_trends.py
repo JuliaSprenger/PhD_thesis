@@ -20,7 +20,7 @@ def plot_medline_trends(*filenames):
             f = 15*5
             data['Number'] = data['Number'] / f
             data['000'] = data['000'] / f
-            label += ' (x{})'.format(f)
+            label += ' (downscaled x{})'.format(f)
 
         # manual scaling
         if label == 'repeatability':
