@@ -405,7 +405,6 @@ Version control systems (VCS), which have long been used to maintain code reposi
 	isbn = {978-3-95806-311-2},
 	abstract = {As neuroscientists, we are obligated to guarantee the reliability of our research workflows and results.For this reason, most neuroscientific, peer-reviewed journals require, besides a full description of thenew scientific findings and used methods, at least also a brief summary of the used data. For a completelyopen scientific inquiry and to further promote scientific progress as required by most nationalfunding agencies, it would be best to share the raw data along with an analysis paper or independentlyas a standalone data publication. Unfortunately, especially the neuroscientific community ishesitant to share own research data with third parties, because guidelines, tools and support for thepublishing authors to provide data and corresponding adequate information on the experiment aregenerally hard to formalize and often missing. As a consequence, published scientific results remainunreproducible by other researchers. Along an example of a complex electrophysiological experimentwhich was conducted by external collaboration partners, I will demonstrate how to share and publishdata, but also identify the reasons why researchers, in particular experimentalists in electrophysiology,are hesitant to try the same. For this, I first provide a data descriptor of the experiment following theguidelines of a pure data journal from the Nature publishing group, called Scientific Data. Accordingto the journal guidelines, I describe all information necessary to be able to understand the setupand workflow of the experiment as well as the minimum information necessary to be able to workwith the corresponding datasets. The latter requires the provision of a robust data loading routine.To guarantee the access to the data of the experiment, I implemented a commonly usable loadingroutine for the data formats of the used data acquisition (DAQ) system from Blackrock Microsystems(Cerebus DAQ), and published it as part of an open source data framework, called Neo. Neo hasthe advantage of representing data in standardized structures that allow researchers to use commonanalysis routines on different data formats. In addition, it is possible to further annotate the Neo datastructures with experiment-specific information on the data. To automatically integrate such information,termed metadata, it is best to have them organised in a machine-readable format. Althoughseveral software solutions for such metadata formats exist, they are usually not tested for complexuse cases, such as the example experiment. In most cases, they only provide the framework itself as astandardized metadata representation or specification, and no solutions for how to actually compile auseful metadata collection. For the example experiment, I chose a metadata framework, called openmetadata Markup Language (odML), an open source project developed by the German Node (GNode)of the International Neuroinformatics Coordination Facility (INCF). In the second part of thethesis, I demonstrate how to organize metadata for the experiment, to be able to compile and use acorresponding odML metadata collection. To facilitate the compilation process for my collaborators, Ideveloped a Python package, called odMLtables, which facilitates the access to the odML frameworkby an algorithmic transformation of odML into a spreadsheet format (csv or xls) and back. In addition,I provided a complete workflow for collecting and storing the metadata of the experiment intoa comprehensive odML-file collection. Furthermore, I provided a specified data loading routine thatautomatically annotates the data structures with the corresponding metadata of the collection. Thelatter improves the workflow in the course of neuroscientific analyses of the data from the exampleexperiment, as demonstrated in the last part of my thesis. In summary, I show that the preparationsto properly share research data within a scientific collaboration are cumbersome and time consuming,but essential for successfully publishing data and analysis results for a broader audience of users. Topromote data sharing within the neuroscientific community and to provide a better foundation forreproducible research, my thesis offers a coherent strategy for managing electrophysiological data andmetadata using a well selected set of available technologies},
 	number = {167},
-	publisher = {Forschungszentrum J{\"u}lich GmbH Zentralbibliothek, Verlag},
 	author = {Zehl, Lyuba},
 	year = {2018}
 }
@@ -1682,7 +1681,6 @@ and experiment.},
 	author = {Rostami, Vahid and Ito, Junji and Denker, Michael and Gr{\"u}n, Sonja},
 	month = may,
 	year = {2017},
-	note = {bibtex*[code\_url=https://github.com/ReScience-Archives/Rostami-Ito-Denker-Gruen-2017;code\_doi=10.5281/zenodo.583814;review\_url=https://github.com/ReScience/ReScience-submission/pull/24;type=Replication;domain=Compuational Neuroscience]},
 	keywords = {Spike time synchrony, Unitary Events method},
 	pages = {{\textless}span class="nocase"{\textgreater}\#3{\textless}/span{\textgreater}}
 }
@@ -2008,4 +2006,33 @@ This paper further develops the metaphors outlined in Parsons and Fox (2013), an
 	year = {2017},
 	pages = {045003},
 	file = {IOP Full Text PDF:/home/julia/.mozilla/firefox/i2yyyfvo.default/zotero/storage/NE7P98C7/Siegle et al. - 2017 - Open Ephys an open-source, plugin-based platform .pdf:application/pdf}
+}
+
+@article{Smeets_2019,
+	title = {A review of grasping as the movements of digits in space},
+	issn = {1522-1598},
+	doi = {10.1152/jn.00123.2019},
+	abstract = {It is tempting to describe human reach-to-grasp movements in terms of two, more or less independent visuomotor channels, one relating hand transport to the object's location and the other relating grip aperture to the object's size. Our review of experimental work questions this framework for reasons that go beyond noting the dependence between the two channels. Both the lack of effect of size illusions on grip aperture and the finding that the variability in grip aperture does not depend on the object's size indicate that size information is not used to control grip aperture. An alternative is to describe grip formation as emerging from controlling the movements of the digits in space. Each digit's trajectory when grasping an object is remarkably similar to its trajectory when moving to tap the same position on its own. The similarity is also evident in the fast responses when the object is displaced. This review develops a new description of the speed-accuracy trade-off for multiple effectors that is applied to grasping. The most direct support for the digit-in-space framework is that prism-induced adaptation of each digit's tapping movements transfers to that digit's movements when grasping, leading to changes in grip aperture for adaptation in opposite directions for the two digits. We conclude that although grip aperture and hand transport are convenient variables to describe grasping, treating grasping as movements of the digits in space is a more suitable basis for understanding the neural control of grasping.},
+	language = {eng},
+	journal = {J. Neurophysiol.},
+	author = {Smeets, Jeroen B. J. and van der Kooij, Katinka and Brenner, Eli},
+	month = jul,
+	year = {2019},
+	pmid = {31339802},
+	keywords = {coordination, index finger, motor, Prehension, thumb}
+}
+
+@article{Runnarong_2019,
+	title = {Age-related changes in reach-to-grasp movements with partial visual occlusion},
+	volume = {14},
+	issn = {1932-6203},
+	doi = {10.1371/journal.pone.0221320},
+	abstract = {This study investigated the influence of age and visual occlusion on fast reach-to-grasp movements. The effect of visual occlusion on reach-to-grasp movement was examined using a task that heavily relies on feed-forward control. Three groups of healthy adults aged 22, 49 and 65 on average performed fast reach-to-grasp movements with full visual and partial visual occlusion conditions of the hand during the initial part of movement. Regarding the effect of age, the all parameters of reach-to-grasp movement were deteriorated with age, except relative time to maximum velocity and spatial coordination. Regarding the effect of visual condition, participants reached with prolonged movement time, lower peak velocity, and later occurrences of peak velocity and peak aperture, as well as decrease in spatial coordination. Regarding the effect of age on visual condition, visual occlusion resulted in a longer movement time and delayed time to maximum velocity in middle-aged and older groups compared to full vision, but the difference was not observed in the younger groups. Conclusion: Reach-to-grasp performance deteriorated with age and the performance was affected when vision of the hand at initial movement was occluded. Overall, movement performance in middle-aged and older adults was affected by visual occlusion, whereas it was unaffected in younger adults. The results indicate that visual feedback of the hand at initial movement is important to control reach-to-grasp movement of middle-aged and older adults during real tasks.},
+	language = {eng},
+	number = {8},
+	journal = {PLoS ONE},
+	author = {Runnarong, Nuttakarn and Tretriluxana, Jarugool and Waiyasil, Watinee and Sittisupapong, Preeyanuch and Tretriluxana, Suradej},
+	year = {2019},
+	pmid = {31461484},
+	pages = {e0221320}
 }
