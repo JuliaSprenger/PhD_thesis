@@ -57,6 +57,7 @@ The two monkeys trained for the task differ in gender, active hand of the task a
 
 \begin{table}[]
 \scriptsize
+\centering
 \begin{tabular}{lSSSSSSS}
 \hline
                                                                                               & \multicolumn{3}{l}{\textbf{monkey L}}                                                                   & \multicolumn{3}{l}{\textbf{monkey N}}                                                            & \textbf{description}                                                                             \\ \hline
@@ -91,7 +92,7 @@ daily recording id                                                              
 \# electrodes with SUA                                                                        & \multicolumn{3}{l}{65}                                                                                  & \multicolumn{4}{l}{78}                                                                                                                                                                              \\ 
 \begin{tabular}[c]{@{}l@{}}\# electrodes with \\     SUA or MUA\end{tabular}                  & \multicolumn{3}{l}{86}                                                                                  & \multicolumn{4}{l}{89}                                                                                                                                                                              \\ \hline
 \end{tabular}
-\caption[Overview of subjects and recording sessions]{Overview of monkeys, recording session files and dates, spike sorting and monkey performance. The monkeys differ in gender, age, weight and active hand used for the task. Information is provided about individual recording files, sessions, performance of the monkey as well as single unit (SUA) and multi unit activity (MUA). \todo{add more descriptions in table and nicefy table}}
+\caption[Overview of subjects and recording sessions]{Overview of monkeys, recording session files and dates, spike sorting and monkey performance. The monkeys differ in gender, age, weight and active hand used for the task. Information is provided about individual recording files, sessions, performance of the monkey as well as single unit (SUA) and multi unit activity (MUA).}
 \label{tab:scidata_data_overview}
 \end{table}
 
@@ -144,7 +145,7 @@ OT, OR, DO, and OBB are shown at the bottom. (c) Outline of the devices and thei
 
 \begin{table}[]
 \scriptsize
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|c|l|}
+\begin{tabular}{|l|llllllll|l|c|l|}
 \hline
 \textbf{\begin{tabular}[c]{@{}l@{}}decimal\\ code\end{tabular}} & \multicolumn{8}{c|}{\textbf{(8-bit) binary code}}                                                                                                                                                                           & \multicolumn{3}{c|}{\textbf{trial interpretation}}                                                 \\ \hline
                                                                 & bit 7         & bit 6                           & bit 5           & bit 4       & bit 3                            & bit 2                            & bit 1                            & bit 0                            & \multicolumn{2}{l|}{}                                                                     & monkey \\ \hline
@@ -157,7 +158,7 @@ OT, OR, DO, and OBB are shown at the bottom. (c) Outline of the devices and thei
 \textbf{65354}                                                  & 0             & 1                               & 0               & 0           & 1                                & 0                                & 1                                & 0                                & \multirow{2}{*}{\textbf{SG-ON}}                      &                                    & L      \\ \cline{1-9} \cline{12-12} 
 \textbf{65370}                                                  & 0             & 1                               & 0               & 1           & 1                                & 0                                & 1                                & 0                                &                                                      &                                    & N      \\ \hline
 \textbf{65344}                                                  & 0             & 1                               & 0               & 0           & 0                                & 0                                & 0                                & 0                                & \multicolumn{2}{l|}{\multirow{2}{*}{\textbf{CUE-OFF}}}                                    & L      \\ \cline{1-9} \cline{12-12} 
-\textbf{65360}                                                  & 0             & 1                               &                 & 1           & 0                                & 0                                & 0                                & 0                                & \multicolumn{2}{l|}{}                                                                     & N      \\ \hline
+\textbf{65360}                                                  & 0             & 1                               & 0               & 1           & 0                                & 0                                & 0                                & 0                                & \multicolumn{2}{l|}{}                                                                     & N      \\ \hline
 \textbf{65353}                                                  & 0             & 1                               & 0               & 0           & 1                                & 0                                & 0                                & 1                                & \multirow{2}{*}{\textbf{LF-ON}}                      & \multirow{4}{*}{\textbf{(GO-ON)}}  & L      \\ \cline{1-9} \cline{12-12} 
 \textbf{65369}                                                  & 0             & 1                               & 0               & 1           & 1                                & 0                                & 0                                & 1                                &                                                      &                                    & N      \\ \cline{1-10} \cline{12-12} 
 \textbf{65350}                                                  & 0             & 1                               & 0               & 0           & 0                                & 1                                & 1                                & 0                                & \multirow{2}{*}{\textbf{HF-ON}}                      &                                    & L      \\ \cline{1-9} \cline{12-12} 
