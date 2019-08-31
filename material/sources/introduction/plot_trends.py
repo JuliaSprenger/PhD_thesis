@@ -27,7 +27,7 @@ def plot_medline_trends(*filenames):
             f = 5
             data['Number'] = data['Number'] / f
             data['000'] = data['000'] / f
-            label += ' (x{})'.format(f)
+            label += ' (downscaled x{})'.format(f)
 
         # plot bar plot with frame
         plt.bar(data['Year'], data['000'], width=1, alpha=0.3, label=label)
