@@ -2,13 +2,10 @@
 \chapter[Metadata management]{Metadata management\\- The basis for reproducible science}
 \label{sec:metadata}
 
-\todo{integrate this in big picture - extend introduction}
-
-\todo{Add logo of odMLtables}
 \section{Introduction to \software{odMLtables}}
 \label{sec:Introduction}
 
-In recent years, the workflows involved in conducting and analyzing neurophysiological experiments have become increasingly complex \citep[e.g.][]{Coles_2008, Denker_2016, Brochier_2018}. Several factors contribute to this development. Nowadays, a recording setup is usually comprised of several hardware and software components that are often produced by different companies, or might even be custom made. In addition, due to the technological progress in neuroscience during the last decades the task designs have become more and more sophisticated, as can be observed, for example, when considering experiments mimicking realistic, natural conditions. Neuronal or muscular signals (e.g., eye and arm movements) can be gathered in parallel from multiple optical or electrical recording sites \citep{Nicolelis_2002,Verkhratsky_2006,Obien_2014} together with complex behavioral measures \citep{Jacob_2010,Maldonado_2008,Vargas-Irwin_2010,Schwarz_2014}. Moreover, these signals can be experimentally manipulated in intricate ways, e.g., via multidimensional natural stimuli \citep{Geisler_2008} or sophisticated optical or electrical stimulation methods \citep{Deisseroth_2013,Miyamoto_2015}. As a result, the amount of information required to fully describe all circumstances under which the experiment was conducted and data was recorded, here collectively referred to as 'metadata', has grown considerably at the same time. Therefore, metadata of neuroscientific studies are increasingly difficult to document and the implementation of specific software solutions to facilitate their management in daily routines involves a lot of time and effort \citep{Zehl_2016}.
+In recent years, the workflows involved in conducting and analyzing neurophysiological experiments have become increasingly complex \citep[e.g.][]{Coles_2008, Denker_2016, Brochier_2018}. Several factors contribute to this development. Nowadays, a recording setup is usually comprised of several hardware and software components that are often produced by different companies, or might even be custom made. In addition, due to the technological progress in neuroscience during the last decades the task designs have become more and more sophisticated, as can be observed, for example, when considering experiments mimicking realistic, natural conditions. Neuronal or muscular signals (e.g., eye and arm movements) can be gathered in parallel from multiple optical or electrical recording sites \citep{Nicolelis_2002,Verkhratsky_2006,Obien_2014} together with complex behavioral measures \citep{Jacob_2010,Maldonado_2008,Vargas-Irwin_2010,Schwarz_2014}. Moreover, these signals can be experimentally manipulated in intricate ways, e.g., via multidimensional natural stimuli \citep{Geisler_2008} or sophisticated optical or electrical stimulation methods \citep{Deisseroth_2013,Miyamoto_2015}. As a result, the amount of information required to fully describe all circumstances under which the experiment was conducted and data was recorded, here collectively referred to as 'metadata', has grown considerably at the same time. Therefore, metadata of neuroscientific studies are increasingly difficult to document and the implementation of specific software solutions to facilitate their management in daily routines involves a lot of time and effort \citep{Zehl_2016}. Here the application of the FAIR principles can ameliorate the situation by providing guidelines for systematic and structured metadata handling and documentation. In the following we identify key points for the efficient and sustainable metadata documentation in the context of experiments and provide tools for addressing these issues.
 
 The complexity of collecting metadata originates from two factors: Firstly, the growing heterogeneity of setup equipment alone makes it difficult to fully track the exact circumstances under which the primary data were recorded and how the recorded signals were processed along an experimental recording session ("black box" effect, i.e., the difficulty to precisely relate inputs and outputs to the equipment). Secondly, the complexity of the signal types and manipulations using various tools within custom signal processing pipelines increases the effort needed for comprehensive metadata tracking across all parts of the recording system and all processing steps. In particular, the hardware components and software tools employed in these experimental setups typically do not provide a complete account of their metadata and store their output in non-standardized representations that impede gaining insights into the details of the recording process. Nonetheless, collecting and providing metadata of an experiment is a necessary step towards replicable experiments and therefore forms the basis for reproducible research \citep{Tebaykin_2017}. In this regard, metadata have to be human readable in order to give users semantic access to the data, similar to a traditional lab book. However, only standardized, machine-readable metadata can be systematically reproduced during automatized analysis processes, which makes them a crucial ingredient for tracking the data provenance leading to a research publication.
 
@@ -21,7 +18,6 @@ Implementing and applying such a rigorous workflow as described in \cref{fig:odM
 Thus, for these purposes a flat tabular representation of the metadata appears to be suitable. It has the advantage of providing easier access to, and simpler visualization of, the metadata than a hierarchical format. Tabular representations of hierarchical structures are implemented in a number of generic software tools for \code{xml} representation\footnote{See, e.g., \url{https://www.oxygenxml.com/xml\_editor/xml\_grid\_editor.html} or \url{http://rustemsoft.com/xfox.aspx}}. However, these generic \code{xml} editors do not provide support for using \code{xml} to handle scientific metadata in a concise way.
 
 We developed \software{odMLtables} as a Python package to complement the \software{odML} framework in simplifying working with, and in particular manually editing, the metadata stored in the hierarchical \software{odML} format. \software{odMLtables} facilitates the integration of the \software{odML} framework into the experimental workflow by converting between hierarchical \software{odML} and tabular representations in \code{xls} or \code{csv} format. These tabular formats are easily accessible via commonly known spreadsheet tools (e.g., \textit{Microsoft Excel}, \textit{LibreOffice Calc}) that enable neuroscientists to manually extend or edit the content of an \software{odML} metadata file. More importantly, the \software{odMLtables} package comprises a GUI that guides the user through all functional features of the tool. With this, it also opens access to the \software{odML} framework for scientists with little or no programming experience. All main functionality to interact with metadata files is directly accessible from the \software{odML} GUI since version 1.4.0. The software has benefited from the experiences gained in applying it in collaborative projects involving three different experiments collecting electrophysiological data: (i) cortical activity in macaque performing a visually-guided motor task \citep[e.g.,][]{Denker_2018,Brochier_2018}, (ii) cortical and hippocampal activity in a developmental study in mice \citep[e.g.,][]{Bitzenhofer_2017}, and (iii) cortical activity in a category learning task in gerbils \citep[e.g.,][]{Ohl_2001}.
-
 
 The embedding of \software{odMLtables} in a real world metadata management workflow is described in \cite{Zehl_2016}, resulting in a published dataset with detailed metadata descriptions in the \software{odML} format  \citep{Brochier_2018}. In both papers the focus resided on the concepts of metadata management and the detailed experiment description, whereas here we complement these studies by a technical tool to implement metadata capture. While the described experiment (an instructed, delayed reach to grasp task with multielectrode recordings from monkey motor cortex) is too complex to present the features and usage of odMLtables, the concepts presented here are abstracted from these studies.
 
@@ -41,7 +37,35 @@ In general, \software{odMLtables} facilitates access to sophisticated metadata m
 \section{Software description}
 \label{sec:Software}
 
-\software{odMLtables} is a Python package that provides a set of functions for working with metadata descriptions in the \software{odML} metadata framework, with a particular focus on making these metadata easily accessible for users. The key approach is to bring the typically complex, hierarchical structure of the \software{odML} format into a tabular and reduced  representation, such that metadata can be more easily inspected or edited. Therefore, at its core, \software{odMLtables} provides functions to convert between the \software{odML} format and the corresponding tabular representation which can be represented in the \textit{Microsoft Excel} (\code{xls}) or the generic comma separated value (\code{csv}) format (\cref{fig:min_workflow}). Metadata converted to these tabular formats are accessible via widely used spreadsheet software (e.g., \textit{Microsoft Excel}\footnote{\url{https://products.office.com/en-us/excel}} or \textit{LibreOffice Calc}\footnote{\url{https://www.libreoffice.org/discover/calc/}}), such that users are able to intuitively view and edit the metadata. After editing, the metadata can be brought back to the standardized, hierarchical form defined by the \software{odML} framework (as illustrated in \cref{fig:min_workflow}).
+\software{odMLtables} is a Python package that provides a set of functions for working with metadata descriptions in the \software{odML} metadata framework, with a particular focus on making these metadata easily accessible for users (\cref{tab:odmltables_characteristics}). The key approach is to bring the typically complex, hierarchical structure of the \software{odML} format into a tabular and reduced  representation, such that metadata can be more easily inspected or edited. Therefore, at its core, \software{odMLtables} provides functions to convert between the \software{odML} format and the corresponding tabular representation which can be represented in the \textit{Microsoft Excel} (\code{xls}) or the generic comma separated value (\code{csv}) format (\cref{fig:min_workflow}). Metadata converted to these tabular formats are accessible via widely used spreadsheet software (e.g., \textit{Microsoft Excel}\footnote{\url{https://products.office.com/en-us/excel}} or \textit{LibreOffice Calc}\footnote{\url{https://www.libreoffice.org/discover/calc/}}), such that users are able to intuitively view and edit the metadata. After editing, the metadata can be brought back to the standardized, hierarchical form defined by the \software{odML} framework (as illustrated in \cref{fig:min_workflow}).
+
+\begin{table}
+\small
+\begin{tabular}{ll}
+\hline
+Code version & 1.0.0b3 \\
+\hline
+Permanent link to code/repository & \href{https://github.com/INM-6/python-odmltables}{https://github.com/INM-6/python-odmltables}\\
+\hline
+Documentation & \href{https://odmltables.readthedocs.io}{https://odmltables.readthedocs.io}\\
+\hline
+Support & \href{https://github.com/INM-6/python-odmltables/issues}{https://github.com/INM-6/python-odmltables/issues}\\
+\hline
+Programming Language & \href{https://www.python.org/}{Python}\\
+\hline
+Dependencies & \href{http://g-node.github.io/python-odml/}{odML}, \href{https://wiki.python.org/moin/PyQt}{PyQt5}\\  
+\hline
+Research Resource Identifier (RRID) & \href{https://scicrunch.org/scicrunch/Resources/record/nlx_144509-1/SCR_016228/resolver}{SCR\_016228}\\
+\hline
+Legal Code License  & \href{https://github.com/INM-6/python-odmltables/blob/master/LICENSE.txt}{BSD 3-Clause} \\
+\hline
+Logo &
+\includegraphics[width=0.14\columnwidth]{figures/logos/odMLtables}\\
+\hline
+\end{tabular}
+\caption[Overview of \software{odMLtables} characteristics]{Overview of \software{odMLtables} characteristics of the version considered here.}
+\label{tab:odmltables_characteristics}
+\end{table}
 
 Next to the functionality of converting between \software{odML} and the tabular formats, \software{odMLtables} provides four additional capabilities that address common tasks when working with metadata collections:
 \begin{itemize}
@@ -288,29 +312,4 @@ In recent years, the scientific community has begun to recognize the need for de
 
 \software{odMLtables} is actively developed and a comprehensive documentation including a tutorial is available for release versions on ReadtheDocs\footnote{\url{https://odmltables.readthedocs.io/en/latest}} and the latest version can be obtained from GitHub\footnote{\url{https://github.com/INM-6/python-odmltables/}}. Future developments of \software{odMLtables} include the ongoing embedding of \software{odMLtables} in different neuroscientific data and metadata aggregation workflows, and, as a long term prospect, \software{odMLtables} is planned to become a fully integrated component of the \software{odML} and NIX libraries.
 
-
-\section{Current code version}
-\label{sec:code_version}
-
-\begin{tabular}{ll}
-\hline
-Code version & 1.0.0b3 \\
-\hline
-Permanent link to code/repository & \href{https://github.com/INM-6/python-odmltables}{https://github.com/INM-6/python-odmltables}\\
-\hline
-Documentation & \href{https://odmltables.readthedocs.io}{https://odmltables.readthedocs.io}\\
-\hline
-Support & \href{https://github.com/INM-6/python-odmltables/issues}{https://github.com/INM-6/python-odmltables/issues}\\
-\hline
-Programming Language & \href{https://www.python.org/}{Python}\\
-\hline
-Dependencies & \href{http://g-node.github.io/python-odml/}{odML}, \href{https://wiki.python.org/moin/PyQt}{PyQt5}\\  
-\hline
-Research Resource Identifier (RRID) & \href{https://scicrunch.org/scicrunch/Resources/record/nlx_144509-1/SCR_016228/resolver}{SCR\_016228}\\
-\hline
-Legal Code License  & \href{https://github.com/INM-6/python-odmltables/blob/master/LICENSE.txt}{BSD 3-Clause} \\
-\hline
-Logo &
-\includegraphics[width=0.14\columnwidth]{figures/logos/odMLtables}\\
-\hline
-\end{tabular}
+By permitting the easy access, modification and visualization of metadata collections based on the \software{odML}, \software{odMLtables} facilites the implementation of the FAIR principles for scientific data management and stewardship \citep{Wilkinson_2016} in an experimental environment. Additionally it promotes the usage of standardized formats, driving the community further towards the application of the FAIR principles.
