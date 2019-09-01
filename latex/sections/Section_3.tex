@@ -13,6 +13,15 @@ A software approach to manage neuroscientific metadata is the \textit{open metad
 
 \cref{fig:odMLgeneration} shows a generic representation of an example workflow that results in the generation of a metadata collection represented in odML. The starting point are collections of files containing various subsets of the metadata for individual recordings of an experiment (e.g., different recording days). The data in these files are often organized in different formats within a collection, and files and metadata between different collections may differ due to factors such as changes in the experiment. Therefore, it is possible and advisable to construct template structures for the metadata collection to enforce a systematic metadata structuring. However, in practical scenarios often custom scripts are required to populate these templates, e.g., to cover small variations between metadata collections when a certain piece of information is not present for a particular recording. In addition, the metadata collection must be manually enriched by information that is not digitally available in the first place. The outcome of this build process are \software{odML} files for each recording, adhering to a uniform template structure. In a final step, these individual metadata collections may be merged into a single \software{odML} file in order to provide scientists with the ability to perform full metadata queries on the complete experiment. \citet{Zehl_2016} provides a complete account of this workflow including practical examples.
 
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=0.70\columnwidth]{figures/odmltables_figures/fig1_odML_workflow/workflow.pdf}
+\caption[Generic workflow of generating metadata collections from source files using the \software{odML} framework]{{\label{fig:odMLgeneration}
+\textbf{Generic workflow of generating metadata collections from source files using the \software{odML} framework.} For a given metadata collection (top row, example metadata collections A-C), metadata are pooled from multiple files and enriched via manual entry (second row). These metadata are converted into individual collections via a scripted approach applying an \software{odML} template structure (third row). By further integrating individual multiple metadata collections (fourth row), a complete \software{odML} collection containing all recordings of a particular experiment can be created (bottom row).
+}}
+\end{center}
+\end{figure}
+
 Implementing and applying such a rigorous workflow as described in \cref{fig:odMLgeneration} requires programming skills by the scientist. However, metadata handling is often performed by several experimenters with varying computational expertise. Furthermore, extensive manual editing of the metadata files via the present graphical user interface (GUI) included in the \software{odML} framework tends to be cumbersome for large metadata trees due to their hierarchical, complex organization. While visualization of the hierarchical organization is suited for an overview of the general structure and relation of the metadata, finding or comparing particular values can be difficult if they are distributed in different branches of the hierarchy. Furthermore, editing of distributed entries is laborious, because a hierarchical organization also requires navigation through the tree to access a particular entry. This makes this metadata management tool inefficient to use in an experimental laboratory where often (i) single particular entries need to be modified manually as the experiment progresses, (ii) a batch of similar entries need to be modified coherently as the data processing progresses. The combinations of all these factors results in many experimental laboratories frequently collecting metadata in flat tabular formats independent of an explicit, underlying hierarchical structure, using tools for generation and manipulation of tables that do not require programming expertise, are widely adopted, readily available and familiar to the experimenters.
 
 Thus, for these purposes a flat tabular representation of the metadata appears to be suitable. It has the advantage of providing easier access to, and simpler visualization of, the metadata than a hierarchical format. Tabular representations of hierarchical structures are implemented in a number of generic software tools for \code{xml} representation\footnote{See, e.g., \url{https://www.oxygenxml.com/xml\_editor/xml\_grid\_editor.html} or \url{http://rustemsoft.com/xfox.aspx}}. However, these generic \code{xml} editors do not provide support for using \code{xml} to handle scientific metadata in a concise way.
@@ -25,21 +34,13 @@ To optimally demonstrate the application of \software{odMLtables} we present sev
 
 In general, \software{odMLtables} facilitates access to sophisticated metadata management software \software{odML} for non-programmers and with that optimizes routine manual metadata acquisitions in any laboratory workflow. In addition, \software{odMLtables} can be used to create visually enhanced tabular overviews of complete or filtered metadata from any hierarchically structured \software{odML} files. For a scripted metadata approach a Python interface permits also programmers to benefit from \software{odMLtables} features.
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.70\columnwidth]{figures/odmltables_figures/fig1_odML_workflow/workflow.pdf}
-\caption[Generic workflow of generating metadata collections from source files using the \software{odML} framework]{{\label{fig:odMLgeneration}
-\textbf{Generic workflow of generating metadata collections from source files using the \software{odML} framework.} For a given metadata collection (top row, example metadata collections A-C), metadata are pooled from multiple files and enriched via manual entry (second row). These metadata are converted into individual collections via a scripted approach applying an \software{odML} template structure (third row). By further integrating individual multiple metadata collections (fourth row), a complete \software{odML} collection containing all recordings of a particular experiment can be created (bottom row).
-}}
-\end{center}
-\end{figure}
 
 \section{Software description}
 \label{sec:Software}
 
 \software{odMLtables} is a Python package that provides a set of functions for working with metadata descriptions in the \software{odML} metadata framework, with a particular focus on making these metadata easily accessible for users (\cref{tab:odmltables_characteristics}). The key approach is to bring the typically complex, hierarchical structure of the \software{odML} format into a tabular and reduced  representation, such that metadata can be more easily inspected or edited. Therefore, at its core, \software{odMLtables} provides functions to convert between the \software{odML} format and the corresponding tabular representation which can be represented in the \textit{Microsoft Excel} (\code{xls}) or the generic comma separated value (\code{csv}) format (\cref{fig:min_workflow}). Metadata converted to these tabular formats are accessible via widely used spreadsheet software (e.g., \textit{Microsoft Excel}\footnote{\url{https://products.office.com/en-us/excel}} or \textit{LibreOffice Calc}\footnote{\url{https://www.libreoffice.org/discover/calc/}}), such that users are able to intuitively view and edit the metadata. After editing, the metadata can be brought back to the standardized, hierarchical form defined by the \software{odML} framework (as illustrated in \cref{fig:min_workflow}).
 
-\begin{table}
+\begin{table}[]
 \small
 \begin{tabular}{ll}
 \hline
@@ -67,6 +68,16 @@ Logo &
 \label{tab:odmltables_characteristics}
 \end{table}
 
+
+\begin{figure}[]
+\begin{center}
+\includegraphics[width=0.70\columnwidth]{figures/odmltables_figures/fig2_odml_table_conversion/odml-table-conversion.pdf}
+\caption[Minimal workflow for manually editing \software{odML} files via odMLtables]{{\label{fig:min_workflow}
+\textbf{Minimal workflow for manually editing \software{odML} files via odMLtables.} Metadata is manually edited in tabular form using spreadsheet software and stored in \code{xls}{} and \code{csv}{} formats (left). The minimal functionality of \software{odMLtables} is to convert between such tabular representations and the hierarchical \software{odML} structure (right). The hierarchical placement of individual metadata entries, i.e., the Sections of the \software{odML} tree, is encoded in a specific column of the table (gray boxes and circles), whereas the values and attributes of metadata entries, i.e., a Property represented as leaves of the \software{odML} tree, are stored in rows of the table (colored boxes).%
+}}
+\end{center}
+\end{figure}
+
 Next to the functionality of converting between \software{odML} and the tabular formats, \software{odMLtables} provides four additional capabilities that address common tasks when working with metadata collections:
 \begin{itemize}
     \item filtering (or reduction) of a metadata collection to a subset
@@ -80,21 +91,13 @@ The functionality of the \software{odMLtables} can be accessed in one of two way
 In the following, we describe in detail the structure of the hierarchical and tabular metadata representations, the main capabilities of \software{odMLtables} illustrated by means of the GUI, and its internal architecture. 
 
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.70\columnwidth]{figures/odmltables_figures/fig2_odml_table_conversion/odml-table-conversion.pdf}
-\caption[Minimal workflow for manually editing \software{odML} files via odMLtables]{{\label{fig:min_workflow}
-\textbf{Minimal workflow for manually editing \software{odML} files via odMLtables.} Metadata is manually edited in tabular form using spreadsheet software and stored in \code{xls}{} and \code{csv}{} formats (left). The minimal functionality of \software{odMLtables} is to convert between such tabular representations and the hierarchical \software{odML} structure (right). The hierarchical placement of individual metadata entries, i.e., the Sections of the \software{odML} tree, is encoded in a specific column of the table (gray boxes and circles), whereas the values and attributes of metadata entries, i.e., a Property represented as leaves of the \software{odML} tree, are stored in rows of the table (colored boxes).%
-}}
-\end{center}
-\end{figure}
 
 \subsection{Tabular representation of the \software{odML} format} 
 \label{sec:tabular_format}
 
 \software{odMLtables} converts the hierarchical \software{odML} structure (\cref{fig:tree_and_table}A) into a specific tabular (flat) representation (\cref{fig:tree_and_table}B), stored either in the \code{xls} or \code{csv} format. In this format, each row corresponds to one particular value entry. The columns further describe the Property and Section each value belongs to, e.g. the Property name, the Section and Subsections the Property belongs to, the physical units, or the Property definition. The hierarchy of Sections in which a Property is located in the original \software{odML} structure is represented by a path construct, where individual Section names are delineated by the '/' character. For increased readability, repetitive information (i.e. identical information to the cell above) is optionally displayed only at the first instance (e.g., 'Path to Subject' entry ('/Subject') in row 3, 4 and 5 in \cref{fig:tree_and_table}B). By default, the  column headers are predefined (\cref{fig:tree_and_table}B, first row), however the header names can also be customized as long as a mapping between the predefined names and the custom names can be provided. The order of the columns of the table can be customized since the column header names are used to associate columns with attributes of the hierarchical \software{odML} structure. The \software{odML} Document attributes 'author', 'date', 'version' and 'repository' are handled separately and are placed in the top row of the tabular \software{odML} representation.
 
-\begin{figure}[!ht]
+\begin{figure}[hbt]
 \begin{center}
 \includegraphics[width=1.0\columnwidth]{figures/odmltables_figures/fig4_hierarchy_table_mapping/hierarchy_table_mapping.pdf}
 \caption[Mapping between hierarchical and tabular metadata format]{{\label{fig:tree_and_table}
@@ -109,6 +112,15 @@ In the following, we describe in detail the structure of the hierarchical and ta
 \software{odMLtables} is a tool that provides 5 functionalities surrounding work in creating and accessing metadata collections. In the following, we describe the capabilities of these features, while their use is put into the context of a typical workflow in \cref{sec:Illustrative-Examples}.
 
 All main features of \software{odMLtables} are available via the \software{odMLtables} GUI (\cref{fig:GUI_mainwindow}). Upon launching the application, it presents the user with 5 buttons, each leading to a series of dialogues (wizards) to perform a specific \software{odMLtables} functionality. For the more complex dialogues that include a large number of parameters to set, the GUI offers to save and load the dialog configuration to efficiently re-run a functionality with given parameters. 
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=0.70\columnwidth]{figures/odmltables_figures/fig5_odMLtables_screenshot/Screenshot.png}
+\caption[Main window of the \software{odMLtables} GUI]{{\label{fig:GUI_mainwindow}
+\textbf{Main window of the \software{odMLtables} GUI}. The interface gives access to the main functionalities available by the tool: Converting files from hierarchical to tabular (flat) representations, generating an empty generic \software{odML} table (template), comparing entries within a metadata collection, merging contents of two collections, and selecting a subset of a metadata collection (filtering). Each button starts a series of dialogues (wizards) that guide the user through the corresponding process.
+}}
+\end{center}
+\end{figure}
 
 In addition to the functionality offered by the GUI, the Python programming interface of \software{odMLtables} offers additional features, most notably, the ability to customize the default values for \software{odML} data types. The default values can be displayed using a highlighted coloring scheme to indicate to the researcher that a Property currently contains a default value (for details, see the \software{odMLtables} documentation\footnote{\url{https://odmltables.readthedocs.io}}).
 
@@ -132,15 +144,6 @@ This function converts metadata collections between the representations in the d
 
 \textbf{\ffilter: Filter content of a metadata collection} This function reduces the size of an \software{odML} file based on a filter mechanism, which can include multiple steps of filtering and custom filter functions to select only specific parts of an \software{odML} structure. The filter mechanism e.g. can extract all Properties containing no values to present the experimenter potential missing entries in the metadata collection.
 
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[width=0.70\columnwidth]{figures/odmltables_figures/fig5_odMLtables_screenshot/Screenshot.png}
-\caption[Main window of the \software{odMLtables} GUI]{{\label{fig:GUI_mainwindow}
-\textbf{Main window of the \software{odMLtables} GUI}. The interface gives access to the main functionalities available by the tool: Converting files from hierarchical to tabular (flat) representations, generating an empty generic \software{odML} table (template), comparing entries within a metadata collection, merging contents of two collections, and selecting a subset of a metadata collection (filtering). Each button starts a series of dialogues (wizards) that guide the user through the corresponding process.
-}}
-\end{center}
-\end{figure}
 
 \subsection{Software architecture}
 \label{sub:Software-Architecture}
@@ -167,7 +170,7 @@ The measurements for such score sheets are typically easy to perform, and for th
 
 To guarantee a consistent structure of such a score sheet, initially a template needs to be set up, i.e., a table containing the measures that are to be recorded on a single day. In order to accomplish this, as a first step we generate an empty template table using odMLtables. To improve the readability, we enter custom column names in \software{odMLtables} to create the table ('Section' instead of 'Path to Section', 'Measure' instead of 'Property Name', 'Unit' instead of 'Data Unit', and 'Type' instead of '\software{odML} Data Type'). Also we omit the attributes 'Section Definition', 'Property Definition' and 'Data Uncertainty' in the context of these example scenarios. As second step, using a spreadsheet, we design the metadata structure for a single score sheet as shown in \cref{fig:template_table}. The value field for each entry can be either left empty or a default value can be entered. The latter case is interesting for values that are likely to be constant for the majority of experiments, e.g., the name of the experimenter. Since the colors of a table saved in the \code{xls}{} format are ignored when converting to the \software{odML} format, it is possible to use arbitrary color coding within the spreadsheet software to improve the readability of the table for the experimenters entering the values.
 
-\begin{figure}[!ht]
+\begin{figure}[hbt]
 \begin{center}
 \includegraphics[width=0.5\columnwidth]{figures/odmltables_figures/fig6_template_table/template_table.pdf}
 \caption[Template score sheet]{\label{fig:template_table}
@@ -210,16 +213,16 @@ The metadata collection containing the merged score sheets of 2 recording days m
 \subsubsection*{Scenario 3: Create a tabular representation of the \software{odML} file for better viewing using the color options}
 Once the recordings for a number of animals were performed and the corresponding metadata collection is completed, data and metadata should be shared among collaborators in a common repository. In order to get an overview of the data obtained across different animals, the metadata of each animal can be converted into the \code{xls} format to simplify the inspection of the associated metadata using spreadsheet software (cf., also, \cref{fig:tree_and_table}B). Here, \software{odMLtables} provides the option to use color coding and highlighting of default / missing values to improve the readability (\cref{fig:missing_values_table}).
 
-\subsubsection*{Scenario 4: How to filter a subset of an \software{odML} file to edit it later on}
-As the common \software{odML} structure grows day by day it is of advantage to extract specific subsets of \software{odML} values of interest for visualization using the tabular format. Instead of visualizing the whole metadata collection to periodically verify that all Properties are filled with a value, we can extract a subset of the collection and visualize only the relevant (e.g. empty fields) entries. For this, we use \software{odMLtables} feature \ffilter\ which can be used to generate an \software{odML} that contains only Properties without value information specified. We then convert this reduced \software{odML} into a tabular \code{xls} representation using \software{odMLtables} feature \fconvert. The generated table, as shown in \cref{fig:missing_values_table} indicating the two empty properties in the \software{odML} structure of scenario 2, can be visualized using spreadsheet software and, in case of values not being filled, these can be directly edited manually.
-
-\begin{figure}[!ht]
+\begin{figure}[hbt]
 \begin{center}
 \includegraphics[width=0.5\columnwidth]{figures/odmltables_figures/fig7_missing_values_table/missing_values_table.pdf}
 \caption[Metadata collection filtered to show only Properties with an empty value]{\label{fig:missing_values_table}
 \textbf{Metadata collection filtered to show only Properties with an empty value.} Missing values entries are highlighted in red by odMLtables.}
 \end{center}
 \end{figure}
+
+\subsubsection*{Scenario 4: How to filter a subset of an \software{odML} file to edit it later on}
+As the common \software{odML} structure grows day by day it is of advantage to extract specific subsets of \software{odML} values of interest for visualization using the tabular format. Instead of visualizing the whole metadata collection to periodically verify that all Properties are filled with a value, we can extract a subset of the collection and visualize only the relevant (e.g. empty fields) entries. For this, we use \software{odMLtables} feature \ffilter\ which can be used to generate an \software{odML} that contains only Properties without value information specified. We then convert this reduced \software{odML} into a tabular \code{xls} representation using \software{odMLtables} feature \fconvert. The generated table, as shown in \cref{fig:missing_values_table} indicating the two empty properties in the \software{odML} structure of scenario 2, can be visualized using spreadsheet software and, in case of values not being filled, these can be directly edited manually.
 
 \subsubsection*{Scenario 5: Merging the edited subset back into the original structure}
 The enriched \code{xls} sheet generated in step 4 should now be merged back into the common \software{odML} structure. For this, we convert it back into the \software{odML} format and use the \software{odMLtables} merge feature \fmerge\ to replace the edited values in the common \software{odML} structure with the edited ones. Here, \software{odMLtables} merges the two \software{odML} files by extending the \software{odML} structure and appending metadata entries when the same Property is present in both files. However, when modifying already existing metadata entries in the filtered version this would result in duplication of entries. Therefore, \software{odMLtables} offers the possibility to overwrite already existing metadata entries when merging two \software{odML} structures. Note that a selective merge of a subset of metadata can be achieved by first filtering the file to be merged using feature \ffilter\ . 
@@ -229,16 +232,16 @@ The enriched \code{xls} sheet generated in step 4 should now be merged back into
 In addition to the complete metadata representation as presented in scenario 3, it is possible to generate a reduced overview table containing only plain values of selected Properties. This feature can be used to create a tabular display of Properties of interest (e.g., weight of a specific animal, experimenter who performed the experiment and comments regarding the measurement) in rows for the individual recordings (days) in columns. An example of such a table is given below:
 
 \begin{center}
-\begin{tabular}{|l||l|l|l|}
+\begin{tabular}{llll}
 \hline
 				 & Scores\_2000-01-01 & Scores\_2000-01-02\\
 \hline
 Date             &  2000-01-01 & 2000-01-02\\
-\hline
+% \hline
 Weight           &  5.0g & 5.5g\\
-\hline
+% \hline
 Experimenter     & Alice, ... & Bob\\
-\hline
+% \hline
 Comment  & Blood sample was taken [...] & Small scratch at the right ear \\
 \hline
 \end{tabular}
@@ -252,7 +255,7 @@ After completion of an experiment covering many recording days, the processing s
 By use of the \software{odML} library together with the \software{odMLtables} Python API, users have a rich collection of functions to manipulate and convert metadata stored in the \software{odML} format. In this specific example, we show an example script in \cref{code:odmltables} that loads all daily animal score sheets, adds them to a common metadata structure and exports the final document into an overview and comparative \code{xls} sheet for visualization. The code demonstrates the metadata handling workflow by structuring it into a sequence of three generic functions, which can be of use in creating related workflows for different projects.
 
 
-\begin{codeenv}
+\begin{codeenv}[hbt]
 \inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{python}{figures/code_odmltables_automation.py}
 \caption[Assemble metadata using \software{odMLtables}]{Program to assemble a target \software{odML} document covering metadata of multiple recording days by pooling information from multiple \code{csv} files and generate visualizations and overviews. Individual functions are automatizing functionalities presented in previous scenarios.}
 \label[codelisting]{code:odmltables}
@@ -300,7 +303,7 @@ Lastly, as a fifth feature addition, \software{odMLtables} could assist scientis
 Validation of user generated input is implemented on the level of odML: When saving or loading an \software{odML} file via \software{odMLtables} or any other method, the \software{odML} structure is checked for basic integrity (e.g. consistency of data types and values). It is intended to support custom, user defined validations in future releases. That is, users will be provided with the means of defining own valuations to check for specific required Sections, Properties or Values and combinations thereof. These additional validations will be directly stored within the \software{odML} files. They can be applied to ensure metadata consistency even if the file is handled on a different host or by a different person.
 For example users would be able to define specific Values as required for a particular Property or make sure a Section tree with an experiment-specific content is present before the file can be saved.
 
-\begin{figure}[!ht]
+\begin{figure}[hbtp]
 \begin{center}
 \includegraphics[width=1.0\columnwidth]{figures/odmltables_figures/fig8_global_picture/global_picture.pdf}
 \caption[Integrating \software{odMLtables} and other software tools in the different stages of an experiment from preparation to publication]{\label{fig:global_workflow}
