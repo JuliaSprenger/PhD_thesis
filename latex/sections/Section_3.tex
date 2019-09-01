@@ -1,4 +1,4 @@
-\clearpage
+\cleardoublepage
 \chapter[Metadata management]{Metadata management\\- The basis for reproducible science}
 \label{sec:metadata}
 
@@ -78,13 +78,14 @@ Logo &
 \end{center}
 \end{figure}
 
-Next to the functionality of converting between \software{odML} and the tabular formats, \software{odMLtables} provides four additional capabilities that address common tasks when working with metadata collections:
+Next to the functionality of converting between \software{odML} and the tabular formats, \software{odMLtables} provides four additional capabilities that address common tasks when working with metadata collections:\\
+\vbox{
 \begin{itemize}
     \item filtering (or reduction) of a metadata collection to a subset
     \item merging of two metadata collections
     \item generation of a basic \software{odML} structure to facilitate the design of a new metadata collection
     \item creating a tabular overview across multiple metadata entries within a metadata collection
-\end{itemize}
+\end{itemize}}
 
 The functionality of the \software{odMLtables} can be accessed in one of two ways. First, the API of the \software{odMLtables} complements the original Python \software{odML} API \citep{Grewe_2011}. As such, \software{odMLtables} simplifies the scripting of automated metadata extraction and aggregation tasks in an experiment. Second, \software{odMLtables} includes a GUI that enables non-programmers access to the large majority of functionality offered by the library. In this way, \software{odMLtables} can aid work with odML-based metadata collections in metadata workflows that do not include scripted processing stages.
 
@@ -157,7 +158,7 @@ One feature of \software{odMLtables} in generating \code{xls} files is to highli
 In addition to the core module, \software{odMLtables} provides a GUI that exposes most functionality of the core module. The GUI is based on the PyQt5\footnote{\url{https://wiki.python.org/moin/PyQt}} framework and consists of a main window (\cref{fig:GUI_mainwindow}) and five wizards (see \cref{sec:software_functionalities}). Each wizard inherits from the \texttt{OdmltablesWizard} class, which provides helper functions and error handling. The \texttt{Settings} class stores the current user settings for calls of \software{odMLtables} core functions, and provides functionality to save and restore user settings between different executions of the GUI.
 
 
-\section{Embedding \software{odMLtables} in data acquisition and analysis}
+\section{Embedding \software{odMLtables} in data acquisition and \mbox{analysis}}
 \label{sec:Illustrative-Examples}
 
 While most scientists would agree that accurate records of the minute details of an experiment are the foundation of good scientific practice, in the everyday routine of an experimental electrophysiology lab it is difficult for the scientist to record, sort, and maintain the wealth of metadata information that accumulates during an experiment. While the \software{odML} format is suitable for storing metadata information from different sources, lacking to date is a set of tools that allows the scientist to create, manipulate and visualize the data stored in this format. In the following, we present commonly encountered scenarios involving metadata handling that originate from our collaborative work. These scenarios touch the issues of how to design the hierarchical structure to store and organize the metadata, how to practically enter metadata before, during or after the experiment, and how to create a comparison of rich metadata buried within the \software{odML} structure. It turns out that for each of these scenarios a flattened tabular representation of the metadata is a practical solution that feels intuitive to the user. In the following we demonstrate how to implement these scenarios that consist of combining operations in \software{odMLtables} and a spreadsheet program. All scenarios are also available as an interactive Jupyter Notebook\footnote{\url{https://jupyter.org/}} accessible via the \software{odMLtables} documentation\footnote{\url{https://odmltables.readthedocs.io/en/latest/tutorial.html}}.
@@ -255,7 +256,7 @@ After completion of an experiment covering many recording days, the processing s
 By use of the \software{odML} library together with the \software{odMLtables} Python API, users have a rich collection of functions to manipulate and convert metadata stored in the \software{odML} format. In this specific example, we show an example script in \cref{code:odmltables} that loads all daily animal score sheets, adds them to a common metadata structure and exports the final document into an overview and comparative \code{xls} sheet for visualization. The code demonstrates the metadata handling workflow by structuring it into a sequence of three generic functions, which can be of use in creating related workflows for different projects.
 
 
-\begin{codeenv}[hbt]
+\begin{codeenv}[hbtp]
 \inputminted[linenos,tabsize=2,breaklines, fontsize=\scriptsize]{python}{figures/code_odmltables_automation.py}
 \caption[Assemble metadata using \software{odMLtables}]{Program to assemble a target \software{odML} document covering metadata of multiple recording days by pooling information from multiple \code{csv} files and generate visualizations and overviews. Individual functions are automatizing functionalities presented in previous scenarios.}
 \label[codelisting]{code:odmltables}
@@ -303,13 +304,13 @@ Lastly, as a fifth feature addition, \software{odMLtables} could assist scientis
 Validation of user generated input is implemented on the level of odML: When saving or loading an \software{odML} file via \software{odMLtables} or any other method, the \software{odML} structure is checked for basic integrity (e.g. consistency of data types and values). It is intended to support custom, user defined validations in future releases. That is, users will be provided with the means of defining own valuations to check for specific required Sections, Properties or Values and combinations thereof. These additional validations will be directly stored within the \software{odML} files. They can be applied to ensure metadata consistency even if the file is handled on a different host or by a different person.
 For example users would be able to define specific Values as required for a particular Property or make sure a Section tree with an experiment-specific content is present before the file can be saved.
 
-\begin{figure}[hbtp]
+\begin{sidewaysfigure}[hbtp]
 \begin{center}
-\includegraphics[width=1.0\columnwidth]{figures/odmltables_figures/fig8_global_picture/global_picture.pdf}
+\includegraphics[width=0.9\textwidth]{figures/odmltables_figures/fig8_global_picture/global_picture.pdf}
 \caption[Integrating \software{odMLtables} and other software tools in the different stages of an experiment from preparation to publication]{\label{fig:global_workflow}
 \textbf{Integrating \software{odMLtables} and other software tools in the different stages of an experiment from preparation to publication.} During the preparation of an experiment \software{odMLtables} in combination with spreadsheet software is used to develop an experiment specific structure of the metadata collection (templates, \fgenerate{}). During the execution and documentation of the experiment, \software{odMLtables} converts (\fconvert{}) between the tabular and \software{odML} representations. The compare functionality (\fcompare{}) is used to generate overviews of \software{odML} Properties across different Sections of a metadata collection. The filter (\ffilter{}) and merge (\fmerge{}) functionalities are used to create and merge subsets of \software{odML} collections, respectively. For analysis and sharing, data can be represented using the \software{Neo} framework and annotated with metadata from the \software{odML} metadata collection using custom scripts. This combined representation can be saved in a single format using the NIX framework, e.g., to share of data and metadata via a database. In parallel, metadata collections can be incorporated in databases, for example using an export of the \software{odML} to the RDF standard.}
 \end{center}
-\end{figure}
+\end{sidewaysfigure}
 
 In recent years, the scientific community has begun to recognize the need for developing workflows that enable rigorous data management not only to ensure reproducibility, but also to expedite research through efficient data sharing among scientists. The principles governing corresponding data management practices are summarized under the FAIR (Findable, Accessible, Interoperable, Reusable) principles \citep{Wilkinson_2016}. The requirement to make data globally findable has lead to the emergence of multiple resources commonly grouped under the term ``Knowledge Graph'', referring to a graph-like linkage of metadata through an appropriate ontologies, for example, as done in the Knowledge Graph of the Human Brain Project\footnote{\url{https://www.humanbrainproject.eu/en/explore-the-brain}}. The resource description format, RDF\footnote{\url{https://www.w3.org/RDF}}, is a semantic web technology that provides one possible standard interface to populate such metadata graphs (cf., \cref{fig:global_workflow}). The complexity of creating RDF descriptions from scratch can be simplified by exploiting the functionality of \software{odML} to export RDF schemata from \software{odML} files. In this context, \software{odMLtables} can be incorporated as a bridge to support researchers in easily entering predefined metadata schemata to expose their data records in large-scale Knowledge Graph infrastructures.
 
