@@ -55,10 +55,6 @@ The description of individual steps of a workflow within snakemake is closely re
 
 The dependencies between snakemake rules are evaluated based on required files. By default snakemake uses the first rule within a \code{Snakefile} as main rule and tries to execute this rule. Alternatively snakemake can be called with a filename as an argument. In this case snakemake attempts to build the requested file based on all available rules, thereby matching in and output files of rules and checking the availability of basic input files. For this purpose snakemake generates an acyclic directed graph of rule dependencies (e.g. see \cref{fig:python_demo}) and infers all wildcard parameters from this. In case multiple rules can be used for generation of the same file a rule priority order can be be defined (\cref{code:workflows_simple_snakefile}, lines 1-3). Snakemake only executes rules and creates or overwrites files if the output files of a rule do not exist or the input files have a more recent modification time stamp than the output files. This guarantees that the output files of a snakemake workflow are always based on the most recent version of input files and at the same time minimizes the computational overhead, since only required or outdated files are generated.
 
-Snakemake rules can be executed in dedicated, containerized environments. For Python workflows, snakemake supports conda environments on a per-rule level. Here, the conda environment can be defined via a \code{yaml} file specifying the conda (and PyPi) dependencies (see \cref{code:workflows_python_snakefile} Snakefile, line 16 and 23 and environments). When no cached version of the environment exists or the \code{yaml} environment definition was updated, snakemake builds the environment using conda.
-
-\cref{code:workflows_python_snakefile} demonstrates a more complex workflow using two generic Python scripts (\cref{code:workflows_python_scripts}) . The first script generates data based on the \software{Neo} package, whereas the second script visualizes any data accessible via \software{Neo} using the Python \software{Matplotlib} package. These scripts are implemented to be used as standalone scripts, and require arguments from the command line indicating the filename. Additionally, they do not rely on a fixed data file format, but support any format supported by the  \software{Neo} framework. This, in combination with the explicit definition of the required conda environments in form of \code{yaml} files makes the scripts highly flexible and generic, such that they can be easily reused in different contexts and projects. Furthermore, the snakemake implementation of the workflow keeps the generity of the code by providing flexibility in the used data format, which is defined via an additional configuration \code{yaml} file, and the usage of wildcards for flexible handling of filenames. The resulting snakemake workflow as well as the output visualization of the randomly generated data can be seen in \cref{fig:python_demo}.
-
 
 \begin{codeenv}
 \textbf{Snakemake header}
@@ -91,6 +87,11 @@ Snakemake rules can be executed in dedicated, containerized environments. For Py
 \caption[Snakemake example workflow for data generation and plotting]{Snakemake example workflow for data generation and plotting. The workflow consists of three rules, for data generation, data visualization and specification of the all output files of the workflow. The first two rules can be executed in dedicated conda environments, specified via the \code{conda}-directive and are shown on the right. The workflow uses a configuration file (Snakefile, line 1, \code{config.yaml}), specifying the format for storing \software{Neo} structures. This specification is also used to provide a constraint for wildcards with the name \code{data\_ext}, which resolves ambiguities between the data generation and visualization rule. The rule \code{all} is by default executed when snakemake is run. It specifies two required output formats of the workflow. For the visualization of the workflow diagram when running the \code{all} rule, see \cref{fig:python_demo}.}
 \label[codelisting]{code:workflows_python_snakefile}
 \end{codeenv}
+
+
+Snakemake rules can be executed in dedicated, containerized environments. For Python workflows, snakemake supports conda environments on a per-rule level. Here, the conda environment can be defined via a \code{yaml} file specifying the conda (and PyPi) dependencies (see \cref{code:workflows_python_snakefile} Snakefile, line 16 and 23 and environments). When no cached version of the environment exists or the \code{yaml} environment definition was updated, snakemake builds the environment using conda.
+
+\cref{code:workflows_python_snakefile} demonstrates a more complex workflow using two generic Python scripts (\cref{code:workflows_python_scripts}) . The first script generates data based on the \software{Neo} package, whereas the second script visualizes any data accessible via \software{Neo} using the Python \software{Matplotlib} package. These scripts are implemented to be used as standalone scripts, and require arguments from the command line indicating the filename. Additionally, they do not rely on a fixed data file format, but support any format supported by the  \software{Neo} framework. This, in combination with the explicit definition of the required conda environments in form of \code{yaml} files makes the scripts highly flexible and generic, such that they can be easily reused in different contexts and projects. Furthermore, the snakemake implementation of the workflow keeps the generity of the code by providing flexibility in the used data format, which is defined via an additional configuration \code{yaml} file, and the usage of wildcards for flexible handling of filenames. The resulting snakemake workflow as well as the output visualization of the randomly generated data can be seen in \cref{fig:python_demo}.
 
 \begin{figure}
 %     \begin{multicols}{2}
@@ -158,9 +159,6 @@ It is essential for the interpretation of the data and their coherent recording 
 
 \paragraph{Data and metadata files}
 The RIVER setup saves multiple signals in parallel, as described in the following. Two sets of \software{Blackrock} recording data files are recorded: one containing neural signals from motor and the other from visual cortical areas in the \code{ns6} format. In addition, both datasets contain partially identical behavioral signals for the hand, arm and gaze position in the \code{ns2} format (\cref{tab:v4a_recording_files}). Furthermore also the position of the active target is stored with a $1kHz$ sampling rate as well as the synchronization signals which are shared between the two NSP / Cerebus systems.
-As for the Reach-to-Grasp experiment, the \code{nev} file contains online extracted spikes, but in addition it also captures a large amount of structured metadata in form of events, which encode experimental metadata as outlined above.
-These metadata are complemented by a set of metadata descriptors. These are text files in \code{csv} format, structured in an \software{odMLtables} compatible fashion. These files are generated by the experimenter in a manual using \software{Matlab} routines for generation of repetitive data. The content of these files contains a structure for metadata branches that can be merged and integrated in an hierarchical \software{odML} metadata collection. A complete set of descriptor files encompasses $9$ \code{csv} files and covers all metadata not captured in the event recording file. These \code{csv} files store essential metadata about the monkey, the hardware components used, the global and specific codes used in the session, the signal flow for digital and analog signals in the recording setups and the general description of the recording session as well as meta information about all required descriptor files (\cref{tab:v4a_metadata_files} top). Additionally, configuration and supplemental files that can not be captured in a csv file but are used during the recording are referenced in the session descriptor. Most of the metadata files are expected to be identical for all sessions. Some on the other hand change with the task type, while only a few need to be generated / tracked explicitly for each session. Nevertheless, since during the life time of an experiment unforeseen changes might occur, such as the replacement of a part of the setup due to malfunction, it is better practice to record all metadata files anew in each session regardless of prior expectations. We also followed this approach in this specific experiment.
-% \todo{add example for descriptor in paragraph above?}
 
 
 
@@ -172,10 +170,11 @@ These metadata are complemented by a set of metadata descriptors. These are text
 
 
 \begin{table}[]
-\begin{tabular}{|l|l|}
+\centering
+\begin{tabular}{ll}
 \hline
-file format & content                                               \\ \hline
-*.ccf       & cerebus configuration                                 \\ \hline
+file format & content                                               \\ \hline \hline
+*.ccf       & cerebus configuration                                 \\ \hline 
 *.nev       & digital events                                        \\
             & \textbullet~ unsorted spike times                      \\
             & \textbullet~ spike waveforms                          \\
@@ -200,44 +199,50 @@ file format & content                                               \\ \hline
 \label{tab:v4a_recording_files}
 \end{table}
 
+
+As for the Reach-to-Grasp experiment, the \code{nev} file contains online extracted spikes, but in addition it also captures a large amount of structured metadata in form of events, which encode experimental metadata as outlined above.
+These metadata are complemented by a set of metadata descriptors. These are text files in \code{csv} format, structured in an \software{odMLtables} compatible fashion. These files are generated by the experimenter in a manual using \software{Matlab} routines for generation of repetitive data. The content of these files contains a structure for metadata branches that can be merged and integrated in an hierarchical \software{odML} metadata collection. A complete set of descriptor files encompasses $9$ \code{csv} files and covers all metadata not captured in the event recording file. These \code{csv} files store essential metadata about the monkey, the hardware components used, the global and specific codes used in the session, the signal flow for digital and analog signals in the recording setups and the general description of the recording session as well as meta information about all required descriptor files (\cref{tab:v4a_metadata_files} top). Additionally, configuration and supplemental files that can not be captured in a csv file but are used during the recording are referenced in the session descriptor. Most of the metadata files are expected to be identical for all sessions. Some on the other hand change with the task type, while only a few need to be generated / tracked explicitly for each session. Nevertheless, since during the life time of an experiment unforeseen changes might occur, such as the replacement of a part of the setup due to malfunction, it is better practice to record all metadata files anew in each session regardless of prior expectations. We also followed this approach in this specific experiment.
+% \todo{add example for descriptor in paragraph above?}
+
 \begin{table}[]
 \scriptsize
+\centering
 \begin{tabular}{lll}
-\textbf{Descriptor}                                & \textbf{Content}                                                                                                       & \textbf{Generation}                                                                  \\ \hline
-\multicolumn{1}{|l|}{session}                      & \multicolumn{1}{l|}{\textbullet~ session name}                                                                         & \multicolumn{1}{l|}{once per session}                                                \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ relevant metadata files}                                                              & \multicolumn{1}{l|}{semi-automatic}                                                  \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ task type}                                                                            & \multicolumn{1}{l|}{visual cross check}                                              \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l|}{}                                                                \\ \hline
-\multicolumn{1}{|l|}{subject}                      & \multicolumn{1}{l|}{\textbullet~ species}                                                                              & \multicolumn{1}{l|}{onetime, static}                                                 \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ active hand}                                                                          & \multicolumn{1}{l|}{}                                                                \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ training}                                                                             & \multicolumn{1}{l|}{}                                                                \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~...}                                                                                   & \multicolumn{1}{l|}{}                                                                \\ \hline
-\multicolumn{1}{|l|}{Kinarm}                       & \multicolumn{1}{l|}{\textbullet~ hardware specifications}                                                              & \multicolumn{1}{l|}{onetime, static}                                                 \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ programming software}                                                                 & \multicolumn{1}{l|}{}                                                                \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l|}{}                                                                \\ \hline
-\multicolumn{1}{|l|}{eyelink}                      & \multicolumn{1}{l|}{\textbullet~hardware specifications}                                                               & \multicolumn{1}{l|}{onetime, static}                                                 \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ software specifications}                                                               & \multicolumn{1}{l|}{}                                                                \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l|}{}                                                                \\ \hline
-\multicolumn{1}{|l|}{blackrock}                    & \multicolumn{1}{l|}{\textbullet~ Utah arrays}                                                                          & \multicolumn{1}{l|}{onetime, static}                                                 \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ connectors}                                                                           & \multicolumn{1}{l|}{}                                                                \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ physical properties}                                                                  & \multicolumn{1}{l|}{}                                                                \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l|}{}                                                                \\ \hline
-\multicolumn{1}{|l|}{analog\_communication}        & \multicolumn{1}{l|}{\textbullet~ hardware specifications}                                                              & \multicolumn{1}{l|}{onetime, static}                                                 \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ pin mapping}                                                                          & \multicolumn{1}{l|}{}                                                                \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l|}{}                                                                \\ \hline
-\multicolumn{1}{|l|}{digital\_communication}       & \multicolumn{1}{l|}{\textbullet~ hardware specifications}                                                              & \multicolumn{1}{l|}{onetime, static}                                                 \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ pin mapping}                                                                          & \multicolumn{1}{l|}{}                                                                \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l|}{}                                                                \\ \hline
-\multicolumn{1}{|l|}{codes\_global}                & \multicolumn{1}{l|}{\textbullet~ code mapping \& definition}                                                           & \multicolumn{1}{l|}{onetime, static}                                                 \\ \hline
-\multicolumn{1}{|l|}{codes\_task}                  & \multicolumn{1}{l|}{\textbullet~ mapping of global codes to}                                                           & \multicolumn{1}{l|}{once per task type}                                              \\
-\multicolumn{1}{|l|}{}                             & \multicolumn{1}{l|}{\hspace{1cm} task specific metadata}                                                               & \multicolumn{1}{l|}{static}                                                          \\ \hline
-\textbf{Additional metadata files}                 &                                                                                                                        &                                                                                      \\ \hline
-\multicolumn{1}{|l|}{task description (pdf)}       & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}extensive human readable task description\\ with sketches\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}once per task,\\ static\end{tabular}} \\ \hline
-\multicolumn{1}{|l|}{task model (mdl)}             & \multicolumn{1}{l|}{model description file as used by Simulink}                                                        & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}once per task,\\ static\end{tabular}} \\ \hline
-\multicolumn{1}{|l|}{task parameter file (dtp)}    & \multicolumn{1}{l|}{task parameter file as used by Simulink}                                                           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}once per task,\\ static\end{tabular}} \\ \hline
-\multicolumn{1}{|l|}{target picture (png)}         & \multicolumn{1}{l|}{image used for visual targets}                                                                     & \multicolumn{1}{l|}{onetime}                                                         \\ \hline
-\multicolumn{1}{|l|}{calibration parameters (mat)} & \multicolumn{1}{l|}{parameters of the calibration model}                                                               & \multicolumn{1}{l|}{onetime}                                                         \\ \hline
-\multicolumn{1}{|l|}{calibration data (mat)}       & \multicolumn{1}{l|}{data used for calibration}                                                                         & \multicolumn{1}{l|}{once per calibration}                                            \\ \hline
+\textbf{Descriptor}                                & \textbf{Content}                                                                                                       & \textbf{Generation}                                                                  \\ \hline \hline
+\multicolumn{1}{l}{session}                      & \multicolumn{1}{l}{\textbullet~ session name}                                                                         & \multicolumn{1}{l}{once per session}                                                \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ relevant metadata files}                                                              & \multicolumn{1}{l}{semi-automatic}                                                  \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ task type}                                                                            & \multicolumn{1}{l}{visual cross check}                                              \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l}{}                                                                \\ \hline
+\multicolumn{1}{l}{subject}                      & \multicolumn{1}{l}{\textbullet~ species}                                                                              & \multicolumn{1}{l}{onetime, static}                                                 \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ active hand}                                                                          & \multicolumn{1}{l}{}                                                                \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ training}                                                                             & \multicolumn{1}{l}{}                                                                \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~...}                                                                                   & \multicolumn{1}{l}{}                                                                \\ \hline
+\multicolumn{1}{l}{Kinarm}                       & \multicolumn{1}{l}{\textbullet~ hardware specifications}                                                              & \multicolumn{1}{l}{onetime, static}                                                 \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ programming software}                                                                 & \multicolumn{1}{l}{}                                                                \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l}{}                                                                \\ \hline
+\multicolumn{1}{l}{eyelink}                      & \multicolumn{1}{l}{\textbullet~hardware specifications}                                                               & \multicolumn{1}{l}{onetime, static}                                                 \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ software specifications}                                                               & \multicolumn{1}{l}{}                                                                \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l}{}                                                                \\ \hline
+\multicolumn{1}{l}{blackrock}                    & \multicolumn{1}{l}{\textbullet~ Utah arrays}                                                                          & \multicolumn{1}{l}{onetime, static}                                                 \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ connectors}                                                                           & \multicolumn{1}{l}{}                                                                \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ physical properties}                                                                  & \multicolumn{1}{l}{}                                                                \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l}{}                                                                \\ \hline
+\multicolumn{1}{l}{analog\_communication}        & \multicolumn{1}{l}{\textbullet~ hardware specifications}                                                              & \multicolumn{1}{l}{onetime, static}                                                 \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ pin mapping}                                                                          & \multicolumn{1}{l}{}                                                                \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l}{}                                                                \\ \hline
+\multicolumn{1}{l}{digital\_communication}       & \multicolumn{1}{l}{\textbullet~ hardware specifications}                                                              & \multicolumn{1}{l}{onetime, static}                                                 \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ pin mapping}                                                                          & \multicolumn{1}{l}{}                                                                \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\textbullet~ ...}                                                                                  & \multicolumn{1}{l}{}                                                                \\ \hline
+\multicolumn{1}{l}{codes\_global}                & \multicolumn{1}{l}{\textbullet~ code mapping \& definition}                                                           & \multicolumn{1}{l}{onetime, static}                                                 \\ \hline
+\multicolumn{1}{l}{codes\_task}                  & \multicolumn{1}{l}{\textbullet~ mapping of global codes to}                                                           & \multicolumn{1}{l}{once per task type}                                              \\
+\multicolumn{1}{l}{}                             & \multicolumn{1}{l}{\hspace{1cm} task specific metadata}                                                               & \multicolumn{1}{l}{static}                                                          \\ \hline \\
+\textbf{Additional metadata files}                 &                                                                                                                        &                                                                                      \\ \hline \hline
+\multicolumn{1}{l}{task description (pdf)}       & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}extensive human readable task description\\ with sketches\end{tabular}} & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}once per task,\\ static\end{tabular}} \\ \hline
+\multicolumn{1}{l}{task model (mdl)}             & \multicolumn{1}{l}{model description file as used by Simulink}                                                        & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}once per task,\\ static\end{tabular}} \\ \hline
+\multicolumn{1}{l}{task parameter file (dtp)}    & \multicolumn{1}{l}{task parameter file as used by Simulink}                                                           & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}once per task,\\ static\end{tabular}} \\ \hline
+\multicolumn{1}{l}{target picture (png)}         & \multicolumn{1}{l}{image used for visual targets}                                                                     & \multicolumn{1}{l}{onetime}                                                         \\ \hline
+\multicolumn{1}{l}{calibration parameters (mat)} & \multicolumn{1}{l}{parameters of the calibration model}                                                               & \multicolumn{1}{l}{onetime}                                                         \\ \hline
+\multicolumn{1}{l}{calibration data (mat)}       & \multicolumn{1}{l}{data used for calibration}                                                                         & \multicolumn{1}{l}{once per calibration}                                            \\ \hline
 \end{tabular}
 \caption[Metadata files in the Vision-for-Action project]{Metadata descriptors and supplementary files in the Vision-for-Action project. Nine \code{csv} descriptor files are required for a complete description of the experiment. Most of these only need to be generated once as the data contained within is constant across consecutive recording sessions. Only the session descriptor needs to be adjusted to each session. There are six additional files which provide supplemental metadata information, e.g. additional configuration and image material used during the recording.}
 \label{tab:v4a_metadata_files}
@@ -253,6 +258,32 @@ In the current workflow, metadata and data apps are implemented in a flexible ma
 % \todo{add concrete examples for this type of app.}
 
 Two minimal examples depicting two subsets of the workflow are shown in \cref{fig:v4a_metadata_workflow_dag}. Here we focus on the integration of the original \code{csv} descriptors into a single \software{odML} file as well as the execution of preprocessing steps (\cref{fig:v4a_metadata_workflow_dag}A and B, respectively). The general dependencies between the corresponding rules are visible in \cref{fig:v4a_metadata_workflow_rulegraph}, whereas the executions of the rule with varying parameters during a run of snakemake are depicted in \cref{fig:v4a_metadata_workflow_dag}. I.e. the two rules handling data and metadata apps (\cref{fig:v4a_metadata_workflow_rulegraph}, green boxes) each cover a multitude of data and metadata apps. Examples of the apps run by these two rules are depicted in (\cref{fig:v4a_metadata_workflow_dag}B), e.g. the \code{run\_data\_app} rule executes the apps \code{app\_synchrofact\_detection}, \code{app\_cross\_talk\_detection\_in\_ns6} and \code{app\_saccade\_detection} all with the same set of parameters. The large number of apps handled by some of the rules prevents a visualization of the complete workflow in this context, hence only a small selection of apps is depicted \cref{fig:v4a_metadata_workflow_dag}.
+
+\begin{figure}
+    \centering
+    \includesvg[width=\textwidth, pretex=\relscale{0.7}]{./figures/workflows/rulegraph_colored_escus}
+    \caption[Metadata workflow rules for Vision-for-Action experiment]{Metadata workflow rules for Vision-for-Action experiment. Visualized are only the general dependencies between rules irrespective of the input parameters and multiple executions during the run of the workflow. Data are preprocessed (green boxes) and secondary metadata are extracted. These are together wit the primary metadata are combined in a single metadata collection (blue boxes). Data are converted to the \software{Nix} format and packaged together with the metadata in a single file (purple boxes). The resulting files are then put under version control using \code{gin} and uploaded to a central server (yellow boxes).}
+    \label{fig:v4a_metadata_workflow_rulegraph}
+\end{figure}
+
+
+\begin{sidewaysfigure}
+    \textbf{A}\\
+    \scalebox{0.85}{
+    \includesvg[width=\textwidth, pretex=\relscale{0.05}]{./figures/workflows/v4a_dag_all_descriptors_mod_escus}}\\
+    \textbf{B}\\
+    \scalebox{0.85}{
+    \includesvg[width=\textwidth, pretex=\relscale{0.01}]{./figures/workflows/v4a_dag_all_apps_mod_escus}\\}
+    \caption[Metadata workflow examples from Vision-for-Action experiment]{Two example metadata workflow steps in the Vision-for-Action project. \textbf{A)} Integration of original \code{csv} descriptors into a single \software{odML} file by repeated application of the \code{copy\_descriptors} and \code{csv\_to\_odml} rule. Each application is specific for a single descriptor and resulting \software{odML} files are merged via the \code{integrate\_descriptors} rule. A style sheet is automatically downloaded for easy visualization of the generated \software{odML} files.\textbf{B)} Preprocessing and metadata extraction via repeated application of the \code{run\_data\_app} and \code{run\_metadata\_app} rule. Both rules have similar parameter sets, but \code{run\_data\_app} additionally depends on an extendable version of the original recording data structure, which is generated by the \code{data\_to\_nix} rule. The rules take as parameter the app to run and the recording session. All rules above are triggered by a utility rule requiring the output files of all preprocessing apps as input.}
+    \label{fig:v4a_metadata_workflow_dag}
+\end{sidewaysfigure}
+
+
+\begin{codeenv}
+\inputminted[firstline=149, lastline=164, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/v4a_workflow.snakefile}
+\caption[Excerpt of the snakemake workflow definition for the Vision-for-Action project]{Excerpt of the snakemake workflow definition for the Vision-for-Action project. The \code{run\_metadata\_app} rule requires all apps located in the \code{metadata\_app} subfolder as well as the locations of the original dataset and the utility functions for this workflow. It generates a \code{.done} file with an app specific name for housekeeping purposes as well as a \code{csv} file containing the extracted metadata. The execution environment is defined via a conda environment. The rule executes three lines of bash code for making the utility functions available, running the app with the specific parameters and generating / updating the housekeeping \code{.done} file. The variables \code{DATALOC}, \code{OUTPUTLOC} and \code{UTILDIR} are fixed path locations within the snakemake workflow and either defined via the configuration or are set at the beginning of the workflow description.}
+\label[codelisting]{code:v4a_workflow_snakemake_rule}
+\end{codeenv}
 
 In the first example, covering the merge of descriptors, first all \code{csv} descriptors need to be copied to the working directory of the workflow as the descriptors are stored together with the original data in a read-only folder. This prevents unintentional changes of the original data and makes the workflow less error-prone. Each descriptor file is copied by the \code{copy\_descriptors} rule whereas the descriptor identity is defined as parameter. These copies serve as an input for the \code{csv\_to\_odml} rule, which permits the conversion of any \software{odMLtables} compatible \code{csv} file to the \software{odML} format. This step is also run for all descriptors separately. In addition the \code{csv\_to\_odml} rule also requires an \software{odML} style sheet for the user friendly visualization of the \software{odML} file via \code{html}. This is a required input file for all realizations of the \code{copy\_to\_csv} rule and is downloaded once to the descriptor working directory via the \code{add\_odML\_style\_sheet} rule. Finally, the \code{integrate\_descriptors} rule uses all previously created \software{odML files} as input and integrates all \software{odML} files into a common \software{odML} file.
 
@@ -283,7 +314,7 @@ Examples for apps for the automatic extraction of basic metadata are:
  \end{itemize}
 \end{itemize}
 
-In contrast to metadata apps, data apps extent the \software{Neo} data structure. Some examples of implemented and envisioned data apps are:
+In contrast to metadata apps, data apps extend the \software{Neo} data structure. Some examples of implemented and envisioned data apps are:
 \begin{itemize}
   \setlength{\itemsep}{0pt}
   \setlength{\parskip}{0pt}
@@ -352,33 +383,9 @@ Within the snakemake workflow, multiple folders are used to separate data and me
 
 
 
-\paragraph{}
-
-\begin{figure}
-    \centering
-    \includesvg[width=\textwidth, pretex=\relscale{0.7}]{./figures/workflows/rulegraph_colored_escus}
-    \caption[Metadata workflow rules for Vision-for-Action experiment]{Metadata workflow rules for Vision-for-Action experiment. Visualized are only the general dependencies between rules irrespective of the input parameters and multiple executions during the run of the workflow. Data are preprocessed (green boxes) and secondary metadata are extracted. These are together wit the primary metadata are combined in a single metadata collection (blue boxes). Data are converted to the \software{Nix} format and packaged together with the metadata in a single file (purple boxes). The resulting files are then put under version control using \code{gin} and uploaded to a central server (yellow boxes).}
-    \label{fig:v4a_metadata_workflow_rulegraph}
-\end{figure}
-
-\begin{sidewaysfigure}
-    
-    \textbf{A}\\
-    \scalebox{0.85}{
-    \includesvg[width=\textwidth, pretex=\relscale{0.05}]{./figures/workflows/v4a_dag_all_descriptors_mod_escus}}\\
-    \textbf{B}\\
-    \scalebox{0.85}{
-    \includesvg[width=\textwidth, pretex=\relscale{0.01}]{./figures/workflows/v4a_dag_all_apps_mod_escus}\\}
-    \caption[Metadata workflow examples from Vision-for-Action experiment]{Two example metadata workflow steps in the Vision-for-Action project. \textbf{A)} Integration of original \code{csv} descriptors into a single \software{odML} file by repeated application of the \code{copy\_descriptors} and \code{csv\_to\_odml} rule. Each application is specific for a single descriptor and resulting \software{odML} files are merged via the \code{integrate\_descriptors} rule. A style sheet is automatically downloaded for easy visualization of the generated \software{odML} files.\textbf{B)} Preprocessing and metadata extraction via repeated application of the \code{run\_data\_app} and \code{run\_metadata\_app} rule. Both rules have similar parameter sets, but \code{run\_data\_app} additionally depends on an extendable version of the original recording data structure, which is generated by the \code{data\_to\_nix} rule. The rules take as parameter the app to run and the recording session. All rules above are triggered by a utility rule requiring the output files of all preprocessing apps as input.}
-    \label{fig:v4a_metadata_workflow_dag}
-\end{sidewaysfigure}
 
 
-\begin{codeenv}
-\inputminted[firstline=149, lastline=164, linenos,tabsize=2,breaklines, fontsize=\scriptsize]{bash}{figures/workflows/v4a_workflow.snakefile}
-\caption[Excerpt of the snakemake workflow definition for the Vision-for-Action project]{Excerpt of the snakemake workflow definition for the Vision-for-Action project. The \code{run\_metadata\_app} rule requires all apps located in the \code{metadata\_app} subfolder as well as the locations of the original dataset and the utility functions for this workflow. It generates a \code{.done} file with an app specific name for housekeeping purposes as well as a \code{csv} file containing the extracted metadata. The execution environment is defined via a conda environment. The rule executes three lines of bash code for making the utility functions available, running the app with the specific parameters and generating / updating the housekeeping \code{.done} file. The variables \code{DATALOC}, \code{OUTPUTLOC} and \code{UTILDIR} are fixed path locations within the snakemake workflow and either defined via the configuration or are set at the beginning of the workflow description.}
-\label[codelisting]{code:v4a_workflow_snakemake_rule}
-\end{codeenv}
+
 
 
 \paragraph{Metadata aggregation (data \& metadata apps)}
@@ -460,19 +467,19 @@ By building the workflow based on Python, all utilized software packages are ope
 
 \begin{table}[]
 \footnotesize
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{lll}
 \hline
 Requirement                                          &  \cite{Brochier_2018} & Vision-for-Action \\  \hline
-R1: Common terminologies                             &  in project & in project \\ \hline
-R2: Structured machine \& human readable metadata    &  yes & yes \\ \hline
-R3: Central data and metadata location               &  no & planned \\ \hline
-R4: Version control                                  &  no & yes \\ \hline
-R5: Mostly automatic metadata compilation            &  manual initialization & yes \\ \hline
-R6: Extendable metadata workflow                     &  minimal & yes \\ \hline
-R7: Reusability                                      &  partial & yes \\ \hline
-R8: Standardized \& reproducible preprocessing       &  no & yes \\ \hline
-R9: Easy to access data and metadata for non-experts &  partial & yes \\ \hline
-R10: Consistent data and metadata                    &  partial & yes \\ \hline
+R1: Common terminologies                             &  in project & in project \\ 
+R2: Structured machine \& human readable metadata    &  yes & yes \\ 
+R3: Central data and metadata location               &  no & planned \\ 
+R4: Version control                                  &  no & yes \\ 
+R5: Mostly automatic metadata compilation            &  manual initialization & yes \\ 
+R6: Extendable metadata workflow                     &  minimal & yes \\ 
+R7: Reusability                                      &  partial & yes \\ 
+R8: Standardized \& reproducible preprocessing       &  no & yes \\ 
+R9: Easy to access data and metadata for non-experts &  partial & yes \\ 
+R10: Consistent data and metadata                    &  partial & yes \\ 
 R11: Open source tools                               &  mostly & yes \\ \hline
 \end{tabular}
 \caption[Overview of workflow features for Vision-for-Action project]{Overview of features of the pipeline and workflow applied in the Reach-to-Grasp (\cite{Brochier_2018}) and Vision-for-Action projects based on requirements for data and metadata workflows as defined in \cref{sec:scidata_shortcomings} (extension of \cref{tab:requirement_check_scidata}). The presented workflow fulfills almost all essential requirements for metadata management workflows in complex, collaborative projects.}
