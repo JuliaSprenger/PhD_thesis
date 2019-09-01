@@ -192,7 +192,7 @@ With the capability of the \software{Nix} format to capture data as well as meta
 \end{codeenv}
 
 
-\section{Comparison of \software{Neo} to \software{NWB:N}}
+\section{Comparison of \software{Neo} and \software{NWB:N}}
 The \software{NWB:N} format \citep{Teeters_2015} is an alternative approach to \software{Neo} for handling of electrophysiology data. In contrast to \software{Neo} it specifies a new file format instead of providing interfaces to existing formats. More precisely, \software{NWB:N} provides a modular framework for the capture of specific electrophysiology modalities. %https://pynwb.readthedocs.io/en/stable/overview_software_architecture.html
 It is accompanied by a number of canonical schema (type) for capturing specific types of data, e.g. behavioural and time series data, imaging recordings, extra and intracellular electrophysiology recordings as well as optogenetic stimulation and optical physiology. Custom schema can be specified to capture data modalities not covered by the set of canonical schema.  % https://nwb-schema.readthedocs.io/en/latest/
 This makes the \software{NWB:N} format on the one side more generic than the \software{Neo} structure, since it permits the implementation of custom schema specifications, but on the other side also more restrictive, because existing schema specifications are very specific and can not be reused in a slightly different context. Also implementation of a custom schema specification extensions in \software{NWB:N} requires additional background knowledge of the experimenter about the underlying organization of the \software{NWB} package and the time and effort of implementing such a format. %https://nwb-schema.readthedocs.io/en/latest/format_description.html#extending-the-format
