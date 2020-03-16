@@ -1,6 +1,12 @@
 from os.path import join
 import glob
 
+# check for compatible snakemake version
+import snakemake
+from distutils.version import LooseVersion
+assert LooseVersion(snakemake.__version__) == LooseVersion('5.5.4')
+
+
 configfile: "config.yml"
 
 FIGURES = config['figures']
