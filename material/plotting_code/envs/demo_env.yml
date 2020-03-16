@@ -8,5 +8,5 @@ dependencies:
     - odml
     - nixodmlconverter
     # substitute when neo 0.8 is released
-    #- neo>=0.8
-    - git+https://github.com/neuralensemble/python-neo@master
+    - neo==0.8
+    #- git+https://github.com/neuralensemble/python-neo@master
