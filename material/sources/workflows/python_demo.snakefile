@@ -13,7 +13,7 @@ rule all:
 # run python script to generate data
 rule create_data:
     output: 'data.{data_ext}'
-    conda: 'data_generation_environment.yaml'
+    conda: 'envs/data_generation_environment.yaml'
     shell: 'python generate_data.py {output}'
     
 # visualize data
