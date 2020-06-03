@@ -14,3 +14,6 @@ The manuscript is generated using a snakemake workflow and consists of a main pa
 ## Execution
 For convienience usage both workflows run using the [`run_all.sh`](run_all.sh) and [`material/run_all.sh`](material/run_all.sh) scripts, respectively.
 The underlying folder structure of the workflow can be configured using the `config.yml` provided with the workflow.
+
+## License
+© 2019. This work is licensed under a [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/). 
