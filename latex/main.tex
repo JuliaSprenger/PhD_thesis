@@ -56,6 +56,21 @@
 \usepackage{svg}
 \pdfsuppresswarningpagegroup=1 % suppressing multiple page inclusion warnings
 
+% See http://ctan.math.utah.edu/ctan/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf
+\newcommand{\executeiffilenewer}[3]{%
+ \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+ {\pdffilemoddate{#2}}>0%
+ {\immediate\write18{#3}}\fi%
+}
+
+\newcommand{\includesvg}[1]{%
+ \executeiffilenewer{#1.svg}{#1.pdf}%
+ {inkscape -z -D --file=#1.svg%
+ --export-pdf=#1.pdf --export-latex}%
+ \input{#1.pdf_tex}%
+}
+
+
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,filecolor=magenta,urlcolor=cyan}
 \urlstyle{same}
