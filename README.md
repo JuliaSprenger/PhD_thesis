@@ -15,5 +15,11 @@ The manuscript is generated using a snakemake workflow and consists of a main pa
 For convienience usage both workflows run using the [`run_all.sh`](run_all.sh) and [`material/run_all.sh`](material/run_all.sh) scripts, respectively.
 The underlying folder structure of the workflow can be configured using the [`config.yml`](config.yml) provided with the workflow.
 
+## Requirements
+Running the workflow requires
+- snakemake
+- a full latex installation
+- inkscape
+
 ## License
 © 2019. This work is licensed under a [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/). For the full attribution of source files, see the attribution in the [manuscript](dissertation_interactive.pdf).
